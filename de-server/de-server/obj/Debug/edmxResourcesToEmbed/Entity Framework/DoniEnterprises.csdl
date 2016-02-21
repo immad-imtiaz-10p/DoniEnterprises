@@ -1,0 +1,2093 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DhoniEnterprisesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AppUserRight">
+    <Key>
+      <PropertyRef Name="AppUserID" />
+      <PropertyRef Name="Area" />
+      <PropertyRef Name="Actions" />
+    </Key>
+    <Property Name="AppUserID" Type="Int32" Nullable="false" />
+    <Property Name="Area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Actions" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="AppUser" Relationship="Self.FK__AppUserRi__AppUs__0E6E26BF" FromRole="AppUserRights" ToRole="AppUsers" />
+  </EntityType>
+  <EntityType Name="AppUser">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserPass" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserEmail" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UserGuid" Type="Guid" Nullable="false" />
+    <Property Name="UserDesignation" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsSuperUser" Type="Boolean" Nullable="false" />
+    <Property Name="initials" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AppUserRights" Relationship="Self.FK__AppUserRi__AppUs__0E6E26BF" FromRole="AppUsers" ToRole="AppUserRights" />
+    <NavigationProperty Name="AppUsersImage" Relationship="Self.FK__AppUsersI__AppUs__02FC7413" FromRole="AppUsers" ToRole="AppUsersImage" />
+    <NavigationProperty Name="BusinessPartner_Contacts" Relationship="Self.FK__BusinessP__bp_Co__1881A0DE" FromRole="AppUsers" ToRole="BusinessPartner_Contacts" />
+    <NavigationProperty Name="BusinessPartner_Contacts1" Relationship="Self.FK__BusinessP__bp_Co__1975C517" FromRole="AppUsers" ToRole="BusinessPartner_Contacts" />
+    <NavigationProperty Name="BusinessPartner_ContactNumbers" Relationship="Self.FK__BusinessP__creat__1B5E0D89" FromRole="AppUsers" ToRole="BusinessPartner_ContactNumbers" />
+    <NavigationProperty Name="BusinessPartner_ContactNumbers1" Relationship="Self.FK__BusinessP__edite__1C5231C2" FromRole="AppUsers" ToRole="BusinessPartner_ContactNumbers" />
+    <NavigationProperty Name="Products" Relationship="Self.FK__Products__Create__07C12930" FromRole="AppUsers" ToRole="Products" />
+    <NavigationProperty Name="Products1" Relationship="Self.FK__Products__LastUp__08B54D69" FromRole="AppUsers" ToRole="Products" />
+    <NavigationProperty Name="TransactionsSecondaries" Relationship="Self.FK__Secondary__tr_cr__63D8CE75" FromRole="AppUsers" ToRole="TransactionsSecondary" />
+    <NavigationProperty Name="TransactionsSecondaries1" Relationship="Self.FK__Secondary__tr_ed__64CCF2AE" FromRole="AppUsers" ToRole="TransactionsSecondary" />
+    <NavigationProperty Name="TransactionFiles" Relationship="Self.FK__Transacti__tf_cr__5EDF0F2E" FromRole="AppUsers" ToRole="TransactionFiles" />
+    <NavigationProperty Name="TransactionFiles1" Relationship="Self.FK__Transacti__tf_ed__5FD33367" FromRole="AppUsers" ToRole="TransactionFiles" />
+    <NavigationProperty Name="TransactionFiles2" Relationship="Self.FK__Transacti__tf_ed__60C757A0" FromRole="AppUsers" ToRole="TransactionFiles" />
+    <NavigationProperty Name="TransactionsShipments" Relationship="Self.FK__Transacti__tr_cr__07220AB2" FromRole="AppUsers" ToRole="TransactionsShipment" />
+    <NavigationProperty Name="TransactionsCommissions" Relationship="Self.FK__Transacti__tr_cr__15702A09" FromRole="AppUsers" ToRole="TransactionsCommission" />
+    <NavigationProperty Name="TransactionsStatus" Relationship="Self.FK__Transacti__tr_cr__1B29035F" FromRole="AppUsers" ToRole="TransactionsStatus" />
+    <NavigationProperty Name="TransactionsStatus1" Relationship="Self.FK__Transacti__tr_cr__22CA2527" FromRole="AppUsers" ToRole="TransactionsStatus" />
+    <NavigationProperty Name="TransactionsNotes" Relationship="Self.FK__Transacti__tr_cr__2D47B39A" FromRole="AppUsers" ToRole="TransactionsNotes" />
+    <NavigationProperty Name="TransactionsContracts" Relationship="Self.FK__Transacti__tr_cr__2F2FFC0C" FromRole="AppUsers" ToRole="TransactionsContract" />
+    <NavigationProperty Name="Transactions" Relationship="Self.FK__Transacti__tr_cr__5D2BD0E6" FromRole="AppUsers" ToRole="Transactions" />
+    <NavigationProperty Name="TransactionsShipments1" Relationship="Self.FK__Transacti__tr_ed__08162EEB" FromRole="AppUsers" ToRole="TransactionsShipment" />
+    <NavigationProperty Name="TransactionsCommissions1" Relationship="Self.FK__Transacti__tr_ed__16644E42" FromRole="AppUsers" ToRole="TransactionsCommission" />
+    <NavigationProperty Name="TransactionsStatus2" Relationship="Self.FK__Transacti__tr_ed__1C1D2798" FromRole="AppUsers" ToRole="TransactionsStatus" />
+    <NavigationProperty Name="TransactionsStatus3" Relationship="Self.FK__Transacti__tr_ed__23BE4960" FromRole="AppUsers" ToRole="TransactionsStatus" />
+    <NavigationProperty Name="TransactionsContracts1" Relationship="Self.FK__Transacti__tr_ed__30242045" FromRole="AppUsers" ToRole="TransactionsContract" />
+    <NavigationProperty Name="Transactions1" Relationship="Self.FK__Transacti__tr_ed__5E1FF51F" FromRole="AppUsers" ToRole="Transactions" />
+    <NavigationProperty Name="UserEvents" Relationship="Self.FK__UserEvent__UserI__2E1BDC42" FromRole="AppUsers" ToRole="UserEvents" />
+    <NavigationProperty Name="transactionVieweds" Relationship="DhoniEnterprisesModel.FK__transacti__UserI__7869D707" FromRole="AppUser" ToRole="transactionViewed" />
+  </EntityType>
+  <EntityType Name="AppUsersImage">
+    <Key>
+      <PropertyRef Name="AppUserID" />
+    </Key>
+    <Property Name="AppUserID" Type="Int32" Nullable="false" />
+    <Property Name="ImageData" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="AppUser" Relationship="Self.FK__AppUsersI__AppUs__02FC7413" FromRole="AppUsersImage" ToRole="AppUsers" />
+  </EntityType>
+  <EntityType Name="BusinessPartner">
+    <Key>
+      <PropertyRef Name="bp_ID" />
+    </Key>
+    <Property Name="bp_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="bp_Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="bp_website" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="bp_credibilityIndex" Type="Int32" Nullable="false" />
+    <Property Name="bp_onDoniContract" Type="Boolean" />
+    <Property Name="bp_isBuyer" Type="Boolean" />
+    <Property Name="bp_isSeller" Type="Boolean" />
+    <Property Name="bp_isShipper" Type="Boolean" />
+    <Property Name="bp_isBroker" Type="Boolean" />
+    <Property Name="bp_country" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="bp_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BusinessPartner_Emails" Relationship="Self.FK__BusinessP__bp_ID__762C88DA" FromRole="BusinessPartner" ToRole="BusinessPartner_Emails" />
+    <NavigationProperty Name="BusinessPartner_ContactNumbers" Relationship="Self.FK__BusinessP__bp_ID__7908F585" FromRole="BusinessPartner" ToRole="BusinessPartner_ContactNumbers" />
+    <NavigationProperty Name="BusinessPartner_BankDetails" Relationship="Self.FK__BusinessP__bp_ID__7CD98669" FromRole="BusinessPartner" ToRole="BusinessPartner_BankDetails" />
+    <NavigationProperty Name="BusinessPartner_Contacts" Relationship="Self.FK__BusinessP__bp_ID__7FB5F314" FromRole="BusinessPartner" ToRole="BusinessPartner_Contacts" />
+    <NavigationProperty Name="TransactionsSecondaries" Relationship="Self.FK__Secondary__tr_se__61F08603" FromRole="BusinessPartner" ToRole="TransactionsSecondary" />
+    <NavigationProperty Name="TransactionsSecondaries1" Relationship="Self.FK__Secondary__tr_se__62E4AA3C" FromRole="BusinessPartner" ToRole="TransactionsSecondary" />
+    <NavigationProperty Name="Transactions" Relationship="Self.FK__Transacti__tr_bp__5A4F643B" FromRole="BusinessPartner" ToRole="Transactions" />
+    <NavigationProperty Name="Transactions1" Relationship="Self.FK__Transacti__tr_bp__5B438874" FromRole="BusinessPartner" ToRole="Transactions" />
+    <NavigationProperty Name="TransactionsCommissions" Relationship="Self.FK__Transacti__tr_bu__0FB750B3" FromRole="BusinessPartner" ToRole="TransactionsCommission" />
+    <NavigationProperty Name="TransactionsContracts" Relationship="Self.FK__Transacti__tr_Co__21D600EE" FromRole="BusinessPartner" ToRole="TransactionsContract" />
+    <NavigationProperty Name="TransactionsCommissions1" Relationship="Self.FK__Transacti__tr_se__0CDAE408" FromRole="BusinessPartner" ToRole="TransactionsCommission" />
+    <NavigationProperty Name="TransactionsShipments" Relationship="Self.FK__Transacti__tr_sh__062DE679" FromRole="BusinessPartner" ToRole="TransactionsShipment" />
+    <NavigationProperty Name="Products" Relationship="Self.BusinessPartner_Products" FromRole="BusinessPartner" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="BusinessPartner_BankDetails">
+    <Key>
+      <PropertyRef Name="bankDetails_ID" />
+      <PropertyRef Name="bp_ID" />
+    </Key>
+    <Property Name="bankDetails_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="bp_ID" Type="Int64" Nullable="false" />
+    <Property Name="branchAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="bankName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="AccountTitle" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="AccountNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="AccountCountry" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BusinessPartner" Relationship="Self.FK__BusinessP__bp_ID__7CD98669" FromRole="BusinessPartner_BankDetails" ToRole="BusinessPartner" />
+  </EntityType>
+  <EntityType Name="BusinessPartner_ContactNumbers">
+    <Key>
+      <PropertyRef Name="ph_ID" />
+      <PropertyRef Name="bp_ID" />
+    </Key>
+    <Property Name="ph_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="bp_ID" Type="Int64" Nullable="false" />
+    <Property Name="contactNumber" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="contactType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="createdOn" Type="DateTime" Precision="3" />
+    <Property Name="createdBy" Type="Int32" />
+    <Property Name="editedOn" Type="DateTime" Precision="3" />
+    <Property Name="editedBy" Type="Int32" />
+    <NavigationProperty Name="AppUser" Relationship="Self.FK__BusinessP__creat__1B5E0D89" FromRole="BusinessPartner_ContactNumbers" ToRole="AppUsers" />
+    <NavigationProperty Name="AppUser1" Relationship="Self.FK__BusinessP__edite__1C5231C2" FromRole="BusinessPartner_ContactNumbers" ToRole="AppUsers" />
+    <NavigationProperty Name="BusinessPartner" Relationship="Self.FK__BusinessP__bp_ID__7908F585" FromRole="BusinessPartner_ContactNumbers" ToRole="BusinessPartner" />
+  </EntityType>
+  <EntityType Name="BusinessPartner_Contacts">
+    <Key>
+      <PropertyRef Name="bp_cont_ID" />
+      <PropertyRef Name="bp_ID" />
+    </Key>
+    <Property Name="bp_cont_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="bp_ID" Type="Int64" Nullable="false" />
+    <Property Name="bp_Cont_IsPrimary" Type="Boolean" />
+    <Property Name="bp_Cont_fullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="bp_Cont_designation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="bp_Cont_Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="bp_Cont_PrimaryNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="bp_Cont_SecondryNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="bp_Cont_CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="bp_Cont_LastEditedOn" Type="DateTime" Precision="3" />
+    <Property Name="bp_Cont_CreatedBy" Type="Int32" />
+    <Property Name="bp_Cont_EditedBy" Type="Int32" />
+    <NavigationProperty Name="AppUser" Relationship="Self.FK__BusinessP__bp_Co__1881A0DE" FromRole="BusinessPartner_Contacts" ToRole="AppUsers" />
+    <NavigationProperty Name="AppUser1" Relationship="Self.FK__BusinessP__bp_Co__1975C517" FromRole="BusinessPartner_Contacts" ToRole="AppUsers" />
+    <NavigationProperty Name="BusinessPartner" Relationship="Self.FK__BusinessP__bp_ID__7FB5F314" FromRole="BusinessPartner_Contacts" ToRole="BusinessPartner" />
+  </EntityType>
+  <EntityType Name="BusinessPartner_Emails">
+    <Key>
+      <PropertyRef Name="email_ID" />
+      <PropertyRef Name="bp_ID" />
+    </Key>
+    <Property Name="email_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="bp_ID" Type="Int64" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="BusinessPartner" Relationship="Self.FK__BusinessP__bp_ID__762C88DA" FromRole="BusinessPartner_Emails" ToRole="BusinessPartner" />
+  </EntityType>
+  <EntityType Name="Origin">
+    <Key>
+      <PropertyRef Name="origin_id" />
+    </Key>
+    <Property Name="origin_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="origin_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="LastUpdatedOn" Type="DateTime" Precision="3" />
+    <Property Name="LastUpdatedBy" Type="Int32" />
+    <Property Name="moisture" Type="Int32" />
+    <Property Name="purity" Type="Int32" />
+    <Property Name="weaveled" Type="Int32" />
+    <Property Name="origin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="splits" Type="Int32" />
+    <Property Name="quality" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="damaged" Type="Int32" />
+    <Property Name="foreignMatter" Type="Int32" />
+    <Property Name="greenDamaged" Type="Int32" />
+    <Property Name="otherColor" Type="Int32" />
+    <Property Name="wrinkled" Type="Int32" />
+    <NavigationProperty Name="AppUser" Relationship="Self.FK__Products__Create__07C12930" FromRole="Products" ToRole="AppUsers" />
+    <NavigationProperty Name="AppUser1" Relationship="Self.FK__Products__LastUp__08B54D69" FromRole="Products" ToRole="AppUsers" />
+    <NavigationProperty Name="Transactions" Relationship="Self.FK__Transacti__tr_pr__5C37ACAD" FromRole="Products" ToRole="Transactions" />
+    <NavigationProperty Name="BusinessPartners" Relationship="Self.BusinessPartner_Products" FromRole="Products" ToRole="BusinessPartner" />
+  </EntityType>
+  <EntityType Name="ShipmentStatu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Transaction">
+    <Key>
+      <PropertyRef Name="tr_transactionID" />
+    </Key>
+    <Property Name="tr_transactionID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tr_date" Type="DateTime" Precision="3" />
+    <Property Name="tr_bpBuyerID" Type="Int64" />
+    <Property Name="tr_bpSellerID" Type="Int64" />
+    <Property Name="tr_productID" Type="Int32" />
+    <Property Name="tr_origin" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="tr_quantity" Type="Int32" />
+    <Property Name="tr_price" Type="Int32" Nullable="false" />
+    <Property Name="tr_packing" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tr_shipment_start" Type="DateTime" Precision="3" />
+    <Property Name="tr_shipment_end" Type="DateTime" Precision="3" />
+    <Property Name="tr_fileID" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="tr_contractID" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="tr_other_info" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="tr_createdBy" Type="Int32" Nullable="false" />
+    <Property Name="tr_createdOn" Type="DateTime" Precision="3" />
+    <Property Name="tr_editedBy" Type="Int32" />
+    <Property Name="tr_editedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="AppUser" Relationship="Self.FK__Transacti__tr_cr__5D2BD0E6" FromRole="Transactions" ToRole="AppUsers" />
+    <NavigationProperty Name="AppUser1" Relationship="Self.FK__Transacti__tr_ed__5E1FF51F" FromRole="Transactions" ToRole="AppUsers" />
+    <NavigationProperty Name="BusinessPartner" Relationship="Self.FK__Transacti__tr_bp__5A4F643B" FromRole="Transactions" ToRole="BusinessPartner" />
+    <NavigationProperty Name="BusinessPartner1" Relationship="Self.FK__Transacti__tr_bp__5B438874" FromRole="Transactions" ToRole="BusinessPartner" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__Transacti__tr_pr__5C37ACAD" FromRole="Transactions" ToRole="Products" />
+    <NavigationProperty Name="TransactionsSecondaries" Relationship="Self.FK__Secondary__tr_tr__60FC61CA" FromRole="Transactions" ToRole="TransactionsSecondary" />
+    <NavigationProperty Name="TransactionFiles" Relationship="Self.FK__Transacti__tf_tr__61BB7BD9" FromRole="Transactions" ToRole="TransactionFiles" />
+    <NavigationProperty Name="TransactionFiles1" Relationship="Self.FK__Transacti__tf_tr__62AFA012" FromRole="Transactions" ToRole="TransactionFiles" />
+    <NavigationProperty Name="TransactionsShipment" Relationship="Self.FK__Transacti__tr_tr__0169315C" FromRole="Transactions" ToRole="TransactionsShipment" />
+    <NavigationProperty Name="TransactionsCommission" Relationship="Self.FK__Transacti__tr_tr__0AF29B96" FromRole="Transactions" ToRole="TransactionsCommission" />
+    <NavigationProperty Name="TransactionsStatu" Relationship="Self.FK__Transacti__tr_tr__1940BAED" FromRole="Transactions" ToRole="TransactionsStatus" />
+    <NavigationProperty Name="TransactionsContract" Relationship="Self.FK__Transacti__tr_tr__1EF99443" FromRole="Transactions" ToRole="TransactionsContract" />
+    <NavigationProperty Name="TransactionsNotes" Relationship="Self.FK__Transacti__tr_tr__2E3BD7D3" FromRole="Transactions" ToRole="TransactionsNotes" />
+  </EntityType>
+  <EntityType Name="TransactionsCommission">
+    <Key>
+      <PropertyRef Name="tr_transactionID" />
+    </Key>
+    <Property Name="tr_transactionID" Type="Int64" Nullable="false" />
+    <Property Name="tr_brokerInvolved" Type="Boolean" />
+    <Property Name="tr_sellerBroker" Type="Boolean" />
+    <Property Name="tr_sellerBrokerID" Type="Int64" />
+    <Property Name="tr_sellerBroker_comm_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="tr_sellerBroker_comm" Type="Int32" />
+    <Property Name="tr_buyerBroker" Type="Boolean" />
+    <Property Name="tr_buyerBrokerID" Type="Int64" />
+    <Property Name="tr_buyerBroker_comm_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="tr_buyerBroker_comm" Type="Int32" />
+    <Property Name="tr_own_Commission" Type="Int32" />
+    <Property Name="tr_ownCommissionType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="tr_difference" Type="Int32" />
+    <Property Name="tr_discount" Type="Int32" />
+    <Property Name="tr_netCommission" Type="Int32" />
+    <Property Name="tr_createdBy" Type="Int32" Nullable="false" />
+    <Property Name="tr_createdOn" Type="DateTime" Precision="3" />
+    <Property Name="tr_editedBy" Type="Int32" />
+    <Property Name="tr_editedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="AppUser" Relationship="Self.FK__Transacti__tr_cr__15702A09" FromRole="TransactionsCommission" ToRole="AppUsers" />
+    <NavigationProperty Name="AppUser1" Relationship="Self.FK__Transacti__tr_ed__16644E42" FromRole="TransactionsCommission" ToRole="AppUsers" />
+    <NavigationProperty Name="BusinessPartner" Relationship="Self.FK__Transacti__tr_bu__0FB750B3" FromRole="TransactionsCommission" ToRole="BusinessPartner" />
+    <NavigationProperty Name="BusinessPartner1" Relationship="Self.FK__Transacti__tr_se__0CDAE408" FromRole="TransactionsCommission" ToRole="BusinessPartner" />
+    <NavigationProperty Name="Transaction" Relationship="Self.FK__Transacti__tr_tr__0AF29B96" FromRole="TransactionsCommission" ToRole="Transactions" />
+  </EntityType>
+  <EntityType Name="TransactionsContract">
+    <Key>
+      <PropertyRef Name="tr_transactionID" />
+    </Key>
+    <Property Name="tr_transactionID" Type="Int64" Nullable="false" />
+    <Property Name="tr_doniContract" Type="Boolean" />
+    <Property Name="tr_ownContract" Type="Boolean" />
+    <Property Name="tr_ContractualBuyer" Type="Int64" />
+    <Property Name="tr_createdBy" Type="Int32" Nullable="false" />
+    <Property Name="tr_createdOn" Type="DateTime" Precision="3" />
+    <Property Name="tr_editedBy" Type="Int32" />
+    <Property Name="tr_editedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="AppUser" Relationship="Self.FK__Transacti__tr_cr__2F2FFC0C" FromRole="TransactionsContract" ToRole="AppUsers" />
+    <NavigationProperty Name="AppUser1" Relationship="Self.FK__Transacti__tr_ed__30242045" FromRole="TransactionsContract" ToRole="AppUsers" />
+    <NavigationProperty Name="BusinessPartner" Relationship="Self.FK__Transacti__tr_Co__21D600EE" FromRole="TransactionsContract" ToRole="BusinessPartner" />
+    <NavigationProperty Name="Transaction" Relationship="Self.FK__Transacti__tr_tr__1EF99443" FromRole="TransactionsContract" ToRole="Transactions" />
+  </EntityType>
+  <EntityType Name="TransactionsNote">
+    <Key>
+      <PropertyRef Name="tr_transactionID" />
+      <PropertyRef Name="tr_tranNoteID" />
+    </Key>
+    <Property Name="tr_transactionID" Type="Int64" Nullable="false" />
+    <Property Name="tr_tranNoteID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tr_transactionNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="tr_createdBy" Type="Int32" Nullable="false" />
+    <Property Name="tr_createdOn" Type="DateTime" Precision="3" />
+    <Property Name="tr_editedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="AppUser" Relationship="Self.FK__Transacti__tr_cr__2D47B39A" FromRole="TransactionsNotes" ToRole="AppUsers" />
+    <NavigationProperty Name="Transaction" Relationship="Self.FK__Transacti__tr_tr__2E3BD7D3" FromRole="TransactionsNotes" ToRole="Transactions" />
+  </EntityType>
+  <EntityType Name="TransactionsSecondary">
+    <Key>
+      <PropertyRef Name="tr_sec_tranID" />
+    </Key>
+    <Property Name="tr_transactionID" Type="Int64" />
+    <Property Name="tr_sec_tranID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tr_sec_bpBuyerID" Type="Int64" />
+    <Property Name="tr_sec_bpSellerID" Type="Int64" />
+    <Property Name="tr_sec_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="tr_sec_buyerPrice" Type="Int32" />
+    <Property Name="tr_sec_sellerPrice" Type="Int32" />
+    <Property Name="tr_sec_otherInfo" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="tr_createdBy" Type="Int32" Nullable="false" />
+    <Property Name="tr_createdOn" Type="DateTime" Precision="3" />
+    <Property Name="tr_editedBy" Type="Int32" />
+    <Property Name="tr_editedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="AppUser" Relationship="Self.FK__Secondary__tr_cr__63D8CE75" FromRole="TransactionsSecondary" ToRole="AppUsers" />
+    <NavigationProperty Name="AppUser1" Relationship="Self.FK__Secondary__tr_ed__64CCF2AE" FromRole="TransactionsSecondary" ToRole="AppUsers" />
+    <NavigationProperty Name="BusinessPartner" Relationship="Self.FK__Secondary__tr_se__61F08603" FromRole="TransactionsSecondary" ToRole="BusinessPartner" />
+    <NavigationProperty Name="BusinessPartner1" Relationship="Self.FK__Secondary__tr_se__62E4AA3C" FromRole="TransactionsSecondary" ToRole="BusinessPartner" />
+    <NavigationProperty Name="Transaction" Relationship="Self.FK__Secondary__tr_tr__60FC61CA" FromRole="TransactionsSecondary" ToRole="Transactions" />
+  </EntityType>
+  <EntityType Name="TransactionsShipment">
+    <Key>
+      <PropertyRef Name="tr_transactionID" />
+    </Key>
+    <Property Name="tr_transactionID" Type="Int64" Nullable="false" />
+    <Property Name="tr_ship_notShipped" Type="Boolean" />
+    <Property Name="tr_ship_notShipped_reason" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="tr_ship_extension" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="tr_ship_appReceived" Type="Boolean" />
+    <Property Name="tr_expectedShipment" Type="DateTime" Precision="3" />
+    <Property Name="tr_inTransit" Type="DateTime" Precision="3" />
+    <Property Name="tr_shipped" Type="Boolean" />
+    <Property Name="tr_dateShipped" Type="DateTime" Precision="3" />
+    <Property Name="tr_expectedArrival" Type="DateTime" Precision="3" />
+    <Property Name="tr_transitPort" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="tr_ship_arrivedAtPort" Type="Boolean" />
+    <Property Name="tr_dateArrived" Type="DateTime" Precision="3" />
+    <Property Name="tr_actualArrived" Type="DateTime" Precision="3" />
+    <Property Name="tr_ship_BlNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tr_ship_invoiceNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tr_ship_invoiceAmt" Type="Int32" />
+    <Property Name="tr_ship_quantity" Type="Int32" />
+    <Property Name="tr_ship_vesselNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tr_ship_primaryShipperId" Type="Int64" />
+    <Property Name="tr_ship_portLoad" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="tr_ship_portDest" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="tr_ship_shipLineCont" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="tr_createdBy" Type="Int32" Nullable="false" />
+    <Property Name="tr_createdOn" Type="DateTime" Precision="3" />
+    <Property Name="tr_editedBy" Type="Int32" />
+    <Property Name="tr_editedOn" Type="DateTime" Precision="3" />
+    <Property Name="tr_ship_chk_reason" Type="Boolean" />
+    <Property Name="tr_ship_chk_shpExt" Type="Boolean" />
+    <Property Name="tr_ship_chk_expShp" Type="Boolean" />
+    <Property Name="tr_ship_chk_inTransit" Type="Boolean" />
+    <Property Name="tr_ship_chk_dateShipped" Type="Boolean" />
+    <Property Name="tr_ship_chk_expArrival" Type="Boolean" />
+    <Property Name="tr_ship_chk_transitPort" Type="Boolean" />
+    <Property Name="tr_ship_chk_dateArrived" Type="Boolean" />
+    <Property Name="tr_ship_chk_actualArrived" Type="Boolean" />
+    <NavigationProperty Name="AppUser" Relationship="Self.FK__Transacti__tr_cr__07220AB2" FromRole="TransactionsShipment" ToRole="AppUsers" />
+    <NavigationProperty Name="AppUser1" Relationship="Self.FK__Transacti__tr_ed__08162EEB" FromRole="TransactionsShipment" ToRole="AppUsers" />
+    <NavigationProperty Name="BusinessPartner" Relationship="Self.FK__Transacti__tr_sh__062DE679" FromRole="TransactionsShipment" ToRole="BusinessPartner" />
+    <NavigationProperty Name="Transaction" Relationship="Self.FK__Transacti__tr_tr__0169315C" FromRole="TransactionsShipment" ToRole="Transactions" />
+  </EntityType>
+  <EntityType Name="TransactionsStatu">
+    <Key>
+      <PropertyRef Name="tr_transactionID" />
+    </Key>
+    <Property Name="tr_transactionID" Type="Int64" Nullable="false" />
+    <Property Name="tr_transactionStatus" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tr_washoutValueAtPar" Type="Int32" />
+    <Property Name="tr_createdBy" Type="Int32" Nullable="false" />
+    <Property Name="tr_createdOn" Type="DateTime" Precision="3" />
+    <Property Name="tr_editedBy" Type="Int32" />
+    <Property Name="tr_editedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="AppUser" Relationship="Self.FK__Transacti__tr_cr__1B29035F" FromRole="TransactionsStatus" ToRole="AppUsers" />
+    <NavigationProperty Name="AppUser1" Relationship="Self.FK__Transacti__tr_cr__22CA2527" FromRole="TransactionsStatus" ToRole="AppUsers" />
+    <NavigationProperty Name="AppUser2" Relationship="Self.FK__Transacti__tr_ed__1C1D2798" FromRole="TransactionsStatus" ToRole="AppUsers" />
+    <NavigationProperty Name="AppUser3" Relationship="Self.FK__Transacti__tr_ed__23BE4960" FromRole="TransactionsStatus" ToRole="AppUsers" />
+    <NavigationProperty Name="Transaction" Relationship="Self.FK__Transacti__tr_tr__1940BAED" FromRole="TransactionsStatus" ToRole="Transactions" />
+  </EntityType>
+  <EntityType Name="UserEvent">
+    <Key>
+      <PropertyRef Name="EventID" />
+    </Key>
+    <Property Name="EventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="EventTime" Type="DateTime" Precision="3" />
+    <Property Name="EventDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AppUser" Relationship="Self.FK__UserEvent__UserI__2E1BDC42" FromRole="UserEvents" ToRole="AppUsers" />
+  </EntityType>
+  <EntityType Name="TransactionFile">
+    <Key>
+      <PropertyRef Name="tf_transactionID" />
+      <PropertyRef Name="tf_fileID" />
+      <PropertyRef Name="tf_file" />
+      <PropertyRef Name="tf_fileType" />
+      <PropertyRef Name="tf_fileName" />
+    </Key>
+    <Property Name="tf_transactionID" Type="Int64" Nullable="false" />
+    <Property Name="tf_fileID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tf_file" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="tf_fileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tf_fileName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tf_createdBy" Type="Int32" />
+    <Property Name="tf_createdOn" Type="DateTime" Precision="3" />
+    <Property Name="tf_editedBy" Type="Int32" />
+    <Property Name="tf_editedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="AppUser" Relationship="Self.FK__Transacti__tf_cr__5EDF0F2E" FromRole="TransactionFiles" ToRole="AppUsers" />
+    <NavigationProperty Name="AppUser1" Relationship="Self.FK__Transacti__tf_ed__5FD33367" FromRole="TransactionFiles" ToRole="AppUsers" />
+    <NavigationProperty Name="AppUser2" Relationship="Self.FK__Transacti__tf_ed__60C757A0" FromRole="TransactionFiles" ToRole="AppUsers" />
+    <NavigationProperty Name="Transaction" Relationship="Self.FK__Transacti__tf_tr__61BB7BD9" FromRole="TransactionFiles" ToRole="Transactions" />
+    <NavigationProperty Name="Transaction1" Relationship="Self.FK__Transacti__tf_tr__62AFA012" FromRole="TransactionFiles" ToRole="Transactions" />
+  </EntityType>
+  <Association Name="FK__AppUserRi__AppUs__0E6E26BF">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="1" />
+    <End Role="AppUserRights" Type="Self.AppUserRight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="AppUserRights">
+        <PropertyRef Name="AppUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AppUsersI__AppUs__02FC7413">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AppUsersImage" Type="Self.AppUsersImage" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="AppUsersImage">
+        <PropertyRef Name="AppUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BusinessP__bp_Co__1881A0DE">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="0..1" />
+    <End Role="BusinessPartner_Contacts" Type="Self.BusinessPartner_Contacts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="BusinessPartner_Contacts">
+        <PropertyRef Name="bp_Cont_CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BusinessP__bp_Co__1975C517">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="0..1" />
+    <End Role="BusinessPartner_Contacts" Type="Self.BusinessPartner_Contacts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="BusinessPartner_Contacts">
+        <PropertyRef Name="bp_Cont_EditedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BusinessP__creat__1B5E0D89">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="0..1" />
+    <End Role="BusinessPartner_ContactNumbers" Type="Self.BusinessPartner_ContactNumbers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="BusinessPartner_ContactNumbers">
+        <PropertyRef Name="createdBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BusinessP__edite__1C5231C2">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="0..1" />
+    <End Role="BusinessPartner_ContactNumbers" Type="Self.BusinessPartner_ContactNumbers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="BusinessPartner_ContactNumbers">
+        <PropertyRef Name="editedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Products__Create__07C12930">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="0..1" />
+    <End Role="Products" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Products__LastUp__08B54D69">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="0..1" />
+    <End Role="Products" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="LastUpdatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Secondary__tr_cr__63D8CE75">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="1" />
+    <End Role="TransactionsSecondary" Type="Self.TransactionsSecondary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TransactionsSecondary">
+        <PropertyRef Name="tr_createdBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Secondary__tr_ed__64CCF2AE">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="0..1" />
+    <End Role="TransactionsSecondary" Type="Self.TransactionsSecondary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TransactionsSecondary">
+        <PropertyRef Name="tr_editedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__tf_cr__5EDF0F2E">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="0..1" />
+    <End Role="TransactionFiles" Type="Self.TransactionFile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TransactionFiles">
+        <PropertyRef Name="tf_createdBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__tf_ed__5FD33367">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="0..1" />
+    <End Role="TransactionFiles" Type="Self.TransactionFile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TransactionFiles">
+        <PropertyRef Name="tf_editedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__tf_ed__60C757A0">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="0..1" />
+    <End Role="TransactionFiles" Type="Self.TransactionFile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TransactionFiles">
+        <PropertyRef Name="tf_editedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__tr_cr__07220AB2">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="1" />
+    <End Role="TransactionsShipment" Type="Self.TransactionsShipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TransactionsShipment">
+        <PropertyRef Name="tr_createdBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__tr_cr__15702A09">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="1" />
+    <End Role="TransactionsCommission" Type="Self.TransactionsCommission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TransactionsCommission">
+        <PropertyRef Name="tr_createdBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__tr_cr__1B29035F">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="1" />
+    <End Role="TransactionsStatus" Type="Self.TransactionsStatu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TransactionsStatus">
+        <PropertyRef Name="tr_createdBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__tr_cr__22CA2527">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="1" />
+    <End Role="TransactionsStatus" Type="Self.TransactionsStatu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TransactionsStatus">
+        <PropertyRef Name="tr_createdBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__tr_cr__2D47B39A">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="1" />
+    <End Role="TransactionsNotes" Type="Self.TransactionsNote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TransactionsNotes">
+        <PropertyRef Name="tr_createdBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__tr_cr__2F2FFC0C">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="1" />
+    <End Role="TransactionsContract" Type="Self.TransactionsContract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TransactionsContract">
+        <PropertyRef Name="tr_createdBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__tr_cr__5D2BD0E6">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="1" />
+    <End Role="Transactions" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Transactions">
+        <PropertyRef Name="tr_createdBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__tr_ed__08162EEB">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="0..1" />
+    <End Role="TransactionsShipment" Type="Self.TransactionsShipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TransactionsShipment">
+        <PropertyRef Name="tr_editedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__tr_ed__16644E42">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="0..1" />
+    <End Role="TransactionsCommission" Type="Self.TransactionsCommission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TransactionsCommission">
+        <PropertyRef Name="tr_editedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__tr_ed__1C1D2798">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="0..1" />
+    <End Role="TransactionsStatus" Type="Self.TransactionsStatu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TransactionsStatus">
+        <PropertyRef Name="tr_editedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__tr_ed__23BE4960">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="0..1" />
+    <End Role="TransactionsStatus" Type="Self.TransactionsStatu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TransactionsStatus">
+        <PropertyRef Name="tr_editedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__tr_ed__30242045">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="0..1" />
+    <End Role="TransactionsContract" Type="Self.TransactionsContract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TransactionsContract">
+        <PropertyRef Name="tr_editedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__tr_ed__5E1FF51F">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="0..1" />
+    <End Role="Transactions" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Transactions">
+        <PropertyRef Name="tr_editedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserEvent__UserI__2E1BDC42">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="0..1" />
+    <End Role="UserEvents" Type="Self.UserEvent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserEvents">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BusinessP__bp_ID__762C88DA">
+    <End Role="BusinessPartner" Type="Self.BusinessPartner" Multiplicity="1" />
+    <End Role="BusinessPartner_Emails" Type="Self.BusinessPartner_Emails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BusinessPartner">
+        <PropertyRef Name="bp_ID" />
+      </Principal>
+      <Dependent Role="BusinessPartner_Emails">
+        <PropertyRef Name="bp_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BusinessP__bp_ID__7908F585">
+    <End Role="BusinessPartner" Type="Self.BusinessPartner" Multiplicity="1" />
+    <End Role="BusinessPartner_ContactNumbers" Type="Self.BusinessPartner_ContactNumbers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BusinessPartner">
+        <PropertyRef Name="bp_ID" />
+      </Principal>
+      <Dependent Role="BusinessPartner_ContactNumbers">
+        <PropertyRef Name="bp_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BusinessP__bp_ID__7CD98669">
+    <End Role="BusinessPartner" Type="Self.BusinessPartner" Multiplicity="1" />
+    <End Role="BusinessPartner_BankDetails" Type="Self.BusinessPartner_BankDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BusinessPartner">
+        <PropertyRef Name="bp_ID" />
+      </Principal>
+      <Dependent Role="BusinessPartner_BankDetails">
+        <PropertyRef Name="bp_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BusinessP__bp_ID__7FB5F314">
+    <End Role="BusinessPartner" Type="Self.BusinessPartner" Multiplicity="1" />
+    <End Role="BusinessPartner_Contacts" Type="Self.BusinessPartner_Contacts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BusinessPartner">
+        <PropertyRef Name="bp_ID" />
+      </Principal>
+      <Dependent Role="BusinessPartner_Contacts">
+        <PropertyRef Name="bp_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Secondary__tr_se__61F08603">
+    <End Role="BusinessPartner" Type="Self.BusinessPartner" Multiplicity="0..1" />
+    <End Role="TransactionsSecondary" Type="Self.TransactionsSecondary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BusinessPartner">
+        <PropertyRef Name="bp_ID" />
+      </Principal>
+      <Dependent Role="TransactionsSecondary">
+        <PropertyRef Name="tr_sec_bpBuyerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Secondary__tr_se__62E4AA3C">
+    <End Role="BusinessPartner" Type="Self.BusinessPartner" Multiplicity="0..1" />
+    <End Role="TransactionsSecondary" Type="Self.TransactionsSecondary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BusinessPartner">
+        <PropertyRef Name="bp_ID" />
+      </Principal>
+      <Dependent Role="TransactionsSecondary">
+        <PropertyRef Name="tr_sec_bpSellerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__tr_bp__5A4F643B">
+    <End Role="BusinessPartner" Type="Self.BusinessPartner" Multiplicity="0..1" />
+    <End Role="Transactions" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BusinessPartner">
+        <PropertyRef Name="bp_ID" />
+      </Principal>
+      <Dependent Role="Transactions">
+        <PropertyRef Name="tr_bpBuyerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__tr_bp__5B438874">
+    <End Role="BusinessPartner" Type="Self.BusinessPartner" Multiplicity="0..1" />
+    <End Role="Transactions" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BusinessPartner">
+        <PropertyRef Name="bp_ID" />
+      </Principal>
+      <Dependent Role="Transactions">
+        <PropertyRef Name="tr_bpSellerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__tr_bu__0FB750B3">
+    <End Role="BusinessPartner" Type="Self.BusinessPartner" Multiplicity="0..1" />
+    <End Role="TransactionsCommission" Type="Self.TransactionsCommission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BusinessPartner">
+        <PropertyRef Name="bp_ID" />
+      </Principal>
+      <Dependent Role="TransactionsCommission">
+        <PropertyRef Name="tr_buyerBrokerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__tr_Co__21D600EE">
+    <End Role="BusinessPartner" Type="Self.BusinessPartner" Multiplicity="0..1" />
+    <End Role="TransactionsContract" Type="Self.TransactionsContract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BusinessPartner">
+        <PropertyRef Name="bp_ID" />
+      </Principal>
+      <Dependent Role="TransactionsContract">
+        <PropertyRef Name="tr_ContractualBuyer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__tr_se__0CDAE408">
+    <End Role="BusinessPartner" Type="Self.BusinessPartner" Multiplicity="0..1" />
+    <End Role="TransactionsCommission" Type="Self.TransactionsCommission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BusinessPartner">
+        <PropertyRef Name="bp_ID" />
+      </Principal>
+      <Dependent Role="TransactionsCommission">
+        <PropertyRef Name="tr_sellerBrokerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__tr_sh__062DE679">
+    <End Role="BusinessPartner" Type="Self.BusinessPartner" Multiplicity="0..1" />
+    <End Role="TransactionsShipment" Type="Self.TransactionsShipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BusinessPartner">
+        <PropertyRef Name="bp_ID" />
+      </Principal>
+      <Dependent Role="TransactionsShipment">
+        <PropertyRef Name="tr_ship_primaryShipperId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__tr_pr__5C37ACAD">
+    <End Role="Products" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="Transactions" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="Transactions">
+        <PropertyRef Name="tr_productID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Secondary__tr_tr__60FC61CA">
+    <End Role="Transactions" Type="Self.Transaction" Multiplicity="0..1" />
+    <End Role="TransactionsSecondary" Type="Self.TransactionsSecondary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Transactions">
+        <PropertyRef Name="tr_transactionID" />
+      </Principal>
+      <Dependent Role="TransactionsSecondary">
+        <PropertyRef Name="tr_transactionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__tf_tr__61BB7BD9">
+    <End Role="Transactions" Type="Self.Transaction" Multiplicity="1" />
+    <End Role="TransactionFiles" Type="Self.TransactionFile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Transactions">
+        <PropertyRef Name="tr_transactionID" />
+      </Principal>
+      <Dependent Role="TransactionFiles">
+        <PropertyRef Name="tf_transactionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__tf_tr__62AFA012">
+    <End Role="Transactions" Type="Self.Transaction" Multiplicity="1" />
+    <End Role="TransactionFiles" Type="Self.TransactionFile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Transactions">
+        <PropertyRef Name="tr_transactionID" />
+      </Principal>
+      <Dependent Role="TransactionFiles">
+        <PropertyRef Name="tf_transactionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__tr_tr__0169315C">
+    <End Role="Transactions" Type="Self.Transaction" Multiplicity="1" />
+    <End Role="TransactionsShipment" Type="Self.TransactionsShipment" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Transactions">
+        <PropertyRef Name="tr_transactionID" />
+      </Principal>
+      <Dependent Role="TransactionsShipment">
+        <PropertyRef Name="tr_transactionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__tr_tr__0AF29B96">
+    <End Role="Transactions" Type="Self.Transaction" Multiplicity="1" />
+    <End Role="TransactionsCommission" Type="Self.TransactionsCommission" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Transactions">
+        <PropertyRef Name="tr_transactionID" />
+      </Principal>
+      <Dependent Role="TransactionsCommission">
+        <PropertyRef Name="tr_transactionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__tr_tr__1940BAED">
+    <End Role="Transactions" Type="Self.Transaction" Multiplicity="1" />
+    <End Role="TransactionsStatus" Type="Self.TransactionsStatu" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Transactions">
+        <PropertyRef Name="tr_transactionID" />
+      </Principal>
+      <Dependent Role="TransactionsStatus">
+        <PropertyRef Name="tr_transactionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__tr_tr__1EF99443">
+    <End Role="Transactions" Type="Self.Transaction" Multiplicity="1" />
+    <End Role="TransactionsContract" Type="Self.TransactionsContract" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Transactions">
+        <PropertyRef Name="tr_transactionID" />
+      </Principal>
+      <Dependent Role="TransactionsContract">
+        <PropertyRef Name="tr_transactionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__tr_tr__2E3BD7D3">
+    <End Role="Transactions" Type="Self.Transaction" Multiplicity="1" />
+    <End Role="TransactionsNotes" Type="Self.TransactionsNote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Transactions">
+        <PropertyRef Name="tr_transactionID" />
+      </Principal>
+      <Dependent Role="TransactionsNotes">
+        <PropertyRef Name="tr_transactionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BusinessPartner_Products">
+    <End Role="BusinessPartner" Type="Self.BusinessPartner" Multiplicity="*" />
+    <End Role="Products" Type="Self.Product" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="DhoniEnterprisesEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AppUserRights" EntityType="Self.AppUserRight" />
+    <EntitySet Name="AppUsers" EntityType="Self.AppUser" />
+    <EntitySet Name="AppUsersImages" EntityType="Self.AppUsersImage" />
+    <EntitySet Name="BusinessPartners" EntityType="Self.BusinessPartner" />
+    <EntitySet Name="BusinessPartner_BankDetails" EntityType="Self.BusinessPartner_BankDetails" />
+    <EntitySet Name="BusinessPartner_ContactNumbers" EntityType="Self.BusinessPartner_ContactNumbers" />
+    <EntitySet Name="BusinessPartner_Contacts" EntityType="Self.BusinessPartner_Contacts" />
+    <EntitySet Name="BusinessPartner_Emails" EntityType="Self.BusinessPartner_Emails" />
+    <EntitySet Name="Origins" EntityType="Self.Origin" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="ShipmentStatus" EntityType="Self.ShipmentStatu" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Transactions" EntityType="Self.Transaction" />
+    <EntitySet Name="TransactionsCommissions" EntityType="Self.TransactionsCommission" />
+    <EntitySet Name="TransactionsContracts" EntityType="Self.TransactionsContract" />
+    <EntitySet Name="TransactionsNotes" EntityType="Self.TransactionsNote" />
+    <EntitySet Name="TransactionsSecondaries" EntityType="Self.TransactionsSecondary" />
+    <EntitySet Name="TransactionsShipments" EntityType="Self.TransactionsShipment" />
+    <EntitySet Name="TransactionsStatus" EntityType="Self.TransactionsStatu" />
+    <EntitySet Name="UserEvents" EntityType="Self.UserEvent" />
+    <EntitySet Name="TransactionFiles" EntityType="Self.TransactionFile" />
+    <AssociationSet Name="FK__AppUserRi__AppUs__0E6E26BF" Association="Self.FK__AppUserRi__AppUs__0E6E26BF">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="AppUserRights" EntitySet="AppUserRights" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AppUsersI__AppUs__02FC7413" Association="Self.FK__AppUsersI__AppUs__02FC7413">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="AppUsersImage" EntitySet="AppUsersImages" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BusinessP__bp_Co__1881A0DE" Association="Self.FK__BusinessP__bp_Co__1881A0DE">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="BusinessPartner_Contacts" EntitySet="BusinessPartner_Contacts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BusinessP__bp_Co__1975C517" Association="Self.FK__BusinessP__bp_Co__1975C517">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="BusinessPartner_Contacts" EntitySet="BusinessPartner_Contacts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BusinessP__creat__1B5E0D89" Association="Self.FK__BusinessP__creat__1B5E0D89">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="BusinessPartner_ContactNumbers" EntitySet="BusinessPartner_ContactNumbers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BusinessP__edite__1C5231C2" Association="Self.FK__BusinessP__edite__1C5231C2">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="BusinessPartner_ContactNumbers" EntitySet="BusinessPartner_ContactNumbers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Products__Create__07C12930" Association="Self.FK__Products__Create__07C12930">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Products__LastUp__08B54D69" Association="Self.FK__Products__LastUp__08B54D69">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Secondary__tr_cr__63D8CE75" Association="Self.FK__Secondary__tr_cr__63D8CE75">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="TransactionsSecondary" EntitySet="TransactionsSecondaries" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Secondary__tr_ed__64CCF2AE" Association="Self.FK__Secondary__tr_ed__64CCF2AE">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="TransactionsSecondary" EntitySet="TransactionsSecondaries" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__tf_cr__5EDF0F2E" Association="Self.FK__Transacti__tf_cr__5EDF0F2E">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="TransactionFiles" EntitySet="TransactionFiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__tf_ed__5FD33367" Association="Self.FK__Transacti__tf_ed__5FD33367">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="TransactionFiles" EntitySet="TransactionFiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__tf_ed__60C757A0" Association="Self.FK__Transacti__tf_ed__60C757A0">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="TransactionFiles" EntitySet="TransactionFiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__tr_cr__07220AB2" Association="Self.FK__Transacti__tr_cr__07220AB2">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="TransactionsShipment" EntitySet="TransactionsShipments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__tr_cr__15702A09" Association="Self.FK__Transacti__tr_cr__15702A09">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="TransactionsCommission" EntitySet="TransactionsCommissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__tr_cr__1B29035F" Association="Self.FK__Transacti__tr_cr__1B29035F">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="TransactionsStatus" EntitySet="TransactionsStatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__tr_cr__22CA2527" Association="Self.FK__Transacti__tr_cr__22CA2527">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="TransactionsStatus" EntitySet="TransactionsStatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__tr_cr__2D47B39A" Association="Self.FK__Transacti__tr_cr__2D47B39A">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="TransactionsNotes" EntitySet="TransactionsNotes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__tr_cr__2F2FFC0C" Association="Self.FK__Transacti__tr_cr__2F2FFC0C">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="TransactionsContract" EntitySet="TransactionsContracts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__tr_cr__5D2BD0E6" Association="Self.FK__Transacti__tr_cr__5D2BD0E6">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="Transactions" EntitySet="Transactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__tr_ed__08162EEB" Association="Self.FK__Transacti__tr_ed__08162EEB">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="TransactionsShipment" EntitySet="TransactionsShipments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__tr_ed__16644E42" Association="Self.FK__Transacti__tr_ed__16644E42">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="TransactionsCommission" EntitySet="TransactionsCommissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__tr_ed__1C1D2798" Association="Self.FK__Transacti__tr_ed__1C1D2798">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="TransactionsStatus" EntitySet="TransactionsStatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__tr_ed__23BE4960" Association="Self.FK__Transacti__tr_ed__23BE4960">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="TransactionsStatus" EntitySet="TransactionsStatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__tr_ed__30242045" Association="Self.FK__Transacti__tr_ed__30242045">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="TransactionsContract" EntitySet="TransactionsContracts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__tr_ed__5E1FF51F" Association="Self.FK__Transacti__tr_ed__5E1FF51F">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="Transactions" EntitySet="Transactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserEvent__UserI__2E1BDC42" Association="Self.FK__UserEvent__UserI__2E1BDC42">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="UserEvents" EntitySet="UserEvents" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BusinessP__bp_ID__762C88DA" Association="Self.FK__BusinessP__bp_ID__762C88DA">
+      <End Role="BusinessPartner" EntitySet="BusinessPartners" />
+      <End Role="BusinessPartner_Emails" EntitySet="BusinessPartner_Emails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BusinessP__bp_ID__7908F585" Association="Self.FK__BusinessP__bp_ID__7908F585">
+      <End Role="BusinessPartner" EntitySet="BusinessPartners" />
+      <End Role="BusinessPartner_ContactNumbers" EntitySet="BusinessPartner_ContactNumbers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BusinessP__bp_ID__7CD98669" Association="Self.FK__BusinessP__bp_ID__7CD98669">
+      <End Role="BusinessPartner" EntitySet="BusinessPartners" />
+      <End Role="BusinessPartner_BankDetails" EntitySet="BusinessPartner_BankDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BusinessP__bp_ID__7FB5F314" Association="Self.FK__BusinessP__bp_ID__7FB5F314">
+      <End Role="BusinessPartner" EntitySet="BusinessPartners" />
+      <End Role="BusinessPartner_Contacts" EntitySet="BusinessPartner_Contacts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Secondary__tr_se__61F08603" Association="Self.FK__Secondary__tr_se__61F08603">
+      <End Role="BusinessPartner" EntitySet="BusinessPartners" />
+      <End Role="TransactionsSecondary" EntitySet="TransactionsSecondaries" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Secondary__tr_se__62E4AA3C" Association="Self.FK__Secondary__tr_se__62E4AA3C">
+      <End Role="BusinessPartner" EntitySet="BusinessPartners" />
+      <End Role="TransactionsSecondary" EntitySet="TransactionsSecondaries" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__tr_bp__5A4F643B" Association="Self.FK__Transacti__tr_bp__5A4F643B">
+      <End Role="BusinessPartner" EntitySet="BusinessPartners" />
+      <End Role="Transactions" EntitySet="Transactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__tr_bp__5B438874" Association="Self.FK__Transacti__tr_bp__5B438874">
+      <End Role="BusinessPartner" EntitySet="BusinessPartners" />
+      <End Role="Transactions" EntitySet="Transactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__tr_bu__0FB750B3" Association="Self.FK__Transacti__tr_bu__0FB750B3">
+      <End Role="BusinessPartner" EntitySet="BusinessPartners" />
+      <End Role="TransactionsCommission" EntitySet="TransactionsCommissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__tr_Co__21D600EE" Association="Self.FK__Transacti__tr_Co__21D600EE">
+      <End Role="BusinessPartner" EntitySet="BusinessPartners" />
+      <End Role="TransactionsContract" EntitySet="TransactionsContracts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__tr_se__0CDAE408" Association="Self.FK__Transacti__tr_se__0CDAE408">
+      <End Role="BusinessPartner" EntitySet="BusinessPartners" />
+      <End Role="TransactionsCommission" EntitySet="TransactionsCommissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__tr_sh__062DE679" Association="Self.FK__Transacti__tr_sh__062DE679">
+      <End Role="BusinessPartner" EntitySet="BusinessPartners" />
+      <End Role="TransactionsShipment" EntitySet="TransactionsShipments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__tr_pr__5C37ACAD" Association="Self.FK__Transacti__tr_pr__5C37ACAD">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="Transactions" EntitySet="Transactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Secondary__tr_tr__60FC61CA" Association="Self.FK__Secondary__tr_tr__60FC61CA">
+      <End Role="Transactions" EntitySet="Transactions" />
+      <End Role="TransactionsSecondary" EntitySet="TransactionsSecondaries" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__tf_tr__61BB7BD9" Association="Self.FK__Transacti__tf_tr__61BB7BD9">
+      <End Role="Transactions" EntitySet="Transactions" />
+      <End Role="TransactionFiles" EntitySet="TransactionFiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__tf_tr__62AFA012" Association="Self.FK__Transacti__tf_tr__62AFA012">
+      <End Role="Transactions" EntitySet="Transactions" />
+      <End Role="TransactionFiles" EntitySet="TransactionFiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__tr_tr__0169315C" Association="Self.FK__Transacti__tr_tr__0169315C">
+      <End Role="Transactions" EntitySet="Transactions" />
+      <End Role="TransactionsShipment" EntitySet="TransactionsShipments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__tr_tr__0AF29B96" Association="Self.FK__Transacti__tr_tr__0AF29B96">
+      <End Role="Transactions" EntitySet="Transactions" />
+      <End Role="TransactionsCommission" EntitySet="TransactionsCommissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__tr_tr__1940BAED" Association="Self.FK__Transacti__tr_tr__1940BAED">
+      <End Role="Transactions" EntitySet="Transactions" />
+      <End Role="TransactionsStatus" EntitySet="TransactionsStatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__tr_tr__1EF99443" Association="Self.FK__Transacti__tr_tr__1EF99443">
+      <End Role="Transactions" EntitySet="Transactions" />
+      <End Role="TransactionsContract" EntitySet="TransactionsContracts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__tr_tr__2E3BD7D3" Association="Self.FK__Transacti__tr_tr__2E3BD7D3">
+      <End Role="Transactions" EntitySet="Transactions" />
+      <End Role="TransactionsNotes" EntitySet="TransactionsNotes" />
+    </AssociationSet>
+    <AssociationSet Name="BusinessPartner_Products" Association="Self.BusinessPartner_Products">
+      <End Role="BusinessPartner" EntitySet="BusinessPartners" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <FunctionImport Name="addNewAppUser">
+      <Parameter Name="title" Mode="In" Type="String" />
+      <Parameter Name="firstName" Mode="In" Type="String" />
+      <Parameter Name="lastName" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="guID" Mode="In" Type="Guid" />
+      <Parameter Name="designation" Mode="In" Type="String" />
+      <Parameter Name="isAdmin" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="getAllUsers" ReturnType="Collection(DhoniEnterprisesModel.getAllUsers_Result)" />
+    <FunctionImport Name="NewUserLoginDetails">
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="DOB" Mode="In" Type="DateTime" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(DhoniEnterprisesModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(DhoniEnterprisesModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="uspAddBusinessPartner" ReturnType="Collection(Int64)">
+      <Parameter Name="IsSupplier" Mode="In" Type="Boolean" />
+      <Parameter Name="IsBroker" Mode="In" Type="Boolean" />
+      <Parameter Name="IsShipper" Mode="In" Type="Boolean" />
+      <Parameter Name="IsBuyer" Mode="In" Type="Boolean" />
+      <Parameter Name="OnDoniContract" Mode="In" Type="Boolean" />
+      <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+      <Parameter Name="ReliabilityIndex" Mode="In" Type="Int32" />
+      <Parameter Name="BPName" Mode="In" Type="String" />
+      <Parameter Name="BPWebsite" Mode="In" Type="String" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+      <Parameter Name="Country" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspAddBusinessPartnerBankDetails" ReturnType="Collection(Int64)">
+      <Parameter Name="bpID" Mode="In" Type="Int64" />
+      <Parameter Name="branchAddress" Mode="In" Type="String" />
+      <Parameter Name="bankName" Mode="In" Type="String" />
+      <Parameter Name="AccountTitle" Mode="In" Type="String" />
+      <Parameter Name="AccountNumber" Mode="In" Type="String" />
+      <Parameter Name="AccountCountry" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspAddBusinessPartnerContact" ReturnType="Collection(Int64)">
+      <Parameter Name="bpId" Mode="In" Type="Int64" />
+      <Parameter Name="bp_Cont_IsPrimary" Mode="In" Type="Boolean" />
+      <Parameter Name="bp_Cont_fullName" Mode="In" Type="String" />
+      <Parameter Name="bp_Cont_designation" Mode="In" Type="String" />
+      <Parameter Name="bp_Cont_Email" Mode="In" Type="String" />
+      <Parameter Name="bp_Cont_PrimaryNumber" Mode="In" Type="String" />
+      <Parameter Name="bp_Cont_SecondryNumber" Mode="In" Type="String" />
+      <Parameter Name="bp_Cont_CreatedBy" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="uspAddBusinessPartnerContactNumber">
+      <Parameter Name="bpId" Mode="In" Type="Int64" />
+      <Parameter Name="contactType" Mode="In" Type="String" />
+      <Parameter Name="ontactNumber" Mode="In" Type="String" />
+      <Parameter Name="createdBy" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="uspAddBusinessPartnerEmail">
+      <Parameter Name="bp_ID" Mode="In" Type="Int64" />
+      <Parameter Name="email" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspAddBusinessPartnerProducts">
+      <Parameter Name="bp_ID" Mode="In" Type="Int64" />
+      <Parameter Name="prod_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="uspAddProduct">
+      <Parameter Name="ProductName" Mode="In" Type="String" />
+      <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+      <Parameter Name="moisture" Mode="In" Type="Int32" />
+      <Parameter Name="weaveled" Mode="In" Type="Int32" />
+      <Parameter Name="origin" Mode="In" Type="String" />
+      <Parameter Name="purity" Mode="In" Type="Int32" />
+      <Parameter Name="splits" Mode="In" Type="Int32" />
+      <Parameter Name="quality" Mode="In" Type="String" />
+      <Parameter Name="damaged" Mode="In" Type="Int32" />
+      <Parameter Name="foreignMatter" Mode="In" Type="Int32" />
+      <Parameter Name="greenDamaged" Mode="In" Type="Int32" />
+      <Parameter Name="otherColor" Mode="In" Type="Int32" />
+      <Parameter Name="wrinkled" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="uspAddTransaction">
+      <Parameter Name="tr_bpBuyerID" Mode="In" Type="Int64" />
+      <Parameter Name="tr_bpSellerID" Mode="In" Type="Int64" />
+      <Parameter Name="tr_productID" Mode="In" Type="Int32" />
+      <Parameter Name="tr_fileID" Mode="In" Type="String" />
+      <Parameter Name="tr_contractID" Mode="In" Type="String" />
+      <Parameter Name="tr_date" Mode="In" Type="DateTime" />
+      <Parameter Name="tr_price" Mode="In" Type="Int32" />
+      <Parameter Name="tr_FCL" Mode="In" Type="Boolean" />
+      <Parameter Name="tr_MT" Mode="In" Type="Boolean" />
+      <Parameter Name="tr_coversion_FCMT" Mode="In" Type="Int32" />
+      <Parameter Name="tr_quantity" Mode="In" Type="Int32" />
+      <Parameter Name="tr_doniContract" Mode="In" Type="Boolean" />
+      <Parameter Name="tr_ownContract" Mode="In" Type="Boolean" />
+      <Parameter Name="tr_contractualBuyer" Mode="In" Type="Int64" />
+      <Parameter Name="tr_broker" Mode="In" Type="Int64" />
+      <Parameter Name="tr_comissonType" Mode="In" Type="String" />
+      <Parameter Name="tr_brokerComission" Mode="In" Type="Int32" />
+      <Parameter Name="tr_differance" Mode="In" Type="Int32" />
+      <Parameter Name="tr_discount" Mode="In" Type="Int32" />
+      <Parameter Name="tr_netCommision" Mode="In" Type="Int32" />
+      <Parameter Name="tr_shipmentDate" Mode="In" Type="DateTime" />
+      <Parameter Name="tr_shipmentAdddress" Mode="In" Type="String" />
+      <Parameter Name="tr_shipmentStatus" Mode="In" Type="String" />
+      <Parameter Name="tr_shipperID" Mode="In" Type="Int64" />
+      <Parameter Name="tr_createdBy" Mode="In" Type="Int32" />
+      <Parameter Name="tr_washOutValue" Mode="In" Type="Int32" />
+      <Parameter Name="tr_shipmentCountry" Mode="In" Type="String" />
+      <Parameter Name="tr_commission" Mode="In" Type="Int32" />
+      <Parameter Name="tr_transactionStatus" Mode="In" Type="String" />
+      <Parameter Name="tr_brokerInvolved" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="uspAddTransactionBasic" ReturnType="Collection(Int64)">
+      <Parameter Name="tr_date" Mode="In" Type="DateTime" />
+      <Parameter Name="tr_bpBuyerID" Mode="In" Type="Int64" />
+      <Parameter Name="tr_bpSellerID" Mode="In" Type="Int64" />
+      <Parameter Name="tr_productID" Mode="In" Type="Int32" />
+      <Parameter Name="tr_origin" Mode="In" Type="String" />
+      <Parameter Name="tr_quantity" Mode="In" Type="Int32" />
+      <Parameter Name="tr_price" Mode="In" Type="Int32" />
+      <Parameter Name="tr_packing" Mode="In" Type="String" />
+      <Parameter Name="tr_shipment_start" Mode="In" Type="DateTime" />
+      <Parameter Name="tr_shipment_end" Mode="In" Type="DateTime" />
+      <Parameter Name="tr_fileID" Mode="In" Type="String" />
+      <Parameter Name="tr_contractID" Mode="In" Type="String" />
+      <Parameter Name="tr_other_info" Mode="In" Type="String" />
+      <Parameter Name="tr_createdBy" Mode="In" Type="Int32" />
+      <Parameter Name="tr_createdOn" Mode="In" Type="DateTime" />
+      <Parameter Name="tr_editedBy" Mode="In" Type="Int32" />
+      <Parameter Name="tr_editedOn" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="uspAddTransactionNotes">
+      <Parameter Name="tr_ID" Mode="In" Type="Int64" />
+      <Parameter Name="tr_notes" Mode="In" Type="String" />
+      <Parameter Name="tr_createdBy" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="uspCheckBPPrimaryContactExist" ReturnType="Collection(Int32)">
+      <Parameter Name="bp_ID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="uspDeleteBusinessPartner">
+      <Parameter Name="bp_ID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="uspDeleteBusinessPartnerBankDetails">
+      <Parameter Name="bankDetails_ID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="uspDeleteBusinessPartnerContact">
+      <Parameter Name="bp_Cont_ID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="uspDeleteBusinessPartnerContactNumber">
+      <Parameter Name="ph_ID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="uspDeleteBusinessPartnerEmail">
+      <Parameter Name="email_ID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="uspDeleteBusinessPartnerProducts">
+      <Parameter Name="bp_ID" Mode="In" Type="Int64" />
+      <Parameter Name="prod_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="uspDeleteProduct">
+      <Parameter Name="ProductId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="uspDeleteTransaction">
+      <Parameter Name="tr_transactionID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="uspDeleteTransactionNotes">
+      <Parameter Name="tr_NotesID" Mode="In" Type="Int64" />
+      <Parameter Name="tr_ID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="uspGetAppUserByEmail" ReturnType="Collection(DhoniEnterprisesModel.uspGetAppUserByEmail_Result)">
+      <Parameter Name="userEmail" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGetBPBank" ReturnType="Collection(DhoniEnterprisesModel.uspGetBPBank_Result)">
+      <Parameter Name="bp_ID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="uspGetBPContact" ReturnType="Collection(DhoniEnterprisesModel.uspGetBPContact_Result)">
+      <Parameter Name="bp_ID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="uspGetBPContactNumber" ReturnType="Collection(DhoniEnterprisesModel.uspGetBPContactNumber_Result)">
+      <Parameter Name="bp_ID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="uspGetBPEmails" ReturnType="Collection(DhoniEnterprisesModel.uspGetBPEmails_Result)">
+      <Parameter Name="bp_ID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="uspGetBPGeneral" ReturnType="Collection(DhoniEnterprisesModel.uspGetBPGeneral_Result)">
+      <Parameter Name="bp_ID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="uspGetBPProducts" ReturnType="Collection(DhoniEnterprisesModel.uspGetBPProducts_Result)">
+      <Parameter Name="bp_ID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="uspGetBusinessPartnerForList" ReturnType="Collection(DhoniEnterprisesModel.uspGetBusinessPartnerForList_Result)" />
+    <FunctionImport Name="uspGetBusinessPartnerForTable" ReturnType="Collection(DhoniEnterprisesModel.uspGetBusinessPartnerForTable_Result)" />
+    <FunctionImport Name="uspGetCommissionTransaction" ReturnType="Collection(DhoniEnterprisesModel.uspGetCommissionTransaction_Result)">
+      <Parameter Name="tr_transactionID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="uspGetDropDownBroker" ReturnType="Collection(DhoniEnterprisesModel.uspGetDropDownBroker_Result)" />
+    <FunctionImport Name="uspGetDropDownBuyer" ReturnType="Collection(DhoniEnterprisesModel.uspGetDropDownBuyer_Result)" />
+    <FunctionImport Name="uspGetDropDownSeller" ReturnType="Collection(DhoniEnterprisesModel.uspGetDropDownSeller_Result)" />
+    <FunctionImport Name="uspGetDropDownShipper" ReturnType="Collection(DhoniEnterprisesModel.uspGetDropDownShipper_Result)" />
+    <FunctionImport Name="uspGetOriginList" ReturnType="Collection(DhoniEnterprisesModel.uspGetOriginList_Result)" />
+    <FunctionImport Name="uspGetProductList" ReturnType="Collection(DhoniEnterprisesModel.uspGetProductList_Result)" />
+    <FunctionImport Name="uspGetProductListPDF" ReturnType="Collection(DhoniEnterprisesModel.uspGetProductListPDF_Result)" />
+    <FunctionImport Name="uspGetProductTagInput" ReturnType="Collection(DhoniEnterprisesModel.uspGetProductTagInput_Result)">
+      <Parameter Name="input" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGetSecondaryTransaction" ReturnType="Collection(DhoniEnterprisesModel.uspGetSecondaryTransaction_Result)">
+      <Parameter Name="tr_transactionID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="uspGetSingleProduct" ReturnType="Collection(DhoniEnterprisesModel.uspGetSingleProduct_Result)">
+      <Parameter Name="productId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="uspGetTableFilters" />
+    <FunctionImport Name="uspGetTransaction" ReturnType="Collection(DhoniEnterprisesModel.uspGetTransaction_Result)">
+      <Parameter Name="tr_transactionID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="uspGetTransactionContract" ReturnType="Collection(DhoniEnterprisesModel.uspGetTransactionContract_Result)">
+      <Parameter Name="tr_transactionId" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="uspGetTransactionNotes" ReturnType="Collection(DhoniEnterprisesModel.uspGetTransactionNotes_Result)">
+      <Parameter Name="tr_transactionId" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="uspGetTransactionShipment" ReturnType="Collection(DhoniEnterprisesModel.uspGetTransactionShipment_Result)">
+      <Parameter Name="tr_transactionId" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="uspGetTransactionsList" />
+    <FunctionImport Name="uspGetTransactionStatus" ReturnType="Collection(DhoniEnterprisesModel.uspGetTransactionStatus_Result)">
+      <Parameter Name="tr_transactionId" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="uspOriginCRUD" ReturnType="Collection(Int64)">
+      <Parameter Name="crudOperation" Mode="In" Type="String" />
+      <Parameter Name="origin_id" Mode="In" Type="Int64" />
+      <Parameter Name="origin_name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspTransactionBasicCRUD" ReturnType="Collection(Int64)">
+      <Parameter Name="crudOperation" Mode="In" Type="String" />
+      <Parameter Name="tr_transactionID" Mode="In" Type="Int64" />
+      <Parameter Name="tr_date" Mode="In" Type="DateTime" />
+      <Parameter Name="tr_bpBuyerID" Mode="In" Type="Int64" />
+      <Parameter Name="tr_bpSellerID" Mode="In" Type="Int64" />
+      <Parameter Name="tr_productID" Mode="In" Type="Int32" />
+      <Parameter Name="tr_origin" Mode="In" Type="String" />
+      <Parameter Name="tr_quantity" Mode="In" Type="Int32" />
+      <Parameter Name="tr_price" Mode="In" Type="Int32" />
+      <Parameter Name="tr_packing" Mode="In" Type="String" />
+      <Parameter Name="tr_shipment_start" Mode="In" Type="DateTime" />
+      <Parameter Name="tr_shipment_end" Mode="In" Type="DateTime" />
+      <Parameter Name="tr_fileID" Mode="In" Type="String" />
+      <Parameter Name="tr_contractID" Mode="In" Type="String" />
+      <Parameter Name="tr_other_info" Mode="In" Type="String" />
+      <Parameter Name="tr_createdBy" Mode="In" Type="Int32" />
+      <Parameter Name="tr_editedBy" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="uspTransactionCommissionCRUD">
+      <Parameter Name="crudOperation" Mode="In" Type="String" />
+      <Parameter Name="tr_transactionID" Mode="In" Type="Int64" />
+      <Parameter Name="tr_brokerInvolved" Mode="In" Type="Boolean" />
+      <Parameter Name="tr_sellerBroker" Mode="In" Type="Boolean" />
+      <Parameter Name="tr_sellerBrokerID" Mode="In" Type="Int64" />
+      <Parameter Name="tr_sellerBroker_comm_type" Mode="In" Type="String" />
+      <Parameter Name="tr_sellerBroker_comm" Mode="In" Type="Int32" />
+      <Parameter Name="tr_buyerBroker" Mode="In" Type="Boolean" />
+      <Parameter Name="tr_buyerBrokerID" Mode="In" Type="Int64" />
+      <Parameter Name="tr_buyerBroker_comm_type" Mode="In" Type="String" />
+      <Parameter Name="tr_buyerBroker_comm" Mode="In" Type="Int32" />
+      <Parameter Name="tr_own_Commission" Mode="In" Type="Int32" />
+      <Parameter Name="tr_ownCommissionType" Mode="In" Type="String" />
+      <Parameter Name="tr_difference" Mode="In" Type="Int32" />
+      <Parameter Name="tr_discount" Mode="In" Type="Int32" />
+      <Parameter Name="tr_netCommission" Mode="In" Type="Int32" />
+      <Parameter Name="tr_createdBy" Mode="In" Type="Int32" />
+      <Parameter Name="tr_createdOn" Mode="In" Type="DateTime" />
+      <Parameter Name="tr_editedBy" Mode="In" Type="Int32" />
+      <Parameter Name="tr_editedOn" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="uspTransactionContractCRUD">
+      <Parameter Name="crudOperation" Mode="In" Type="String" />
+      <Parameter Name="tr_transactionID" Mode="In" Type="Int64" />
+      <Parameter Name="tr_doniContract" Mode="In" Type="Boolean" />
+      <Parameter Name="tr_ownContract" Mode="In" Type="Boolean" />
+      <Parameter Name="tr_ContractualBuyer" Mode="In" Type="Int64" />
+      <Parameter Name="tr_createdBy" Mode="In" Type="Int32" />
+      <Parameter Name="tr_editedBy" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="uspTransactionFileAdd" ReturnType="Collection(Int32)">
+      <Parameter Name="tf_transactionID" Mode="In" Type="Int64" />
+      <Parameter Name="tf_file" Mode="In" Type="Binary" />
+      <Parameter Name="tf_fileType" Mode="In" Type="String" />
+      <Parameter Name="tf_fileName" Mode="In" Type="String" />
+      <Parameter Name="tf_createdBy" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="uspTransactionFileDelete">
+      <Parameter Name="tf_fileID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="uspTransactionFileGetAll" ReturnType="Collection(DhoniEnterprisesModel.uspTransactionFileGetAll_Result)">
+      <Parameter Name="tf_transactionID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="uspTransactionFileGetSingle" ReturnType="Collection(DhoniEnterprisesModel.uspTransactionFileGetSingle_Result)">
+      <Parameter Name="tf_fileID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="uspTransactionList" ReturnType="Collection(DhoniEnterprisesModel.uspTransactionList_Result)" />
+    <FunctionImport Name="uspTransactionNotesCRUD" ReturnType="Collection(DhoniEnterprisesModel.uspTransactionNotesCRUD_Result)">
+      <Parameter Name="crudOperation" Mode="In" Type="String" />
+      <Parameter Name="tr_transactionID" Mode="In" Type="Int64" />
+      <Parameter Name="tr_tranNoteID" Mode="In" Type="Int64" />
+      <Parameter Name="tr_transactionNotes" Mode="In" Type="String" />
+      <Parameter Name="tr_createdBy" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="uspTransactionSecondaryCRUD" ReturnType="Collection(Int64)">
+      <Parameter Name="crudOperation" Mode="In" Type="String" />
+      <Parameter Name="tr_transactionID" Mode="In" Type="Int64" />
+      <Parameter Name="tr_sec_bpBuyerID" Mode="In" Type="Int64" />
+      <Parameter Name="tr_sec_bpSellerID" Mode="In" Type="Int64" />
+      <Parameter Name="tr_sec_date" Mode="In" Type="DateTime" />
+      <Parameter Name="tr_sec_buyerPrice" Mode="In" Type="Int32" />
+      <Parameter Name="tr_sec_sellerPrice" Mode="In" Type="Int32" />
+      <Parameter Name="tr_sec_otherInfo" Mode="In" Type="String" />
+      <Parameter Name="tr_createdBy" Mode="In" Type="Int32" />
+      <Parameter Name="tr_editedBy" Mode="In" Type="Int32" />
+      <Parameter Name="tr_sec_tranID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="uspTransactionShipmentCRUD">
+      <Parameter Name="crudOperation" Mode="In" Type="String" />
+      <Parameter Name="tr_transactionID" Mode="In" Type="Int64" />
+      <Parameter Name="tr_ship_notShipped" Mode="In" Type="Boolean" />
+      <Parameter Name="tr_ship_notShipped_reason" Mode="In" Type="String" />
+      <Parameter Name="tr_ship_extension" Mode="In" Type="String" />
+      <Parameter Name="tr_ship_appReceived" Mode="In" Type="Boolean" />
+      <Parameter Name="tr_expectedShipment" Mode="In" Type="DateTime" />
+      <Parameter Name="tr_inTransit" Mode="In" Type="DateTime" />
+      <Parameter Name="tr_shipped" Mode="In" Type="Boolean" />
+      <Parameter Name="tr_dateShipped" Mode="In" Type="DateTime" />
+      <Parameter Name="tr_expectedArrival" Mode="In" Type="DateTime" />
+      <Parameter Name="tr_transitPort" Mode="In" Type="String" />
+      <Parameter Name="tr_ship_arrivedAtPort" Mode="In" Type="Boolean" />
+      <Parameter Name="tr_dateArrived" Mode="In" Type="DateTime" />
+      <Parameter Name="tr_actualArrived" Mode="In" Type="DateTime" />
+      <Parameter Name="tr_ship_BlNo" Mode="In" Type="String" />
+      <Parameter Name="tr_ship_invoiceNo" Mode="In" Type="String" />
+      <Parameter Name="tr_ship_invoiceAmt" Mode="In" Type="Int32" />
+      <Parameter Name="tr_ship_quantity" Mode="In" Type="Int32" />
+      <Parameter Name="tr_ship_vesselNo" Mode="In" Type="String" />
+      <Parameter Name="tr_ship_primaryShipperId" Mode="In" Type="Int64" />
+      <Parameter Name="tr_ship_portLoad" Mode="In" Type="String" />
+      <Parameter Name="tr_ship_portDest" Mode="In" Type="String" />
+      <Parameter Name="tr_ship_shipLineCont" Mode="In" Type="String" />
+      <Parameter Name="tr_createdBy" Mode="In" Type="Int32" />
+      <Parameter Name="tr_editedBy" Mode="In" Type="Int32" />
+      <Parameter Name="tr_ship_chk_reason" Mode="In" Type="Boolean" />
+      <Parameter Name="tr_ship_chk_shpExt" Mode="In" Type="Boolean" />
+      <Parameter Name="tr_ship_chk_expShp" Mode="In" Type="Boolean" />
+      <Parameter Name="tr_ship_chk_inTransit" Mode="In" Type="Boolean" />
+      <Parameter Name="tr_ship_chk_dateShipped" Mode="In" Type="Boolean" />
+      <Parameter Name="tr_ship_chk_expArrival" Mode="In" Type="Boolean" />
+      <Parameter Name="tr_ship_chk_transitPort" Mode="In" Type="Boolean" />
+      <Parameter Name="tr_ship_chk_dateArrived" Mode="In" Type="Boolean" />
+      <Parameter Name="tr_ship_chk_actualArrived" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="uspTransactionStatusCRUD">
+      <Parameter Name="crudOperation" Mode="In" Type="String" />
+      <Parameter Name="tr_transactionID" Mode="In" Type="Int64" />
+      <Parameter Name="tr_transactionStatus" Mode="In" Type="String" />
+      <Parameter Name="tr_washoutValueAtPar" Mode="In" Type="Int32" />
+      <Parameter Name="tr_createdBy" Mode="In" Type="Int32" />
+      <Parameter Name="tr_editedBy" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="uspUpdateBusinessPartner">
+      <Parameter Name="bp_ID" Mode="In" Type="Int64" />
+      <Parameter Name="IsSupplier" Mode="In" Type="Boolean" />
+      <Parameter Name="IsBroker" Mode="In" Type="Boolean" />
+      <Parameter Name="IsShipper" Mode="In" Type="Boolean" />
+      <Parameter Name="IsBuyer" Mode="In" Type="Boolean" />
+      <Parameter Name="OnDoniContract" Mode="In" Type="Boolean" />
+      <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+      <Parameter Name="ReliabilityIndex" Mode="In" Type="Int32" />
+      <Parameter Name="BPName" Mode="In" Type="String" />
+      <Parameter Name="BPWebsite" Mode="In" Type="String" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+      <Parameter Name="Country" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspUpdateBusinessPartnerBankDetails">
+      <Parameter Name="bankDetails_ID" Mode="In" Type="Int64" />
+      <Parameter Name="bpID" Mode="In" Type="Int64" />
+      <Parameter Name="branchAddress" Mode="In" Type="String" />
+      <Parameter Name="bankName" Mode="In" Type="String" />
+      <Parameter Name="AccountTitle" Mode="In" Type="String" />
+      <Parameter Name="AccountNumber" Mode="In" Type="String" />
+      <Parameter Name="AccountCountry" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspUpdateBusinessPartnerContact">
+      <Parameter Name="bp_cont_ID" Mode="In" Type="Int64" />
+      <Parameter Name="bpId" Mode="In" Type="Int64" />
+      <Parameter Name="bp_Cont_IsPrimary" Mode="In" Type="Boolean" />
+      <Parameter Name="bp_Cont_fullName" Mode="In" Type="String" />
+      <Parameter Name="bp_Cont_designation" Mode="In" Type="String" />
+      <Parameter Name="bp_Cont_Email" Mode="In" Type="String" />
+      <Parameter Name="bp_Cont_PrimaryNumber" Mode="In" Type="String" />
+      <Parameter Name="bp_Cont_SecondryNumber" Mode="In" Type="String" />
+      <Parameter Name="bp_Cont_EditedBy" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="uspUpdateBusinessPartnerContactNumber">
+      <Parameter Name="ph_ID" Mode="In" Type="Int64" />
+      <Parameter Name="bpID" Mode="In" Type="Int64" />
+      <Parameter Name="contactType" Mode="In" Type="String" />
+      <Parameter Name="ContactNumber" Mode="In" Type="String" />
+      <Parameter Name="editedBy" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="uspUpdateBusinessPartnerEmail">
+      <Parameter Name="bp_ID" Mode="In" Type="Int64" />
+      <Parameter Name="email" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspUpdateBusinessPartnerProduct">
+      <Parameter Name="bp_ID" Mode="In" Type="Int64" />
+      <Parameter Name="prod_ID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspUpdateProduct">
+      <Parameter Name="ProductID" Mode="In" Type="Int32" />
+      <Parameter Name="ProductName" Mode="In" Type="String" />
+      <Parameter Name="moisture" Mode="In" Type="Int32" />
+      <Parameter Name="weaveled" Mode="In" Type="Int32" />
+      <Parameter Name="origin" Mode="In" Type="String" />
+      <Parameter Name="purity" Mode="In" Type="Int32" />
+      <Parameter Name="splits" Mode="In" Type="Int32" />
+      <Parameter Name="quality" Mode="In" Type="String" />
+      <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+      <Parameter Name="damaged" Mode="In" Type="Int32" />
+      <Parameter Name="foreignMatter" Mode="In" Type="Int32" />
+      <Parameter Name="greenDamaged" Mode="In" Type="Int32" />
+      <Parameter Name="otherColor" Mode="In" Type="Int32" />
+      <Parameter Name="wrinkled" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="uspGetTransactionByParameter" ReturnType="Collection(DhoniEnterprisesModel.uspGetTransactionByParameter_Result)">
+      <Parameter Name="parameter" Mode="In" Type="String" />
+      <Parameter Name="textInput" Mode="In" Type="String" />
+      <Parameter Name="dateInput" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <EntitySet Name="transactionVieweds" EntityType="DhoniEnterprisesModel.transactionViewed" />
+    <AssociationSet Name="FK__transacti__UserI__7869D707" Association="DhoniEnterprisesModel.FK__transacti__UserI__7869D707">
+      <End Role="AppUser" EntitySet="AppUsers" />
+      <End Role="transactionViewed" EntitySet="transactionVieweds" />
+    </AssociationSet>
+    <FunctionImport Name="uspAddRecentViewedItem">
+      <Parameter Name="tr_visitedOn" Mode="In" Type="DateTime" />
+      <Parameter Name="tr_pageVisitedState" Mode="In" Type="String" />
+      <Parameter Name="tr_pageVisitedParams" Mode="In" Type="String" />
+      <Parameter Name="tr_pageTitle" Mode="In" Type="String" />
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="uspGetRecentlyViewedItem" ReturnType="Collection(DhoniEnterprisesModel.uspGetRecentlyViewedItem_Result)">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="getAllUsers_Result">
+    <Property Type="String" Name="firstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="lastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="initials" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="UserEmail" Nullable="false" MaxLength="128" />
+    <Property Type="String" Name="UserDesignation" Nullable="false" MaxLength="200" />
+    <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="uspGetAppUserByEmail_Result">
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="UserEmail" Nullable="false" MaxLength="128" />
+    <Property Type="String" Name="UserDesignation" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="initials" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="firstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="lastName" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="IsSuperUser" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="uspGetBPBank_Result">
+    <Property Type="Int64" Name="bankDetails_ID" Nullable="false" />
+    <Property Type="Int64" Name="bp_ID" Nullable="false" />
+    <Property Type="String" Name="branchAddress" Nullable="false" />
+    <Property Type="String" Name="bankName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="AccountTitle" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="AccountNumber" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="AccountCountry" Nullable="true" MaxLength="150" />
+  </ComplexType>
+  <ComplexType Name="uspGetBPContact_Result">
+    <Property Type="Int64" Name="bp_cont_ID" Nullable="false" />
+    <Property Type="Int64" Name="bp_ID" Nullable="false" />
+    <Property Type="Boolean" Name="bp_Cont_IsPrimary" Nullable="true" />
+    <Property Type="String" Name="bp_Cont_fullName" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="bp_Cont_designation" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="bp_Cont_Email" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="bp_Cont_PrimaryNumber" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="bp_Cont_SecondryNumber" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="bp_Cont_CreatedOn" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="bp_Cont_LastEditedOn" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="bp_Cont_CreatedBy" Nullable="true" />
+    <Property Type="Int32" Name="bp_Cont_EditedBy" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="uspGetBPContactNumber_Result">
+    <Property Type="Int64" Name="ph_ID" Nullable="false" />
+    <Property Type="Int64" Name="bp_ID" Nullable="false" />
+    <Property Type="String" Name="contactNumber" Nullable="false" MaxLength="300" />
+    <Property Type="String" Name="contactType" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="createdOn" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="createdBy" Nullable="true" />
+    <Property Type="DateTime" Name="editedOn" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="editedBy" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="uspGetBPEmails_Result">
+    <Property Type="Int64" Name="email_ID" Nullable="false" />
+    <Property Type="Int64" Name="bp_ID" Nullable="false" />
+    <Property Type="String" Name="email" Nullable="false" MaxLength="300" />
+  </ComplexType>
+  <ComplexType Name="uspGetBPGeneral_Result">
+    <Property Type="Int64" Name="bp_ID" Nullable="false" />
+    <Property Type="String" Name="bp_Name" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="bp_website" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="bp_credibilityIndex" Nullable="false" />
+    <Property Type="Boolean" Name="bp_onDoniContract" Nullable="true" />
+    <Property Type="Boolean" Name="bp_isBuyer" Nullable="true" />
+    <Property Type="Boolean" Name="bp_isSeller" Nullable="true" />
+    <Property Type="Boolean" Name="bp_isShipper" Nullable="true" />
+    <Property Type="Boolean" Name="bp_isBroker" Nullable="true" />
+    <Property Type="String" Name="bp_country" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="bp_address" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="uspGetBPProducts_Result">
+    <Property Type="Int64" Name="bp_ID" Nullable="false" />
+    <Property Type="Int32" Name="prod_ID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="uspGetBusinessPartnerForList_Result">
+    <Property Type="Int64" Name="bp_ID" Nullable="false" />
+    <Property Type="String" Name="bp_Name" Nullable="false" MaxLength="500" />
+    <Property Type="Int64" Name="bp_cont_ID" Nullable="true" />
+    <Property Type="String" Name="bp_Cont_fullName" Nullable="true" MaxLength="100" />
+    <Property Type="Boolean" Name="bp_isBroker" Nullable="true" />
+    <Property Type="Boolean" Name="bp_isBuyer" Nullable="true" />
+    <Property Type="Boolean" Name="bp_isSeller" Nullable="true" />
+    <Property Type="Boolean" Name="bp_isShipper" Nullable="true" />
+    <Property Type="Int32" Name="bp_credibilityIndex" Nullable="false" />
+    <Property Type="String" Name="bp_country" Nullable="true" MaxLength="150" />
+    <Property Type="Int64" Name="tr_transactionID" Nullable="true" />
+    <Property Type="DateTime" Name="tr_date" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="uspGetBusinessPartnerForTable_Result">
+    <Property Type="Int64" Name="bp_ID" Nullable="false" />
+    <Property Type="String" Name="bp_Name" Nullable="false" MaxLength="500" />
+    <Property Type="Int64" Name="bp_cont_ID" Nullable="true" />
+    <Property Type="String" Name="bp_Cont_fullName" Nullable="true" MaxLength="100" />
+    <Property Type="Boolean" Name="bp_isBroker" Nullable="true" />
+    <Property Type="Boolean" Name="bp_isBuyer" Nullable="true" />
+    <Property Type="Boolean" Name="bp_isSeller" Nullable="true" />
+    <Property Type="Boolean" Name="bp_isShipper" Nullable="true" />
+    <Property Type="Int32" Name="bp_credibilityIndex" Nullable="false" />
+    <Property Type="String" Name="bp_country" Nullable="true" MaxLength="150" />
+    <Property Type="Int64" Name="tr_transactionID" Nullable="true" />
+    <Property Type="DateTime" Name="tr_date" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="uspGetCommissionTransaction_Result">
+    <Property Type="Int64" Name="tr_transactionID" Nullable="false" />
+    <Property Type="Boolean" Name="tr_brokerInvolved" Nullable="true" />
+    <Property Type="Boolean" Name="tr_sellerBroker" Nullable="true" />
+    <Property Type="Int64" Name="tr_sellerBrokerID" Nullable="true" />
+    <Property Type="String" Name="tr_sellerBroker_comm_type" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="tr_sellerBroker_comm" Nullable="true" />
+    <Property Type="Boolean" Name="tr_buyerBroker" Nullable="true" />
+    <Property Type="Int64" Name="tr_buyerBrokerID" Nullable="true" />
+    <Property Type="String" Name="tr_buyerBroker_comm_type" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="tr_buyerBroker_comm" Nullable="true" />
+    <Property Type="Int32" Name="tr_own_Commission" Nullable="true" />
+    <Property Type="String" Name="tr_ownCommissionType" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="tr_difference" Nullable="true" />
+    <Property Type="Int32" Name="tr_discount" Nullable="true" />
+    <Property Type="Int32" Name="tr_netCommission" Nullable="true" />
+    <Property Type="Int32" Name="tr_createdBy" Nullable="false" />
+    <Property Type="DateTime" Name="tr_createdOn" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="tr_editedBy" Nullable="true" />
+    <Property Type="DateTime" Name="tr_editedOn" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="uspGetDropDownBroker_Result">
+    <Property Type="Int64" Name="bp_ID" Nullable="false" />
+    <Property Type="String" Name="bp_Name" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="bp_address" Nullable="true" />
+    <Property Type="String" Name="bp_Cont_fullName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="bp_country" Nullable="true" MaxLength="150" />
+  </ComplexType>
+  <ComplexType Name="uspGetDropDownBuyer_Result">
+    <Property Type="Int64" Name="bp_ID" Nullable="false" />
+    <Property Type="String" Name="bp_Name" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="bp_address" Nullable="true" />
+    <Property Type="String" Name="bp_Cont_fullName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="bp_country" Nullable="true" MaxLength="150" />
+  </ComplexType>
+  <ComplexType Name="uspGetDropDownSeller_Result">
+    <Property Type="Int64" Name="bp_ID" Nullable="false" />
+    <Property Type="String" Name="bp_Name" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="bp_address" Nullable="true" />
+    <Property Type="String" Name="bp_Cont_fullName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="bp_country" Nullable="true" MaxLength="150" />
+  </ComplexType>
+  <ComplexType Name="uspGetDropDownShipper_Result">
+    <Property Type="Int64" Name="bp_ID" Nullable="false" />
+    <Property Type="String" Name="bp_Name" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="bp_address" Nullable="true" />
+    <Property Type="String" Name="bp_Cont_fullName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="bp_country" Nullable="true" MaxLength="150" />
+  </ComplexType>
+  <ComplexType Name="uspGetOriginList_Result">
+    <Property Type="Int64" Name="origin_id" Nullable="false" />
+    <Property Type="String" Name="origin_name" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="uspGetProductList_Result">
+    <Property Type="Int32" Name="ProductId" Nullable="false" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="quality" Nullable="true" />
+    <Property Type="String" Name="origin" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="TransactionDate" Nullable="true" Precision="23" />
+    <Property Type="Int64" Name="tr_transactionID" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="uspGetProductListPDF_Result">
+    <Property Type="Int32" Name="ProductId" Nullable="false" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="250" />
+    <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+    <Property Type="DateTime" Name="LastUpdatedOn" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="LastUpdatedBy" Nullable="true" />
+    <Property Type="Int32" Name="moisture" Nullable="true" />
+    <Property Type="Int32" Name="purity" Nullable="true" />
+    <Property Type="Int32" Name="weaveled" Nullable="true" />
+    <Property Type="String" Name="origin" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="splits" Nullable="true" />
+    <Property Type="String" Name="quality" Nullable="true" />
+    <Property Type="Int32" Name="damaged" Nullable="true" />
+    <Property Type="Int32" Name="foreignMatter" Nullable="true" />
+    <Property Type="Int32" Name="greenDamaged" Nullable="true" />
+    <Property Type="Int32" Name="otherColor" Nullable="true" />
+    <Property Type="Int32" Name="wrinkled" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="uspGetProductTagInput_Result">
+    <Property Type="Int32" Name="ProductId" Nullable="false" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="origin" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="quality" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="uspGetSecondaryTransaction_Result">
+    <Property Type="Int64" Name="tr_transactionID" Nullable="true" />
+    <Property Type="Int64" Name="tr_sec_tranID" Nullable="false" />
+    <Property Type="Int64" Name="tr_sec_bpBuyerID" Nullable="true" />
+    <Property Type="Int64" Name="tr_sec_bpSellerID" Nullable="true" />
+    <Property Type="DateTime" Name="tr_sec_date" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="tr_sec_buyerPrice" Nullable="true" />
+    <Property Type="Int32" Name="tr_sec_sellerPrice" Nullable="true" />
+    <Property Type="String" Name="tr_sec_otherInfo" Nullable="true" MaxLength="4000" />
+    <Property Type="Int32" Name="tr_createdBy" Nullable="false" />
+    <Property Type="DateTime" Name="tr_createdOn" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="tr_editedBy" Nullable="true" />
+    <Property Type="DateTime" Name="tr_editedOn" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="uspGetSingleProduct_Result">
+    <Property Type="Int32" Name="ProductId" Nullable="false" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="250" />
+    <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+    <Property Type="DateTime" Name="LastUpdatedOn" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="LastUpdatedBy" Nullable="true" />
+    <Property Type="Int32" Name="moisture" Nullable="true" />
+    <Property Type="Int32" Name="purity" Nullable="true" />
+    <Property Type="Int32" Name="weaveled" Nullable="true" />
+    <Property Type="String" Name="origin" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="splits" Nullable="true" />
+    <Property Type="String" Name="quality" Nullable="true" />
+    <Property Type="Int32" Name="damaged" Nullable="true" />
+    <Property Type="Int32" Name="foreignMatter" Nullable="true" />
+    <Property Type="Int32" Name="greenDamaged" Nullable="true" />
+    <Property Type="Int32" Name="otherColor" Nullable="true" />
+    <Property Type="Int32" Name="wrinkled" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="uspGetTransaction_Result">
+    <Property Type="Int64" Name="tr_transactionID" Nullable="false" />
+    <Property Type="DateTime" Name="tr_date" Nullable="true" Precision="23" />
+    <Property Type="Int64" Name="tr_bpBuyerID" Nullable="true" />
+    <Property Type="Int64" Name="tr_bpSellerID" Nullable="true" />
+    <Property Type="Int32" Name="tr_productID" Nullable="true" />
+    <Property Type="String" Name="tr_origin" Nullable="true" MaxLength="150" />
+    <Property Type="Int32" Name="tr_quantity" Nullable="true" />
+    <Property Type="Int32" Name="tr_price" Nullable="false" />
+    <Property Type="String" Name="tr_packing" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="tr_shipment_start" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="tr_shipment_end" Nullable="true" Precision="23" />
+    <Property Type="String" Name="tr_fileID" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="tr_contractID" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="tr_other_info" Nullable="true" />
+    <Property Type="Int32" Name="tr_createdBy" Nullable="false" />
+    <Property Type="DateTime" Name="tr_createdOn" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="tr_editedBy" Nullable="true" />
+    <Property Type="DateTime" Name="tr_editedOn" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="uspGetTransactionContract_Result">
+    <Property Type="Int64" Name="tr_transactionID" Nullable="false" />
+    <Property Type="Boolean" Name="tr_doniContract" Nullable="true" />
+    <Property Type="Boolean" Name="tr_ownContract" Nullable="true" />
+    <Property Type="Int64" Name="tr_ContractualBuyer" Nullable="true" />
+    <Property Type="Int32" Name="tr_createdBy" Nullable="false" />
+    <Property Type="DateTime" Name="tr_createdOn" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="tr_editedBy" Nullable="true" />
+    <Property Type="DateTime" Name="tr_editedOn" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="uspGetTransactionNotes_Result">
+    <Property Type="Int64" Name="tr_tranNoteID" Nullable="false" />
+    <Property Type="DateTime" Name="tr_createdOn" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="tr_editedOn" Nullable="true" Precision="23" />
+    <Property Type="String" Name="tr_transactionNotes" Nullable="true" />
+    <Property Type="String" Name="fullName" Nullable="true" MaxLength="113" />
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="uspGetTransactionShipment_Result">
+    <Property Type="Int64" Name="tr_transactionID" Nullable="false" />
+    <Property Type="Boolean" Name="tr_ship_notShipped" Nullable="true" />
+    <Property Type="String" Name="tr_ship_notShipped_reason" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="tr_ship_extension" Nullable="true" MaxLength="100" />
+    <Property Type="Boolean" Name="tr_ship_appReceived" Nullable="true" />
+    <Property Type="DateTime" Name="tr_expectedShipment" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="tr_inTransit" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="tr_shipped" Nullable="true" />
+    <Property Type="DateTime" Name="tr_dateShipped" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="tr_expectedArrival" Nullable="true" Precision="23" />
+    <Property Type="String" Name="tr_transitPort" Nullable="true" MaxLength="500" />
+    <Property Type="Boolean" Name="tr_ship_arrivedAtPort" Nullable="true" />
+    <Property Type="DateTime" Name="tr_dateArrived" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="tr_actualArrived" Nullable="true" Precision="23" />
+    <Property Type="String" Name="tr_ship_BlNo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="tr_ship_invoiceNo" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="tr_ship_invoiceAmt" Nullable="true" />
+    <Property Type="Int32" Name="tr_ship_quantity" Nullable="true" />
+    <Property Type="String" Name="tr_ship_vesselNo" Nullable="true" MaxLength="50" />
+    <Property Type="Int64" Name="tr_ship_primaryShipperId" Nullable="true" />
+    <Property Type="String" Name="tr_ship_portLoad" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="tr_ship_portDest" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="tr_ship_shipLineCont" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="tr_createdBy" Nullable="false" />
+    <Property Type="DateTime" Name="tr_createdOn" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="tr_editedBy" Nullable="true" />
+    <Property Type="DateTime" Name="tr_editedOn" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="tr_ship_chk_reason" Nullable="true" />
+    <Property Type="Boolean" Name="tr_ship_chk_shpExt" Nullable="true" />
+    <Property Type="Boolean" Name="tr_ship_chk_expShp" Nullable="true" />
+    <Property Type="Boolean" Name="tr_ship_chk_inTransit" Nullable="true" />
+    <Property Type="Boolean" Name="tr_ship_chk_dateShipped" Nullable="true" />
+    <Property Type="Boolean" Name="tr_ship_chk_expArrival" Nullable="true" />
+    <Property Type="Boolean" Name="tr_ship_chk_transitPort" Nullable="true" />
+    <Property Type="Boolean" Name="tr_ship_chk_dateArrived" Nullable="true" />
+    <Property Type="Boolean" Name="tr_ship_chk_actualArrived" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="uspGetTransactionStatus_Result">
+    <Property Type="Int64" Name="tr_transactionID" Nullable="false" />
+    <Property Type="String" Name="tr_transactionStatus" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="tr_washoutValueAtPar" Nullable="true" />
+    <Property Type="Int32" Name="tr_createdBy" Nullable="false" />
+    <Property Type="DateTime" Name="tr_createdOn" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="tr_editedBy" Nullable="true" />
+    <Property Type="DateTime" Name="tr_editedOn" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="uspTransactionFileGetAll_Result">
+    <Property Type="Int32" Name="tf_fileID" Nullable="false" />
+    <Property Type="String" Name="tf_fileName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="tf_fileType" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="tf_createdBy" Nullable="true" />
+    <Property Type="DateTime" Name="tf_createdOn" Nullable="true" Precision="23" />
+    <Property Type="Int64" Name="tf_transactionID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="uspTransactionFileGetSingle_Result">
+    <Property Type="Int64" Name="tf_transactionID" Nullable="false" />
+    <Property Type="Int32" Name="tf_fileID" Nullable="false" />
+    <Property Type="Binary" Name="tf_file" Nullable="false" />
+    <Property Type="String" Name="tf_fileType" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="tf_fileName" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="tf_createdBy" Nullable="true" />
+    <Property Type="DateTime" Name="tf_createdOn" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="tf_editedBy" Nullable="true" />
+    <Property Type="DateTime" Name="tf_editedOn" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="uspTransactionList_Result">
+    <Property Type="Int64" Name="tr_transactionID" Nullable="false" />
+    <Property Type="DateTime" Name="transactionDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="fileNo" Nullable="true" MaxLength="200" />
+    <Property Type="Int64" Name="tr_bpBuyerID" Nullable="true" />
+    <Property Type="String" Name="buyer" Nullable="false" MaxLength="500" />
+    <Property Type="Int32" Name="tr_productID" Nullable="true" />
+    <Property Type="String" Name="product" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="quantity" Nullable="true" />
+    <Property Type="Int32" Name="rate" Nullable="false" />
+    <Property Type="Int64" Name="tr_bpSellerID" Nullable="true" />
+    <Property Type="String" Name="seller" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="origin" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="port" Nullable="true" MaxLength="500" />
+    <Property Type="DateTime" Name="shipment_start" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="shipment_end" Nullable="true" Precision="23" />
+    <Property Type="String" Name="commission" Nullable="true" MaxLength="51" />
+  </ComplexType>
+  <ComplexType Name="uspTransactionNotesCRUD_Result">
+    <Property Type="Int64" Name="tr_transactionID" Nullable="false" />
+    <Property Type="Int64" Name="tr_tranNoteID" Nullable="false" />
+    <Property Type="String" Name="tr_transactionNotes" Nullable="true" />
+    <Property Type="Int32" Name="tr_createdBy" Nullable="false" />
+    <Property Type="DateTime" Name="tr_createdOn" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="tr_editedOn" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="uspGetTransactionByParameter_Result">
+    <Property Type="String" Name="tr_fileID" Nullable="true" MaxLength="200" />
+    <Property Type="Int64" Name="tr_transactionID" Nullable="false" />
+    <Property Type="DateTime" Name="tr_date" Nullable="true" Precision="23" />
+  </ComplexType>
+  <EntityType Name="transactionViewed">
+    <Key>
+      <PropertyRef Name="tr_visitedID" />
+    </Key>
+    <Property Name="tr_visitedID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tr_visitedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="tr_pageVisitedState" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="tr_pageVisitedParams" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="tr_pageTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UserID" Type="Int32" />
+    <NavigationProperty Name="AppUser" Relationship="DhoniEnterprisesModel.FK__transacti__UserI__7869D707" FromRole="transactionViewed" ToRole="AppUser" />
+  </EntityType>
+  <Association Name="FK__transacti__UserI__7869D707">
+    <End Type="DhoniEnterprisesModel.AppUser" Role="AppUser" Multiplicity="0..1" />
+    <End Type="DhoniEnterprisesModel.transactionViewed" Role="transactionViewed" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUser">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="transactionViewed">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="uspGetRecentlyViewedItem_Result">
+    <Property Type="Int64" Name="tr_visitedID" Nullable="false" />
+    <Property Type="DateTime" Name="tr_visitedOn" Nullable="false" Precision="23" />
+    <Property Type="String" Name="tr_pageVisitedState" Nullable="false" />
+    <Property Type="String" Name="tr_pageVisitedParams" Nullable="false" />
+    <Property Type="String" Name="tr_pageTitle" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="UserID" Nullable="true" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DhoniEnterprisesModelStoreContainer" CdmEntityContainer="DhoniEnterprisesEntities">
+    <EntitySetMapping Name="AppUserRights">
+      <EntityTypeMapping TypeName="DhoniEnterprisesModel.AppUserRight">
+        <MappingFragment StoreEntitySet="AppUserRights">
+          <ScalarProperty Name="AppUserID" ColumnName="AppUserID" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Actions" ColumnName="Actions" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AppUsers">
+      <EntityTypeMapping TypeName="DhoniEnterprisesModel.AppUser">
+        <MappingFragment StoreEntitySet="AppUsers">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserPass" ColumnName="UserPass" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UserGuid" ColumnName="UserGuid" />
+          <ScalarProperty Name="UserDesignation" ColumnName="UserDesignation" />
+          <ScalarProperty Name="IsSuperUser" ColumnName="IsSuperUser" />
+          <ScalarProperty Name="initials" ColumnName="initials" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AppUsersImages">
+      <EntityTypeMapping TypeName="DhoniEnterprisesModel.AppUsersImage">
+        <MappingFragment StoreEntitySet="AppUsersImage">
+          <ScalarProperty Name="AppUserID" ColumnName="AppUserID" />
+          <ScalarProperty Name="ImageData" ColumnName="ImageData" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BPAddresses">
+      <EntityTypeMapping TypeName="DhoniEnterprisesModel.BPAddress">
+        <MappingFragment StoreEntitySet="BPAddress">
+          <ScalarProperty Name="BpId" ColumnName="BpId" />
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+          <ScalarProperty Name="Line1" ColumnName="Line1" />
+          <ScalarProperty Name="Line2" ColumnName="Line2" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BPEmails">
+      <EntityTypeMapping TypeName="DhoniEnterprisesModel.BPEmail">
+        <MappingFragment StoreEntitySet="BPEmail">
+          <ScalarProperty Name="BpId" ColumnName="BpId" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BPTypes">
+      <EntityTypeMapping TypeName="DhoniEnterprisesModel.BPType">
+        <MappingFragment StoreEntitySet="BPType">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BusinessPartners">
+      <EntityTypeMapping TypeName="DhoniEnterprisesModel.BusinessPartner">
+        <MappingFragment StoreEntitySet="BusinessPartner">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IsSupplier" ColumnName="IsSupplier" />
+          <ScalarProperty Name="IsBroker" ColumnName="IsBroker" />
+          <ScalarProperty Name="IsShipper" ColumnName="IsShipper" />
+          <ScalarProperty Name="IsBuyer" ColumnName="IsBuyer" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="LastTransactionOn" ColumnName="LastTransactionOn" />
+          <ScalarProperty Name="LastTransactionId" ColumnName="LastTransactionId" />
+          <ScalarProperty Name="ReliabilityIndex" ColumnName="ReliabilityIndex" />
+          <ScalarProperty Name="BPName" ColumnName="BPName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BuyerContractTypes">
+      <EntityTypeMapping TypeName="DhoniEnterprisesModel.BuyerContractType">
+        <MappingFragment StoreEntitySet="BuyerContractType">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ContType" ColumnName="ContType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="DhoniEnterprisesModel.Product">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+          <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+          <ScalarProperty Name="moisture" ColumnName="moisture" />
+          <ScalarProperty Name="purity" ColumnName="purity" />
+          <ScalarProperty Name="broken" ColumnName="broken" />
+          <ScalarProperty Name="weaveled" ColumnName="weaveled" />
+          <ScalarProperty Name="origin" ColumnName="origin" />
+          <ScalarProperty Name="splits" ColumnName="splits" />
+          <ScalarProperty Name="quality" ColumnName="quality" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShipmentStatus">
+      <EntityTypeMapping TypeName="DhoniEnterprisesModel.ShipmentStatu">
+        <MappingFragment StoreEntitySet="ShipmentStatus">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="DhoniEnterprisesModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransactionFiles">
+      <EntityTypeMapping TypeName="DhoniEnterprisesModel.TransactionFile">
+        <MappingFragment StoreEntitySet="TransactionFile">
+          <ScalarProperty Name="FileId" ColumnName="FileId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transactions">
+      <EntityTypeMapping TypeName="DhoniEnterprisesModel.Transaction">
+        <MappingFragment StoreEntitySet="Transactions">
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+          <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+          <ScalarProperty Name="BuyerID" ColumnName="BuyerID" />
+          <ScalarProperty Name="SellerID" ColumnName="SellerID" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="IsBrokerInvolved" ColumnName="IsBrokerInvolved" />
+          <ScalarProperty Name="BrokerID" ColumnName="BrokerID" />
+          <ScalarProperty Name="Commision" ColumnName="Commision" />
+          <ScalarProperty Name="BrokerCommision" ColumnName="BrokerCommision" />
+          <ScalarProperty Name="Diff" ColumnName="Diff" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="NetCommission" ColumnName="NetCommission" />
+          <ScalarProperty Name="ShipperID" ColumnName="ShipperID" />
+          <ScalarProperty Name="FileId" ColumnName="FileId" />
+          <ScalarProperty Name="TransactionDatetime" ColumnName="TransactionDatetime" />
+          <ScalarProperty Name="CommisionType" ColumnName="CommisionType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransactionStatus">
+      <EntityTypeMapping TypeName="DhoniEnterprisesModel.TransactionStatu">
+        <MappingFragment StoreEntitySet="TransactionStatus">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserEvents">
+      <EntityTypeMapping TypeName="DhoniEnterprisesModel.UserEvent">
+        <MappingFragment StoreEntitySet="UserEvents">
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="EventTime" ColumnName="EventTime" />
+          <ScalarProperty Name="EventDescription" ColumnName="EventDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="BPAssociation" TypeName="DhoniEnterprisesModel.BPAssociation" StoreEntitySet="BPAssociation">
+      <EndProperty Name="BusinessPartner">
+        <ScalarProperty Name="Id" ColumnName="BP_ID1" />
+      </EndProperty>
+      <EndProperty Name="BusinessPartner1">
+        <ScalarProperty Name="Id" ColumnName="BP_ID2" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="addNewAppUser" FunctionName="DhoniEnterprisesModel.Store.addNewAppUser" />
+    <FunctionImportMapping FunctionImportName="NewUserLoginDetails" FunctionName="DhoniEnterprisesModel.Store.NewUserLoginDetails" />
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="DhoniEnterprisesModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="DhoniEnterprisesModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="DhoniEnterprisesModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="DhoniEnterprisesModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="DhoniEnterprisesModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="DhoniEnterprisesModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="DhoniEnterprisesModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="uspAddProduct" FunctionName="DhoniEnterprisesModel.Store.uspAddProduct" />
+    <FunctionImportMapping FunctionImportName="uspAddTransaction" FunctionName="DhoniEnterprisesModel.Store.uspAddTransaction">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspAddTransaction_Result">
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+          <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+          <ScalarProperty Name="BuyerID" ColumnName="BuyerID" />
+          <ScalarProperty Name="SellerID" ColumnName="SellerID" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="IsBrokerInvolved" ColumnName="IsBrokerInvolved" />
+          <ScalarProperty Name="BrokerID" ColumnName="BrokerID" />
+          <ScalarProperty Name="Commision" ColumnName="Commision" />
+          <ScalarProperty Name="BrokerCommision" ColumnName="BrokerCommision" />
+          <ScalarProperty Name="Diff" ColumnName="Diff" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="NetCommission" ColumnName="NetCommission" />
+          <ScalarProperty Name="ShipperID" ColumnName="ShipperID" />
+          <ScalarProperty Name="FileId" ColumnName="FileId" />
+          <ScalarProperty Name="TransactionDatetime" ColumnName="TransactionDatetime" />
+          <ScalarProperty Name="CommisionType" ColumnName="CommisionType" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspDeleteProduct" FunctionName="DhoniEnterprisesModel.Store.uspDeleteProduct" />
+    <FunctionImportMapping FunctionImportName="uspGetProductList" FunctionName="DhoniEnterprisesModel.Store.uspGetProductList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetProductList_Result">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="quality" ColumnName="quality" />
+          <ScalarProperty Name="origin" ColumnName="origin" />
+          <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspGetProductListPDF" FunctionName="DhoniEnterprisesModel.Store.uspGetProductListPDF">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetProductListPDF_Result">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+          <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+          <ScalarProperty Name="moisture" ColumnName="moisture" />
+          <ScalarProperty Name="purity" ColumnName="purity" />
+          <ScalarProperty Name="broken" ColumnName="broken" />
+          <ScalarProperty Name="weaveled" ColumnName="weaveled" />
+          <ScalarProperty Name="origin" ColumnName="origin" />
+          <ScalarProperty Name="splits" ColumnName="splits" />
+          <ScalarProperty Name="quality" ColumnName="quality" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspGetProductTagInput" FunctionName="DhoniEnterprisesModel.Store.uspGetProductTagInput">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetProductTagInput_Result">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="origin" ColumnName="origin" />
+          <ScalarProperty Name="quality" ColumnName="quality" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspGetSingleProduct" FunctionName="DhoniEnterprisesModel.Store.uspGetSingleProduct">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetSingleProduct_Result">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+          <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+          <ScalarProperty Name="moisture" ColumnName="moisture" />
+          <ScalarProperty Name="purity" ColumnName="purity" />
+          <ScalarProperty Name="broken" ColumnName="broken" />
+          <ScalarProperty Name="weaveled" ColumnName="weaveled" />
+          <ScalarProperty Name="origin" ColumnName="origin" />
+          <ScalarProperty Name="splits" ColumnName="splits" />
+          <ScalarProperty Name="quality" ColumnName="quality" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspGetTableFilters" FunctionName="DhoniEnterprisesModel.Store.uspGetTableFilters" />
+    <FunctionImportMapping FunctionImportName="uspUpdateProduct" FunctionName="DhoniEnterprisesModel.Store.uspUpdateProduct" />
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,75 @@
+2/21/2016 9:26:10 PM	This log contains information about the import schema operation into project 'de-db' on computer 'IMMADIMTIAZ' by user 'emad'.
+2/21/2016 9:26:10 PM	Import of database schema has started.
+2/21/2016 9:26:19 PM	Gathering database options
+2/21/2016 9:26:19 PM	Gathering users
+2/21/2016 9:26:19 PM	Gathering roles
+2/21/2016 9:26:19 PM	Gathering application roles
+2/21/2016 9:26:19 PM	Gathering role memberships
+2/21/2016 9:26:19 PM	Gathering filegroups
+2/21/2016 9:26:19 PM	Gathering full-text catalogs
+2/21/2016 9:26:19 PM	Gathering assemblies
+2/21/2016 9:26:19 PM	Gathering certificates
+2/21/2016 9:26:19 PM	Gathering asymmetric keys
+2/21/2016 9:26:19 PM	Gathering symmetric keys
+2/21/2016 9:26:19 PM	Gathering encrypted symmetric keys
+2/21/2016 9:26:19 PM	Gathering schemas
+2/21/2016 9:26:19 PM	Gathering XML schema collections
+2/21/2016 9:26:19 PM	Gathering user-defined data types
+2/21/2016 9:26:19 PM	Gathering user-defined types
+2/21/2016 9:26:19 PM	Gathering table types
+2/21/2016 9:26:19 PM	Gathering unique keys for table types
+2/21/2016 9:26:19 PM	Gathering primary keys for table types
+2/21/2016 9:26:19 PM	Gathering check constraints for table types
+2/21/2016 9:26:19 PM	Gathering default constraints for table types
+2/21/2016 9:26:19 PM	Gathering partition functions
+2/21/2016 9:26:19 PM	Gathering partition schemes
+2/21/2016 9:26:19 PM	Gathering functions
+2/21/2016 9:26:19 PM	Gathering encrypted functions
+2/21/2016 9:26:20 PM	Gathering aggregates
+2/21/2016 9:26:20 PM	Gathering procedures
+2/21/2016 9:26:21 PM	Gathering encrypted procedures
+2/21/2016 9:26:21 PM	Gathering tables
+2/21/2016 9:26:21 PM	Gathering primary keys
+2/21/2016 9:26:21 PM	Gathering unique constraints
+2/21/2016 9:26:21 PM	Gathering foreign keys
+2/21/2016 9:26:21 PM	Gathering default constraints
+2/21/2016 9:26:21 PM	Gathering check constraints
+2/21/2016 9:26:21 PM	Gathering views
+2/21/2016 9:26:21 PM	Gathering encrypted views
+2/21/2016 9:26:21 PM	Gathering indexes
+2/21/2016 9:26:21 PM	Gathering statistics
+2/21/2016 9:26:21 PM	Gathering full-text index stoplists
+2/21/2016 9:26:21 PM	Gathering search property lists
+2/21/2016 9:26:21 PM	Gathering search properties
+2/21/2016 9:26:21 PM	Gathering full-text indexes
+2/21/2016 9:26:21 PM	Gathering column store indexes
+2/21/2016 9:26:21 PM	Gathering spatial indexes
+2/21/2016 9:26:21 PM	Gathering XML indexes
+2/21/2016 9:26:21 PM	Gathering encrypted triggers
+2/21/2016 9:26:21 PM	Gathering triggers
+2/21/2016 9:26:21 PM	Gathering encrypted and clr ddl triggers
+2/21/2016 9:26:21 PM	Gathering ddl triggers
+2/21/2016 9:26:21 PM	Gathering synonyms
+2/21/2016 9:26:22 PM	Gathering defaults
+2/21/2016 9:26:22 PM	Gathering data constraint uddt bindings
+2/21/2016 9:26:22 PM	Gathering rules
+2/21/2016 9:26:22 PM	Gathering data constraint uddt bindings
+2/21/2016 9:26:22 PM	Gathering message types
+2/21/2016 9:26:22 PM	Gathering queues
+2/21/2016 9:26:22 PM	Gathering contracts
+2/21/2016 9:26:22 PM	Gathering services
+2/21/2016 9:26:22 PM	Gathering event notifications
+2/21/2016 9:26:22 PM	Gathering remote service bindings
+2/21/2016 9:26:22 PM	Gathering broker priorities
+2/21/2016 9:26:22 PM	Gathering signatures
+2/21/2016 9:26:22 PM	Gathering data compression options
+2/21/2016 9:26:22 PM	Gathering sequence types
+2/21/2016 9:26:22 PM	Gathering extended properties
+2/21/2016 9:26:22 PM	Gathering credentials
+2/21/2016 9:26:22 PM	Gathering logins
+2/21/2016 9:26:22 PM	Gathering server audits
+2/21/2016 9:26:23 PM	Scanning project for duplicate elements
+2/21/2016 9:26:23 PM	Finished duplicate element processing
+2/21/2016 9:26:26 PM	Finished importing database.
+2/21/2016 9:26:26 PM	A summary of the import was saved to the following location: C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-db\Import Schema Logs\de-db_20160221042610.log
+2/21/2016 9:26:26 PM	Click Finish to continue...

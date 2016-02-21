@@ -1,0 +1,632 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DhoniEnterprisesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AppUserRight">
+    <Key>
+      <PropertyRef Name="AppUserID" />
+      <PropertyRef Name="Area" />
+      <PropertyRef Name="Actions" />
+    </Key>
+    <Property Name="AppUserID" Type="Int32" Nullable="false" />
+    <Property Name="Area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Actions" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="AppUser" Relationship="Self.FK__AppUserRi__AppUs__0E6E26BF" FromRole="AppUserRights" ToRole="AppUsers" />
+  </EntityType>
+  <EntityType Name="AppUser">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserPass" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserEmail" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserDOB" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UserGuid" Type="Guid" Nullable="false" />
+    <Property Name="UserDesignation" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsSuperUser" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="AppUserRights" Relationship="Self.FK__AppUserRi__AppUs__0E6E26BF" FromRole="AppUsers" ToRole="AppUserRights" />
+    <NavigationProperty Name="AppUsersImage" Relationship="Self.FK__AppUsersI__AppUs__02FC7413" FromRole="AppUsers" ToRole="AppUsersImage" />
+    <NavigationProperty Name="BusinessPartners" Relationship="Self.FK__Bussiness__Creat__4F47C5E3" FromRole="AppUsers" ToRole="BusinessPartner" />
+    <NavigationProperty Name="BusinessPartners1" Relationship="Self.FK__Bussiness__Modif__503BEA1C" FromRole="AppUsers" ToRole="BusinessPartner" />
+    <NavigationProperty Name="Products" Relationship="Self.FK__Products__Create__07C12930" FromRole="AppUsers" ToRole="Products" />
+    <NavigationProperty Name="Products1" Relationship="Self.FK__Products__LastUp__08B54D69" FromRole="AppUsers" ToRole="Products" />
+    <NavigationProperty Name="UserEvents" Relationship="Self.FK__UserEvent__UserI__2E1BDC42" FromRole="AppUsers" ToRole="UserEvents" />
+  </EntityType>
+  <EntityType Name="AppUsersImage">
+    <Key>
+      <PropertyRef Name="AppUserID" />
+    </Key>
+    <Property Name="AppUserID" Type="Int32" Nullable="false" />
+    <Property Name="ImageData" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="AppUser" Relationship="Self.FK__AppUsersI__AppUs__02FC7413" FromRole="AppUsersImage" ToRole="AppUsers" />
+  </EntityType>
+  <EntityType Name="BPAddress">
+    <Key>
+      <PropertyRef Name="BpId" />
+      <PropertyRef Name="AddressID" />
+    </Key>
+    <Property Name="BpId" Type="Int32" Nullable="false" />
+    <Property Name="AddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Line1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Line2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PostalCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Country" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BusinessPartner" Relationship="Self.FK__BPAddress__BpId__00DF2177" FromRole="BPAddress" ToRole="BusinessPartner" />
+  </EntityType>
+  <EntityType Name="BPEmail">
+    <Key>
+      <PropertyRef Name="BpId" />
+      <PropertyRef Name="EmailId" />
+    </Key>
+    <Property Name="BpId" Type="Int32" Nullable="false" />
+    <Property Name="EmailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="BusinessPartner" Relationship="Self.FK__BPEmail__BpId__04AFB25B" FromRole="BPEmail" ToRole="BusinessPartner" />
+  </EntityType>
+  <EntityType Name="BPType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="BusinessPartners" Relationship="Self.FK__Bussiness__BPTyp__498EEC8D" FromRole="BPType" ToRole="BusinessPartner" />
+  </EntityType>
+  <EntityType Name="BusinessPartner">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="BPType" Type="Int32" />
+    <Property Name="IsSupplier" Type="Boolean" />
+    <Property Name="IsBroker" Type="Boolean" />
+    <Property Name="IsShipper" Type="Boolean" />
+    <Property Name="IsBuyer" Type="Boolean" />
+    <Property Name="ContTypeId" Type="Int32" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="LastTransactionOn" Type="DateTime" Precision="3" />
+    <Property Name="LastTransactionId" Type="Int32" />
+    <Property Name="ReliabilityIndex" Type="Int32" />
+    <NavigationProperty Name="AppUser" Relationship="Self.FK__Bussiness__Creat__4F47C5E3" FromRole="BusinessPartner" ToRole="AppUsers" />
+    <NavigationProperty Name="AppUser1" Relationship="Self.FK__Bussiness__Modif__503BEA1C" FromRole="BusinessPartner" ToRole="AppUsers" />
+    <NavigationProperty Name="BPAddresses" Relationship="Self.FK__BPAddress__BpId__00DF2177" FromRole="BusinessPartner" ToRole="BPAddress" />
+    <NavigationProperty Name="BPEmails" Relationship="Self.FK__BPEmail__BpId__04AFB25B" FromRole="BusinessPartner" ToRole="BPEmail" />
+    <NavigationProperty Name="BPType1" Relationship="Self.FK__Bussiness__BPTyp__498EEC8D" FromRole="BusinessPartner" ToRole="BPType" />
+    <NavigationProperty Name="BuyerContractType" Relationship="Self.FK__Bussiness__ContT__4E53A1AA" FromRole="BusinessPartner" ToRole="BuyerContractType" />
+    <NavigationProperty Name="Transaction" Relationship="Self.FK__Bussiness__LastT__51300E55" FromRole="BusinessPartner" ToRole="Transactions" />
+    <NavigationProperty Name="Transactions" Relationship="Self.FK__Transacti__Broke__6442E2C9" FromRole="BusinessPartner" ToRole="Transactions" />
+    <NavigationProperty Name="Transactions1" Relationship="Self.FK__Transacti__Buyer__607251E5" FromRole="BusinessPartner" ToRole="Transactions" />
+    <NavigationProperty Name="Transactions2" Relationship="Self.FK__Transacti__Selle__6166761E" FromRole="BusinessPartner" ToRole="Transactions" />
+    <NavigationProperty Name="Transactions3" Relationship="Self.FK__Transacti__Shipp__70A8B9AE" FromRole="BusinessPartner" ToRole="Transactions" />
+    <NavigationProperty Name="BusinessPartner1" Relationship="Self.BPAssociation" FromRole="BusinessPartner" ToRole="BusinessPartner1" />
+    <NavigationProperty Name="BusinessPartners" Relationship="Self.BPAssociation" FromRole="BusinessPartner1" ToRole="BusinessPartner" />
+  </EntityType>
+  <EntityType Name="BuyerContractType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ContType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="BusinessPartners" Relationship="Self.FK__Bussiness__ContT__4E53A1AA" FromRole="BuyerContractType" ToRole="BusinessPartner" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="LastUpdatedOn" Type="DateTime" Precision="3" />
+    <Property Name="LastUpdatedBy" Type="Int32" />
+    <Property Name="moisture" Type="Int32" />
+    <Property Name="purity" Type="Int32" />
+    <Property Name="broken" Type="Int32" />
+    <Property Name="weaveled" Type="Int32" />
+    <Property Name="origin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="splits" Type="Int32" />
+    <NavigationProperty Name="AppUser" Relationship="Self.FK__Products__Create__07C12930" FromRole="Products" ToRole="AppUsers" />
+    <NavigationProperty Name="AppUser1" Relationship="Self.FK__Products__LastUp__08B54D69" FromRole="Products" ToRole="AppUsers" />
+    <NavigationProperty Name="ProductsQualities" Relationship="Self.FK__ProductsQ__Produ__0880433F" FromRole="Products" ToRole="ProductsQuality" />
+    <NavigationProperty Name="Transactions" Relationship="Self.FK__Transacti__Produ__625A9A57" FromRole="Products" ToRole="Transactions" />
+  </EntityType>
+  <EntityType Name="ProductsQuality">
+    <Key>
+      <PropertyRef Name="ProductId" />
+      <PropertyRef Name="Quality" />
+    </Key>
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="Quality" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__ProductsQ__Produ__0880433F" FromRole="ProductsQuality" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="ShipmentStatu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TransactionFile">
+    <Key>
+      <PropertyRef Name="FileId" />
+    </Key>
+    <Property Name="FileId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Transaction">
+    <Key>
+      <PropertyRef Name="TransactionID" />
+    </Key>
+    <Property Name="TransactionID" Type="Int32" Nullable="false" />
+    <Property Name="TransactionDate" Type="DateTime" Precision="3" />
+    <Property Name="BuyerID" Type="Int32" Nullable="false" />
+    <Property Name="SellerID" Type="Int32" Nullable="false" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int64" Nullable="false" />
+    <Property Name="Rate" Type="Int64" Nullable="false" />
+    <Property Name="IsBrokerInvolved" Type="Boolean" Nullable="false" />
+    <Property Name="BrokerID" Type="Int32" />
+    <Property Name="Commision" Type="Int32" Nullable="false" />
+    <Property Name="BrokerCommision" Type="Int32" Nullable="false" />
+    <Property Name="Diff" Type="Int32" Nullable="false" />
+    <Property Name="Discount" Type="Int32" Nullable="false" />
+    <Property Name="NetCommission" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="ShipperID" Type="Int32" />
+    <Property Name="FileId" Type="Int32" />
+    <Property Name="TransactionDatetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CommisionType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="BusinessPartners" Relationship="Self.FK__Bussiness__LastT__51300E55" FromRole="Transactions" ToRole="BusinessPartner" />
+    <NavigationProperty Name="BusinessPartner" Relationship="Self.FK__Transacti__Broke__6442E2C9" FromRole="Transactions" ToRole="BusinessPartner" />
+    <NavigationProperty Name="BusinessPartner1" Relationship="Self.FK__Transacti__Buyer__607251E5" FromRole="Transactions" ToRole="BusinessPartner" />
+    <NavigationProperty Name="BusinessPartner2" Relationship="Self.FK__Transacti__Selle__6166761E" FromRole="Transactions" ToRole="BusinessPartner" />
+    <NavigationProperty Name="BusinessPartner3" Relationship="Self.FK__Transacti__Shipp__70A8B9AE" FromRole="Transactions" ToRole="BusinessPartner" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__Transacti__Produ__625A9A57" FromRole="Transactions" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="TransactionStatu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserEvent">
+    <Key>
+      <PropertyRef Name="EventID" />
+    </Key>
+    <Property Name="EventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="EventTime" Type="DateTime" Precision="3" />
+    <Property Name="EventDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AppUser" Relationship="Self.FK__UserEvent__UserI__2E1BDC42" FromRole="UserEvents" ToRole="AppUsers" />
+  </EntityType>
+  <Association Name="FK__AppUserRi__AppUs__0E6E26BF">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="1" />
+    <End Role="AppUserRights" Type="Self.AppUserRight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="AppUserRights">
+        <PropertyRef Name="AppUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AppUsersI__AppUs__02FC7413">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AppUsersImage" Type="Self.AppUsersImage" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="AppUsersImage">
+        <PropertyRef Name="AppUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Bussiness__Creat__4F47C5E3">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="1" />
+    <End Role="BusinessPartner" Type="Self.BusinessPartner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="BusinessPartner">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Bussiness__Modif__503BEA1C">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="0..1" />
+    <End Role="BusinessPartner" Type="Self.BusinessPartner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="BusinessPartner">
+        <PropertyRef Name="ModifiedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Products__Create__07C12930">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="0..1" />
+    <End Role="Products" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Products__LastUp__08B54D69">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="0..1" />
+    <End Role="Products" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="LastUpdatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserEvent__UserI__2E1BDC42">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="0..1" />
+    <End Role="UserEvents" Type="Self.UserEvent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserEvents">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BPAddress__BpId__00DF2177">
+    <End Role="BusinessPartner" Type="Self.BusinessPartner" Multiplicity="1" />
+    <End Role="BPAddress" Type="Self.BPAddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BusinessPartner">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BPAddress">
+        <PropertyRef Name="BpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BPEmail__BpId__04AFB25B">
+    <End Role="BusinessPartner" Type="Self.BusinessPartner" Multiplicity="1" />
+    <End Role="BPEmail" Type="Self.BPEmail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BusinessPartner">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BPEmail">
+        <PropertyRef Name="BpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Bussiness__BPTyp__498EEC8D">
+    <End Role="BPType" Type="Self.BPType" Multiplicity="0..1" />
+    <End Role="BusinessPartner" Type="Self.BusinessPartner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BPType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BusinessPartner">
+        <PropertyRef Name="BPType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Bussiness__ContT__4E53A1AA">
+    <End Role="BuyerContractType" Type="Self.BuyerContractType" Multiplicity="0..1" />
+    <End Role="BusinessPartner" Type="Self.BusinessPartner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BuyerContractType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BusinessPartner">
+        <PropertyRef Name="ContTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Bussiness__LastT__51300E55">
+    <End Role="Transactions" Type="Self.Transaction" Multiplicity="0..1" />
+    <End Role="BusinessPartner" Type="Self.BusinessPartner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Transactions">
+        <PropertyRef Name="TransactionID" />
+      </Principal>
+      <Dependent Role="BusinessPartner">
+        <PropertyRef Name="LastTransactionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__Broke__6442E2C9">
+    <End Role="BusinessPartner" Type="Self.BusinessPartner" Multiplicity="0..1" />
+    <End Role="Transactions" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BusinessPartner">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transactions">
+        <PropertyRef Name="BrokerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__Buyer__607251E5">
+    <End Role="BusinessPartner" Type="Self.BusinessPartner" Multiplicity="1" />
+    <End Role="Transactions" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BusinessPartner">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transactions">
+        <PropertyRef Name="BuyerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__Selle__6166761E">
+    <End Role="BusinessPartner" Type="Self.BusinessPartner" Multiplicity="1" />
+    <End Role="Transactions" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BusinessPartner">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transactions">
+        <PropertyRef Name="SellerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__Shipp__70A8B9AE">
+    <End Role="BusinessPartner" Type="Self.BusinessPartner" Multiplicity="0..1" />
+    <End Role="Transactions" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BusinessPartner">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transactions">
+        <PropertyRef Name="ShipperID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductsQ__Produ__0880433F">
+    <End Role="Products" Type="Self.Product" Multiplicity="1" />
+    <End Role="ProductsQuality" Type="Self.ProductsQuality" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="ProductsQuality">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__Produ__625A9A57">
+    <End Role="Products" Type="Self.Product" Multiplicity="1" />
+    <End Role="Transactions" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="Transactions">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BPAssociation">
+    <End Role="BusinessPartner" Type="Self.BusinessPartner" Multiplicity="*" />
+    <End Role="BusinessPartner1" Type="Self.BusinessPartner" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="DhoniEnterprisesEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AppUserRights" EntityType="Self.AppUserRight" />
+    <EntitySet Name="AppUsers" EntityType="Self.AppUser" />
+    <EntitySet Name="AppUsersImages" EntityType="Self.AppUsersImage" />
+    <EntitySet Name="BPAddresses" EntityType="Self.BPAddress" />
+    <EntitySet Name="BPEmails" EntityType="Self.BPEmail" />
+    <EntitySet Name="BPTypes" EntityType="Self.BPType" />
+    <EntitySet Name="BusinessPartners" EntityType="Self.BusinessPartner" />
+    <EntitySet Name="BuyerContractTypes" EntityType="Self.BuyerContractType" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="ProductsQualities" EntityType="Self.ProductsQuality" />
+    <EntitySet Name="ShipmentStatus" EntityType="Self.ShipmentStatu" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TransactionFiles" EntityType="Self.TransactionFile" />
+    <EntitySet Name="Transactions" EntityType="Self.Transaction" />
+    <EntitySet Name="TransactionStatus" EntityType="Self.TransactionStatu" />
+    <EntitySet Name="UserEvents" EntityType="Self.UserEvent" />
+    <AssociationSet Name="FK__AppUserRi__AppUs__0E6E26BF" Association="Self.FK__AppUserRi__AppUs__0E6E26BF">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="AppUserRights" EntitySet="AppUserRights" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AppUsersI__AppUs__02FC7413" Association="Self.FK__AppUsersI__AppUs__02FC7413">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="AppUsersImage" EntitySet="AppUsersImages" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Bussiness__Creat__4F47C5E3" Association="Self.FK__Bussiness__Creat__4F47C5E3">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="BusinessPartner" EntitySet="BusinessPartners" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Bussiness__Modif__503BEA1C" Association="Self.FK__Bussiness__Modif__503BEA1C">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="BusinessPartner" EntitySet="BusinessPartners" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Products__Create__07C12930" Association="Self.FK__Products__Create__07C12930">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Products__LastUp__08B54D69" Association="Self.FK__Products__LastUp__08B54D69">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserEvent__UserI__2E1BDC42" Association="Self.FK__UserEvent__UserI__2E1BDC42">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="UserEvents" EntitySet="UserEvents" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BPAddress__BpId__00DF2177" Association="Self.FK__BPAddress__BpId__00DF2177">
+      <End Role="BusinessPartner" EntitySet="BusinessPartners" />
+      <End Role="BPAddress" EntitySet="BPAddresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BPEmail__BpId__04AFB25B" Association="Self.FK__BPEmail__BpId__04AFB25B">
+      <End Role="BusinessPartner" EntitySet="BusinessPartners" />
+      <End Role="BPEmail" EntitySet="BPEmails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Bussiness__BPTyp__498EEC8D" Association="Self.FK__Bussiness__BPTyp__498EEC8D">
+      <End Role="BPType" EntitySet="BPTypes" />
+      <End Role="BusinessPartner" EntitySet="BusinessPartners" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Bussiness__ContT__4E53A1AA" Association="Self.FK__Bussiness__ContT__4E53A1AA">
+      <End Role="BuyerContractType" EntitySet="BuyerContractTypes" />
+      <End Role="BusinessPartner" EntitySet="BusinessPartners" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Bussiness__LastT__51300E55" Association="Self.FK__Bussiness__LastT__51300E55">
+      <End Role="Transactions" EntitySet="Transactions" />
+      <End Role="BusinessPartner" EntitySet="BusinessPartners" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__Broke__6442E2C9" Association="Self.FK__Transacti__Broke__6442E2C9">
+      <End Role="BusinessPartner" EntitySet="BusinessPartners" />
+      <End Role="Transactions" EntitySet="Transactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__Buyer__607251E5" Association="Self.FK__Transacti__Buyer__607251E5">
+      <End Role="BusinessPartner" EntitySet="BusinessPartners" />
+      <End Role="Transactions" EntitySet="Transactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__Selle__6166761E" Association="Self.FK__Transacti__Selle__6166761E">
+      <End Role="BusinessPartner" EntitySet="BusinessPartners" />
+      <End Role="Transactions" EntitySet="Transactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__Shipp__70A8B9AE" Association="Self.FK__Transacti__Shipp__70A8B9AE">
+      <End Role="BusinessPartner" EntitySet="BusinessPartners" />
+      <End Role="Transactions" EntitySet="Transactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductsQ__Produ__0880433F" Association="Self.FK__ProductsQ__Produ__0880433F">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="ProductsQuality" EntitySet="ProductsQualities" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__Produ__625A9A57" Association="Self.FK__Transacti__Produ__625A9A57">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="Transactions" EntitySet="Transactions" />
+    </AssociationSet>
+    <AssociationSet Name="BPAssociation" Association="Self.BPAssociation">
+      <End Role="BusinessPartner" EntitySet="BusinessPartners" />
+      <End Role="BusinessPartner1" EntitySet="BusinessPartners" />
+    </AssociationSet>
+    <FunctionImport Name="NewUserLoginDetails">
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="DOB" Mode="In" Type="DateTime" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(DhoniEnterprisesModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(DhoniEnterprisesModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="uspAddProduct">
+      <Parameter Name="ProductName" Mode="In" Type="String" />
+      <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+      <Parameter Name="broken" Mode="In" Type="Int32" />
+      <Parameter Name="moisture" Mode="In" Type="Int32" />
+      <Parameter Name="weaveled" Mode="In" Type="Int32" />
+      <Parameter Name="origin" Mode="In" Type="String" />
+      <Parameter Name="purity" Mode="In" Type="Int32" />
+      <Parameter Name="splits" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="uspAddProductQuality">
+      <Parameter Name="ProductId" Mode="In" Type="Int32" />
+      <Parameter Name="Quality" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspAddTransaction" ReturnType="Collection(DhoniEnterprisesModel.uspAddTransaction_Result)" />
+    <FunctionImport Name="uspDeleteProduct">
+      <Parameter Name="ProductId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="uspGetProductList" ReturnType="Collection(DhoniEnterprisesModel.uspGetProductList_Result)" />
+    <FunctionImport Name="uspUpdateProduct">
+      <Parameter Name="ProductID" Mode="In" Type="Int32" />
+      <Parameter Name="ProductCode" Mode="In" Type="String" />
+      <Parameter Name="ProductName" Mode="In" Type="String" />
+      <Parameter Name="ProductQuality" Mode="In" Type="String" />
+      <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="uspAddTransaction_Result">
+    <Property Type="Int32" Name="TransactionID" Nullable="false" />
+    <Property Type="DateTime" Name="TransactionDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="BuyerID" Nullable="false" />
+    <Property Type="Int32" Name="SellerID" Nullable="false" />
+    <Property Type="Int32" Name="ProductId" Nullable="false" />
+    <Property Type="Int64" Name="Quantity" Nullable="false" />
+    <Property Type="Int64" Name="Rate" Nullable="false" />
+    <Property Type="Boolean" Name="IsBrokerInvolved" Nullable="false" />
+    <Property Type="Int32" Name="BrokerID" Nullable="true" />
+    <Property Type="Int32" Name="Commision" Nullable="false" />
+    <Property Type="Int32" Name="BrokerCommision" Nullable="false" />
+    <Property Type="Int32" Name="Diff" Nullable="false" />
+    <Property Type="Int32" Name="Discount" Nullable="false" />
+    <Property Type="Int32" Name="NetCommission" Nullable="true" />
+    <Property Type="Int32" Name="ShipperID" Nullable="true" />
+    <Property Type="Int32" Name="FileId" Nullable="true" />
+    <Property Type="DateTime" Name="TransactionDatetime" Nullable="false" Precision="23" />
+    <Property Type="String" Name="CommisionType" Nullable="false" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="uspGetProductList_Result">
+    <Property Type="Int32" Name="ProductId" Nullable="false" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="Quality" Nullable="true" />
+    <Property Type="String" Name="origin" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="TransactionDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="TransactionID" Nullable="true" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="98bac542001949a189231bf8a2829669" Name="Diagram1">
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.AppUserRight" Width="1.5" PointX="3" PointY="26.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.AppUser" Width="1.5" PointX="0.75" PointY="25.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.AppUsersImage" Width="1.5" PointX="3" PointY="28.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.BusinessPartner" Width="1.5" PointX="3.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.BusinessPartner_BankDetails" Width="1.5" PointX="6" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.BusinessPartner_ContactNumbers" Width="1.5" PointX="3" PointY="31" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.BusinessPartner_Contacts" Width="1.5" PointX="6" PointY="27.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.BusinessPartner_Emails" Width="1.5" PointX="6" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.Origin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.Product" Width="1.5" PointX="9" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.ShipmentStatu" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.sysdiagram" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.Transaction" Width="1.5" PointX="11.25" PointY="26" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.TransactionsCommission" Width="1.5" PointX="13.5" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.TransactionsContract" Width="1.5" PointX="16.5" PointY="27.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.TransactionsNote" Width="1.5" PointX="16.5" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.TransactionsSecondary" Width="1.5" PointX="16.5" PointY="32.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.TransactionsShipment" Width="1.5" PointX="19.5" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.TransactionsStatu" Width="1.5" PointX="13.5" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.UserEvent" Width="1.5" PointX="3" PointY="45.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.TransactionFile" Width="1.5" PointX="13.5" PointY="33.625" IsExpanded="true" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__AppUserRi__AppUs__0E6E26BF" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__AppUsersI__AppUs__02FC7413" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__BusinessP__bp_Co__1881A0DE" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__BusinessP__bp_Co__1975C517" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__BusinessP__creat__1B5E0D89" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__BusinessP__edite__1C5231C2" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Products__Create__07C12930" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Products__LastUp__08B54D69" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Secondary__tr_cr__63D8CE75" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Secondary__tr_ed__64CCF2AE" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tf_cr__5EDF0F2E" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tf_ed__5FD33367" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tf_ed__60C757A0" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tr_cr__07220AB2" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tr_cr__15702A09" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tr_cr__1B29035F" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tr_cr__22CA2527" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tr_cr__2D47B39A" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tr_cr__2F2FFC0C" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tr_cr__5D2BD0E6" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tr_ed__08162EEB" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tr_ed__16644E42" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tr_ed__1C1D2798" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tr_ed__23BE4960" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tr_ed__30242045" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tr_ed__5E1FF51F" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__UserEvent__UserI__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__BusinessP__bp_ID__762C88DA" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__BusinessP__bp_ID__7908F585" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__BusinessP__bp_ID__7CD98669" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__BusinessP__bp_ID__7FB5F314" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Secondary__tr_se__61F08603" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Secondary__tr_se__62E4AA3C" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tr_bp__5A4F643B" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tr_bp__5B438874" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tr_bu__0FB750B3" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tr_Co__21D600EE" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tr_se__0CDAE408" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tr_sh__062DE679" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tr_pr__5C37ACAD" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Secondary__tr_tr__60FC61CA" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tf_tr__61BB7BD9" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tf_tr__62AFA012" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tr_tr__0169315C" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tr_tr__0AF29B96" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tr_tr__1940BAED" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tr_tr__1EF99443" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tr_tr__2E3BD7D3" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.BusinessPartner_Products" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.transactionViewed" Width="1.5" PointX="3" PointY="35.5" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__transacti__UserI__7869D707" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

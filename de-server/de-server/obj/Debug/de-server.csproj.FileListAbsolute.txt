@@ -1,0 +1,282 @@
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\obj\Debug\de-server.csprojResolveAssemblyReference.cache
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\de-server.dll.config
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\de-server.dll
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\de-server.pdb
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\Antlr3.Runtime.dll
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\EntityFramework.dll
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\EntityFramework.SqlServer.dll
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\Microsoft.AspNet.Identity.Core.dll
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\Microsoft.AspNet.Identity.Owin.dll
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\Microsoft.Owin.dll
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\Microsoft.Owin.Host.SystemWeb.dll
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\Microsoft.Owin.Security.Cookies.dll
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\Microsoft.Owin.Security.dll
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\Microsoft.Owin.Security.Facebook.dll
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\Microsoft.Owin.Security.Google.dll
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\Microsoft.Owin.Security.OAuth.dll
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\Microsoft.Owin.Security.Twitter.dll
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\Microsoft.Web.Infrastructure.dll
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\Newtonsoft.Json.dll
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\Owin.dll
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\System.Net.Http.Formatting.dll
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\System.Web.Helpers.dll
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\System.Web.Http.dll
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\System.Web.Http.Owin.dll
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\System.Web.Http.WebHost.dll
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\System.Web.Mvc.dll
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\System.Web.Optimization.dll
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\System.Web.Razor.dll
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\System.Web.WebPages.Deployment.dll
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\System.Web.WebPages.dll
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\System.Web.WebPages.Razor.dll
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\WebGrease.dll
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\Newtonsoft.Json.xml
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\System.Net.Http.Formatting.xml
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\System.Web.Helpers.xml
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\System.Web.Http.xml
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\System.Web.Http.WebHost.xml
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\System.Web.Mvc.xml
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\System.Web.Optimization.xml
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\System.Web.Razor.xml
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\System.Web.WebPages.xml
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\System.Web.WebPages.Deployment.xml
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\System.Web.WebPages.Razor.xml
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\Antlr3.Runtime.pdb
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\EntityFramework.xml
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\EntityFramework.SqlServer.xml
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\Microsoft.AspNet.Identity.Core.xml
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\Microsoft.AspNet.Identity.Owin.xml
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\Microsoft.Owin.xml
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\Microsoft.Owin.Host.SystemWeb.xml
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\Microsoft.Owin.Security.xml
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\Microsoft.Owin.Security.Facebook.xml
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\Microsoft.Owin.Security.Cookies.xml
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\Microsoft.Owin.Security.OAuth.xml
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\Microsoft.Owin.Security.Google.xml
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\Microsoft.Owin.Security.Twitter.xml
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\System.Web.Http.Owin.xml
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\obj\Debug\de-server.dll
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\obj\Debug\de-server.pdb
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\System.Web.Cors.dll
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\System.Web.Http.Cors.dll
+c:\users\immad.imtiaz\documents\visual studio 2013\Projects\de-server\de-server\bin\System.Web.Http.Cors.xml
+D:\DoniEnterprises\de-server\de-server\bin\de-server.dll.config
+D:\DoniEnterprises\de-server\de-server\bin\de-server.dll
+D:\DoniEnterprises\de-server\de-server\bin\de-server.pdb
+D:\DoniEnterprises\de-server\de-server\bin\Antlr3.Runtime.dll
+D:\DoniEnterprises\de-server\de-server\bin\EntityFramework.dll
+D:\DoniEnterprises\de-server\de-server\bin\EntityFramework.SqlServer.dll
+D:\DoniEnterprises\de-server\de-server\bin\Microsoft.AspNet.Identity.Core.dll
+D:\DoniEnterprises\de-server\de-server\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\DoniEnterprises\de-server\de-server\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Cors.dll
+D:\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.dll
+D:\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.Cookies.dll
+D:\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.dll
+D:\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.Facebook.dll
+D:\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.Google.dll
+D:\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.OAuth.dll
+D:\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.Twitter.dll
+D:\DoniEnterprises\de-server\de-server\bin\Microsoft.Web.Infrastructure.dll
+D:\DoniEnterprises\de-server\de-server\bin\Newtonsoft.Json.dll
+D:\DoniEnterprises\de-server\de-server\bin\Owin.dll
+D:\DoniEnterprises\de-server\de-server\bin\System.IdentityModel.Tokens.Jwt.dll
+D:\DoniEnterprises\de-server\de-server\bin\System.Net.Http.Formatting.dll
+D:\DoniEnterprises\de-server\de-server\bin\System.Web.Cors.dll
+D:\DoniEnterprises\de-server\de-server\bin\System.Web.Helpers.dll
+D:\DoniEnterprises\de-server\de-server\bin\System.Web.Http.Cors.dll
+D:\DoniEnterprises\de-server\de-server\bin\System.Web.Http.dll
+D:\DoniEnterprises\de-server\de-server\bin\System.Web.Http.Owin.dll
+D:\DoniEnterprises\de-server\de-server\bin\System.Web.Http.WebHost.dll
+D:\DoniEnterprises\de-server\de-server\bin\System.Web.Mvc.dll
+D:\DoniEnterprises\de-server\de-server\bin\System.Web.Optimization.dll
+D:\DoniEnterprises\de-server\de-server\bin\System.Web.Razor.dll
+D:\DoniEnterprises\de-server\de-server\bin\System.Web.WebPages.Deployment.dll
+D:\DoniEnterprises\de-server\de-server\bin\System.Web.WebPages.dll
+D:\DoniEnterprises\de-server\de-server\bin\System.Web.WebPages.Razor.dll
+D:\DoniEnterprises\de-server\de-server\bin\WebGrease.dll
+D:\DoniEnterprises\de-server\de-server\bin\Microsoft.AspNet.Identity.Core.xml
+D:\DoniEnterprises\de-server\de-server\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.xml
+D:\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Cors.xml
+D:\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.xml
+D:\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.OAuth.xml
+D:\DoniEnterprises\de-server\de-server\bin\Newtonsoft.Json.xml
+D:\DoniEnterprises\de-server\de-server\bin\System.IdentityModel.Tokens.Jwt.xml
+D:\DoniEnterprises\de-server\de-server\bin\System.Net.Http.Formatting.xml
+D:\DoniEnterprises\de-server\de-server\bin\System.Web.Http.xml
+D:\DoniEnterprises\de-server\de-server\bin\System.Web.Http.Cors.xml
+D:\DoniEnterprises\de-server\de-server\bin\System.Web.Http.Owin.xml
+D:\DoniEnterprises\de-server\de-server\bin\System.Web.Http.WebHost.xml
+D:\DoniEnterprises\de-server\de-server\bin\System.Web.Helpers.xml
+D:\DoniEnterprises\de-server\de-server\bin\System.Web.Mvc.xml
+D:\DoniEnterprises\de-server\de-server\bin\System.Web.Optimization.xml
+D:\DoniEnterprises\de-server\de-server\bin\System.Web.Razor.xml
+D:\DoniEnterprises\de-server\de-server\bin\System.Web.WebPages.xml
+D:\DoniEnterprises\de-server\de-server\bin\System.Web.WebPages.Deployment.xml
+D:\DoniEnterprises\de-server\de-server\bin\System.Web.WebPages.Razor.xml
+D:\DoniEnterprises\de-server\de-server\bin\Antlr3.Runtime.pdb
+D:\DoniEnterprises\de-server\de-server\bin\EntityFramework.xml
+D:\DoniEnterprises\de-server\de-server\bin\EntityFramework.SqlServer.xml
+D:\DoniEnterprises\de-server\de-server\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.Facebook.xml
+D:\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.Cookies.xml
+D:\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.Google.xml
+D:\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.Twitter.xml
+D:\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\DoniEnterprises\de-server\de-server\obj\Debug\de-server.dll
+D:\DoniEnterprises\de-server\de-server\obj\Debug\de-server.pdb
+D:\DoniEnterprises\de-server\de-server\bin\NReco.PdfGenerator.dll
+D:\DoniEnterprises\de-server\de-server\bin\NReco.PdfGenerator.xml
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\de-server.dll.config
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\de-server.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\de-server.pdb
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\Antlr3.Runtime.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\EntityFramework.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\EntityFramework.SqlServer.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\Microsoft.AspNet.Identity.Core.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\Microsoft.AspNet.Identity.Owin.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Cors.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\Microsoft.Owin.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Host.SystemWeb.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.Cookies.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.Facebook.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.Google.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.OAuth.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.Twitter.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\Microsoft.Web.Infrastructure.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\Newtonsoft.Json.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\NReco.PdfGenerator.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\Owin.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\System.IdentityModel.Tokens.Jwt.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\System.Net.Http.Formatting.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\System.Web.Cors.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\System.Web.Helpers.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\System.Web.Http.Cors.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\System.Web.Http.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\System.Web.Http.Owin.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\System.Web.Http.WebHost.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\System.Web.Mvc.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\System.Web.Optimization.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\System.Web.Razor.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\System.Web.WebPages.Deployment.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\System.Web.WebPages.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\System.Web.WebPages.Razor.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\WebGrease.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\Microsoft.AspNet.Identity.Core.xml
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\Microsoft.AspNet.Identity.Owin.xml
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\Microsoft.Owin.xml
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Cors.xml
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Host.SystemWeb.xml
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.xml
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.OAuth.xml
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\Newtonsoft.Json.xml
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\NReco.PdfGenerator.xml
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\System.IdentityModel.Tokens.Jwt.xml
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\System.Net.Http.Formatting.xml
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\System.Web.Http.xml
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\System.Web.Http.Cors.xml
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\System.Web.Http.Owin.xml
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\System.Web.Http.WebHost.xml
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\System.Web.Helpers.xml
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\System.Web.Mvc.xml
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\System.Web.Optimization.xml
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\System.Web.Razor.xml
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\System.Web.WebPages.xml
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\System.Web.WebPages.Deployment.xml
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\System.Web.WebPages.Razor.xml
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\Antlr3.Runtime.pdb
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\EntityFramework.xml
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\EntityFramework.SqlServer.xml
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.Facebook.xml
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.Cookies.xml
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.Google.xml
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.Twitter.xml
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\obj\Debug\de-server.dll
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\obj\Debug\de-server.pdb
+G:\DhoniEnterprises\DhoniEnterprises\de-server\de-server\obj\Debug\de-server.csprojResolveAssemblyReference.cache
+D:\DoniEnterprises\de-server\de-server\obj\Debug\de-server.csprojResolveAssemblyReference.cache
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\de-server.dll.config
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\de-server.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\de-server.pdb
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\Antlr3.Runtime.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\EntityFramework.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\EntityFramework.SqlServer.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Cors.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\Newtonsoft.Json.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\NReco.PdfGenerator.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\Owin.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\System.Net.Http.Formatting.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\System.Web.Cors.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\System.Web.Helpers.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\System.Web.Http.Cors.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\System.Web.Http.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\System.Web.Http.Owin.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\System.Web.Http.WebHost.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\System.Web.Mvc.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\System.Web.Optimization.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\System.Web.Razor.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\System.Web.WebPages.Deployment.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\System.Web.WebPages.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\System.Web.WebPages.Razor.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\WebGrease.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.xml
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Cors.xml
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.xml
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\Newtonsoft.Json.xml
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\NReco.PdfGenerator.xml
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\System.Net.Http.Formatting.xml
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\System.Web.Http.xml
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\System.Web.Http.Cors.xml
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\System.Web.Http.Owin.xml
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\System.Web.Http.WebHost.xml
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\System.Web.Helpers.xml
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\System.Web.Mvc.xml
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\System.Web.Optimization.xml
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\System.Web.Razor.xml
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\System.Web.WebPages.xml
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\System.Web.WebPages.Deployment.xml
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\System.Web.WebPages.Razor.xml
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\Antlr3.Runtime.pdb
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\EntityFramework.xml
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\EntityFramework.SqlServer.xml
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\obj\Debug\de-server.dll
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\obj\Debug\de-server.pdb
+C:\Users\emad\Dropbox\DoniEnterprises\de-server\de-server\obj\Debug\de-server.csprojResolveAssemblyReference.cache
