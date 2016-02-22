@@ -35,8 +35,7 @@ namespace de_server.Controllers
         {
             using(var context = new DhoniEnterprisesEntities())
             {
-                try
-                {
+               
                     int userId = BasicAuthHttpModule.AuthenticateUser(viewModel.Username, viewModel.Password);
                     if (userId != -1)
                     {
@@ -45,22 +44,7 @@ namespace de_server.Controllers
                     else
                     {
                         return Ok(new { success = false, message = "Invalid Password/email" });
-                    }
-
-                    
-                }
-                catch(Exception ex)
-                {
-                    
-                    if(ex.Message != "Sequence contains no elements"){
-                        return Ok(new { success = false, message = ex.Message });                        
-                    }
-                    else{
-                        return Ok(new { success = false, message = "Invalid Password/email" });
-                    }              
-                    
-                }
-                
+                    }           
 
             }
 
@@ -71,19 +55,14 @@ namespace de_server.Controllers
         [HttpGet]
         public IHttpActionResult getUserDetails(string email)
         {
-            try
-            {
+            
                 using (var context = new DhoniEnterprisesEntities())
                 {
                     var curUser = DataTableSerializer.LINQToDataTable(context.uspGetAppUserByEmail(email));
                     return Ok(new { success = true, user = curUser});
                     
                 }
-            }
-            catch (Exception ex)
-            {
-                return Ok(new { success = false, message = ex.Message });
-            }
+          
         }
 
         [Authorize]
@@ -91,18 +70,13 @@ namespace de_server.Controllers
         [HttpGet]
         public IHttpActionResult GetAppUsers()
         {
-            try
-            {
+            
                 using (var context = new DhoniEnterprisesEntities())
                 {
                     var allUsers = DataTableSerializer.LINQToDataTable(context.getAllUsers());
                     return Ok(new { success = true, user = allUsers });
                 }
-            }
-            catch (Exception ex)
-            {
-                return Ok(new { success = false, message = ex.Message }); 
-            }
+         
             
         }
 
