@@ -8,9 +8,11 @@ using Newtonsoft.Json.Linq;
 using de_server.App_Config;
 using de_server.Entity_Framework;
 using de_server.App_Constants;
+using de_server.Filters;
 
 namespace de_server.Controllers
 {
+    [DoniApiExceptionFilter]
     [Authorize]
     public class OriginController : ApiController
     {
@@ -71,8 +73,7 @@ namespace de_server.Controllers
         [HttpGet]
         public IHttpActionResult GetAllOrigin()
         {
-            try
-            {
+          
                 using (var context = new DhoniEnterprisesEntities())
                 {
 
@@ -83,11 +84,7 @@ namespace de_server.Controllers
                         origins = origins
                     });
                 }
-            }
-            catch (Exception ex)
-            {
-                return Ok(new { success = false, message = ex.Message.ToString() });
-            }
+          
         }
 
     }

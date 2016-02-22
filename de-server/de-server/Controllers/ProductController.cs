@@ -15,10 +15,11 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using de_server.Reporting;
 using NReco.PdfGenerator;
+using de_server.Filters;
 
 namespace de_server.Controllers
 {
-    //[EnableCors(origins: "*", headers: "*", methods: "*")]
+    [DoniApiExceptionFilter]    
     [Authorize]
     public class ProductController : ApiController
     {
@@ -63,8 +64,7 @@ namespace de_server.Controllers
         public HttpResponseMessage GetAllProductPdf()
         {
             HttpResponseMessage result = null;
-            try
-            {
+           
                 using (var context = new DhoniEnterprisesEntities())
                 {
                     var data = context.uspGetProductListPDF();
@@ -105,12 +105,7 @@ namespace de_server.Controllers
                 }
 
                 
-            }
-            catch
-            {
-                result.StatusCode = HttpStatusCode.InternalServerError;
-                return result;
-            }
+          
             
         }
 
@@ -120,8 +115,7 @@ namespace de_server.Controllers
         {
             using (var context = new DhoniEnterprisesEntities())
             {
-                try
-                {
+               
                     int userID = BasicAuthHttpModule.getCurrentUserId();
                     de_server.Models.Product product = Product["product"].ToObject<de_server.Models.Product>();
                     if (userID != -1)
@@ -133,11 +127,7 @@ namespace de_server.Controllers
                     {
                         return NotFound();
                     }
-                }
-                catch (Exception ex)
-                {
-                    return Ok(new { success = false, message = ex.Message });
-                }
+             
 
             }
 
@@ -149,8 +139,7 @@ namespace de_server.Controllers
         {
             using (var context = new DhoniEnterprisesEntities())
             {
-                try
-                {
+                
                     int userID = BasicAuthHttpModule.getCurrentUserId();
                     de_server.Models.Product product = newProduct["product"].ToObject<de_server.Models.Product>();
                     if(userID != -1){
@@ -160,11 +149,7 @@ namespace de_server.Controllers
                     else{
                         return NotFound();
                     }
-                }
-                catch (Exception ex)
-                {
-                    return Ok(new { success = false, message = ex.Message });
-                }
+              
                 
             }
             
@@ -175,17 +160,12 @@ namespace de_server.Controllers
         {
             using (var context = new DhoniEnterprisesEntities())
             {
-                try
-                {
+                
                     
                     var result = (context.uspGetSingleProduct(id).AsEnumerable()).FirstOrDefault();
                     de_server.Models.Product prod = new de_server.Models.Product(result.ProductId, result.ProductName, result.origin, result.quality, result.purity, result.moisture, result.splits, result.weaveled, result.damaged, result.foreignMatter, result.greenDamaged, result.otherColor, result.wrinkled);
                     return Ok(new { success = true, message = "found", product = prod });
-                }
-                catch (Exception ex)
-                {
-                    return Ok(new { success = false, message = ex.Message });
-                }
+               
             }
         }
 
@@ -195,16 +175,10 @@ namespace de_server.Controllers
         {
             using (var context = new DhoniEnterprisesEntities())
             {
-                try
-                {
+                
                     context.uspDeleteProduct(id);
                     return Ok(new { success = true, message = "Product Successfully deleted!" });
-                }
-                catch (Exception ex)
-                {
-                    return Ok(new { success = false, message = "This Product is used by a transaction and can not be deleted" });
-                }
-                return Ok(new { success = false, message = "Error Deleteing Product" });
+              
             }
         }
 

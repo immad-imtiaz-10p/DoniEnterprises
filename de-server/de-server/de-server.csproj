@@ -419,6 +419,7 @@
     <Compile Include="Entity Framework\uspTransactionNotesCRUD_Result.cs">
       <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
+    <Compile Include="Filters\DoniApiExceptionFilterAttribute.cs" />
     <Compile Include="Filters\RequireHttpsAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

@@ -9,17 +9,19 @@ using de_server.App_Config;
 using de_server.Entity_Framework;
 using de_server.Models;
 using Newtonsoft.Json.Linq;
+using de_server.Filters;
 
 namespace de_server.Controllers
 {
+    [DoniApiExceptionFilter]
+    [Authorize]
     public class AppDropDownController : ApiController
     {
         [Route("getBPDropDown")]
         [HttpPost]
         public IHttpActionResult getBPDropDown([FromBody] JObject bpType)
         {
-            try
-            {
+           
                 var BPType = Convert.ToString(bpType["type"]);
                 DataTable data = new DataTable();
                 using (var context = new DhoniEnterprisesEntities())
@@ -48,11 +50,7 @@ namespace de_server.Controllers
                         type = BPType
                     });
                 }
-            }
-            catch (Exception ex)
-            {
-                return Ok(new { success = false, message = ex.Message });
-            }
+            
         }
     }
 }

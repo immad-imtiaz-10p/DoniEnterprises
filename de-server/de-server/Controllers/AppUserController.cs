@@ -12,10 +12,11 @@ using de_server.App_Config;
 using System.Threading.Tasks;
 using de_server.Models;
 using Newtonsoft.Json.Linq;
+using de_server.Filters;
 
 namespace de_server.Controllers
 {
-    
+    [DoniApiExceptionFilter]   
     public class AppUserController : ApiController
     {
         [Route("changePassword")]

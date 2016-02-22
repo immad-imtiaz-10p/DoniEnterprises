@@ -13,9 +13,12 @@ using Newtonsoft.Json.Linq;
 using System.Web;
 using System.IO;
 using System.Net.Http.Headers;
+using de_server.Filters;
 
 namespace de_server.Controllers
 {
+    [DoniApiExceptionFilter]
+    [Authorize]
     public class TransactionController : ApiController
     {
 
@@ -25,8 +28,7 @@ namespace de_server.Controllers
         [HttpGet]
         public IHttpActionResult getTransactionTable()
         {
-            try
-            {
+            
                 DataTable transactions = new DataTable();
                 using (var context = new DhoniEnterprisesEntities())
                 {
@@ -37,11 +39,7 @@ namespace de_server.Controllers
                         transactions = transactions
                     });
                 }
-            }
-            catch (Exception ex)
-            {
-                return Ok(new { success = false, message = ex.Message });
-            }
+         
         }
 
         #endregion
@@ -52,8 +50,7 @@ namespace de_server.Controllers
         [HttpGet]
         public IHttpActionResult getSingleTransaction(long id)
         {
-            try
-            {
+            
                 DataTable transaction = new DataTable();
                 using (var context = new DhoniEnterprisesEntities())
                 {
@@ -78,11 +75,7 @@ namespace de_server.Controllers
                         notes = DataTableSerializer.LINQToDataTable(notes)
                     });
                 }
-            }
-            catch (Exception ex)
-            {
-                return Ok(new { success = false, message = ex.Message });
-            }
+          
         }
 
         [Route("addNewTransaction/basic")]
@@ -90,8 +83,7 @@ namespace de_server.Controllers
         public IHttpActionResult PostaddNewTransactionBasic([FromBody] JObject transaction)
         {
             var trade = transaction["newTransaction"];
-            try
-            {
+           
                 using (var context = new DhoniEnterprisesEntities())
                 {
                     var id = context.uspAddTransactionBasic(
@@ -115,19 +107,14 @@ namespace de_server.Controllers
                         );
                     return Ok(new { success = true, message = "Transaction added successfully!", transactionId = id.FirstOrDefault() });
                 }
-            }
-            catch (Exception ex)
-            {
-                return Ok(new { success = false, message = ex.Message.ToString() });
-            }
+         
         }
 
         [Route("TransactionBasicCrud")]
         [HttpPost]
         public IHttpActionResult PostTransactionBasicCRUD([FromBody] JObject transaction)
         {
-            try
-            {
+           
                 var trade = transaction["data"];
                 var tr_transactionID = (long?)(trade["tr_transactionID"]);
                 var tr_date = (DateTime?)(trade["tr_date"]);
@@ -258,13 +245,6 @@ namespace de_server.Controllers
                 }
 
 
-
-            }
-            catch (Exception ex)
-            {
-                return Ok(new { success = false, message = ex.Message.ToString() });
-            }
-
         }
         #endregion
 
@@ -274,8 +254,7 @@ namespace de_server.Controllers
         [HttpPost]
         public IHttpActionResult PostTransactionCommissionCrud([FromBody] JObject commission)
         {
-            try
-            {
+            
                 var tr_commission = commission["data"];
                 var tr_transactionID = (long?)(tr_commission["tr_transactionID"]);
                 var tr_brokerInvolved = Convert.ToBoolean(tr_commission["tr_brokerInvolved"]);
@@ -347,11 +326,7 @@ namespace de_server.Controllers
                     }
                 }
 
-            }
-            catch (Exception ex)
-            {
-                return Ok(new { success = false, message = ex.Message.ToString() });
-            }
+          
         }
 
         [Route("getCommissionTransaction")]
@@ -386,8 +361,7 @@ namespace de_server.Controllers
         [HttpGet]
         public IHttpActionResult getTransactionNotesList(long transactionId)
         {
-            try
-            {
+            
                 using (var context = new DhoniEnterprisesEntities())
                 {
                     
@@ -398,11 +372,7 @@ namespace de_server.Controllers
                         notes = Notes
                     });
                 }
-            }
-            catch (Exception ex)
-            {
-                return Ok(new { success = false, message = ex.Message.ToString() });
-            }
+           
         }
         
         [Route("TransactionNotesCrud")]
@@ -459,8 +429,7 @@ namespace de_server.Controllers
         [HttpGet]
         public IHttpActionResult GetTransactionShipment(long transactionId)
         {
-            try
-            {
+            
                 using (var context = new DhoniEnterprisesEntities())
                 {
 
@@ -471,11 +440,7 @@ namespace de_server.Controllers
                         shipment = shipment
                     });
                 }
-            }
-            catch (Exception ex)
-            {
-                return Ok(new { success = false, message = ex.Message.ToString() });
-            }
+           
                     
         }
 
@@ -600,8 +565,7 @@ namespace de_server.Controllers
         [HttpGet]
         public IHttpActionResult getSecondaryTransaction(long id)
         {
-            try
-            {
+            
                 DataTable transaction = new DataTable();
                 using (var context = new DhoniEnterprisesEntities())
                 {
@@ -613,11 +577,7 @@ namespace de_server.Controllers
                         sec = DataTableSerializer.LINQToDataTable(sec)
                     });
                 }
-            }
-            catch (Exception ex)
-            {
-                return Ok(new { success = false, message = ex.Message });
-            }
+           
         }
 
         [Route("TransactionSecondaryCrud")]
@@ -715,8 +675,6 @@ namespace de_server.Controllers
         [HttpGet]
         public IHttpActionResult GetTransactionContract(long transactionId)
         {
-            try
-            {
                 using (var context = new DhoniEnterprisesEntities())
                 {
                     var contract = DataTableSerializer.LINQToDataTable(context.uspGetTransactionContract(transactionId));
@@ -726,11 +684,7 @@ namespace de_server.Controllers
                         contract = contract
                     });
                 }
-            }
-            catch (Exception ex)
-            {
-                return Ok(new { success = false, message = ex.Message.ToString() });
-            }
+          
         }
 
         [Route("TransactionContractCrud")]
@@ -791,8 +745,7 @@ namespace de_server.Controllers
         [HttpGet]
         public IHttpActionResult GetTransactionStatus(long transactionId)
         {
-            try
-            {
+           
                 using (var context = new DhoniEnterprisesEntities())
                 {
                     var status = DataTableSerializer.LINQToDataTable(context.uspGetTransactionStatus(transactionId));
@@ -802,11 +755,7 @@ namespace de_server.Controllers
                         status = status
                     });
                 }
-            }
-            catch (Exception ex)
-            {
-                return Ok(new { success = false, message = ex.Message.ToString() });
-            }
+           
         }
 
         [Route("TransactionStatusCrud")]
@@ -864,8 +813,7 @@ namespace de_server.Controllers
         [Route("getTransactionFiles")]
         public IHttpActionResult getTransactionFiles(long transactionId)
         {
-            try
-            {
+           
                 using (var context = new DhoniEnterprisesEntities())
                 {
                     var files = context.uspTransactionFileGetAll(transactionId);
@@ -876,19 +824,14 @@ namespace de_server.Controllers
                     });
 
                 }
-            }
-            catch (Exception ex)
-            {
-                return Ok(new { success = false, message = ex.Message.ToString() });
-            }
+          
         }
 
         [HttpGet]
         [Route("deleteTransactionFile")]
         public IHttpActionResult deleteTransactionFile(long fileId)
         {
-            try
-            {
+           
                 using (var context = new DhoniEnterprisesEntities())
                 {
                     context.uspTransactionFileDelete(fileId);
@@ -899,11 +842,7 @@ namespace de_server.Controllers
 
                     });
                 }
-            }
-            catch (Exception ex)
-            {
-                return Ok(new { success = false, message = ex.Message.ToString() });
-            }
+         
         }
 
         [HttpGet]
@@ -912,8 +851,6 @@ namespace de_server.Controllers
         {
             HttpResponseMessage response;
 
-            try
-            {
                 using (var content = new DhoniEnterprisesEntities())
                 {
                     var result = content.uspTransactionFileGetSingle(fileID).FirstOrDefault();
@@ -929,11 +866,7 @@ namespace de_server.Controllers
                     return response;
 
                 }
-            }
-            catch (Exception ex)
-            {
-                return response = new HttpResponseMessage(HttpStatusCode.OK);
-            }
+         
         }
 
 
@@ -942,8 +875,7 @@ namespace de_server.Controllers
         [Route("uploadTransactionDocument")]
         public IHttpActionResult uploadTransactionDocument(string fileName, long transactionId)
         {
-            try
-            {
+            
                 if (HttpContext.Current.Request.Files.AllKeys.Any())
                 {
                     var httpPostedFile = HttpContext.Current.Request.Files[0];
@@ -970,11 +902,7 @@ namespace de_server.Controllers
                 }
 
                 return Ok(new { success = false, message = "File was not uploaded due to some error" });
-            }
-            catch (Exception ex)
-            {
-                return Ok(new { success = false, message = ex.Message.ToString() });
-            }
+        
 
 
         }
@@ -987,8 +915,7 @@ namespace de_server.Controllers
         [HttpGet]
         public IHttpActionResult GetTransactionByParameter(string parameter, string textInput, DateTime? dateInput)
         {
-            try
-            {
+            
                 using (var context = new DhoniEnterprisesEntities())
                 {
                     var transactions = DataTableSerializer.LINQToDataTable(context.uspGetTransactionByParameter(parameter, textInput, (DateTime?)(dateInput)));
@@ -998,11 +925,7 @@ namespace de_server.Controllers
                         transactions = transactions
                     });
                 }
-            }
-            catch (Exception ex)
-            {
-                return Ok(new { success = false, message = ex.Message.ToString() });
-            }
+           
         }
 
         #endregion

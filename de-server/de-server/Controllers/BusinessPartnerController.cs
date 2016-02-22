@@ -26,8 +26,7 @@ namespace de_server.Controllers
         {
 
             var generalDetails = businessPartner["businessPartner"];
-            try
-            {
+        
                 using (var context = new DhoniEnterprisesEntities())
                 {
                     int userID = BasicAuthHttpModule.getCurrentUserId();
@@ -50,11 +49,7 @@ namespace de_server.Controllers
                         return Ok(new { success = false, message = "No User Logged In!" });
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                return Ok(new { success = false, message = ex.Message.ToString() });
-            }
+         
 
 
         }
@@ -65,16 +60,10 @@ namespace de_server.Controllers
         {
             using (var context = new DhoniEnterprisesEntities())
             {
-                try
-                {
+              
                     context.uspDeleteBusinessPartner(id);
                     return Ok(new { success = true, message = "Business Partner Successfully deleted!" });
-                }
-                catch (Exception ex)
-                {
-                    return Ok(new { success = false, message = ex.Message });
-                }
-                return Ok(new { success = false, message = "Error Deleteing Product" });
+               
             }
         }
 
@@ -134,8 +123,7 @@ namespace de_server.Controllers
         [HttpGet]
         public IHttpActionResult GetBusinessPartnerFull(long id)
         {
-            try
-            {
+            
                 DataTable general = new DataTable();
                 DataTable bankInfo = new DataTable();
                 DataTable contactNumbers = new DataTable();
@@ -161,11 +149,7 @@ namespace de_server.Controllers
                         products = products
                     });
                 }
-            }
-            catch (Exception ex)
-            {
-                return Ok(new { success = false, message = ex.Message });
-            }
+         
         }
 
 
@@ -179,16 +163,10 @@ namespace de_server.Controllers
         {
             using (var context = new DhoniEnterprisesEntities())
             {
-                try
-                {
+                
                     context.uspDeleteBusinessPartnerBankDetails(id);
                     return Ok(new { success = true, message = "Business Partner Bank Details Successfully Deleted!" });
-                }
-                catch (Exception ex)
-                {
-                    return Ok(new { success = false, message = ex.Message });
-                }
-                return Ok(new { success = false, message = "Error Deleteing Product" });
+               
             }
         }
 
@@ -199,8 +177,7 @@ namespace de_server.Controllers
             var ba = bankDetails["bankDetails"];
 
 
-            try
-            {
+           
                 using (var context = new DhoniEnterprisesEntities())
                 {
                     int userID = BasicAuthHttpModule.getCurrentUserId();
@@ -214,11 +191,7 @@ namespace de_server.Controllers
                         return Ok(new { success = false, message = "No User Logged In!" });
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                return Ok(new { success = false, message = ex.Message });
-            }
+          
         }
 
         #endregion
@@ -231,16 +204,10 @@ namespace de_server.Controllers
         {
             using (var context = new DhoniEnterprisesEntities())
             {
-                try
-                {
+                
                     context.uspDeleteBusinessPartnerContactNumber(id);
                     return Ok(new { success = true, message = "Contact Number Successfully Deleted!" });
-                }
-                catch (Exception ex)
-                {
-                    return Ok(new { success = false, message = ex.Message });
-                }
-                return Ok(new { success = false, message = "Error Deleteing Product" });
+               
             }
         }
 
@@ -261,8 +228,7 @@ namespace de_server.Controllers
             }
 
 
-            try
-            {
+            
                 using (var context = new DhoniEnterprisesEntities())
                 {
                     int userID = BasicAuthHttpModule.getCurrentUserId();
@@ -276,11 +242,7 @@ namespace de_server.Controllers
                         return Ok(new { success = false, message = "No User Logged In!" });
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                return Ok(new { success = false, message = ex.Message });
-            }
+           
         }
 
        
@@ -296,16 +258,10 @@ namespace de_server.Controllers
         {
             using (var context = new DhoniEnterprisesEntities())
             {
-                try
-                {
+               
                     context.uspDeleteBusinessPartnerContact(id);
                     return Ok(new { success = true, message = "Contact Person Successfully Deleted!" });
-                }
-                catch (Exception ex)
-                {
-                    return Ok(new { success = false, message = ex.Message });
-                }
-                return Ok(new { success = false, message = "Error Deleteing Product" });
+             
             }
         }
 
@@ -319,8 +275,7 @@ namespace de_server.Controllers
         {
 
             var cp = contactPerson["contactPerson"];
-            try
-            {
+           
                 using (var context = new DhoniEnterprisesEntities())
                 {
                     int userID = BasicAuthHttpModule.getCurrentUserId();
@@ -347,11 +302,7 @@ namespace de_server.Controllers
                         return Ok(new { success = false, message = "No User Logged In!" });
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                return Ok(new { success = false, message = ex.Message });
-            }
+         
 
 
         }
@@ -368,18 +319,13 @@ namespace de_server.Controllers
         {
             using (var context = new DhoniEnterprisesEntities())
             {
-                try
-                {
+                
                     var bpProd = Product["bpProduct"];
                     var bpId = Convert.ToInt64(bpProd["bpId"]);
                     var pId = Convert.ToInt32(bpProd["product"]);
                     context.uspAddBusinessPartnerProducts(bpId,pId);
                     return Ok(new { success = true, message = "Business Partner product added successfully !" });
-                }
-                catch (Exception ex)
-                {
-                    return Ok(new { success = false, message = ex.Message });
-                }
+               
 
             }
         }
@@ -390,19 +336,14 @@ namespace de_server.Controllers
         {
             using (var context = new DhoniEnterprisesEntities())
             {
-                try
-                {
+               
                     var bpProd = Product["bpProduct"];
                     var bpId = Convert.ToInt64(bpProd["bpId"]);
                     var pId = Convert.ToInt32(bpProd["product"]);
                     context.uspDeleteBusinessPartnerProducts(bpId, pId);
                     return Ok(new { success = true, message = "Business Partner product successfully deleted!" });
 
-                }
-                catch (Exception ex)
-                {
-                    return Ok(new { success = false, message = ex.Message });
-                }
+              
             }
             
         }
