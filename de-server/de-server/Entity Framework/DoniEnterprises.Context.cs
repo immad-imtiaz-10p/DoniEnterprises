@@ -1749,5 +1749,22 @@ namespace de_server.Entity_Framework
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGetRecentlyViewedItem_Result>("uspGetRecentlyViewedItem", userIDParameter);
         }
+    
+        public virtual int AppUserChangePasword(Nullable<int> userID, string password, Nullable<System.Guid> guID)
+        {
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
+    
+            var guIDParameter = guID.HasValue ?
+                new ObjectParameter("guID", guID) :
+                new ObjectParameter("guID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AppUserChangePasword", userIDParameter, passwordParameter, guIDParameter);
+        }
     }
 }

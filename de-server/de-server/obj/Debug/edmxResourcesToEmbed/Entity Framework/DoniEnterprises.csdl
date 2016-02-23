@@ -1692,6 +1692,11 @@
     <FunctionImport Name="uspGetRecentlyViewedItem" ReturnType="Collection(DhoniEnterprisesModel.uspGetRecentlyViewedItem_Result)">
       <Parameter Name="UserID" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="AppUserChangePasword">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="guID" Mode="In" Type="Guid" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="getAllUsers_Result">
     <Property Type="String" Name="firstName" Nullable="true" MaxLength="50" />

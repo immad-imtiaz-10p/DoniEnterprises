@@ -21,11 +21,44 @@ namespace de_server.Controllers
     {
         [Route("changePassword")]
         [HttpPost]
-        public HttpResponseMessage changePassword([FromBody] JObject passDetails)
+        public IHttpActionResult changePassword([FromBody] JObject passDetails)
         {
             using (var context = new DhoniEnterprisesEntities())
             {
-                return null;
+                
+                var passwordDetails = passDetails["passwordDetails"];
+                var oldPass = passwordDetails["oldPassword"];
+                var newPass = passwordDetails["newPassword"];
+                var confirmPass = passwordDetails["confirmPassword"];
+                if (Convert.ToString(newPass) != Convert.ToString(confirmPass))
+                {
+                    return Ok(new {success = false, message = "Passwords do not match"});
+                }
+                
+                
+                int userID = BasicAuthHttpModule.getCurrentUserId();
+                
+                var userDetails = (from user in context.AppUsers where user.UserID.Equals(userID) select user).FirstOrDefault();
+                string hashedPassword = Security.Security.HashSHA1(Convert.ToString(oldPass) + Convert.ToString(userDetails.UserGuid) );
+                if (hashedPassword != userDetails.UserPass)
+                {
+                    return Ok(new {success = false, message = "Passwords is not correct!"});
+                }
+                else
+                {
+                    Guid userGuid = System.Guid.NewGuid();
+                    string newHashedPass = Security.Security.HashSHA1(Convert.ToString(newPass) + userGuid );
+                    context.AppUserChangePasword(userID, newHashedPass, userGuid);
+                    return Ok(new { success = true, message = "Your Password has been Changed!" });
+                }
+               
+
+                
+                
+                
+
+                
+                
             }   
         }
 
