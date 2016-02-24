@@ -424,3 +424,7 @@ G:\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.MicrosoftAcco
 G:\DoniEnterprises\de-server\de-server\obj\Debug\de-server.csprojResolveAssemblyReference.cache
 G:\DoniEnterprises\de-server\de-server\obj\Debug\de-server.dll
 G:\DoniEnterprises\de-server\de-server\obj\Debug\de-server.pdb
+D:\DoniEnterprises\DoniEnterprises\de-server\de-server\bin\Microsoft.AspNet.SignalR.Core.dll
+D:\DoniEnterprises\DoniEnterprises\de-server\de-server\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+D:\DoniEnterprises\DoniEnterprises\de-server\de-server\bin\Microsoft.AspNet.SignalR.Core.xml
+D:\DoniEnterprises\DoniEnterprises\de-server\de-server\bin\Microsoft.AspNet.SignalR.SystemWeb.xml

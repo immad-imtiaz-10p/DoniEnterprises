@@ -24,7 +24,7 @@ namespace de_server
             
             //From the tutotial
             HttpConfiguration config = new HttpConfiguration();
-            
+            app.MapSignalR();
             ConfigureAuth(app);
             WebApiConfig.Register(config);
             app.UseCors(CorsOptions.AllowAll);
