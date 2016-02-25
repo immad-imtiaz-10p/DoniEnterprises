@@ -51,8 +51,8 @@
     <NavigationProperty Name="TransactionsStatus3" Relationship="Self.FK__Transacti__tr_ed__23BE4960" FromRole="AppUsers" ToRole="TransactionsStatus" />
     <NavigationProperty Name="TransactionsContracts1" Relationship="Self.FK__Transacti__tr_ed__30242045" FromRole="AppUsers" ToRole="TransactionsContract" />
     <NavigationProperty Name="Transactions1" Relationship="Self.FK__Transacti__tr_ed__5E1FF51F" FromRole="AppUsers" ToRole="Transactions" />
+    <NavigationProperty Name="transactionVieweds" Relationship="Self.FK__transacti__UserI__7869D707" FromRole="AppUsers" ToRole="transactionViewed" />
     <NavigationProperty Name="UserEvents" Relationship="Self.FK__UserEvent__UserI__2E1BDC42" FromRole="AppUsers" ToRole="UserEvents" />
-    <NavigationProperty Name="transactionVieweds" Relationship="DhoniEnterprisesModel.FK__transacti__UserI__7869D707" FromRole="AppUser" ToRole="transactionViewed" />
   </EntityType>
   <EntityType Name="AppUsersImage">
     <Key>
@@ -382,6 +382,18 @@
     <NavigationProperty Name="AppUser2" Relationship="Self.FK__Transacti__tr_ed__1C1D2798" FromRole="TransactionsStatus" ToRole="AppUsers" />
     <NavigationProperty Name="AppUser3" Relationship="Self.FK__Transacti__tr_ed__23BE4960" FromRole="TransactionsStatus" ToRole="AppUsers" />
     <NavigationProperty Name="Transaction" Relationship="Self.FK__Transacti__tr_tr__1940BAED" FromRole="TransactionsStatus" ToRole="Transactions" />
+  </EntityType>
+  <EntityType Name="transactionViewed">
+    <Key>
+      <PropertyRef Name="tr_visitedID" />
+    </Key>
+    <Property Name="tr_visitedID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tr_visitedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="tr_pageVisitedState" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="tr_pageVisitedParams" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="tr_pageTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UserID" Type="Int32" />
+    <NavigationProperty Name="AppUser" Relationship="Self.FK__transacti__UserI__7869D707" FromRole="transactionViewed" ToRole="AppUsers" />
   </EntityType>
   <EntityType Name="UserEvent">
     <Key>
@@ -730,6 +742,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__transacti__UserI__7869D707">
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="0..1" />
+    <End Role="transactionViewed" Type="Self.transactionViewed" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="transactionViewed">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__UserEvent__UserI__2E1BDC42">
     <End Role="AppUsers" Type="Self.AppUser" Multiplicity="0..1" />
     <End Role="UserEvents" Type="Self.UserEvent" Multiplicity="*" />
@@ -1018,6 +1042,7 @@
     <EntitySet Name="TransactionsSecondaries" EntityType="Self.TransactionsSecondary" />
     <EntitySet Name="TransactionsShipments" EntityType="Self.TransactionsShipment" />
     <EntitySet Name="TransactionsStatus" EntityType="Self.TransactionsStatu" />
+    <EntitySet Name="transactionVieweds" EntityType="Self.transactionViewed" />
     <EntitySet Name="UserEvents" EntityType="Self.UserEvent" />
     <EntitySet Name="TransactionFiles" EntityType="Self.TransactionFile" />
     <AssociationSet Name="FK__AppUserRi__AppUs__0E6E26BF" Association="Self.FK__AppUserRi__AppUs__0E6E26BF">
@@ -1124,6 +1149,10 @@
       <End Role="AppUsers" EntitySet="AppUsers" />
       <End Role="Transactions" EntitySet="Transactions" />
     </AssociationSet>
+    <AssociationSet Name="FK__transacti__UserI__7869D707" Association="Self.FK__transacti__UserI__7869D707">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="transactionViewed" EntitySet="transactionVieweds" />
+    </AssociationSet>
     <AssociationSet Name="FK__UserEvent__UserI__2E1BDC42" Association="Self.FK__UserEvent__UserI__2E1BDC42">
       <End Role="AppUsers" EntitySet="AppUsers" />
       <End Role="UserEvents" EntitySet="UserEvents" />
@@ -1226,6 +1255,11 @@
       <Parameter Name="designation" Mode="In" Type="String" />
       <Parameter Name="isAdmin" Mode="In" Type="Boolean" />
     </FunctionImport>
+    <FunctionImport Name="AppUserChangePasword">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="guID" Mode="In" Type="Guid" />
+    </FunctionImport>
     <FunctionImport Name="getAllUsers" ReturnType="Collection(DhoniEnterprisesModel.getAllUsers_Result)" />
     <FunctionImport Name="NewUserLoginDetails">
       <Parameter Name="UserName" Mode="In" Type="String" />
@@ -1322,6 +1356,13 @@
       <Parameter Name="greenDamaged" Mode="In" Type="Int32" />
       <Parameter Name="otherColor" Mode="In" Type="Int32" />
       <Parameter Name="wrinkled" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="uspAddRecentViewedItem">
+      <Parameter Name="tr_visitedOn" Mode="In" Type="DateTime" />
+      <Parameter Name="tr_pageVisitedState" Mode="In" Type="String" />
+      <Parameter Name="tr_pageVisitedParams" Mode="In" Type="String" />
+      <Parameter Name="tr_pageTitle" Mode="In" Type="String" />
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="uspAddTransaction">
       <Parameter Name="tr_bpBuyerID" Mode="In" Type="Int64" />
@@ -1447,6 +1488,9 @@
     <FunctionImport Name="uspGetProductTagInput" ReturnType="Collection(DhoniEnterprisesModel.uspGetProductTagInput_Result)">
       <Parameter Name="input" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="uspGetRecentlyViewedItem" ReturnType="Collection(DhoniEnterprisesModel.uspGetRecentlyViewedItem_Result)">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+    </FunctionImport>
     <FunctionImport Name="uspGetSecondaryTransaction" ReturnType="Collection(DhoniEnterprisesModel.uspGetSecondaryTransaction_Result)">
       <Parameter Name="tr_transactionID" Mode="In" Type="Int64" />
     </FunctionImport>
@@ -1456,6 +1500,11 @@
     <FunctionImport Name="uspGetTableFilters" />
     <FunctionImport Name="uspGetTransaction" ReturnType="Collection(DhoniEnterprisesModel.uspGetTransaction_Result)">
       <Parameter Name="tr_transactionID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="uspGetTransactionByParameter" ReturnType="Collection(DhoniEnterprisesModel.uspGetTransactionByParameter_Result)">
+      <Parameter Name="parameter" Mode="In" Type="String" />
+      <Parameter Name="textInput" Mode="In" Type="String" />
+      <Parameter Name="dateInput" Mode="In" Type="DateTime" />
     </FunctionImport>
     <FunctionImport Name="uspGetTransactionContract" ReturnType="Collection(DhoniEnterprisesModel.uspGetTransactionContract_Result)">
       <Parameter Name="tr_transactionId" Mode="In" Type="Int64" />
@@ -1542,6 +1591,10 @@
       <Parameter Name="tf_fileID" Mode="In" Type="Int64" />
     </FunctionImport>
     <FunctionImport Name="uspTransactionList" ReturnType="Collection(DhoniEnterprisesModel.uspTransactionList_Result)" />
+    <FunctionImport Name="uspTransactionListByDateRange" ReturnType="Collection(DhoniEnterprisesModel.uspTransactionListByDateRange_Result)">
+      <Parameter Name="startDate" Mode="In" Type="DateTime" />
+      <Parameter Name="endDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
     <FunctionImport Name="uspTransactionNotesCRUD" ReturnType="Collection(DhoniEnterprisesModel.uspTransactionNotesCRUD_Result)">
       <Parameter Name="crudOperation" Mode="In" Type="String" />
       <Parameter Name="tr_transactionID" Mode="In" Type="Int64" />
@@ -1671,31 +1724,6 @@
       <Parameter Name="greenDamaged" Mode="In" Type="Int32" />
       <Parameter Name="otherColor" Mode="In" Type="Int32" />
       <Parameter Name="wrinkled" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="uspGetTransactionByParameter" ReturnType="Collection(DhoniEnterprisesModel.uspGetTransactionByParameter_Result)">
-      <Parameter Name="parameter" Mode="In" Type="String" />
-      <Parameter Name="textInput" Mode="In" Type="String" />
-      <Parameter Name="dateInput" Mode="In" Type="DateTime" />
-    </FunctionImport>
-    <EntitySet Name="transactionVieweds" EntityType="DhoniEnterprisesModel.transactionViewed" />
-    <AssociationSet Name="FK__transacti__UserI__7869D707" Association="DhoniEnterprisesModel.FK__transacti__UserI__7869D707">
-      <End Role="AppUser" EntitySet="AppUsers" />
-      <End Role="transactionViewed" EntitySet="transactionVieweds" />
-    </AssociationSet>
-    <FunctionImport Name="uspAddRecentViewedItem">
-      <Parameter Name="tr_visitedOn" Mode="In" Type="DateTime" />
-      <Parameter Name="tr_pageVisitedState" Mode="In" Type="String" />
-      <Parameter Name="tr_pageVisitedParams" Mode="In" Type="String" />
-      <Parameter Name="tr_pageTitle" Mode="In" Type="String" />
-      <Parameter Name="UserID" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="uspGetRecentlyViewedItem" ReturnType="Collection(DhoniEnterprisesModel.uspGetRecentlyViewedItem_Result)">
-      <Parameter Name="UserID" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="AppUserChangePasword">
-      <Parameter Name="UserID" Mode="In" Type="Int32" />
-      <Parameter Name="Password" Mode="In" Type="String" />
-      <Parameter Name="guID" Mode="In" Type="Guid" />
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="getAllUsers_Result">
@@ -1895,6 +1923,14 @@
     <Property Type="String" Name="origin" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="quality" Nullable="true" />
   </ComplexType>
+  <ComplexType Name="uspGetRecentlyViewedItem_Result">
+    <Property Type="Int64" Name="tr_visitedID" Nullable="false" />
+    <Property Type="DateTime" Name="tr_visitedOn" Nullable="false" Precision="23" />
+    <Property Type="String" Name="tr_pageVisitedState" Nullable="false" />
+    <Property Type="String" Name="tr_pageVisitedParams" Nullable="false" />
+    <Property Type="String" Name="tr_pageTitle" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="UserID" Nullable="true" />
+  </ComplexType>
   <ComplexType Name="uspGetSecondaryTransaction_Result">
     <Property Type="Int64" Name="tr_transactionID" Nullable="true" />
     <Property Type="Int64" Name="tr_sec_tranID" Nullable="false" />
@@ -1947,6 +1983,11 @@
     <Property Type="DateTime" Name="tr_createdOn" Nullable="true" Precision="23" />
     <Property Type="Int32" Name="tr_editedBy" Nullable="true" />
     <Property Type="DateTime" Name="tr_editedOn" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="uspGetTransactionByParameter_Result">
+    <Property Type="String" Name="tr_fileID" Nullable="true" MaxLength="200" />
+    <Property Type="Int64" Name="tr_transactionID" Nullable="false" />
+    <Property Type="DateTime" Name="tr_date" Nullable="true" Precision="23" />
   </ComplexType>
   <ComplexType Name="uspGetTransactionContract_Result">
     <Property Type="Int64" Name="tr_transactionID" Nullable="false" />
@@ -2050,6 +2091,25 @@
     <Property Type="DateTime" Name="shipment_end" Nullable="true" Precision="23" />
     <Property Type="String" Name="commission" Nullable="true" MaxLength="51" />
   </ComplexType>
+  <ComplexType Name="uspTransactionListByDateRange_Result">
+    <Property Type="Int64" Name="tr_transactionID" Nullable="false" />
+    <Property Type="DateTime" Name="transactionDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="fileNo" Nullable="true" MaxLength="200" />
+    <Property Type="Int64" Name="tr_bpBuyerID" Nullable="true" />
+    <Property Type="String" Name="buyer" Nullable="false" MaxLength="500" />
+    <Property Type="Int32" Name="tr_productID" Nullable="true" />
+    <Property Type="String" Name="product" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="quantity" Nullable="true" />
+    <Property Type="Int32" Name="rate" Nullable="false" />
+    <Property Type="Int64" Name="tr_bpSellerID" Nullable="true" />
+    <Property Type="String" Name="seller" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="origin" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="port" Nullable="true" MaxLength="500" />
+    <Property Type="DateTime" Name="shipment_start" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="shipment_end" Nullable="true" Precision="23" />
+    <Property Type="String" Name="commission" Nullable="true" MaxLength="51" />
+    <Property Type="String" Name="status" Nullable="true" MaxLength="100" />
+  </ComplexType>
   <ComplexType Name="uspTransactionNotesCRUD_Result">
     <Property Type="Int64" Name="tr_transactionID" Nullable="false" />
     <Property Type="Int64" Name="tr_tranNoteID" Nullable="false" />
@@ -2057,42 +2117,5 @@
     <Property Type="Int32" Name="tr_createdBy" Nullable="false" />
     <Property Type="DateTime" Name="tr_createdOn" Nullable="true" Precision="23" />
     <Property Type="DateTime" Name="tr_editedOn" Nullable="true" Precision="23" />
-  </ComplexType>
-  <ComplexType Name="uspGetTransactionByParameter_Result">
-    <Property Type="String" Name="tr_fileID" Nullable="true" MaxLength="200" />
-    <Property Type="Int64" Name="tr_transactionID" Nullable="false" />
-    <Property Type="DateTime" Name="tr_date" Nullable="true" Precision="23" />
-  </ComplexType>
-  <EntityType Name="transactionViewed">
-    <Key>
-      <PropertyRef Name="tr_visitedID" />
-    </Key>
-    <Property Name="tr_visitedID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="tr_visitedOn" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="tr_pageVisitedState" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="tr_pageVisitedParams" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="tr_pageTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="UserID" Type="Int32" />
-    <NavigationProperty Name="AppUser" Relationship="DhoniEnterprisesModel.FK__transacti__UserI__7869D707" FromRole="transactionViewed" ToRole="AppUser" />
-  </EntityType>
-  <Association Name="FK__transacti__UserI__7869D707">
-    <End Type="DhoniEnterprisesModel.AppUser" Role="AppUser" Multiplicity="0..1" />
-    <End Type="DhoniEnterprisesModel.transactionViewed" Role="transactionViewed" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="AppUser">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="transactionViewed">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <ComplexType Name="uspGetRecentlyViewedItem_Result">
-    <Property Type="Int64" Name="tr_visitedID" Nullable="false" />
-    <Property Type="DateTime" Name="tr_visitedOn" Nullable="false" Precision="23" />
-    <Property Type="String" Name="tr_pageVisitedState" Nullable="false" />
-    <Property Type="String" Name="tr_pageVisitedParams" Nullable="false" />
-    <Property Type="String" Name="tr_pageTitle" Nullable="true" MaxLength="100" />
-    <Property Type="Int32" Name="UserID" Nullable="true" />
   </ComplexType>
 </Schema>

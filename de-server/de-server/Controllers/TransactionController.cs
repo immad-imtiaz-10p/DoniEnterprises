@@ -42,6 +42,24 @@ namespace de_server.Controllers
          
         }
 
+        [Route("getTransactionTableOnDateRange")]
+        [HttpGet]
+        public IHttpActionResult getTransactionTableOnDateRange(DateTime startDate, DateTime endDate)
+        {
+
+            using(var context = new DhoniEnterprisesEntities())
+            {
+                DataTable transactions = new DataTable();
+                transactions = DataTableSerializer.LINQToDataTable(context.uspTransactionListByDateRange(startDate,endDate));
+                return Ok(new
+                {
+                    success = true,
+                    transactions = transactions
+                });
+                
+            }
+        }
+
         #endregion
 
         #region transactionBasic

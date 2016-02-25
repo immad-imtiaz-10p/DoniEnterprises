@@ -1299,6 +1299,10 @@ warning 6002: The table/view 'DhoniEnterprises.dbo.TransactionFiles' does not ha
     <Parameter Name="tf_fileID" Type="bigint" Mode="In" />
   </Function>
   <Function Name="uspTransactionList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="uspTransactionListByDateRange" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="startDate" Type="datetime" Mode="In" />
+    <Parameter Name="endDate" Type="datetime" Mode="In" />
+  </Function>
   <Function Name="uspTransactionNotesCRUD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="crudOperation" Type="varchar" Mode="In" />
     <Parameter Name="tr_transactionID" Type="bigint" Mode="In" />

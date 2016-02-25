@@ -303,6 +303,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="transactionVieweds">
+      <EntityTypeMapping TypeName="DhoniEnterprisesModel.transactionViewed">
+        <MappingFragment StoreEntitySet="transactionViewed">
+          <ScalarProperty Name="tr_visitedID" ColumnName="tr_visitedID" />
+          <ScalarProperty Name="tr_visitedOn" ColumnName="tr_visitedOn" />
+          <ScalarProperty Name="tr_pageVisitedState" ColumnName="tr_pageVisitedState" />
+          <ScalarProperty Name="tr_pageVisitedParams" ColumnName="tr_pageVisitedParams" />
+          <ScalarProperty Name="tr_pageTitle" ColumnName="tr_pageTitle" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="UserEvents">
       <EntityTypeMapping TypeName="DhoniEnterprisesModel.UserEvent">
         <MappingFragment StoreEntitySet="UserEvents">
@@ -337,6 +349,7 @@
       </EndProperty>
     </AssociationSetMapping>
     <FunctionImportMapping FunctionImportName="addNewAppUser" FunctionName="DhoniEnterprisesModel.Store.addNewAppUser" />
+    <FunctionImportMapping FunctionImportName="AppUserChangePasword" FunctionName="DhoniEnterprisesModel.Store.AppUserChangePasword" />
     <FunctionImportMapping FunctionImportName="getAllUsers" FunctionName="DhoniEnterprisesModel.Store.getAllUsers">
       <ResultMapping>
         <ComplexTypeMapping TypeName="DhoniEnterprisesModel.getAllUsers_Result">
@@ -381,6 +394,7 @@
     <FunctionImportMapping FunctionImportName="uspAddBusinessPartnerEmail" FunctionName="DhoniEnterprisesModel.Store.uspAddBusinessPartnerEmail" />
     <FunctionImportMapping FunctionImportName="uspAddBusinessPartnerProducts" FunctionName="DhoniEnterprisesModel.Store.uspAddBusinessPartnerProducts" />
     <FunctionImportMapping FunctionImportName="uspAddProduct" FunctionName="DhoniEnterprisesModel.Store.uspAddProduct" />
+    <FunctionImportMapping FunctionImportName="uspAddRecentViewedItem" FunctionName="DhoniEnterprisesModel.Store.uspAddRecentViewedItem" />
     <FunctionImportMapping FunctionImportName="uspAddTransaction" FunctionName="DhoniEnterprisesModel.Store.uspAddTransaction" />
     <FunctionImportMapping FunctionImportName="uspAddTransactionBasic" FunctionName="DhoniEnterprisesModel.Store.uspAddTransactionBasic" />
     <FunctionImportMapping FunctionImportName="uspAddTransactionNotes" FunctionName="DhoniEnterprisesModel.Store.uspAddTransactionNotes" />
@@ -644,6 +658,18 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspGetRecentlyViewedItem" FunctionName="DhoniEnterprisesModel.Store.uspGetRecentlyViewedItem">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetRecentlyViewedItem_Result">
+          <ScalarProperty Name="tr_visitedID" ColumnName="tr_visitedID" />
+          <ScalarProperty Name="tr_visitedOn" ColumnName="tr_visitedOn" />
+          <ScalarProperty Name="tr_pageVisitedState" ColumnName="tr_pageVisitedState" />
+          <ScalarProperty Name="tr_pageVisitedParams" ColumnName="tr_pageVisitedParams" />
+          <ScalarProperty Name="tr_pageTitle" ColumnName="tr_pageTitle" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="uspGetSecondaryTransaction" FunctionName="DhoniEnterprisesModel.Store.uspGetSecondaryTransaction">
       <ResultMapping>
         <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetSecondaryTransaction_Result">
@@ -707,6 +733,15 @@
           <ScalarProperty Name="tr_createdOn" ColumnName="tr_createdOn" />
           <ScalarProperty Name="tr_editedBy" ColumnName="tr_editedBy" />
           <ScalarProperty Name="tr_editedOn" ColumnName="tr_editedOn" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspGetTransactionByParameter" FunctionName="DhoniEnterprisesModel.Store.uspGetTransactionByParameter">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetTransactionByParameter_Result">
+          <ScalarProperty Name="tr_fileID" ColumnName="tr_fileID" />
+          <ScalarProperty Name="tr_transactionID" ColumnName="tr_transactionID" />
+          <ScalarProperty Name="tr_date" ColumnName="tr_date" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -847,6 +882,29 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspTransactionListByDateRange" FunctionName="DhoniEnterprisesModel.Store.uspTransactionListByDateRange">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspTransactionListByDateRange_Result">
+          <ScalarProperty Name="tr_transactionID" ColumnName="tr_transactionID" />
+          <ScalarProperty Name="transactionDate" ColumnName="transactionDate" />
+          <ScalarProperty Name="fileNo" ColumnName="fileNo" />
+          <ScalarProperty Name="tr_bpBuyerID" ColumnName="tr_bpBuyerID" />
+          <ScalarProperty Name="buyer" ColumnName="buyer" />
+          <ScalarProperty Name="tr_productID" ColumnName="tr_productID" />
+          <ScalarProperty Name="product" ColumnName="product" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="rate" ColumnName="rate" />
+          <ScalarProperty Name="tr_bpSellerID" ColumnName="tr_bpSellerID" />
+          <ScalarProperty Name="seller" ColumnName="seller" />
+          <ScalarProperty Name="origin" ColumnName="origin" />
+          <ScalarProperty Name="port" ColumnName="port" />
+          <ScalarProperty Name="shipment_start" ColumnName="shipment_start" />
+          <ScalarProperty Name="shipment_end" ColumnName="shipment_end" />
+          <ScalarProperty Name="commission" ColumnName="commission" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="uspTransactionNotesCRUD" FunctionName="DhoniEnterprisesModel.Store.uspTransactionNotesCRUD">
       <ResultMapping>
         <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspTransactionNotesCRUD_Result">
@@ -869,40 +927,5 @@
     <FunctionImportMapping FunctionImportName="uspUpdateBusinessPartnerEmail" FunctionName="DhoniEnterprisesModel.Store.uspUpdateBusinessPartnerEmail" />
     <FunctionImportMapping FunctionImportName="uspUpdateBusinessPartnerProduct" FunctionName="DhoniEnterprisesModel.Store.uspUpdateBusinessPartnerProduct" />
     <FunctionImportMapping FunctionImportName="uspUpdateProduct" FunctionName="DhoniEnterprisesModel.Store.uspUpdateProduct" />
-    <FunctionImportMapping FunctionImportName="uspGetTransactionByParameter" FunctionName="DhoniEnterprisesModel.Store.uspGetTransactionByParameter">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetTransactionByParameter_Result">
-          <ScalarProperty Name="tr_fileID" ColumnName="tr_fileID" />
-          <ScalarProperty Name="tr_transactionID" ColumnName="tr_transactionID" />
-          <ScalarProperty Name="tr_date" ColumnName="tr_date" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <EntitySetMapping Name="transactionVieweds">
-      <EntityTypeMapping TypeName="DhoniEnterprisesModel.transactionViewed">
-        <MappingFragment StoreEntitySet="transactionViewed">
-          <ScalarProperty Name="UserID" ColumnName="UserID" />
-          <ScalarProperty Name="tr_pageTitle" ColumnName="tr_pageTitle" />
-          <ScalarProperty Name="tr_pageVisitedParams" ColumnName="tr_pageVisitedParams" />
-          <ScalarProperty Name="tr_pageVisitedState" ColumnName="tr_pageVisitedState" />
-          <ScalarProperty Name="tr_visitedOn" ColumnName="tr_visitedOn" />
-          <ScalarProperty Name="tr_visitedID" ColumnName="tr_visitedID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="uspAddRecentViewedItem" FunctionName="DhoniEnterprisesModel.Store.uspAddRecentViewedItem" />
-    <FunctionImportMapping FunctionImportName="uspGetRecentlyViewedItem" FunctionName="DhoniEnterprisesModel.Store.uspGetRecentlyViewedItem">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetRecentlyViewedItem_Result">
-          <ScalarProperty Name="tr_visitedID" ColumnName="tr_visitedID" />
-          <ScalarProperty Name="tr_visitedOn" ColumnName="tr_visitedOn" />
-          <ScalarProperty Name="tr_pageVisitedState" ColumnName="tr_pageVisitedState" />
-          <ScalarProperty Name="tr_pageVisitedParams" ColumnName="tr_pageVisitedParams" />
-          <ScalarProperty Name="tr_pageTitle" ColumnName="tr_pageTitle" />
-          <ScalarProperty Name="UserID" ColumnName="UserID" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="AppUserChangePasword" FunctionName="DhoniEnterprisesModel.Store.AppUserChangePasword" />
   </EntityContainerMapping>
 </Mapping>

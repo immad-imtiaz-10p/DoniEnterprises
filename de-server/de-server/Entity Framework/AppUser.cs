@@ -41,8 +41,8 @@ namespace de_server.Entity_Framework
             this.TransactionsStatus3 = new HashSet<TransactionsStatu>();
             this.TransactionsContracts1 = new HashSet<TransactionsContract>();
             this.Transactions1 = new HashSet<Transaction>();
-            this.UserEvents = new HashSet<UserEvent>();
             this.transactionVieweds = new HashSet<transactionViewed>();
+            this.UserEvents = new HashSet<UserEvent>();
         }
     
         public int UserID { get; set; }
@@ -82,7 +82,7 @@ namespace de_server.Entity_Framework
         public virtual ICollection<TransactionsStatu> TransactionsStatus3 { get; set; }
         public virtual ICollection<TransactionsContract> TransactionsContracts1 { get; set; }
         public virtual ICollection<Transaction> Transactions1 { get; set; }
-        public virtual ICollection<UserEvent> UserEvents { get; set; }
         public virtual ICollection<transactionViewed> transactionVieweds { get; set; }
+        public virtual ICollection<UserEvent> UserEvents { get; set; }
     }
 }

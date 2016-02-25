@@ -46,9 +46,9 @@ namespace de_server.Entity_Framework
         public virtual DbSet<TransactionsSecondary> TransactionsSecondaries { get; set; }
         public virtual DbSet<TransactionsShipment> TransactionsShipments { get; set; }
         public virtual DbSet<TransactionsStatu> TransactionsStatus { get; set; }
+        public virtual DbSet<transactionViewed> transactionVieweds { get; set; }
         public virtual DbSet<UserEvent> UserEvents { get; set; }
         public virtual DbSet<TransactionFile> TransactionFiles { get; set; }
-        public virtual DbSet<transactionViewed> transactionVieweds { get; set; }
     
         public virtual int addNewAppUser(string title, string firstName, string lastName, string password, string email, Nullable<System.Guid> guID, string designation, Nullable<bool> isAdmin)
         {
@@ -85,6 +85,23 @@ namespace de_server.Entity_Framework
                 new ObjectParameter("isAdmin", typeof(bool));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("addNewAppUser", titleParameter, firstNameParameter, lastNameParameter, passwordParameter, emailParameter, guIDParameter, designationParameter, isAdminParameter);
+        }
+    
+        public virtual int AppUserChangePasword(Nullable<int> userID, string password, Nullable<System.Guid> guID)
+        {
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
+    
+            var guIDParameter = guID.HasValue ?
+                new ObjectParameter("guID", guID) :
+                new ObjectParameter("guID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AppUserChangePasword", userIDParameter, passwordParameter, guIDParameter);
         }
     
         public virtual ObjectResult<getAllUsers_Result> getAllUsers()
@@ -433,6 +450,31 @@ namespace de_server.Entity_Framework
                 new ObjectParameter("wrinkled", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspAddProduct", productNameParameter, createdByParameter, moistureParameter, weaveledParameter, originParameter, purityParameter, splitsParameter, qualityParameter, damagedParameter, foreignMatterParameter, greenDamagedParameter, otherColorParameter, wrinkledParameter);
+        }
+    
+        public virtual int uspAddRecentViewedItem(Nullable<System.DateTime> tr_visitedOn, string tr_pageVisitedState, string tr_pageVisitedParams, string tr_pageTitle, Nullable<int> userID)
+        {
+            var tr_visitedOnParameter = tr_visitedOn.HasValue ?
+                new ObjectParameter("tr_visitedOn", tr_visitedOn) :
+                new ObjectParameter("tr_visitedOn", typeof(System.DateTime));
+    
+            var tr_pageVisitedStateParameter = tr_pageVisitedState != null ?
+                new ObjectParameter("tr_pageVisitedState", tr_pageVisitedState) :
+                new ObjectParameter("tr_pageVisitedState", typeof(string));
+    
+            var tr_pageVisitedParamsParameter = tr_pageVisitedParams != null ?
+                new ObjectParameter("tr_pageVisitedParams", tr_pageVisitedParams) :
+                new ObjectParameter("tr_pageVisitedParams", typeof(string));
+    
+            var tr_pageTitleParameter = tr_pageTitle != null ?
+                new ObjectParameter("tr_pageTitle", tr_pageTitle) :
+                new ObjectParameter("tr_pageTitle", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspAddRecentViewedItem", tr_visitedOnParameter, tr_pageVisitedStateParameter, tr_pageVisitedParamsParameter, tr_pageTitleParameter, userIDParameter);
         }
     
         public virtual int uspAddTransaction(Nullable<long> tr_bpBuyerID, Nullable<long> tr_bpSellerID, Nullable<int> tr_productID, string tr_fileID, string tr_contractID, Nullable<System.DateTime> tr_date, Nullable<int> tr_price, Nullable<bool> tr_FCL, Nullable<bool> tr_MT, Nullable<int> tr_coversion_FCMT, Nullable<int> tr_quantity, Nullable<bool> tr_doniContract, Nullable<bool> tr_ownContract, Nullable<long> tr_contractualBuyer, Nullable<long> tr_broker, string tr_comissonType, Nullable<int> tr_brokerComission, Nullable<int> tr_differance, Nullable<int> tr_discount, Nullable<int> tr_netCommision, Nullable<System.DateTime> tr_shipmentDate, string tr_shipmentAdddress, string tr_shipmentStatus, Nullable<long> tr_shipperID, Nullable<int> tr_createdBy, Nullable<int> tr_washOutValue, string tr_shipmentCountry, Nullable<int> tr_commission, string tr_transactionStatus, Nullable<bool> tr_brokerInvolved)
@@ -874,6 +916,15 @@ namespace de_server.Entity_Framework
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGetProductTagInput_Result>("uspGetProductTagInput", inputParameter);
         }
     
+        public virtual ObjectResult<uspGetRecentlyViewedItem_Result> uspGetRecentlyViewedItem(Nullable<int> userID)
+        {
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGetRecentlyViewedItem_Result>("uspGetRecentlyViewedItem", userIDParameter);
+        }
+    
         public virtual ObjectResult<uspGetSecondaryTransaction_Result> uspGetSecondaryTransaction(Nullable<long> tr_transactionID)
         {
             var tr_transactionIDParameter = tr_transactionID.HasValue ?
@@ -904,6 +955,23 @@ namespace de_server.Entity_Framework
                 new ObjectParameter("tr_transactionID", typeof(long));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGetTransaction_Result>("uspGetTransaction", tr_transactionIDParameter);
+        }
+    
+        public virtual ObjectResult<uspGetTransactionByParameter_Result> uspGetTransactionByParameter(string parameter, string textInput, Nullable<System.DateTime> dateInput)
+        {
+            var parameterParameter = parameter != null ?
+                new ObjectParameter("parameter", parameter) :
+                new ObjectParameter("parameter", typeof(string));
+    
+            var textInputParameter = textInput != null ?
+                new ObjectParameter("textInput", textInput) :
+                new ObjectParameter("textInput", typeof(string));
+    
+            var dateInputParameter = dateInput.HasValue ?
+                new ObjectParameter("dateInput", dateInput) :
+                new ObjectParameter("dateInput", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGetTransactionByParameter_Result>("uspGetTransactionByParameter", parameterParameter, textInputParameter, dateInputParameter);
         }
     
         public virtual ObjectResult<uspGetTransactionContract_Result> uspGetTransactionContract(Nullable<long> tr_transactionId)
@@ -1210,6 +1278,19 @@ namespace de_server.Entity_Framework
         public virtual ObjectResult<uspTransactionList_Result> uspTransactionList()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspTransactionList_Result>("uspTransactionList");
+        }
+    
+        public virtual ObjectResult<uspTransactionListByDateRange_Result> uspTransactionListByDateRange(Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate)
+        {
+            var startDateParameter = startDate.HasValue ?
+                new ObjectParameter("startDate", startDate) :
+                new ObjectParameter("startDate", typeof(System.DateTime));
+    
+            var endDateParameter = endDate.HasValue ?
+                new ObjectParameter("endDate", endDate) :
+                new ObjectParameter("endDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspTransactionListByDateRange_Result>("uspTransactionListByDateRange", startDateParameter, endDateParameter);
         }
     
         public virtual ObjectResult<uspTransactionNotesCRUD_Result> uspTransactionNotesCRUD(string crudOperation, Nullable<long> tr_transactionID, Nullable<long> tr_tranNoteID, string tr_transactionNotes, Nullable<int> tr_createdBy)
@@ -1697,74 +1778,6 @@ namespace de_server.Entity_Framework
                 new ObjectParameter("wrinkled", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspUpdateProduct", productIDParameter, productNameParameter, moistureParameter, weaveledParameter, originParameter, purityParameter, splitsParameter, qualityParameter, updatedByParameter, damagedParameter, foreignMatterParameter, greenDamagedParameter, otherColorParameter, wrinkledParameter);
-        }
-    
-        public virtual ObjectResult<uspGetTransactionByParameter_Result> uspGetTransactionByParameter(string parameter, string textInput, Nullable<System.DateTime> dateInput)
-        {
-            var parameterParameter = parameter != null ?
-                new ObjectParameter("parameter", parameter) :
-                new ObjectParameter("parameter", typeof(string));
-    
-            var textInputParameter = textInput != null ?
-                new ObjectParameter("textInput", textInput) :
-                new ObjectParameter("textInput", typeof(string));
-    
-            var dateInputParameter = dateInput.HasValue ?
-                new ObjectParameter("dateInput", dateInput) :
-                new ObjectParameter("dateInput", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGetTransactionByParameter_Result>("uspGetTransactionByParameter", parameterParameter, textInputParameter, dateInputParameter);
-        }
-    
-        public virtual int uspAddRecentViewedItem(Nullable<System.DateTime> tr_visitedOn, string tr_pageVisitedState, string tr_pageVisitedParams, string tr_pageTitle, Nullable<int> userID)
-        {
-            var tr_visitedOnParameter = tr_visitedOn.HasValue ?
-                new ObjectParameter("tr_visitedOn", tr_visitedOn) :
-                new ObjectParameter("tr_visitedOn", typeof(System.DateTime));
-    
-            var tr_pageVisitedStateParameter = tr_pageVisitedState != null ?
-                new ObjectParameter("tr_pageVisitedState", tr_pageVisitedState) :
-                new ObjectParameter("tr_pageVisitedState", typeof(string));
-    
-            var tr_pageVisitedParamsParameter = tr_pageVisitedParams != null ?
-                new ObjectParameter("tr_pageVisitedParams", tr_pageVisitedParams) :
-                new ObjectParameter("tr_pageVisitedParams", typeof(string));
-    
-            var tr_pageTitleParameter = tr_pageTitle != null ?
-                new ObjectParameter("tr_pageTitle", tr_pageTitle) :
-                new ObjectParameter("tr_pageTitle", typeof(string));
-    
-            var userIDParameter = userID.HasValue ?
-                new ObjectParameter("UserID", userID) :
-                new ObjectParameter("UserID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspAddRecentViewedItem", tr_visitedOnParameter, tr_pageVisitedStateParameter, tr_pageVisitedParamsParameter, tr_pageTitleParameter, userIDParameter);
-        }
-    
-        public virtual ObjectResult<uspGetRecentlyViewedItem_Result> uspGetRecentlyViewedItem(Nullable<int> userID)
-        {
-            var userIDParameter = userID.HasValue ?
-                new ObjectParameter("UserID", userID) :
-                new ObjectParameter("UserID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGetRecentlyViewedItem_Result>("uspGetRecentlyViewedItem", userIDParameter);
-        }
-    
-        public virtual int AppUserChangePasword(Nullable<int> userID, string password, Nullable<System.Guid> guID)
-        {
-            var userIDParameter = userID.HasValue ?
-                new ObjectParameter("UserID", userID) :
-                new ObjectParameter("UserID", typeof(int));
-    
-            var passwordParameter = password != null ?
-                new ObjectParameter("Password", password) :
-                new ObjectParameter("Password", typeof(string));
-    
-            var guIDParameter = guID.HasValue ?
-                new ObjectParameter("guID", guID) :
-                new ObjectParameter("guID", typeof(System.Guid));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AppUserChangePasword", userIDParameter, passwordParameter, guIDParameter);
         }
     }
 }

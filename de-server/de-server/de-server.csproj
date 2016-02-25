@@ -419,6 +419,9 @@
     <Compile Include="Entity Framework\uspTransactionFileGetSingle_Result.cs">
       <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity Framework\uspTransactionListByDateRange_Result.cs">
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entity Framework\uspTransactionList_Result.cs">
       <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
@@ -455,16 +458,6 @@
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Entity Framework\DoniEnterprises.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DoniEnterprises.edmx</DependentUpon>
-      <LastGenOutput>DoniEnterprises.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Entity Framework\DoniEnterprises.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DoniEnterprises.edmx</DependentUpon>
-      <LastGenOutput>DoniEnterprises.cs</LastGenOutput>
-    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -494,8 +487,18 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DoniEnterprises.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="Entity Framework\DoniEnterprises.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DoniEnterprises.edmx</DependentUpon>
+      <LastGenOutput>DoniEnterprises.Context.cs</LastGenOutput>
+    </Content>
     <Content Include="Entity Framework\DoniEnterprises.edmx.diagram">
       <DependentUpon>DoniEnterprises.edmx</DependentUpon>
+    </Content>
+    <Content Include="Entity Framework\DoniEnterprises.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DoniEnterprises.edmx</DependentUpon>
+      <LastGenOutput>DoniEnterprises.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
