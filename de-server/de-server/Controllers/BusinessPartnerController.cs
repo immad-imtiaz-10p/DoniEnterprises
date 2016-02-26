@@ -33,7 +33,7 @@ namespace de_server.Controllers
                     if (userID != -1)
                     {
                         DataTable dt = new DataTable();
-                        var bpId = context.uspAddBusinessPartner(Convert.ToBoolean(generalDetails["bp_isSupplier"]),
+                        var bpId = context.uspAddBusinessPartner(Convert.ToBoolean(generalDetails["bp_isSeller"]),
                             Convert.ToBoolean(generalDetails["bp_isBroker"]),
                             Convert.ToBoolean(generalDetails["bp_isShipper"]),
                             Convert.ToBoolean(generalDetails["bp_isBuyer"]),
