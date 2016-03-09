@@ -428,3 +428,7 @@ D:\DoniEnterprises\DoniEnterprises\de-server\de-server\bin\Microsoft.AspNet.Sign
 D:\DoniEnterprises\DoniEnterprises\de-server\de-server\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
 D:\DoniEnterprises\DoniEnterprises\de-server\de-server\bin\Microsoft.AspNet.SignalR.Core.xml
 D:\DoniEnterprises\DoniEnterprises\de-server\de-server\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+G:\DoniEnterprises\de-server\de-server\bin\Microsoft.AspNet.SignalR.Core.dll
+G:\DoniEnterprises\de-server\de-server\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+G:\DoniEnterprises\de-server\de-server\bin\Microsoft.AspNet.SignalR.Core.xml
+G:\DoniEnterprises\de-server\de-server\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
