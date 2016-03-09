@@ -1752,6 +1752,10 @@
       <Parameter Name="tr_createdBy" Mode="In" Type="Int32" />
       <Parameter Name="tr_editedBy" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="uspProductListByDateRange" ReturnType="Collection(DhoniEnterprisesModel.uspProductListByDateRange_Result)">
+      <Parameter Name="startDate" Mode="In" Type="DateTime" />
+      <Parameter Name="endDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="getAllUsers_Result">
     <Property Type="String" Name="firstName" Nullable="true" MaxLength="50" />
@@ -2201,5 +2205,13 @@
     <Property Type="Int32" Name="ProductId" Nullable="false" />
     <Property Type="Int32" Name="Price" Nullable="true" />
     <Property Type="Int32" Name="tr_editedBy" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="uspProductListByDateRange_Result">
+    <Property Type="Int32" Name="Prod_ID" Nullable="false" />
+    <Property Type="DateTime" Name="PriceDate" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="Price" Nullable="true" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="quality" Nullable="true" />
+    <Property Type="String" Name="origin" Nullable="true" MaxLength="50" />
   </ComplexType>
 </Schema>

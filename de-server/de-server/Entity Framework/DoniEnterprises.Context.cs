@@ -1818,5 +1818,18 @@ namespace de_server.Entity_Framework
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspProductPriceByDateCRUD", crudOperationParameter, productIdParameter, priceDateParameter, priceParameter, tr_createdByParameter, tr_editedByParameter);
         }
+    
+        public virtual ObjectResult<uspProductListByDateRange_Result> uspProductListByDateRange(Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate)
+        {
+            var startDateParameter = startDate.HasValue ?
+                new ObjectParameter("startDate", startDate) :
+                new ObjectParameter("startDate", typeof(System.DateTime));
+    
+            var endDateParameter = endDate.HasValue ?
+                new ObjectParameter("endDate", endDate) :
+                new ObjectParameter("endDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspProductListByDateRange_Result>("uspProductListByDateRange", startDateParameter, endDateParameter);
+        }
     }
 }

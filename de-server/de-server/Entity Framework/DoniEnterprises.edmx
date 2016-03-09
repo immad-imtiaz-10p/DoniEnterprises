@@ -1289,6 +1289,10 @@ warning 6002: The table/view 'DhoniEnterprises.dbo.TransactionFiles' does not ha
           <Parameter Name="origin_id" Type="bigint" Mode="In" />
           <Parameter Name="origin_name" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="uspProductListByDateRange" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="startDate" Type="datetime" Mode="In" />
+          <Parameter Name="endDate" Type="datetime" Mode="In" />
+        </Function>
         <Function Name="uspProductPriceByDateCRUD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="crudOperation" Type="varchar" Mode="In" />
           <Parameter Name="productId" Type="int" Mode="In" />
@@ -3508,6 +3512,10 @@ warning 6002: The table/view 'DhoniEnterprises.dbo.TransactionFiles' does not ha
             <Parameter Name="tr_createdBy" Mode="In" Type="Int32" />
             <Parameter Name="tr_editedBy" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="uspProductListByDateRange" ReturnType="Collection(DhoniEnterprisesModel.uspProductListByDateRange_Result)">
+            <Parameter Name="startDate" Mode="In" Type="DateTime" />
+            <Parameter Name="endDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="getAllUsers_Result">
           <Property Type="String" Name="firstName" Nullable="true" MaxLength="50" />
@@ -3957,6 +3965,14 @@ warning 6002: The table/view 'DhoniEnterprises.dbo.TransactionFiles' does not ha
           <Property Type="Int32" Name="ProductId" Nullable="false" />
           <Property Type="Int32" Name="Price" Nullable="true" />
           <Property Type="Int32" Name="tr_editedBy" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="uspProductListByDateRange_Result">
+          <Property Type="Int32" Name="Prod_ID" Nullable="false" />
+          <Property Type="DateTime" Name="PriceDate" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="Price" Nullable="true" />
+          <Property Type="String" Name="ProductName" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="quality" Nullable="true" />
+          <Property Type="String" Name="origin" Nullable="true" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -4913,6 +4929,18 @@ warning 6002: The table/view 'DhoniEnterprises.dbo.TransactionFiles' does not ha
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="uspProductPriceByDateCRUD" FunctionName="DhoniEnterprisesModel.Store.uspProductPriceByDateCRUD" />
+          <FunctionImportMapping FunctionImportName="uspProductListByDateRange" FunctionName="DhoniEnterprisesModel.Store.uspProductListByDateRange">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspProductListByDateRange_Result">
+                <ScalarProperty Name="Prod_ID" ColumnName="Prod_ID" />
+                <ScalarProperty Name="PriceDate" ColumnName="PriceDate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="quality" ColumnName="quality" />
+                <ScalarProperty Name="origin" ColumnName="origin" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

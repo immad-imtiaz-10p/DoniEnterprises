@@ -1284,6 +1284,10 @@ warning 6002: The table/view 'DhoniEnterprises.dbo.TransactionFiles' does not ha
     <Parameter Name="origin_id" Type="bigint" Mode="In" />
     <Parameter Name="origin_name" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="uspProductListByDateRange" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="startDate" Type="datetime" Mode="In" />
+    <Parameter Name="endDate" Type="datetime" Mode="In" />
+  </Function>
   <Function Name="uspProductPriceByDateCRUD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="crudOperation" Type="varchar" Mode="In" />
     <Parameter Name="productId" Type="int" Mode="In" />

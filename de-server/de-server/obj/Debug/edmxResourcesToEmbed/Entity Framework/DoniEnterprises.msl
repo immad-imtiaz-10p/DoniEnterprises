@@ -950,5 +950,17 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="uspProductPriceByDateCRUD" FunctionName="DhoniEnterprisesModel.Store.uspProductPriceByDateCRUD" />
+    <FunctionImportMapping FunctionImportName="uspProductListByDateRange" FunctionName="DhoniEnterprisesModel.Store.uspProductListByDateRange">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspProductListByDateRange_Result">
+          <ScalarProperty Name="Prod_ID" ColumnName="Prod_ID" />
+          <ScalarProperty Name="PriceDate" ColumnName="PriceDate" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="quality" ColumnName="quality" />
+          <ScalarProperty Name="origin" ColumnName="origin" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

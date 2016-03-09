@@ -419,6 +419,9 @@
     <Compile Include="Entity Framework\uspGetTransaction_Result.cs">
       <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity Framework\uspProductListByDateRange_Result.cs">
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entity Framework\uspTransactionFileGetAll_Result.cs">
       <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>

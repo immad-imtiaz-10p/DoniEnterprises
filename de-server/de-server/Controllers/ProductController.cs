@@ -4,6 +4,7 @@ using de_server.Security;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -201,7 +202,7 @@ namespace de_server.Controllers
             var operation = Convert.ToString(priceInfo["operation"]);
             var prodId = (int?)priceInfo["productId"];
             var price = (int)priceInfo["price"];
-            var date = (DateTime?)priceInfo["Date"];
+            var date = (DateTime?)priceInfo["date"];
             var userID = BasicAuthHttpModule.getCurrentUserId();
             using (var context = new DhoniEnterprisesEntities()){
 
@@ -210,6 +211,23 @@ namespace de_server.Controllers
                     success = true,
                     message= "Product price successfully updated!"
                 });
+            }
+        }
+
+        [Route("productPriceByDateRange")]
+        [HttpGet]
+        public IHttpActionResult ProductPriceByDateRange(DateTime startDate, DateTime endDate)
+        {
+            using (var context = new DhoniEnterprisesEntities())
+            {
+                DataTable transactions = new DataTable();
+                var productsPrices = DataTableSerializer.LINQToDataTable(context.uspProductListByDateRange(startDate, endDate));
+                return Ok(new
+                {
+                    success = true,
+                    productsPrices = productsPrices
+                });
+
             }
         }
 
