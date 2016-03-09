@@ -110,6 +110,19 @@
     <Property Name="bp_ID" Type="bigint" Nullable="false" />
     <Property Name="prod_ID" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="dailyProductPrices">
+    <Key>
+      <PropertyRef Name="Prod_ID" />
+      <PropertyRef Name="PriceDate" />
+    </Key>
+    <Property Name="Prod_ID" Type="int" Nullable="false" />
+    <Property Name="PriceDate" Type="datetime" Nullable="false" />
+    <Property Name="Price" Type="int" />
+    <Property Name="tr_createdBy" Type="int" Nullable="false" />
+    <Property Name="tr_editedBy" Type="int" />
+    <Property Name="tr_createdOn" Type="datetime" Nullable="false" />
+    <Property Name="tr_editedOn" Type="datetime" />
+  </EntityType>
   <EntityType Name="Origin">
     <Key>
       <PropertyRef Name="origin_id" />
@@ -481,6 +494,42 @@ warning 6002: The table/view 'DhoniEnterprises.dbo.TransactionFiles' does not ha
       </Principal>
       <Dependent Role="BusinessPartner_Products">
         <PropertyRef Name="prod_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__dailyProd__Prod___31A25463">
+    <End Role="Products" Type="Self.Products" Multiplicity="1" />
+    <End Role="dailyProductPrices" Type="Self.dailyProductPrices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="dailyProductPrices">
+        <PropertyRef Name="Prod_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__dailyProd__tr_cr__42CCE065">
+    <End Role="AppUsers" Type="Self.AppUsers" Multiplicity="1" />
+    <End Role="dailyProductPrices" Type="Self.dailyProductPrices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="dailyProductPrices">
+        <PropertyRef Name="tr_createdBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__dailyProd__tr_ed__44B528D7">
+    <End Role="AppUsers" Type="Self.AppUsers" Multiplicity="0..1" />
+    <End Role="dailyProductPrices" Type="Self.dailyProductPrices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="dailyProductPrices">
+        <PropertyRef Name="tr_editedBy" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1193,6 +1242,9 @@ warning 6002: The table/view 'DhoniEnterprises.dbo.TransactionFiles' does not ha
   <Function Name="uspGetOriginList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="uspGetProductList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="uspGetProductListPDF" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="uspGetProductPriceByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="date" Type="datetime" Mode="In" />
+  </Function>
   <Function Name="uspGetProductTagInput" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="input" Type="varchar(max)" Mode="In" />
   </Function>
@@ -1231,6 +1283,14 @@ warning 6002: The table/view 'DhoniEnterprises.dbo.TransactionFiles' does not ha
     <Parameter Name="crudOperation" Type="varchar" Mode="In" />
     <Parameter Name="origin_id" Type="bigint" Mode="In" />
     <Parameter Name="origin_name" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="uspProductPriceByDateCRUD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="crudOperation" Type="varchar" Mode="In" />
+    <Parameter Name="productId" Type="int" Mode="In" />
+    <Parameter Name="priceDate" Type="datetime" Mode="In" />
+    <Parameter Name="price" Type="int" Mode="In" />
+    <Parameter Name="tr_createdBy" Type="int" Mode="In" />
+    <Parameter Name="tr_editedBy" Type="int" Mode="In" />
   </Function>
   <Function Name="uspTransactionBasicCRUD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="crudOperation" Type="varchar" Mode="In" />
@@ -1443,6 +1503,7 @@ warning 6002: The table/view 'DhoniEnterprises.dbo.TransactionFiles' does not ha
     <EntitySet Name="BusinessPartner_Contacts" EntityType="Self.BusinessPartner_Contacts" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BusinessPartner_Emails" EntityType="Self.BusinessPartner_Emails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BusinessPartner_Products" EntityType="Self.BusinessPartner_Products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="dailyProductPrices" EntityType="Self.dailyProductPrices" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Origin" EntityType="Self.Origin" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ShipmentStatus" EntityType="Self.ShipmentStatus" Schema="dbo" store:Type="Tables" />
@@ -1516,6 +1577,18 @@ warning 6002: The table/view 'DhoniEnterprises.dbo.TransactionFiles' does not ha
     <AssociationSet Name="FK__BusinessP__prod___7073AF84" Association="Self.FK__BusinessP__prod___7073AF84">
       <End Role="Products" EntitySet="Products" />
       <End Role="BusinessPartner_Products" EntitySet="BusinessPartner_Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__dailyProd__Prod___31A25463" Association="Self.FK__dailyProd__Prod___31A25463">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="dailyProductPrices" EntitySet="dailyProductPrices" />
+    </AssociationSet>
+    <AssociationSet Name="FK__dailyProd__tr_cr__42CCE065" Association="Self.FK__dailyProd__tr_cr__42CCE065">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="dailyProductPrices" EntitySet="dailyProductPrices" />
+    </AssociationSet>
+    <AssociationSet Name="FK__dailyProd__tr_ed__44B528D7" Association="Self.FK__dailyProd__tr_ed__44B528D7">
+      <End Role="AppUsers" EntitySet="AppUsers" />
+      <End Role="dailyProductPrices" EntitySet="dailyProductPrices" />
     </AssociationSet>
     <AssociationSet Name="FK__Products__Create__07C12930" Association="Self.FK__Products__Create__07C12930">
       <End Role="AppUsers" EntitySet="AppUsers" />

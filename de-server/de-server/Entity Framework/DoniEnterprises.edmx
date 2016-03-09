@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DhoniEnterprisesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DhoniEnterprisesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AppUserRights">
           <Key>
             <PropertyRef Name="AppUserID" />
@@ -114,6 +114,19 @@
           </Key>
           <Property Name="bp_ID" Type="bigint" Nullable="false" />
           <Property Name="prod_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dailyProductPrices">
+          <Key>
+            <PropertyRef Name="Prod_ID" />
+            <PropertyRef Name="PriceDate" />
+          </Key>
+          <Property Name="Prod_ID" Type="int" Nullable="false" />
+          <Property Name="PriceDate" Type="datetime" Nullable="false" />
+          <Property Name="Price" Type="int" />
+          <Property Name="tr_createdBy" Type="int" Nullable="false" />
+          <Property Name="tr_editedBy" Type="int" />
+          <Property Name="tr_createdOn" Type="datetime" Nullable="false" />
+          <Property Name="tr_editedOn" Type="datetime" />
         </EntityType>
         <EntityType Name="Origin">
           <Key>
@@ -486,6 +499,42 @@ warning 6002: The table/view 'DhoniEnterprises.dbo.TransactionFiles' does not ha
             </Principal>
             <Dependent Role="BusinessPartner_Products">
               <PropertyRef Name="prod_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dailyProd__Prod___31A25463">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="dailyProductPrices" Type="Self.dailyProductPrices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="dailyProductPrices">
+              <PropertyRef Name="Prod_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dailyProd__tr_cr__42CCE065">
+          <End Role="AppUsers" Type="Self.AppUsers" Multiplicity="1" />
+          <End Role="dailyProductPrices" Type="Self.dailyProductPrices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUsers">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="dailyProductPrices">
+              <PropertyRef Name="tr_createdBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dailyProd__tr_ed__44B528D7">
+          <End Role="AppUsers" Type="Self.AppUsers" Multiplicity="0..1" />
+          <End Role="dailyProductPrices" Type="Self.dailyProductPrices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUsers">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="dailyProductPrices">
+              <PropertyRef Name="tr_editedBy" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1198,6 +1247,9 @@ warning 6002: The table/view 'DhoniEnterprises.dbo.TransactionFiles' does not ha
         <Function Name="uspGetOriginList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="uspGetProductList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="uspGetProductListPDF" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="uspGetProductPriceByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="datetime" Mode="In" />
+        </Function>
         <Function Name="uspGetProductTagInput" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="input" Type="varchar(max)" Mode="In" />
         </Function>
@@ -1236,6 +1288,14 @@ warning 6002: The table/view 'DhoniEnterprises.dbo.TransactionFiles' does not ha
           <Parameter Name="crudOperation" Type="varchar" Mode="In" />
           <Parameter Name="origin_id" Type="bigint" Mode="In" />
           <Parameter Name="origin_name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="uspProductPriceByDateCRUD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="crudOperation" Type="varchar" Mode="In" />
+          <Parameter Name="productId" Type="int" Mode="In" />
+          <Parameter Name="priceDate" Type="datetime" Mode="In" />
+          <Parameter Name="price" Type="int" Mode="In" />
+          <Parameter Name="tr_createdBy" Type="int" Mode="In" />
+          <Parameter Name="tr_editedBy" Type="int" Mode="In" />
         </Function>
         <Function Name="uspTransactionBasicCRUD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="crudOperation" Type="varchar" Mode="In" />
@@ -1448,6 +1508,7 @@ warning 6002: The table/view 'DhoniEnterprises.dbo.TransactionFiles' does not ha
           <EntitySet Name="BusinessPartner_Contacts" EntityType="Self.BusinessPartner_Contacts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BusinessPartner_Emails" EntityType="Self.BusinessPartner_Emails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BusinessPartner_Products" EntityType="Self.BusinessPartner_Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dailyProductPrices" EntityType="Self.dailyProductPrices" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Origin" EntityType="Self.Origin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ShipmentStatus" EntityType="Self.ShipmentStatus" Schema="dbo" store:Type="Tables" />
@@ -1521,6 +1582,18 @@ warning 6002: The table/view 'DhoniEnterprises.dbo.TransactionFiles' does not ha
           <AssociationSet Name="FK__BusinessP__prod___7073AF84" Association="Self.FK__BusinessP__prod___7073AF84">
             <End Role="Products" EntitySet="Products" />
             <End Role="BusinessPartner_Products" EntitySet="BusinessPartner_Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dailyProd__Prod___31A25463" Association="Self.FK__dailyProd__Prod___31A25463">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="dailyProductPrices" EntitySet="dailyProductPrices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dailyProd__tr_cr__42CCE065" Association="Self.FK__dailyProd__tr_cr__42CCE065">
+            <End Role="AppUsers" EntitySet="AppUsers" />
+            <End Role="dailyProductPrices" EntitySet="dailyProductPrices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dailyProd__tr_ed__44B528D7" Association="Self.FK__dailyProd__tr_ed__44B528D7">
+            <End Role="AppUsers" EntitySet="AppUsers" />
+            <End Role="dailyProductPrices" EntitySet="dailyProductPrices" />
           </AssociationSet>
           <AssociationSet Name="FK__Products__Create__07C12930" Association="Self.FK__Products__Create__07C12930">
             <End Role="AppUsers" EntitySet="AppUsers" />
@@ -1679,8 +1752,7 @@ warning 6002: The table/view 'DhoniEnterprises.dbo.TransactionFiles' does not ha
             <End Role="UserEvents" EntitySet="UserEvents" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DhoniEnterprisesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1737,6 +1809,8 @@ warning 6002: The table/view 'DhoniEnterprises.dbo.TransactionFiles' does not ha
           <NavigationProperty Name="Transactions1" Relationship="Self.FK__Transacti__tr_ed__5E1FF51F" FromRole="AppUsers" ToRole="Transactions" />
           <NavigationProperty Name="transactionVieweds" Relationship="Self.FK__transacti__UserI__7869D707" FromRole="AppUsers" ToRole="transactionViewed" />
           <NavigationProperty Name="UserEvents" Relationship="Self.FK__UserEvent__UserI__2E1BDC42" FromRole="AppUsers" ToRole="UserEvents" />
+          <NavigationProperty Name="dailyProductPrices" Relationship="DhoniEnterprisesModel.FK__dailyProd__tr_cr__42CCE065" FromRole="AppUser" ToRole="dailyProductPrice" />
+          <NavigationProperty Name="dailyProductPrices1" Relationship="DhoniEnterprisesModel.FK__dailyProd__tr_ed__44B528D7" FromRole="AppUser" ToRole="dailyProductPrice" />
         </EntityType>
         <EntityType Name="AppUsersImage">
           <Key>
@@ -1869,6 +1943,7 @@ warning 6002: The table/view 'DhoniEnterprises.dbo.TransactionFiles' does not ha
           <NavigationProperty Name="AppUser1" Relationship="Self.FK__Products__LastUp__08B54D69" FromRole="Products" ToRole="AppUsers" />
           <NavigationProperty Name="Transactions" Relationship="Self.FK__Transacti__tr_pr__5C37ACAD" FromRole="Products" ToRole="Transactions" />
           <NavigationProperty Name="BusinessPartners" Relationship="Self.BusinessPartner_Products" FromRole="Products" ToRole="BusinessPartner" />
+          <NavigationProperty Name="dailyProductPrices" Relationship="DhoniEnterprisesModel.FK__dailyProd__Prod___31A25463" FromRole="Product" ToRole="dailyProductPrice" />
         </EntityType>
         <EntityType Name="ShipmentStatu">
           <Key>
@@ -3105,62 +3180,62 @@ warning 6002: The table/view 'DhoniEnterprises.dbo.TransactionFiles' does not ha
             <Parameter Name="tr_createdBy" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="uspCheckBPPrimaryContactExist" ReturnType="Collection(Int32)">
-            <Parameter Name="bp_ID" Mode="In" Type="Int64" />
+          <Parameter Name="bp_ID" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="uspDeleteBusinessPartner">
-            <Parameter Name="bp_ID" Mode="In" Type="Int64" />
+          <Parameter Name="bp_ID" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="uspDeleteBusinessPartnerBankDetails">
-            <Parameter Name="bankDetails_ID" Mode="In" Type="Int64" />
+          <Parameter Name="bankDetails_ID" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="uspDeleteBusinessPartnerContact">
-            <Parameter Name="bp_Cont_ID" Mode="In" Type="Int64" />
+          <Parameter Name="bp_Cont_ID" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="uspDeleteBusinessPartnerContactNumber">
-            <Parameter Name="ph_ID" Mode="In" Type="Int64" />
+          <Parameter Name="ph_ID" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="uspDeleteBusinessPartnerEmail">
-            <Parameter Name="email_ID" Mode="In" Type="Int64" />
+          <Parameter Name="email_ID" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="uspDeleteBusinessPartnerProducts">
             <Parameter Name="bp_ID" Mode="In" Type="Int64" />
             <Parameter Name="prod_ID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="uspDeleteProduct">
-            <Parameter Name="ProductId" Mode="In" Type="Int32" />
+          <Parameter Name="ProductId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="uspDeleteTransaction">
-            <Parameter Name="tr_transactionID" Mode="In" Type="Int64" />
+          <Parameter Name="tr_transactionID" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="uspDeleteTransactionNotes">
             <Parameter Name="tr_NotesID" Mode="In" Type="Int64" />
             <Parameter Name="tr_ID" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="uspGetAppUserByEmail" ReturnType="Collection(DhoniEnterprisesModel.uspGetAppUserByEmail_Result)">
-            <Parameter Name="userEmail" Mode="In" Type="String" />
+          <Parameter Name="userEmail" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="uspGetBPBank" ReturnType="Collection(DhoniEnterprisesModel.uspGetBPBank_Result)">
-            <Parameter Name="bp_ID" Mode="In" Type="Int64" />
+          <Parameter Name="bp_ID" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="uspGetBPContact" ReturnType="Collection(DhoniEnterprisesModel.uspGetBPContact_Result)">
-            <Parameter Name="bp_ID" Mode="In" Type="Int64" />
+          <Parameter Name="bp_ID" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="uspGetBPContactNumber" ReturnType="Collection(DhoniEnterprisesModel.uspGetBPContactNumber_Result)">
-            <Parameter Name="bp_ID" Mode="In" Type="Int64" />
+          <Parameter Name="bp_ID" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="uspGetBPEmails" ReturnType="Collection(DhoniEnterprisesModel.uspGetBPEmails_Result)">
-            <Parameter Name="bp_ID" Mode="In" Type="Int64" />
+          <Parameter Name="bp_ID" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="uspGetBPGeneral" ReturnType="Collection(DhoniEnterprisesModel.uspGetBPGeneral_Result)">
-            <Parameter Name="bp_ID" Mode="In" Type="Int64" />
+          <Parameter Name="bp_ID" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="uspGetBPProducts" ReturnType="Collection(DhoniEnterprisesModel.uspGetBPProducts_Result)">
-            <Parameter Name="bp_ID" Mode="In" Type="Int64" />
+          <Parameter Name="bp_ID" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="uspGetBusinessPartnerForList" ReturnType="Collection(DhoniEnterprisesModel.uspGetBusinessPartnerForList_Result)" />
           <FunctionImport Name="uspGetBusinessPartnerForTable" ReturnType="Collection(DhoniEnterprisesModel.uspGetBusinessPartnerForTable_Result)" />
           <FunctionImport Name="uspGetCommissionTransaction" ReturnType="Collection(DhoniEnterprisesModel.uspGetCommissionTransaction_Result)">
-            <Parameter Name="tr_transactionID" Mode="In" Type="Int64" />
+          <Parameter Name="tr_transactionID" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="uspGetDropDownBroker" ReturnType="Collection(DhoniEnterprisesModel.uspGetDropDownBroker_Result)" />
           <FunctionImport Name="uspGetDropDownBuyer" ReturnType="Collection(DhoniEnterprisesModel.uspGetDropDownBuyer_Result)" />
@@ -3170,20 +3245,20 @@ warning 6002: The table/view 'DhoniEnterprises.dbo.TransactionFiles' does not ha
           <FunctionImport Name="uspGetProductList" ReturnType="Collection(DhoniEnterprisesModel.uspGetProductList_Result)" />
           <FunctionImport Name="uspGetProductListPDF" ReturnType="Collection(DhoniEnterprisesModel.uspGetProductListPDF_Result)" />
           <FunctionImport Name="uspGetProductTagInput" ReturnType="Collection(DhoniEnterprisesModel.uspGetProductTagInput_Result)">
-            <Parameter Name="input" Mode="In" Type="String" />
+          <Parameter Name="input" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="uspGetRecentlyViewedItem" ReturnType="Collection(DhoniEnterprisesModel.uspGetRecentlyViewedItem_Result)">
-            <Parameter Name="UserID" Mode="In" Type="Int32" />
+          <Parameter Name="UserID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="uspGetSecondaryTransaction" ReturnType="Collection(DhoniEnterprisesModel.uspGetSecondaryTransaction_Result)">
-            <Parameter Name="tr_transactionID" Mode="In" Type="Int64" />
+          <Parameter Name="tr_transactionID" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="uspGetSingleProduct" ReturnType="Collection(DhoniEnterprisesModel.uspGetSingleProduct_Result)">
-            <Parameter Name="productId" Mode="In" Type="Int32" />
+          <Parameter Name="productId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="uspGetTableFilters" />
           <FunctionImport Name="uspGetTransaction" ReturnType="Collection(DhoniEnterprisesModel.uspGetTransaction_Result)">
-            <Parameter Name="tr_transactionID" Mode="In" Type="Int64" />
+          <Parameter Name="tr_transactionID" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="uspGetTransactionByParameter" ReturnType="Collection(DhoniEnterprisesModel.uspGetTransactionByParameter_Result)">
             <Parameter Name="parameter" Mode="In" Type="String" />
@@ -3191,17 +3266,17 @@ warning 6002: The table/view 'DhoniEnterprises.dbo.TransactionFiles' does not ha
             <Parameter Name="dateInput" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="uspGetTransactionContract" ReturnType="Collection(DhoniEnterprisesModel.uspGetTransactionContract_Result)">
-            <Parameter Name="tr_transactionId" Mode="In" Type="Int64" />
+          <Parameter Name="tr_transactionId" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="uspGetTransactionNotes" ReturnType="Collection(DhoniEnterprisesModel.uspGetTransactionNotes_Result)">
-            <Parameter Name="tr_transactionId" Mode="In" Type="Int64" />
+          <Parameter Name="tr_transactionId" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="uspGetTransactionShipment" ReturnType="Collection(DhoniEnterprisesModel.uspGetTransactionShipment_Result)">
-            <Parameter Name="tr_transactionId" Mode="In" Type="Int64" />
+          <Parameter Name="tr_transactionId" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="uspGetTransactionsList" />
           <FunctionImport Name="uspGetTransactionStatus" ReturnType="Collection(DhoniEnterprisesModel.uspGetTransactionStatus_Result)">
-            <Parameter Name="tr_transactionId" Mode="In" Type="Int64" />
+          <Parameter Name="tr_transactionId" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="uspOriginCRUD" ReturnType="Collection(Int64)">
             <Parameter Name="crudOperation" Mode="In" Type="String" />
@@ -3266,13 +3341,13 @@ warning 6002: The table/view 'DhoniEnterprises.dbo.TransactionFiles' does not ha
             <Parameter Name="tf_createdBy" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="uspTransactionFileDelete">
-            <Parameter Name="tf_fileID" Mode="In" Type="Int64" />
+          <Parameter Name="tf_fileID" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="uspTransactionFileGetAll" ReturnType="Collection(DhoniEnterprisesModel.uspTransactionFileGetAll_Result)">
-            <Parameter Name="tf_transactionID" Mode="In" Type="Int64" />
+          <Parameter Name="tf_transactionID" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="uspTransactionFileGetSingle" ReturnType="Collection(DhoniEnterprisesModel.uspTransactionFileGetSingle_Result)">
-            <Parameter Name="tf_fileID" Mode="In" Type="Int64" />
+          <Parameter Name="tf_fileID" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="uspTransactionList" ReturnType="Collection(DhoniEnterprisesModel.uspTransactionList_Result)" />
           <FunctionImport Name="uspTransactionListByDateRange" ReturnType="Collection(DhoniEnterprisesModel.uspTransactionListByDateRange_Result)">
@@ -3408,6 +3483,30 @@ warning 6002: The table/view 'DhoniEnterprises.dbo.TransactionFiles' does not ha
             <Parameter Name="greenDamaged" Mode="In" Type="Int32" />
             <Parameter Name="otherColor" Mode="In" Type="Int32" />
             <Parameter Name="wrinkled" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="dailyProductPrices" EntityType="DhoniEnterprisesModel.dailyProductPrice" />
+          <AssociationSet Name="FK__dailyProd__tr_cr__42CCE065" Association="DhoniEnterprisesModel.FK__dailyProd__tr_cr__42CCE065">
+            <End Role="AppUser" EntitySet="AppUsers" />
+            <End Role="dailyProductPrice" EntitySet="dailyProductPrices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dailyProd__tr_ed__44B528D7" Association="DhoniEnterprisesModel.FK__dailyProd__tr_ed__44B528D7">
+            <End Role="AppUser" EntitySet="AppUsers" />
+            <End Role="dailyProductPrice" EntitySet="dailyProductPrices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dailyProd__Prod___31A25463" Association="DhoniEnterprisesModel.FK__dailyProd__Prod___31A25463">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="dailyProductPrice" EntitySet="dailyProductPrices" />
+          </AssociationSet>
+          <FunctionImport Name="uspGetProductPriceByDate" ReturnType="Collection(DhoniEnterprisesModel.uspGetProductPriceByDate_Result)">
+          <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="uspProductPriceByDateCRUD">
+            <Parameter Name="crudOperation" Mode="In" Type="String" />
+            <Parameter Name="productId" Mode="In" Type="Int32" />
+            <Parameter Name="priceDate" Mode="In" Type="DateTime" />
+            <Parameter Name="price" Mode="In" Type="Int32" />
+            <Parameter Name="tr_createdBy" Mode="In" Type="Int32" />
+            <Parameter Name="tr_editedBy" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="getAllUsers_Result">
@@ -3801,6 +3900,63 @@ warning 6002: The table/view 'DhoniEnterprises.dbo.TransactionFiles' does not ha
           <Property Type="Int32" Name="tr_createdBy" Nullable="false" />
           <Property Type="DateTime" Name="tr_createdOn" Nullable="true" Precision="23" />
           <Property Type="DateTime" Name="tr_editedOn" Nullable="true" Precision="23" />
+        </ComplexType>
+        <EntityType Name="dailyProductPrice">
+          <Key>
+            <PropertyRef Name="Prod_ID" />
+            <PropertyRef Name="PriceDate" />
+          </Key>
+          <Property Name="Prod_ID" Type="Int32" Nullable="false" />
+          <Property Name="PriceDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="tr_createdBy" Type="Int32" Nullable="false" />
+          <Property Name="tr_editedBy" Type="Int32" />
+          <Property Name="tr_createdOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="tr_editedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AppUser" Relationship="DhoniEnterprisesModel.FK__dailyProd__tr_cr__42CCE065" FromRole="dailyProductPrice" ToRole="AppUser" />
+          <NavigationProperty Name="AppUser1" Relationship="DhoniEnterprisesModel.FK__dailyProd__tr_ed__44B528D7" FromRole="dailyProductPrice" ToRole="AppUser" />
+          <NavigationProperty Name="Product" Relationship="DhoniEnterprisesModel.FK__dailyProd__Prod___31A25463" FromRole="dailyProductPrice" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK__dailyProd__tr_cr__42CCE065">
+          <End Type="DhoniEnterprisesModel.AppUser" Role="AppUser" Multiplicity="1" />
+          <End Type="DhoniEnterprisesModel.dailyProductPrice" Role="dailyProductPrice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="dailyProductPrice">
+              <PropertyRef Name="tr_createdBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dailyProd__tr_ed__44B528D7">
+          <End Type="DhoniEnterprisesModel.AppUser" Role="AppUser" Multiplicity="0..1" />
+          <End Type="DhoniEnterprisesModel.dailyProductPrice" Role="dailyProductPrice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="dailyProductPrice">
+              <PropertyRef Name="tr_editedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dailyProd__Prod___31A25463">
+          <End Type="DhoniEnterprisesModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="DhoniEnterprisesModel.dailyProductPrice" Role="dailyProductPrice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="dailyProductPrice">
+              <PropertyRef Name="Prod_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="uspGetProductPriceByDate_Result">
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+          <Property Type="Int32" Name="Price" Nullable="true" />
+          <Property Type="Int32" Name="tr_editedBy" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -4734,6 +4890,29 @@ warning 6002: The table/view 'DhoniEnterprises.dbo.TransactionFiles' does not ha
           <FunctionImportMapping FunctionImportName="uspUpdateBusinessPartnerEmail" FunctionName="DhoniEnterprisesModel.Store.uspUpdateBusinessPartnerEmail" />
           <FunctionImportMapping FunctionImportName="uspUpdateBusinessPartnerProduct" FunctionName="DhoniEnterprisesModel.Store.uspUpdateBusinessPartnerProduct" />
           <FunctionImportMapping FunctionImportName="uspUpdateProduct" FunctionName="DhoniEnterprisesModel.Store.uspUpdateProduct" />
+          <EntitySetMapping Name="dailyProductPrices">
+            <EntityTypeMapping TypeName="DhoniEnterprisesModel.dailyProductPrice">
+              <MappingFragment StoreEntitySet="dailyProductPrices">
+                <ScalarProperty Name="tr_editedOn" ColumnName="tr_editedOn" />
+                <ScalarProperty Name="tr_createdOn" ColumnName="tr_createdOn" />
+                <ScalarProperty Name="tr_editedBy" ColumnName="tr_editedBy" />
+                <ScalarProperty Name="tr_createdBy" ColumnName="tr_createdBy" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="PriceDate" ColumnName="PriceDate" />
+                <ScalarProperty Name="Prod_ID" ColumnName="Prod_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="uspGetProductPriceByDate" FunctionName="DhoniEnterprisesModel.Store.uspGetProductPriceByDate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetProductPriceByDate_Result">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="tr_editedBy" ColumnName="tr_editedBy" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspProductPriceByDateCRUD" FunctionName="DhoniEnterprisesModel.Store.uspProductPriceByDateCRUD" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

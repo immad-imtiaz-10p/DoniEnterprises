@@ -53,6 +53,8 @@
     <NavigationProperty Name="Transactions1" Relationship="Self.FK__Transacti__tr_ed__5E1FF51F" FromRole="AppUsers" ToRole="Transactions" />
     <NavigationProperty Name="transactionVieweds" Relationship="Self.FK__transacti__UserI__7869D707" FromRole="AppUsers" ToRole="transactionViewed" />
     <NavigationProperty Name="UserEvents" Relationship="Self.FK__UserEvent__UserI__2E1BDC42" FromRole="AppUsers" ToRole="UserEvents" />
+    <NavigationProperty Name="dailyProductPrices" Relationship="DhoniEnterprisesModel.FK__dailyProd__tr_cr__42CCE065" FromRole="AppUser" ToRole="dailyProductPrice" />
+    <NavigationProperty Name="dailyProductPrices1" Relationship="DhoniEnterprisesModel.FK__dailyProd__tr_ed__44B528D7" FromRole="AppUser" ToRole="dailyProductPrice" />
   </EntityType>
   <EntityType Name="AppUsersImage">
     <Key>
@@ -185,6 +187,7 @@
     <NavigationProperty Name="AppUser1" Relationship="Self.FK__Products__LastUp__08B54D69" FromRole="Products" ToRole="AppUsers" />
     <NavigationProperty Name="Transactions" Relationship="Self.FK__Transacti__tr_pr__5C37ACAD" FromRole="Products" ToRole="Transactions" />
     <NavigationProperty Name="BusinessPartners" Relationship="Self.BusinessPartner_Products" FromRole="Products" ToRole="BusinessPartner" />
+    <NavigationProperty Name="dailyProductPrices" Relationship="DhoniEnterprisesModel.FK__dailyProd__Prod___31A25463" FromRole="Product" ToRole="dailyProductPrice" />
   </EntityType>
   <EntityType Name="ShipmentStatu">
     <Key>
@@ -1725,6 +1728,30 @@
       <Parameter Name="otherColor" Mode="In" Type="Int32" />
       <Parameter Name="wrinkled" Mode="In" Type="Int32" />
     </FunctionImport>
+    <EntitySet Name="dailyProductPrices" EntityType="DhoniEnterprisesModel.dailyProductPrice" />
+    <AssociationSet Name="FK__dailyProd__tr_cr__42CCE065" Association="DhoniEnterprisesModel.FK__dailyProd__tr_cr__42CCE065">
+      <End Role="AppUser" EntitySet="AppUsers" />
+      <End Role="dailyProductPrice" EntitySet="dailyProductPrices" />
+    </AssociationSet>
+    <AssociationSet Name="FK__dailyProd__tr_ed__44B528D7" Association="DhoniEnterprisesModel.FK__dailyProd__tr_ed__44B528D7">
+      <End Role="AppUser" EntitySet="AppUsers" />
+      <End Role="dailyProductPrice" EntitySet="dailyProductPrices" />
+    </AssociationSet>
+    <AssociationSet Name="FK__dailyProd__Prod___31A25463" Association="DhoniEnterprisesModel.FK__dailyProd__Prod___31A25463">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="dailyProductPrice" EntitySet="dailyProductPrices" />
+    </AssociationSet>
+    <FunctionImport Name="uspGetProductPriceByDate" ReturnType="Collection(DhoniEnterprisesModel.uspGetProductPriceByDate_Result)">
+      <Parameter Name="date" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="uspProductPriceByDateCRUD">
+      <Parameter Name="crudOperation" Mode="In" Type="String" />
+      <Parameter Name="productId" Mode="In" Type="Int32" />
+      <Parameter Name="priceDate" Mode="In" Type="DateTime" />
+      <Parameter Name="price" Mode="In" Type="Int32" />
+      <Parameter Name="tr_createdBy" Mode="In" Type="Int32" />
+      <Parameter Name="tr_editedBy" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="getAllUsers_Result">
     <Property Type="String" Name="firstName" Nullable="true" MaxLength="50" />
@@ -2117,5 +2144,62 @@
     <Property Type="Int32" Name="tr_createdBy" Nullable="false" />
     <Property Type="DateTime" Name="tr_createdOn" Nullable="true" Precision="23" />
     <Property Type="DateTime" Name="tr_editedOn" Nullable="true" Precision="23" />
+  </ComplexType>
+  <EntityType Name="dailyProductPrice">
+    <Key>
+      <PropertyRef Name="Prod_ID" />
+      <PropertyRef Name="PriceDate" />
+    </Key>
+    <Property Name="Prod_ID" Type="Int32" Nullable="false" />
+    <Property Name="PriceDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Price" Type="Int32" />
+    <Property Name="tr_createdBy" Type="Int32" Nullable="false" />
+    <Property Name="tr_editedBy" Type="Int32" />
+    <Property Name="tr_createdOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="tr_editedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="AppUser" Relationship="DhoniEnterprisesModel.FK__dailyProd__tr_cr__42CCE065" FromRole="dailyProductPrice" ToRole="AppUser" />
+    <NavigationProperty Name="AppUser1" Relationship="DhoniEnterprisesModel.FK__dailyProd__tr_ed__44B528D7" FromRole="dailyProductPrice" ToRole="AppUser" />
+    <NavigationProperty Name="Product" Relationship="DhoniEnterprisesModel.FK__dailyProd__Prod___31A25463" FromRole="dailyProductPrice" ToRole="Product" />
+  </EntityType>
+  <Association Name="FK__dailyProd__tr_cr__42CCE065">
+    <End Type="DhoniEnterprisesModel.AppUser" Role="AppUser" Multiplicity="1" />
+    <End Type="DhoniEnterprisesModel.dailyProductPrice" Role="dailyProductPrice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUser">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="dailyProductPrice">
+        <PropertyRef Name="tr_createdBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__dailyProd__tr_ed__44B528D7">
+    <End Type="DhoniEnterprisesModel.AppUser" Role="AppUser" Multiplicity="0..1" />
+    <End Type="DhoniEnterprisesModel.dailyProductPrice" Role="dailyProductPrice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUser">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="dailyProductPrice">
+        <PropertyRef Name="tr_editedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__dailyProd__Prod___31A25463">
+    <End Type="DhoniEnterprisesModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="DhoniEnterprisesModel.dailyProductPrice" Role="dailyProductPrice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="dailyProductPrice">
+        <PropertyRef Name="Prod_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="uspGetProductPriceByDate_Result">
+    <Property Type="Int32" Name="ProductId" Nullable="false" />
+    <Property Type="Int32" Name="Price" Nullable="true" />
+    <Property Type="Int32" Name="tr_editedBy" Nullable="true" />
   </ComplexType>
 </Schema>

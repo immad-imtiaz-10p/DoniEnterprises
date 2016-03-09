@@ -49,6 +49,7 @@ namespace de_server.Entity_Framework
         public virtual DbSet<transactionViewed> transactionVieweds { get; set; }
         public virtual DbSet<UserEvent> UserEvents { get; set; }
         public virtual DbSet<TransactionFile> TransactionFiles { get; set; }
+        public virtual DbSet<dailyProductPrice> dailyProductPrices { get; set; }
     
         public virtual int addNewAppUser(string title, string firstName, string lastName, string password, string email, Nullable<System.Guid> guID, string designation, Nullable<bool> isAdmin)
         {
@@ -1778,6 +1779,44 @@ namespace de_server.Entity_Framework
                 new ObjectParameter("wrinkled", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspUpdateProduct", productIDParameter, productNameParameter, moistureParameter, weaveledParameter, originParameter, purityParameter, splitsParameter, qualityParameter, updatedByParameter, damagedParameter, foreignMatterParameter, greenDamagedParameter, otherColorParameter, wrinkledParameter);
+        }
+    
+        public virtual ObjectResult<uspGetProductPriceByDate_Result> uspGetProductPriceByDate(Nullable<System.DateTime> date)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGetProductPriceByDate_Result>("uspGetProductPriceByDate", dateParameter);
+        }
+    
+        public virtual int uspProductPriceByDateCRUD(string crudOperation, Nullable<int> productId, Nullable<System.DateTime> priceDate, Nullable<int> price, Nullable<int> tr_createdBy, Nullable<int> tr_editedBy)
+        {
+            var crudOperationParameter = crudOperation != null ?
+                new ObjectParameter("crudOperation", crudOperation) :
+                new ObjectParameter("crudOperation", typeof(string));
+    
+            var productIdParameter = productId.HasValue ?
+                new ObjectParameter("productId", productId) :
+                new ObjectParameter("productId", typeof(int));
+    
+            var priceDateParameter = priceDate.HasValue ?
+                new ObjectParameter("priceDate", priceDate) :
+                new ObjectParameter("priceDate", typeof(System.DateTime));
+    
+            var priceParameter = price.HasValue ?
+                new ObjectParameter("price", price) :
+                new ObjectParameter("price", typeof(int));
+    
+            var tr_createdByParameter = tr_createdBy.HasValue ?
+                new ObjectParameter("tr_createdBy", tr_createdBy) :
+                new ObjectParameter("tr_createdBy", typeof(int));
+    
+            var tr_editedByParameter = tr_editedBy.HasValue ?
+                new ObjectParameter("tr_editedBy", tr_editedBy) :
+                new ObjectParameter("tr_editedBy", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspProductPriceByDateCRUD", crudOperationParameter, productIdParameter, priceDateParameter, priceParameter, tr_createdByParameter, tr_editedByParameter);
         }
     }
 }

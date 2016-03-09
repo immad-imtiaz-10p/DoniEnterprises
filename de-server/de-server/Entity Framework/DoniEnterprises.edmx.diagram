@@ -77,6 +77,10 @@
         <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tr_tr__1EF99443" ManuallyRouted="false" />
         <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tr_tr__2E3BD7D3" ManuallyRouted="false" />
         <AssociationConnector Association="DhoniEnterprisesModel.BusinessPartner_Products" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.dailyProductPrice" Width="1.5" PointX="11.25" PointY="24" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__dailyProd__tr_cr__42CCE065" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__dailyProd__tr_ed__44B528D7" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__dailyProd__Prod___31A25463" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

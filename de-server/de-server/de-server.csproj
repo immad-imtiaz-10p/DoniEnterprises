@@ -266,6 +266,9 @@
     <Compile Include="Entity Framework\BusinessPartner_Emails.cs">
       <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity Framework\dailyProductPrice.cs">
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entity Framework\DoniEnterprises.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -381,6 +384,9 @@
       <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetProductList_Result.cs">
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity Framework\uspGetProductPriceByDate_Result.cs">
       <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetProductTagInput_Result.cs">

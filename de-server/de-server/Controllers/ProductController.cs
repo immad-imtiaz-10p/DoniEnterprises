@@ -16,6 +16,7 @@ using System.Web.Http.Cors;
 using de_server.Reporting;
 using NReco.PdfGenerator;
 using de_server.Filters;
+using de_server.App_Config;
 
 namespace de_server.Controllers
 {
@@ -174,14 +175,43 @@ namespace de_server.Controllers
         public IHttpActionResult DeleteProduct(int id)
         {
             using (var context = new DhoniEnterprisesEntities())
-            {
-                
+            {                
                     context.uspDeleteProduct(id);
                     return Ok(new { success = true, message = "Product Successfully deleted!" });
               
             }
         }
 
+        [Route("getProductsPricesByDate")]
+        [HttpPost]
+        public IHttpActionResult GetProductsPricesByDate([FromBody]JObject date)
+        {
+            using(var context = new DhoniEnterprisesEntities())
+            {
+                var productPrices = context.uspGetProductPriceByDate(Convert.ToDateTime(date["date"]));
+                return Ok(new { success = true, productPrices = DataTableSerializer.LINQToDataTable(productPrices) });
+            }
+        }
+
+        [Route("productPriceByDateCrud")]
+        [HttpPost]
+        public IHttpActionResult ProductPriceByDateCRUD([FromBody]JObject productPrice)
+        {
+            var priceInfo = productPrice["data"];
+            var operation = Convert.ToString(priceInfo["operation"]);
+            var prodId = (int?)priceInfo["productId"];
+            var price = (int)priceInfo["price"];
+            var date = (DateTime?)priceInfo["Date"];
+            var userID = BasicAuthHttpModule.getCurrentUserId();
+            using (var context = new DhoniEnterprisesEntities()){
+
+                context.uspProductPriceByDateCRUD(operation, prodId, date, price, userID, userID);
+                return Ok(new {
+                    success = true,
+                    message= "Product price successfully updated!"
+                });
+            }
+        }
 
     }
 }

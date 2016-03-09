@@ -43,6 +43,8 @@ namespace de_server.Entity_Framework
             this.Transactions1 = new HashSet<Transaction>();
             this.transactionVieweds = new HashSet<transactionViewed>();
             this.UserEvents = new HashSet<UserEvent>();
+            this.dailyProductPrices = new HashSet<dailyProductPrice>();
+            this.dailyProductPrices1 = new HashSet<dailyProductPrice>();
         }
     
         public int UserID { get; set; }
@@ -84,5 +86,7 @@ namespace de_server.Entity_Framework
         public virtual ICollection<Transaction> Transactions1 { get; set; }
         public virtual ICollection<transactionViewed> transactionVieweds { get; set; }
         public virtual ICollection<UserEvent> UserEvents { get; set; }
+        public virtual ICollection<dailyProductPrice> dailyProductPrices { get; set; }
+        public virtual ICollection<dailyProductPrice> dailyProductPrices1 { get; set; }
     }
 }
