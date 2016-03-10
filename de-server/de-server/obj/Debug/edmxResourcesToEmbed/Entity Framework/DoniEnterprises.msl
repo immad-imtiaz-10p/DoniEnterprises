@@ -105,6 +105,19 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="dailyProductPrices">
+      <EntityTypeMapping TypeName="DhoniEnterprisesModel.dailyProductPrice">
+        <MappingFragment StoreEntitySet="dailyProductPrices">
+          <ScalarProperty Name="Prod_ID" ColumnName="Prod_ID" />
+          <ScalarProperty Name="PriceDate" ColumnName="PriceDate" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="tr_createdBy" ColumnName="tr_createdBy" />
+          <ScalarProperty Name="tr_editedBy" ColumnName="tr_editedBy" />
+          <ScalarProperty Name="tr_createdOn" ColumnName="tr_createdOn" />
+          <ScalarProperty Name="tr_editedOn" ColumnName="tr_editedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Origins">
       <EntityTypeMapping TypeName="DhoniEnterprisesModel.Origin">
         <MappingFragment StoreEntitySet="Origin">
@@ -648,6 +661,15 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspGetProductPriceByDate" FunctionName="DhoniEnterprisesModel.Store.uspGetProductPriceByDate">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetProductPriceByDate_Result">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="tr_editedBy" ColumnName="tr_editedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="uspGetProductTagInput" FunctionName="DhoniEnterprisesModel.Store.uspGetProductTagInput">
       <ResultMapping>
         <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetProductTagInput_Result">
@@ -828,6 +850,30 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="uspOriginCRUD" FunctionName="DhoniEnterprisesModel.Store.uspOriginCRUD" />
+    <FunctionImportMapping FunctionImportName="uspProductListByDateRange" FunctionName="DhoniEnterprisesModel.Store.uspProductListByDateRange">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspProductListByDateRange_Result">
+          <ScalarProperty Name="Prod_ID" ColumnName="Prod_ID" />
+          <ScalarProperty Name="PriceDate" ColumnName="PriceDate" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="quality" ColumnName="quality" />
+          <ScalarProperty Name="origin" ColumnName="origin" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspProductPriceByDateCRUD" FunctionName="DhoniEnterprisesModel.Store.uspProductPriceByDateCRUD" />
+    <FunctionImportMapping FunctionImportName="uspProductSalesAnalyticsByDateRange" FunctionName="DhoniEnterprisesModel.Store.uspProductSalesAnalyticsByDateRange">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspProductSalesAnalyticsByDateRange_Result">
+          <ScalarProperty Name="tr_productID" ColumnName="tr_productID" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="NetCommission" ColumnName="NetCommission" />
+          <ScalarProperty Name="Volume" ColumnName="Volume" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="uspTransactionBasicCRUD" FunctionName="DhoniEnterprisesModel.Store.uspTransactionBasicCRUD" />
     <FunctionImportMapping FunctionImportName="uspTransactionCommissionCRUD" FunctionName="DhoniEnterprisesModel.Store.uspTransactionCommissionCRUD" />
     <FunctionImportMapping FunctionImportName="uspTransactionContractCRUD" FunctionName="DhoniEnterprisesModel.Store.uspTransactionContractCRUD" />
@@ -927,40 +973,5 @@
     <FunctionImportMapping FunctionImportName="uspUpdateBusinessPartnerEmail" FunctionName="DhoniEnterprisesModel.Store.uspUpdateBusinessPartnerEmail" />
     <FunctionImportMapping FunctionImportName="uspUpdateBusinessPartnerProduct" FunctionName="DhoniEnterprisesModel.Store.uspUpdateBusinessPartnerProduct" />
     <FunctionImportMapping FunctionImportName="uspUpdateProduct" FunctionName="DhoniEnterprisesModel.Store.uspUpdateProduct" />
-    <EntitySetMapping Name="dailyProductPrices">
-      <EntityTypeMapping TypeName="DhoniEnterprisesModel.dailyProductPrice">
-        <MappingFragment StoreEntitySet="dailyProductPrices">
-          <ScalarProperty Name="tr_editedOn" ColumnName="tr_editedOn" />
-          <ScalarProperty Name="tr_createdOn" ColumnName="tr_createdOn" />
-          <ScalarProperty Name="tr_editedBy" ColumnName="tr_editedBy" />
-          <ScalarProperty Name="tr_createdBy" ColumnName="tr_createdBy" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="PriceDate" ColumnName="PriceDate" />
-          <ScalarProperty Name="Prod_ID" ColumnName="Prod_ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="uspGetProductPriceByDate" FunctionName="DhoniEnterprisesModel.Store.uspGetProductPriceByDate">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetProductPriceByDate_Result">
-          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="tr_editedBy" ColumnName="tr_editedBy" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspProductPriceByDateCRUD" FunctionName="DhoniEnterprisesModel.Store.uspProductPriceByDateCRUD" />
-    <FunctionImportMapping FunctionImportName="uspProductListByDateRange" FunctionName="DhoniEnterprisesModel.Store.uspProductListByDateRange">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspProductListByDateRange_Result">
-          <ScalarProperty Name="Prod_ID" ColumnName="Prod_ID" />
-          <ScalarProperty Name="PriceDate" ColumnName="PriceDate" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-          <ScalarProperty Name="quality" ColumnName="quality" />
-          <ScalarProperty Name="origin" ColumnName="origin" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

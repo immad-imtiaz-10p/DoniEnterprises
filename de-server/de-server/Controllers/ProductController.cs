@@ -220,7 +220,6 @@ namespace de_server.Controllers
         {
             using (var context = new DhoniEnterprisesEntities())
             {
-                DataTable transactions = new DataTable();
                 var productsPrices = DataTableSerializer.LINQToDataTable(context.uspProductListByDateRange(startDate, endDate));
                 return Ok(new
                 {
@@ -230,6 +229,24 @@ namespace de_server.Controllers
 
             }
         }
+
+        [Route("productSalesAnalyticsByDateRange")]
+        [HttpGet]
+        public IHttpActionResult ProductSalesAnalyticsByDateRange(DateTime startDate, DateTime endDate)
+        {
+            using (var context = new DhoniEnterprisesEntities())
+            {
+                var productSalesAnalytics = DataTableSerializer.LINQToDataTable(context.uspProductSalesAnalyticsByDateRange(startDate, endDate));
+                return Ok(
+                    new
+                    {
+                        success = true,
+                        productSalesAnalytics = productSalesAnalytics
+                    }
+                );
+            }
+        }
+        
 
     }
 }

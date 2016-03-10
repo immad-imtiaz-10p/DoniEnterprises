@@ -4,35 +4,38 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c0c39308895a4db98163be726b7b10ae" Name="Diagram1">
-        <EntityTypeShape EntityType="DhoniEnterprisesModel.AppUserRight" Width="1.5" PointX="3" PointY="26.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DhoniEnterprisesModel.AppUser" Width="1.5" PointX="0.75" PointY="27.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DhoniEnterprisesModel.AppUsersImage" Width="1.5" PointX="3" PointY="28.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DhoniEnterprisesModel.BusinessPartner" Width="1.5" PointX="3.75" PointY="36.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DhoniEnterprisesModel.BusinessPartner_BankDetails" Width="1.5" PointX="6" PointY="36.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DhoniEnterprisesModel.BusinessPartner_ContactNumbers" Width="1.5" PointX="3" PointY="31.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DhoniEnterprisesModel.BusinessPartner_Contacts" Width="1.5" PointX="6" PointY="29.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DhoniEnterprisesModel.BusinessPartner_Emails" Width="1.5" PointX="6" PointY="40" IsExpanded="true" />
+      <Diagram DiagramId="d8187073661c4368a1ff6b8a422ad93e" Name="Diagram1">
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.AppUserRight" Width="1.5" PointX="3" PointY="28.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.AppUser" Width="1.5" PointX="0.75" PointY="28.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.AppUsersImage" Width="1.5" PointX="3" PointY="30.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.BusinessPartner" Width="1.5" PointX="6.75" PointY="36.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.BusinessPartner_BankDetails" Width="1.5" PointX="9" PointY="36.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.BusinessPartner_ContactNumbers" Width="1.5" PointX="3" PointY="33.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.BusinessPartner_Contacts" Width="1.5" PointX="6" PointY="31.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.BusinessPartner_Emails" Width="1.5" PointX="9" PointY="40" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.dailyProductPrice" Width="1.5" PointX="6" PointY="26.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DhoniEnterprisesModel.Origin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DhoniEnterprisesModel.Product" Width="1.5" PointX="9" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.Product" Width="1.5" PointX="9" PointY="30.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DhoniEnterprisesModel.ShipmentStatu" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DhoniEnterprisesModel.sysdiagram" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DhoniEnterprisesModel.Transaction" Width="1.5" PointX="11.25" PointY="27.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DhoniEnterprisesModel.TransactionsCommission" Width="1.5" PointX="13.5" PointY="28.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DhoniEnterprisesModel.TransactionsContract" Width="1.5" PointX="16.5" PointY="29.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DhoniEnterprisesModel.TransactionsNote" Width="1.5" PointX="16.5" PointY="26" IsExpanded="true" />
-        <EntityTypeShape EntityType="DhoniEnterprisesModel.TransactionsSecondary" Width="1.5" PointX="16.5" PointY="34.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DhoniEnterprisesModel.TransactionsShipment" Width="1.5" PointX="19.5" PointY="26.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DhoniEnterprisesModel.TransactionsStatu" Width="1.5" PointX="13.5" PointY="23.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DhoniEnterprisesModel.transactionViewed" Width="1.5" PointX="3" PointY="45.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DhoniEnterprisesModel.UserEvent" Width="1.5" PointX="3" PointY="48.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DhoniEnterprisesModel.TransactionFile" Width="1.5" PointX="13.5" PointY="35.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.Transaction" Width="1.5" PointX="11.25" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.TransactionsCommission" Width="1.5" PointX="13.5" PointY="30.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.TransactionsContract" Width="1.5" PointX="16.5" PointY="31.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.TransactionsNote" Width="1.5" PointX="16.5" PointY="28" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.TransactionsSecondary" Width="1.5" PointX="16.5" PointY="36.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.TransactionsShipment" Width="1.5" PointX="19.5" PointY="28.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.TransactionsStatu" Width="1.5" PointX="13.5" PointY="25.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.transactionViewed" Width="1.5" PointX="3" PointY="51.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.UserEvent" Width="1.5" PointX="3" PointY="54.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DhoniEnterprisesModel.TransactionFile" Width="1.5" PointX="13.5" PointY="37.375" IsExpanded="true" />
         <AssociationConnector Association="DhoniEnterprisesModel.FK__AppUserRi__AppUs__0E6E26BF" ManuallyRouted="false" />
         <AssociationConnector Association="DhoniEnterprisesModel.FK__AppUsersI__AppUs__02FC7413" ManuallyRouted="false" />
         <AssociationConnector Association="DhoniEnterprisesModel.FK__BusinessP__bp_Co__1881A0DE" ManuallyRouted="false" />
         <AssociationConnector Association="DhoniEnterprisesModel.FK__BusinessP__bp_Co__1975C517" ManuallyRouted="false" />
         <AssociationConnector Association="DhoniEnterprisesModel.FK__BusinessP__creat__1B5E0D89" ManuallyRouted="false" />
         <AssociationConnector Association="DhoniEnterprisesModel.FK__BusinessP__edite__1C5231C2" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__dailyProd__tr_cr__42CCE065" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__dailyProd__tr_ed__44B528D7" ManuallyRouted="false" />
         <AssociationConnector Association="DhoniEnterprisesModel.FK__Products__Create__07C12930" ManuallyRouted="false" />
         <AssociationConnector Association="DhoniEnterprisesModel.FK__Products__LastUp__08B54D69" ManuallyRouted="false" />
         <AssociationConnector Association="DhoniEnterprisesModel.FK__Secondary__tr_cr__63D8CE75" ManuallyRouted="false" />
@@ -67,6 +70,7 @@
         <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tr_Co__21D600EE" ManuallyRouted="false" />
         <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tr_se__0CDAE408" ManuallyRouted="false" />
         <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tr_sh__062DE679" ManuallyRouted="false" />
+        <AssociationConnector Association="DhoniEnterprisesModel.FK__dailyProd__Prod___31A25463" ManuallyRouted="false" />
         <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tr_pr__5C37ACAD" ManuallyRouted="false" />
         <AssociationConnector Association="DhoniEnterprisesModel.FK__Secondary__tr_tr__60FC61CA" ManuallyRouted="false" />
         <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tf_tr__61BB7BD9" ManuallyRouted="false" />
@@ -77,10 +81,6 @@
         <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tr_tr__1EF99443" ManuallyRouted="false" />
         <AssociationConnector Association="DhoniEnterprisesModel.FK__Transacti__tr_tr__2E3BD7D3" ManuallyRouted="false" />
         <AssociationConnector Association="DhoniEnterprisesModel.BusinessPartner_Products" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="DhoniEnterprisesModel.dailyProductPrice" Width="1.5" PointX="11.25" PointY="24" />
-        <AssociationConnector Association="DhoniEnterprisesModel.FK__dailyProd__tr_cr__42CCE065" />
-        <AssociationConnector Association="DhoniEnterprisesModel.FK__dailyProd__tr_ed__44B528D7" />
-        <AssociationConnector Association="DhoniEnterprisesModel.FK__dailyProd__Prod___31A25463" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

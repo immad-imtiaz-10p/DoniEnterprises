@@ -21,6 +21,8 @@ namespace de_server.Entity_Framework
             this.BusinessPartner_Contacts1 = new HashSet<BusinessPartner_Contacts>();
             this.BusinessPartner_ContactNumbers = new HashSet<BusinessPartner_ContactNumbers>();
             this.BusinessPartner_ContactNumbers1 = new HashSet<BusinessPartner_ContactNumbers>();
+            this.dailyProductPrices = new HashSet<dailyProductPrice>();
+            this.dailyProductPrices1 = new HashSet<dailyProductPrice>();
             this.Products = new HashSet<Product>();
             this.Products1 = new HashSet<Product>();
             this.TransactionsSecondaries = new HashSet<TransactionsSecondary>();
@@ -43,8 +45,6 @@ namespace de_server.Entity_Framework
             this.Transactions1 = new HashSet<Transaction>();
             this.transactionVieweds = new HashSet<transactionViewed>();
             this.UserEvents = new HashSet<UserEvent>();
-            this.dailyProductPrices = new HashSet<dailyProductPrice>();
-            this.dailyProductPrices1 = new HashSet<dailyProductPrice>();
         }
     
         public int UserID { get; set; }
@@ -64,6 +64,8 @@ namespace de_server.Entity_Framework
         public virtual ICollection<BusinessPartner_Contacts> BusinessPartner_Contacts1 { get; set; }
         public virtual ICollection<BusinessPartner_ContactNumbers> BusinessPartner_ContactNumbers { get; set; }
         public virtual ICollection<BusinessPartner_ContactNumbers> BusinessPartner_ContactNumbers1 { get; set; }
+        public virtual ICollection<dailyProductPrice> dailyProductPrices { get; set; }
+        public virtual ICollection<dailyProductPrice> dailyProductPrices1 { get; set; }
         public virtual ICollection<Product> Products { get; set; }
         public virtual ICollection<Product> Products1 { get; set; }
         public virtual ICollection<TransactionsSecondary> TransactionsSecondaries { get; set; }
@@ -86,7 +88,5 @@ namespace de_server.Entity_Framework
         public virtual ICollection<Transaction> Transactions1 { get; set; }
         public virtual ICollection<transactionViewed> transactionVieweds { get; set; }
         public virtual ICollection<UserEvent> UserEvents { get; set; }
-        public virtual ICollection<dailyProductPrice> dailyProductPrices { get; set; }
-        public virtual ICollection<dailyProductPrice> dailyProductPrices1 { get; set; }
     }
 }
