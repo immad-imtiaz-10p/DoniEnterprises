@@ -16,6 +16,7 @@ namespace de_server.Entity_Framework
     {
         public Product()
         {
+            this.dailyProductLocalPrices = new HashSet<dailyProductLocalPrice>();
             this.dailyProductPrices = new HashSet<dailyProductPrice>();
             this.Transactions = new HashSet<Transaction>();
             this.BusinessPartners = new HashSet<BusinessPartner>();
@@ -41,6 +42,7 @@ namespace de_server.Entity_Framework
     
         public virtual AppUser AppUser { get; set; }
         public virtual AppUser AppUser1 { get; set; }
+        public virtual ICollection<dailyProductLocalPrice> dailyProductLocalPrices { get; set; }
         public virtual ICollection<dailyProductPrice> dailyProductPrices { get; set; }
         public virtual ICollection<Transaction> Transactions { get; set; }
         public virtual ICollection<BusinessPartner> BusinessPartners { get; set; }

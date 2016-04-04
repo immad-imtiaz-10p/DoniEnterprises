@@ -35,11 +35,11 @@ namespace de_server.Entity_Framework
         public virtual DbSet<BusinessPartner_ContactNumbers> BusinessPartner_ContactNumbers { get; set; }
         public virtual DbSet<BusinessPartner_Contacts> BusinessPartner_Contacts { get; set; }
         public virtual DbSet<BusinessPartner_Emails> BusinessPartner_Emails { get; set; }
+        public virtual DbSet<dailyProductLocalPrice> dailyProductLocalPrices { get; set; }
         public virtual DbSet<dailyProductPrice> dailyProductPrices { get; set; }
         public virtual DbSet<Origin> Origins { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ShipmentStatu> ShipmentStatus { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
         public virtual DbSet<TransactionsCommission> TransactionsCommissions { get; set; }
         public virtual DbSet<TransactionsContract> TransactionsContracts { get; set; }
@@ -129,109 +129,6 @@ namespace de_server.Entity_Framework
                 new ObjectParameter("Email", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("NewUserLoginDetails", userNameParameter, passwordParameter, dOBParameter, emailParameter);
-        }
-    
-        public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var versionParameter = version.HasValue ?
-                new ObjectParameter("version", version) :
-                new ObjectParameter("version", typeof(int));
-    
-            var definitionParameter = definition != null ?
-                new ObjectParameter("definition", definition) :
-                new ObjectParameter("definition", typeof(byte[]));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
-        }
-    
-        public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var versionParameter = version.HasValue ?
-                new ObjectParameter("version", version) :
-                new ObjectParameter("version", typeof(int));
-    
-            var definitionParameter = definition != null ?
-                new ObjectParameter("definition", definition) :
-                new ObjectParameter("definition", typeof(byte[]));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
-        }
-    
-        public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var new_diagramnameParameter = new_diagramname != null ?
-                new ObjectParameter("new_diagramname", new_diagramname) :
-                new ObjectParameter("new_diagramname", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
-        }
-    
-        public virtual int sp_upgraddiagrams()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
     
         public virtual ObjectResult<Nullable<long>> uspAddBusinessPartner(Nullable<bool> isSupplier, Nullable<bool> isBroker, Nullable<bool> isShipper, Nullable<bool> isBuyer, Nullable<bool> onDoniContract, Nullable<int> createdBy, Nullable<int> reliabilityIndex, string bPName, string bPWebsite, string address, string country)
@@ -702,6 +599,11 @@ namespace de_server.Entity_Framework
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("uspCheckBPPrimaryContactExist", bp_IDParameter);
         }
     
+        public virtual int uspDeleteAllTransactions()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspDeleteAllTransactions");
+        }
+    
         public virtual int uspDeleteBusinessPartner(Nullable<long> bp_ID)
         {
             var bp_IDParameter = bp_ID.HasValue ?
@@ -908,6 +810,15 @@ namespace de_server.Entity_Framework
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGetProductListPDF_Result>("uspGetProductListPDF");
         }
     
+        public virtual ObjectResult<uspGetProductLocalPriceByDate_Result> uspGetProductLocalPriceByDate(Nullable<System.DateTime> date)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGetProductLocalPriceByDate_Result>("uspGetProductLocalPriceByDate", dateParameter);
+        }
+    
         public virtual ObjectResult<uspGetProductPriceByDate_Result> uspGetProductPriceByDate(Nullable<System.DateTime> date)
         {
             var dateParameter = date.HasValue ?
@@ -942,6 +853,23 @@ namespace de_server.Entity_Framework
                 new ObjectParameter("tr_transactionID", typeof(long));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGetSecondaryTransaction_Result>("uspGetSecondaryTransaction", tr_transactionIDParameter);
+        }
+    
+        public virtual ObjectResult<uspGetShipmentAnalyticsByDateRange_Result> uspGetShipmentAnalyticsByDateRange(Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate, string reportType)
+        {
+            var startDateParameter = startDate.HasValue ?
+                new ObjectParameter("startDate", startDate) :
+                new ObjectParameter("startDate", typeof(System.DateTime));
+    
+            var endDateParameter = endDate.HasValue ?
+                new ObjectParameter("endDate", endDate) :
+                new ObjectParameter("endDate", typeof(System.DateTime));
+    
+            var reportTypeParameter = reportType != null ?
+                new ObjectParameter("reportType", reportType) :
+                new ObjectParameter("reportType", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGetShipmentAnalyticsByDateRange_Result>("uspGetShipmentAnalyticsByDateRange", startDateParameter, endDateParameter, reportTypeParameter);
         }
     
         public virtual ObjectResult<uspGetSingleProduct_Result> uspGetSingleProduct(Nullable<int> productId)
@@ -1082,6 +1010,35 @@ namespace de_server.Entity_Framework
                 new ObjectParameter("tr_editedBy", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspProductPriceByDateCRUD", crudOperationParameter, productIdParameter, priceDateParameter, priceParameter, tr_createdByParameter, tr_editedByParameter);
+        }
+    
+        public virtual int uspProductPriceLocalByDateCRUD(string crudOperation, Nullable<int> productId, Nullable<System.DateTime> priceDate, Nullable<int> price, Nullable<int> tr_createdBy, Nullable<int> tr_editedBy)
+        {
+            var crudOperationParameter = crudOperation != null ?
+                new ObjectParameter("crudOperation", crudOperation) :
+                new ObjectParameter("crudOperation", typeof(string));
+    
+            var productIdParameter = productId.HasValue ?
+                new ObjectParameter("productId", productId) :
+                new ObjectParameter("productId", typeof(int));
+    
+            var priceDateParameter = priceDate.HasValue ?
+                new ObjectParameter("priceDate", priceDate) :
+                new ObjectParameter("priceDate", typeof(System.DateTime));
+    
+            var priceParameter = price.HasValue ?
+                new ObjectParameter("price", price) :
+                new ObjectParameter("price", typeof(int));
+    
+            var tr_createdByParameter = tr_createdBy.HasValue ?
+                new ObjectParameter("tr_createdBy", tr_createdBy) :
+                new ObjectParameter("tr_createdBy", typeof(int));
+    
+            var tr_editedByParameter = tr_editedBy.HasValue ?
+                new ObjectParameter("tr_editedBy", tr_editedBy) :
+                new ObjectParameter("tr_editedBy", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspProductPriceLocalByDateCRUD", crudOperationParameter, productIdParameter, priceDateParameter, priceParameter, tr_createdByParameter, tr_editedByParameter);
         }
     
         public virtual ObjectResult<uspProductSalesAnalyticsByDateRange_Result> uspProductSalesAnalyticsByDateRange(Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate)

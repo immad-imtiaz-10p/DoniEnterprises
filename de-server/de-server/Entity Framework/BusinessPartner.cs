@@ -16,17 +16,17 @@ namespace de_server.Entity_Framework
     {
         public BusinessPartner()
         {
-            this.BusinessPartner_Emails = new HashSet<BusinessPartner_Emails>();
-            this.BusinessPartner_ContactNumbers = new HashSet<BusinessPartner_ContactNumbers>();
             this.BusinessPartner_BankDetails = new HashSet<BusinessPartner_BankDetails>();
+            this.BusinessPartner_ContactNumbers = new HashSet<BusinessPartner_ContactNumbers>();
             this.BusinessPartner_Contacts = new HashSet<BusinessPartner_Contacts>();
-            this.TransactionsSecondaries = new HashSet<TransactionsSecondary>();
-            this.TransactionsSecondaries1 = new HashSet<TransactionsSecondary>();
+            this.BusinessPartner_Emails = new HashSet<BusinessPartner_Emails>();
             this.Transactions = new HashSet<Transaction>();
             this.Transactions1 = new HashSet<Transaction>();
             this.TransactionsCommissions = new HashSet<TransactionsCommission>();
             this.TransactionsContracts = new HashSet<TransactionsContract>();
             this.TransactionsCommissions1 = new HashSet<TransactionsCommission>();
+            this.TransactionsSecondaries = new HashSet<TransactionsSecondary>();
+            this.TransactionsSecondaries1 = new HashSet<TransactionsSecondary>();
             this.TransactionsShipments = new HashSet<TransactionsShipment>();
             this.Products = new HashSet<Product>();
         }
@@ -43,17 +43,17 @@ namespace de_server.Entity_Framework
         public string bp_country { get; set; }
         public string bp_address { get; set; }
     
-        public virtual ICollection<BusinessPartner_Emails> BusinessPartner_Emails { get; set; }
-        public virtual ICollection<BusinessPartner_ContactNumbers> BusinessPartner_ContactNumbers { get; set; }
         public virtual ICollection<BusinessPartner_BankDetails> BusinessPartner_BankDetails { get; set; }
+        public virtual ICollection<BusinessPartner_ContactNumbers> BusinessPartner_ContactNumbers { get; set; }
         public virtual ICollection<BusinessPartner_Contacts> BusinessPartner_Contacts { get; set; }
-        public virtual ICollection<TransactionsSecondary> TransactionsSecondaries { get; set; }
-        public virtual ICollection<TransactionsSecondary> TransactionsSecondaries1 { get; set; }
+        public virtual ICollection<BusinessPartner_Emails> BusinessPartner_Emails { get; set; }
         public virtual ICollection<Transaction> Transactions { get; set; }
         public virtual ICollection<Transaction> Transactions1 { get; set; }
         public virtual ICollection<TransactionsCommission> TransactionsCommissions { get; set; }
         public virtual ICollection<TransactionsContract> TransactionsContracts { get; set; }
         public virtual ICollection<TransactionsCommission> TransactionsCommissions1 { get; set; }
+        public virtual ICollection<TransactionsSecondary> TransactionsSecondaries { get; set; }
+        public virtual ICollection<TransactionsSecondary> TransactionsSecondaries1 { get; set; }
         public virtual ICollection<TransactionsShipment> TransactionsShipments { get; set; }
         public virtual ICollection<Product> Products { get; set; }
     }

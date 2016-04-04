@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="DhoniEnterprisesModelStoreContainer" CdmEntityContainer="DhoniEnterprisesEntities">
+  <EntityContainerMapping StorageEntityContainer="DoniEnterprisesModelStoreContainer" CdmEntityContainer="DhoniEnterprisesEntities">
     <EntitySetMapping Name="AppUserRights">
-      <EntityTypeMapping TypeName="DhoniEnterprisesModel.AppUserRight">
+      <EntityTypeMapping TypeName="DoniEnterprisesModel.AppUserRight">
         <MappingFragment StoreEntitySet="AppUserRights">
           <ScalarProperty Name="AppUserID" ColumnName="AppUserID" />
           <ScalarProperty Name="Area" ColumnName="Area" />
@@ -11,7 +11,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="AppUsers">
-      <EntityTypeMapping TypeName="DhoniEnterprisesModel.AppUser">
+      <EntityTypeMapping TypeName="DoniEnterprisesModel.AppUser">
         <MappingFragment StoreEntitySet="AppUsers">
           <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="UserPass" ColumnName="UserPass" />
@@ -27,7 +27,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="AppUsersImages">
-      <EntityTypeMapping TypeName="DhoniEnterprisesModel.AppUsersImage">
+      <EntityTypeMapping TypeName="DoniEnterprisesModel.AppUsersImage">
         <MappingFragment StoreEntitySet="AppUsersImage">
           <ScalarProperty Name="AppUserID" ColumnName="AppUserID" />
           <ScalarProperty Name="ImageData" ColumnName="ImageData" />
@@ -35,7 +35,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="BusinessPartners">
-      <EntityTypeMapping TypeName="DhoniEnterprisesModel.BusinessPartner">
+      <EntityTypeMapping TypeName="DoniEnterprisesModel.BusinessPartner">
         <MappingFragment StoreEntitySet="BusinessPartner">
           <ScalarProperty Name="bp_ID" ColumnName="bp_ID" />
           <ScalarProperty Name="bp_Name" ColumnName="bp_Name" />
@@ -52,7 +52,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="BusinessPartner_BankDetails">
-      <EntityTypeMapping TypeName="DhoniEnterprisesModel.BusinessPartner_BankDetails">
+      <EntityTypeMapping TypeName="DoniEnterprisesModel.BusinessPartner_BankDetails">
         <MappingFragment StoreEntitySet="BusinessPartner_BankDetails">
           <ScalarProperty Name="bankDetails_ID" ColumnName="bankDetails_ID" />
           <ScalarProperty Name="bp_ID" ColumnName="bp_ID" />
@@ -65,7 +65,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="BusinessPartner_ContactNumbers">
-      <EntityTypeMapping TypeName="DhoniEnterprisesModel.BusinessPartner_ContactNumbers">
+      <EntityTypeMapping TypeName="DoniEnterprisesModel.BusinessPartner_ContactNumbers">
         <MappingFragment StoreEntitySet="BusinessPartner_ContactNumbers">
           <ScalarProperty Name="ph_ID" ColumnName="ph_ID" />
           <ScalarProperty Name="bp_ID" ColumnName="bp_ID" />
@@ -79,7 +79,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="BusinessPartner_Contacts">
-      <EntityTypeMapping TypeName="DhoniEnterprisesModel.BusinessPartner_Contacts">
+      <EntityTypeMapping TypeName="DoniEnterprisesModel.BusinessPartner_Contacts">
         <MappingFragment StoreEntitySet="BusinessPartner_Contacts">
           <ScalarProperty Name="bp_cont_ID" ColumnName="bp_cont_ID" />
           <ScalarProperty Name="bp_ID" ColumnName="bp_ID" />
@@ -97,7 +97,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="BusinessPartner_Emails">
-      <EntityTypeMapping TypeName="DhoniEnterprisesModel.BusinessPartner_Emails">
+      <EntityTypeMapping TypeName="DoniEnterprisesModel.BusinessPartner_Emails">
         <MappingFragment StoreEntitySet="BusinessPartner_Emails">
           <ScalarProperty Name="email_ID" ColumnName="email_ID" />
           <ScalarProperty Name="bp_ID" ColumnName="bp_ID" />
@@ -105,8 +105,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="dailyProductLocalPrices">
+      <EntityTypeMapping TypeName="DoniEnterprisesModel.dailyProductLocalPrice">
+        <MappingFragment StoreEntitySet="dailyProductLocalPrices">
+          <ScalarProperty Name="Prod_ID" ColumnName="Prod_ID" />
+          <ScalarProperty Name="PriceDate" ColumnName="PriceDate" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="tr_createdBy" ColumnName="tr_createdBy" />
+          <ScalarProperty Name="tr_editedBy" ColumnName="tr_editedBy" />
+          <ScalarProperty Name="tr_createdOn" ColumnName="tr_createdOn" />
+          <ScalarProperty Name="tr_editedOn" ColumnName="tr_editedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="dailyProductPrices">
-      <EntityTypeMapping TypeName="DhoniEnterprisesModel.dailyProductPrice">
+      <EntityTypeMapping TypeName="DoniEnterprisesModel.dailyProductPrice">
         <MappingFragment StoreEntitySet="dailyProductPrices">
           <ScalarProperty Name="Prod_ID" ColumnName="Prod_ID" />
           <ScalarProperty Name="PriceDate" ColumnName="PriceDate" />
@@ -119,7 +132,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Origins">
-      <EntityTypeMapping TypeName="DhoniEnterprisesModel.Origin">
+      <EntityTypeMapping TypeName="DoniEnterprisesModel.Origin">
         <MappingFragment StoreEntitySet="Origin">
           <ScalarProperty Name="origin_id" ColumnName="origin_id" />
           <ScalarProperty Name="origin_name" ColumnName="origin_name" />
@@ -127,7 +140,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Products">
-      <EntityTypeMapping TypeName="DhoniEnterprisesModel.Product">
+      <EntityTypeMapping TypeName="DoniEnterprisesModel.Product">
         <MappingFragment StoreEntitySet="Products">
           <ScalarProperty Name="ProductId" ColumnName="ProductId" />
           <ScalarProperty Name="ProductName" ColumnName="ProductName" />
@@ -150,26 +163,15 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ShipmentStatus">
-      <EntityTypeMapping TypeName="DhoniEnterprisesModel.ShipmentStatu">
+      <EntityTypeMapping TypeName="DoniEnterprisesModel.ShipmentStatu">
         <MappingFragment StoreEntitySet="ShipmentStatus">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="status" ColumnName="status" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="DhoniEnterprisesModel.sysdiagram">
-        <MappingFragment StoreEntitySet="sysdiagrams">
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-          <ScalarProperty Name="version" ColumnName="version" />
-          <ScalarProperty Name="definition" ColumnName="definition" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Transactions">
-      <EntityTypeMapping TypeName="DhoniEnterprisesModel.Transaction">
+      <EntityTypeMapping TypeName="DoniEnterprisesModel.Transaction">
         <MappingFragment StoreEntitySet="Transactions">
           <ScalarProperty Name="tr_transactionID" ColumnName="tr_transactionID" />
           <ScalarProperty Name="tr_date" ColumnName="tr_date" />
@@ -193,7 +195,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TransactionsCommissions">
-      <EntityTypeMapping TypeName="DhoniEnterprisesModel.TransactionsCommission">
+      <EntityTypeMapping TypeName="DoniEnterprisesModel.TransactionsCommission">
         <MappingFragment StoreEntitySet="TransactionsCommission">
           <ScalarProperty Name="tr_transactionID" ColumnName="tr_transactionID" />
           <ScalarProperty Name="tr_brokerInvolved" ColumnName="tr_brokerInvolved" />
@@ -218,7 +220,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TransactionsContracts">
-      <EntityTypeMapping TypeName="DhoniEnterprisesModel.TransactionsContract">
+      <EntityTypeMapping TypeName="DoniEnterprisesModel.TransactionsContract">
         <MappingFragment StoreEntitySet="TransactionsContract">
           <ScalarProperty Name="tr_transactionID" ColumnName="tr_transactionID" />
           <ScalarProperty Name="tr_doniContract" ColumnName="tr_doniContract" />
@@ -232,7 +234,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TransactionsNotes">
-      <EntityTypeMapping TypeName="DhoniEnterprisesModel.TransactionsNote">
+      <EntityTypeMapping TypeName="DoniEnterprisesModel.TransactionsNote">
         <MappingFragment StoreEntitySet="TransactionsNotes">
           <ScalarProperty Name="tr_transactionID" ColumnName="tr_transactionID" />
           <ScalarProperty Name="tr_tranNoteID" ColumnName="tr_tranNoteID" />
@@ -244,7 +246,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TransactionsSecondaries">
-      <EntityTypeMapping TypeName="DhoniEnterprisesModel.TransactionsSecondary">
+      <EntityTypeMapping TypeName="DoniEnterprisesModel.TransactionsSecondary">
         <MappingFragment StoreEntitySet="TransactionsSecondary">
           <ScalarProperty Name="tr_transactionID" ColumnName="tr_transactionID" />
           <ScalarProperty Name="tr_sec_tranID" ColumnName="tr_sec_tranID" />
@@ -262,7 +264,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TransactionsShipments">
-      <EntityTypeMapping TypeName="DhoniEnterprisesModel.TransactionsShipment">
+      <EntityTypeMapping TypeName="DoniEnterprisesModel.TransactionsShipment">
         <MappingFragment StoreEntitySet="TransactionsShipment">
           <ScalarProperty Name="tr_transactionID" ColumnName="tr_transactionID" />
           <ScalarProperty Name="tr_ship_notShipped" ColumnName="tr_ship_notShipped" />
@@ -304,7 +306,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TransactionsStatus">
-      <EntityTypeMapping TypeName="DhoniEnterprisesModel.TransactionsStatu">
+      <EntityTypeMapping TypeName="DoniEnterprisesModel.TransactionsStatu">
         <MappingFragment StoreEntitySet="TransactionsStatus">
           <ScalarProperty Name="tr_transactionID" ColumnName="tr_transactionID" />
           <ScalarProperty Name="tr_transactionStatus" ColumnName="tr_transactionStatus" />
@@ -317,7 +319,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="transactionVieweds">
-      <EntityTypeMapping TypeName="DhoniEnterprisesModel.transactionViewed">
+      <EntityTypeMapping TypeName="DoniEnterprisesModel.transactionViewed">
         <MappingFragment StoreEntitySet="transactionViewed">
           <ScalarProperty Name="tr_visitedID" ColumnName="tr_visitedID" />
           <ScalarProperty Name="tr_visitedOn" ColumnName="tr_visitedOn" />
@@ -329,7 +331,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="UserEvents">
-      <EntityTypeMapping TypeName="DhoniEnterprisesModel.UserEvent">
+      <EntityTypeMapping TypeName="DoniEnterprisesModel.UserEvent">
         <MappingFragment StoreEntitySet="UserEvents">
           <ScalarProperty Name="EventID" ColumnName="EventID" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
@@ -339,7 +341,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TransactionFiles">
-      <EntityTypeMapping TypeName="DhoniEnterprisesModel.TransactionFile">
+      <EntityTypeMapping TypeName="DoniEnterprisesModel.TransactionFile">
         <MappingFragment StoreEntitySet="TransactionFiles">
           <ScalarProperty Name="tf_transactionID" ColumnName="tf_transactionID" />
           <ScalarProperty Name="tf_fileID" ColumnName="tf_fileID" />
@@ -353,7 +355,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="BusinessPartner_Products" TypeName="DhoniEnterprisesModel.BusinessPartner_Products" StoreEntitySet="BusinessPartner_Products">
+    <AssociationSetMapping Name="BusinessPartner_Products" TypeName="DoniEnterprisesModel.BusinessPartner_Products" StoreEntitySet="BusinessPartner_Products">
       <EndProperty Name="BusinessPartner">
         <ScalarProperty Name="bp_ID" ColumnName="bp_ID" />
       </EndProperty>
@@ -361,11 +363,11 @@
         <ScalarProperty Name="ProductId" ColumnName="prod_ID" />
       </EndProperty>
     </AssociationSetMapping>
-    <FunctionImportMapping FunctionImportName="addNewAppUser" FunctionName="DhoniEnterprisesModel.Store.addNewAppUser" />
-    <FunctionImportMapping FunctionImportName="AppUserChangePasword" FunctionName="DhoniEnterprisesModel.Store.AppUserChangePasword" />
-    <FunctionImportMapping FunctionImportName="getAllUsers" FunctionName="DhoniEnterprisesModel.Store.getAllUsers">
+    <FunctionImportMapping FunctionImportName="addNewAppUser" FunctionName="DoniEnterprisesModel.Store.addNewAppUser" />
+    <FunctionImportMapping FunctionImportName="AppUserChangePasword" FunctionName="DoniEnterprisesModel.Store.AppUserChangePasword" />
+    <FunctionImportMapping FunctionImportName="getAllUsers" FunctionName="DoniEnterprisesModel.Store.getAllUsers">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.getAllUsers_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.getAllUsers_Result">
           <ScalarProperty Name="firstName" ColumnName="firstName" />
           <ScalarProperty Name="lastName" ColumnName="lastName" />
           <ScalarProperty Name="initials" ColumnName="initials" />
@@ -375,55 +377,32 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="NewUserLoginDetails" FunctionName="DhoniEnterprisesModel.Store.NewUserLoginDetails" />
-    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="DhoniEnterprisesModel.Store.sp_alterdiagram" />
-    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="DhoniEnterprisesModel.Store.sp_creatediagram" />
-    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="DhoniEnterprisesModel.Store.sp_dropdiagram" />
-    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="DhoniEnterprisesModel.Store.sp_helpdiagramdefinition">
+    <FunctionImportMapping FunctionImportName="NewUserLoginDetails" FunctionName="DoniEnterprisesModel.Store.NewUserLoginDetails" />
+    <FunctionImportMapping FunctionImportName="uspAddBusinessPartner" FunctionName="DoniEnterprisesModel.Store.uspAddBusinessPartner" />
+    <FunctionImportMapping FunctionImportName="uspAddBusinessPartnerBankDetails" FunctionName="DoniEnterprisesModel.Store.uspAddBusinessPartnerBankDetails" />
+    <FunctionImportMapping FunctionImportName="uspAddBusinessPartnerContact" FunctionName="DoniEnterprisesModel.Store.uspAddBusinessPartnerContact" />
+    <FunctionImportMapping FunctionImportName="uspAddBusinessPartnerContactNumber" FunctionName="DoniEnterprisesModel.Store.uspAddBusinessPartnerContactNumber" />
+    <FunctionImportMapping FunctionImportName="uspAddBusinessPartnerEmail" FunctionName="DoniEnterprisesModel.Store.uspAddBusinessPartnerEmail" />
+    <FunctionImportMapping FunctionImportName="uspAddBusinessPartnerProducts" FunctionName="DoniEnterprisesModel.Store.uspAddBusinessPartnerProducts" />
+    <FunctionImportMapping FunctionImportName="uspAddProduct" FunctionName="DoniEnterprisesModel.Store.uspAddProduct" />
+    <FunctionImportMapping FunctionImportName="uspAddRecentViewedItem" FunctionName="DoniEnterprisesModel.Store.uspAddRecentViewedItem" />
+    <FunctionImportMapping FunctionImportName="uspAddTransaction" FunctionName="DoniEnterprisesModel.Store.uspAddTransaction" />
+    <FunctionImportMapping FunctionImportName="uspAddTransactionBasic" FunctionName="DoniEnterprisesModel.Store.uspAddTransactionBasic" />
+    <FunctionImportMapping FunctionImportName="uspAddTransactionNotes" FunctionName="DoniEnterprisesModel.Store.uspAddTransactionNotes" />
+    <FunctionImportMapping FunctionImportName="uspCheckBPPrimaryContactExist" FunctionName="DoniEnterprisesModel.Store.uspCheckBPPrimaryContactExist" />
+    <FunctionImportMapping FunctionImportName="uspDeleteAllTransactions" FunctionName="DoniEnterprisesModel.Store.uspDeleteAllTransactions" />
+    <FunctionImportMapping FunctionImportName="uspDeleteBusinessPartner" FunctionName="DoniEnterprisesModel.Store.uspDeleteBusinessPartner" />
+    <FunctionImportMapping FunctionImportName="uspDeleteBusinessPartnerBankDetails" FunctionName="DoniEnterprisesModel.Store.uspDeleteBusinessPartnerBankDetails" />
+    <FunctionImportMapping FunctionImportName="uspDeleteBusinessPartnerContact" FunctionName="DoniEnterprisesModel.Store.uspDeleteBusinessPartnerContact" />
+    <FunctionImportMapping FunctionImportName="uspDeleteBusinessPartnerContactNumber" FunctionName="DoniEnterprisesModel.Store.uspDeleteBusinessPartnerContactNumber" />
+    <FunctionImportMapping FunctionImportName="uspDeleteBusinessPartnerEmail" FunctionName="DoniEnterprisesModel.Store.uspDeleteBusinessPartnerEmail" />
+    <FunctionImportMapping FunctionImportName="uspDeleteBusinessPartnerProducts" FunctionName="DoniEnterprisesModel.Store.uspDeleteBusinessPartnerProducts" />
+    <FunctionImportMapping FunctionImportName="uspDeleteProduct" FunctionName="DoniEnterprisesModel.Store.uspDeleteProduct" />
+    <FunctionImportMapping FunctionImportName="uspDeleteTransaction" FunctionName="DoniEnterprisesModel.Store.uspDeleteTransaction" />
+    <FunctionImportMapping FunctionImportName="uspDeleteTransactionNotes" FunctionName="DoniEnterprisesModel.Store.uspDeleteTransactionNotes" />
+    <FunctionImportMapping FunctionImportName="uspGetAppUserByEmail" FunctionName="DoniEnterprisesModel.Store.uspGetAppUserByEmail">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.sp_helpdiagramdefinition_Result">
-          <ScalarProperty Name="version" ColumnName="version" />
-          <ScalarProperty Name="definition" ColumnName="definition" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="DhoniEnterprisesModel.Store.sp_helpdiagrams">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.sp_helpdiagrams_Result">
-          <ScalarProperty Name="Database" ColumnName="Database" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Owner" ColumnName="Owner" />
-          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="DhoniEnterprisesModel.Store.sp_renamediagram" />
-    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="DhoniEnterprisesModel.Store.sp_upgraddiagrams" />
-    <FunctionImportMapping FunctionImportName="uspAddBusinessPartner" FunctionName="DhoniEnterprisesModel.Store.uspAddBusinessPartner" />
-    <FunctionImportMapping FunctionImportName="uspAddBusinessPartnerBankDetails" FunctionName="DhoniEnterprisesModel.Store.uspAddBusinessPartnerBankDetails" />
-    <FunctionImportMapping FunctionImportName="uspAddBusinessPartnerContact" FunctionName="DhoniEnterprisesModel.Store.uspAddBusinessPartnerContact" />
-    <FunctionImportMapping FunctionImportName="uspAddBusinessPartnerContactNumber" FunctionName="DhoniEnterprisesModel.Store.uspAddBusinessPartnerContactNumber" />
-    <FunctionImportMapping FunctionImportName="uspAddBusinessPartnerEmail" FunctionName="DhoniEnterprisesModel.Store.uspAddBusinessPartnerEmail" />
-    <FunctionImportMapping FunctionImportName="uspAddBusinessPartnerProducts" FunctionName="DhoniEnterprisesModel.Store.uspAddBusinessPartnerProducts" />
-    <FunctionImportMapping FunctionImportName="uspAddProduct" FunctionName="DhoniEnterprisesModel.Store.uspAddProduct" />
-    <FunctionImportMapping FunctionImportName="uspAddRecentViewedItem" FunctionName="DhoniEnterprisesModel.Store.uspAddRecentViewedItem" />
-    <FunctionImportMapping FunctionImportName="uspAddTransaction" FunctionName="DhoniEnterprisesModel.Store.uspAddTransaction" />
-    <FunctionImportMapping FunctionImportName="uspAddTransactionBasic" FunctionName="DhoniEnterprisesModel.Store.uspAddTransactionBasic" />
-    <FunctionImportMapping FunctionImportName="uspAddTransactionNotes" FunctionName="DhoniEnterprisesModel.Store.uspAddTransactionNotes" />
-    <FunctionImportMapping FunctionImportName="uspCheckBPPrimaryContactExist" FunctionName="DhoniEnterprisesModel.Store.uspCheckBPPrimaryContactExist" />
-    <FunctionImportMapping FunctionImportName="uspDeleteBusinessPartner" FunctionName="DhoniEnterprisesModel.Store.uspDeleteBusinessPartner" />
-    <FunctionImportMapping FunctionImportName="uspDeleteBusinessPartnerBankDetails" FunctionName="DhoniEnterprisesModel.Store.uspDeleteBusinessPartnerBankDetails" />
-    <FunctionImportMapping FunctionImportName="uspDeleteBusinessPartnerContact" FunctionName="DhoniEnterprisesModel.Store.uspDeleteBusinessPartnerContact" />
-    <FunctionImportMapping FunctionImportName="uspDeleteBusinessPartnerContactNumber" FunctionName="DhoniEnterprisesModel.Store.uspDeleteBusinessPartnerContactNumber" />
-    <FunctionImportMapping FunctionImportName="uspDeleteBusinessPartnerEmail" FunctionName="DhoniEnterprisesModel.Store.uspDeleteBusinessPartnerEmail" />
-    <FunctionImportMapping FunctionImportName="uspDeleteBusinessPartnerProducts" FunctionName="DhoniEnterprisesModel.Store.uspDeleteBusinessPartnerProducts" />
-    <FunctionImportMapping FunctionImportName="uspDeleteProduct" FunctionName="DhoniEnterprisesModel.Store.uspDeleteProduct" />
-    <FunctionImportMapping FunctionImportName="uspDeleteTransaction" FunctionName="DhoniEnterprisesModel.Store.uspDeleteTransaction" />
-    <FunctionImportMapping FunctionImportName="uspDeleteTransactionNotes" FunctionName="DhoniEnterprisesModel.Store.uspDeleteTransactionNotes" />
-    <FunctionImportMapping FunctionImportName="uspGetAppUserByEmail" FunctionName="DhoniEnterprisesModel.Store.uspGetAppUserByEmail">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetAppUserByEmail_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetAppUserByEmail_Result">
           <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
           <ScalarProperty Name="UserDesignation" ColumnName="UserDesignation" />
@@ -434,9 +413,9 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspGetBPBank" FunctionName="DhoniEnterprisesModel.Store.uspGetBPBank">
+    <FunctionImportMapping FunctionImportName="uspGetBPBank" FunctionName="DoniEnterprisesModel.Store.uspGetBPBank">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetBPBank_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetBPBank_Result">
           <ScalarProperty Name="bankDetails_ID" ColumnName="bankDetails_ID" />
           <ScalarProperty Name="bp_ID" ColumnName="bp_ID" />
           <ScalarProperty Name="branchAddress" ColumnName="branchAddress" />
@@ -447,9 +426,9 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspGetBPContact" FunctionName="DhoniEnterprisesModel.Store.uspGetBPContact">
+    <FunctionImportMapping FunctionImportName="uspGetBPContact" FunctionName="DoniEnterprisesModel.Store.uspGetBPContact">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetBPContact_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetBPContact_Result">
           <ScalarProperty Name="bp_cont_ID" ColumnName="bp_cont_ID" />
           <ScalarProperty Name="bp_ID" ColumnName="bp_ID" />
           <ScalarProperty Name="bp_Cont_IsPrimary" ColumnName="bp_Cont_IsPrimary" />
@@ -465,9 +444,9 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspGetBPContactNumber" FunctionName="DhoniEnterprisesModel.Store.uspGetBPContactNumber">
+    <FunctionImportMapping FunctionImportName="uspGetBPContactNumber" FunctionName="DoniEnterprisesModel.Store.uspGetBPContactNumber">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetBPContactNumber_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetBPContactNumber_Result">
           <ScalarProperty Name="ph_ID" ColumnName="ph_ID" />
           <ScalarProperty Name="bp_ID" ColumnName="bp_ID" />
           <ScalarProperty Name="contactNumber" ColumnName="contactNumber" />
@@ -479,18 +458,18 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspGetBPEmails" FunctionName="DhoniEnterprisesModel.Store.uspGetBPEmails">
+    <FunctionImportMapping FunctionImportName="uspGetBPEmails" FunctionName="DoniEnterprisesModel.Store.uspGetBPEmails">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetBPEmails_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetBPEmails_Result">
           <ScalarProperty Name="email_ID" ColumnName="email_ID" />
           <ScalarProperty Name="bp_ID" ColumnName="bp_ID" />
           <ScalarProperty Name="email" ColumnName="email" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspGetBPGeneral" FunctionName="DhoniEnterprisesModel.Store.uspGetBPGeneral">
+    <FunctionImportMapping FunctionImportName="uspGetBPGeneral" FunctionName="DoniEnterprisesModel.Store.uspGetBPGeneral">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetBPGeneral_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetBPGeneral_Result">
           <ScalarProperty Name="bp_ID" ColumnName="bp_ID" />
           <ScalarProperty Name="bp_Name" ColumnName="bp_Name" />
           <ScalarProperty Name="bp_website" ColumnName="bp_website" />
@@ -505,17 +484,17 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspGetBPProducts" FunctionName="DhoniEnterprisesModel.Store.uspGetBPProducts">
+    <FunctionImportMapping FunctionImportName="uspGetBPProducts" FunctionName="DoniEnterprisesModel.Store.uspGetBPProducts">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetBPProducts_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetBPProducts_Result">
           <ScalarProperty Name="bp_ID" ColumnName="bp_ID" />
           <ScalarProperty Name="prod_ID" ColumnName="prod_ID" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspGetBusinessPartnerForList" FunctionName="DhoniEnterprisesModel.Store.uspGetBusinessPartnerForList">
+    <FunctionImportMapping FunctionImportName="uspGetBusinessPartnerForList" FunctionName="DoniEnterprisesModel.Store.uspGetBusinessPartnerForList">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetBusinessPartnerForList_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetBusinessPartnerForList_Result">
           <ScalarProperty Name="bp_ID" ColumnName="bp_ID" />
           <ScalarProperty Name="bp_Name" ColumnName="bp_Name" />
           <ScalarProperty Name="bp_cont_ID" ColumnName="bp_cont_ID" />
@@ -531,9 +510,9 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspGetBusinessPartnerForTable" FunctionName="DhoniEnterprisesModel.Store.uspGetBusinessPartnerForTable">
+    <FunctionImportMapping FunctionImportName="uspGetBusinessPartnerForTable" FunctionName="DoniEnterprisesModel.Store.uspGetBusinessPartnerForTable">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetBusinessPartnerForTable_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetBusinessPartnerForTable_Result">
           <ScalarProperty Name="bp_ID" ColumnName="bp_ID" />
           <ScalarProperty Name="bp_Name" ColumnName="bp_Name" />
           <ScalarProperty Name="bp_cont_ID" ColumnName="bp_cont_ID" />
@@ -549,9 +528,9 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspGetCommissionTransaction" FunctionName="DhoniEnterprisesModel.Store.uspGetCommissionTransaction">
+    <FunctionImportMapping FunctionImportName="uspGetCommissionTransaction" FunctionName="DoniEnterprisesModel.Store.uspGetCommissionTransaction">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetCommissionTransaction_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetCommissionTransaction_Result">
           <ScalarProperty Name="tr_transactionID" ColumnName="tr_transactionID" />
           <ScalarProperty Name="tr_brokerInvolved" ColumnName="tr_brokerInvolved" />
           <ScalarProperty Name="tr_sellerBroker" ColumnName="tr_sellerBroker" />
@@ -574,9 +553,9 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspGetDropDownBroker" FunctionName="DhoniEnterprisesModel.Store.uspGetDropDownBroker">
+    <FunctionImportMapping FunctionImportName="uspGetDropDownBroker" FunctionName="DoniEnterprisesModel.Store.uspGetDropDownBroker">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetDropDownBroker_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetDropDownBroker_Result">
           <ScalarProperty Name="bp_ID" ColumnName="bp_ID" />
           <ScalarProperty Name="bp_Name" ColumnName="bp_Name" />
           <ScalarProperty Name="bp_address" ColumnName="bp_address" />
@@ -585,9 +564,9 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspGetDropDownBuyer" FunctionName="DhoniEnterprisesModel.Store.uspGetDropDownBuyer">
+    <FunctionImportMapping FunctionImportName="uspGetDropDownBuyer" FunctionName="DoniEnterprisesModel.Store.uspGetDropDownBuyer">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetDropDownBuyer_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetDropDownBuyer_Result">
           <ScalarProperty Name="bp_ID" ColumnName="bp_ID" />
           <ScalarProperty Name="bp_Name" ColumnName="bp_Name" />
           <ScalarProperty Name="bp_address" ColumnName="bp_address" />
@@ -596,9 +575,9 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspGetDropDownSeller" FunctionName="DhoniEnterprisesModel.Store.uspGetDropDownSeller">
+    <FunctionImportMapping FunctionImportName="uspGetDropDownSeller" FunctionName="DoniEnterprisesModel.Store.uspGetDropDownSeller">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetDropDownSeller_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetDropDownSeller_Result">
           <ScalarProperty Name="bp_ID" ColumnName="bp_ID" />
           <ScalarProperty Name="bp_Name" ColumnName="bp_Name" />
           <ScalarProperty Name="bp_address" ColumnName="bp_address" />
@@ -607,9 +586,9 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspGetDropDownShipper" FunctionName="DhoniEnterprisesModel.Store.uspGetDropDownShipper">
+    <FunctionImportMapping FunctionImportName="uspGetDropDownShipper" FunctionName="DoniEnterprisesModel.Store.uspGetDropDownShipper">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetDropDownShipper_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetDropDownShipper_Result">
           <ScalarProperty Name="bp_ID" ColumnName="bp_ID" />
           <ScalarProperty Name="bp_Name" ColumnName="bp_Name" />
           <ScalarProperty Name="bp_address" ColumnName="bp_address" />
@@ -618,17 +597,17 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspGetOriginList" FunctionName="DhoniEnterprisesModel.Store.uspGetOriginList">
+    <FunctionImportMapping FunctionImportName="uspGetOriginList" FunctionName="DoniEnterprisesModel.Store.uspGetOriginList">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetOriginList_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetOriginList_Result">
           <ScalarProperty Name="origin_id" ColumnName="origin_id" />
           <ScalarProperty Name="origin_name" ColumnName="origin_name" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspGetProductList" FunctionName="DhoniEnterprisesModel.Store.uspGetProductList">
+    <FunctionImportMapping FunctionImportName="uspGetProductList" FunctionName="DoniEnterprisesModel.Store.uspGetProductList">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetProductList_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetProductList_Result">
           <ScalarProperty Name="ProductId" ColumnName="ProductId" />
           <ScalarProperty Name="ProductName" ColumnName="ProductName" />
           <ScalarProperty Name="quality" ColumnName="quality" />
@@ -638,9 +617,9 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspGetProductListPDF" FunctionName="DhoniEnterprisesModel.Store.uspGetProductListPDF">
+    <FunctionImportMapping FunctionImportName="uspGetProductListPDF" FunctionName="DoniEnterprisesModel.Store.uspGetProductListPDF">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetProductListPDF_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetProductListPDF_Result">
           <ScalarProperty Name="ProductId" ColumnName="ProductId" />
           <ScalarProperty Name="ProductName" ColumnName="ProductName" />
           <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
@@ -661,18 +640,27 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspGetProductPriceByDate" FunctionName="DhoniEnterprisesModel.Store.uspGetProductPriceByDate">
+    <FunctionImportMapping FunctionImportName="uspGetProductLocalPriceByDate" FunctionName="DoniEnterprisesModel.Store.uspGetProductLocalPriceByDate">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetProductPriceByDate_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetProductLocalPriceByDate_Result">
           <ScalarProperty Name="ProductId" ColumnName="ProductId" />
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="tr_editedBy" ColumnName="tr_editedBy" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspGetProductTagInput" FunctionName="DhoniEnterprisesModel.Store.uspGetProductTagInput">
+    <FunctionImportMapping FunctionImportName="uspGetProductPriceByDate" FunctionName="DoniEnterprisesModel.Store.uspGetProductPriceByDate">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetProductTagInput_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetProductPriceByDate_Result">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="tr_editedBy" ColumnName="tr_editedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspGetProductTagInput" FunctionName="DoniEnterprisesModel.Store.uspGetProductTagInput">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetProductTagInput_Result">
           <ScalarProperty Name="ProductId" ColumnName="ProductId" />
           <ScalarProperty Name="ProductName" ColumnName="ProductName" />
           <ScalarProperty Name="origin" ColumnName="origin" />
@@ -680,9 +668,9 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspGetRecentlyViewedItem" FunctionName="DhoniEnterprisesModel.Store.uspGetRecentlyViewedItem">
+    <FunctionImportMapping FunctionImportName="uspGetRecentlyViewedItem" FunctionName="DoniEnterprisesModel.Store.uspGetRecentlyViewedItem">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetRecentlyViewedItem_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetRecentlyViewedItem_Result">
           <ScalarProperty Name="tr_visitedID" ColumnName="tr_visitedID" />
           <ScalarProperty Name="tr_visitedOn" ColumnName="tr_visitedOn" />
           <ScalarProperty Name="tr_pageVisitedState" ColumnName="tr_pageVisitedState" />
@@ -692,9 +680,9 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspGetSecondaryTransaction" FunctionName="DhoniEnterprisesModel.Store.uspGetSecondaryTransaction">
+    <FunctionImportMapping FunctionImportName="uspGetSecondaryTransaction" FunctionName="DoniEnterprisesModel.Store.uspGetSecondaryTransaction">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetSecondaryTransaction_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetSecondaryTransaction_Result">
           <ScalarProperty Name="tr_transactionID" ColumnName="tr_transactionID" />
           <ScalarProperty Name="tr_sec_tranID" ColumnName="tr_sec_tranID" />
           <ScalarProperty Name="tr_sec_bpBuyerID" ColumnName="tr_sec_bpBuyerID" />
@@ -710,9 +698,23 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspGetSingleProduct" FunctionName="DhoniEnterprisesModel.Store.uspGetSingleProduct">
+    <FunctionImportMapping FunctionImportName="uspGetShipmentAnalyticsByDateRange" FunctionName="DoniEnterprisesModel.Store.uspGetShipmentAnalyticsByDateRange">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetSingleProduct_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetShipmentAnalyticsByDateRange_Result">
+          <ScalarProperty Name="req_date" ColumnName="req_date" />
+          <ScalarProperty Name="dayDifferance" ColumnName="dayDifferance" />
+          <ScalarProperty Name="tr_fileID" ColumnName="tr_fileID" />
+          <ScalarProperty Name="tr_bpBuyerID" ColumnName="tr_bpBuyerID" />
+          <ScalarProperty Name="tr_productID" ColumnName="tr_productID" />
+          <ScalarProperty Name="tr_price" ColumnName="tr_price" />
+          <ScalarProperty Name="tr_quantity" ColumnName="tr_quantity" />
+          <ScalarProperty Name="tr_bpSellerID" ColumnName="tr_bpSellerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspGetSingleProduct" FunctionName="DoniEnterprisesModel.Store.uspGetSingleProduct">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetSingleProduct_Result">
           <ScalarProperty Name="ProductId" ColumnName="ProductId" />
           <ScalarProperty Name="ProductName" ColumnName="ProductName" />
           <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
@@ -733,10 +735,10 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspGetTableFilters" FunctionName="DhoniEnterprisesModel.Store.uspGetTableFilters" />
-    <FunctionImportMapping FunctionImportName="uspGetTransaction" FunctionName="DhoniEnterprisesModel.Store.uspGetTransaction">
+    <FunctionImportMapping FunctionImportName="uspGetTableFilters" FunctionName="DoniEnterprisesModel.Store.uspGetTableFilters" />
+    <FunctionImportMapping FunctionImportName="uspGetTransaction" FunctionName="DoniEnterprisesModel.Store.uspGetTransaction">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetTransaction_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetTransaction_Result">
           <ScalarProperty Name="tr_transactionID" ColumnName="tr_transactionID" />
           <ScalarProperty Name="tr_date" ColumnName="tr_date" />
           <ScalarProperty Name="tr_bpBuyerID" ColumnName="tr_bpBuyerID" />
@@ -758,18 +760,18 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspGetTransactionByParameter" FunctionName="DhoniEnterprisesModel.Store.uspGetTransactionByParameter">
+    <FunctionImportMapping FunctionImportName="uspGetTransactionByParameter" FunctionName="DoniEnterprisesModel.Store.uspGetTransactionByParameter">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetTransactionByParameter_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetTransactionByParameter_Result">
           <ScalarProperty Name="tr_fileID" ColumnName="tr_fileID" />
           <ScalarProperty Name="tr_transactionID" ColumnName="tr_transactionID" />
           <ScalarProperty Name="tr_date" ColumnName="tr_date" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspGetTransactionContract" FunctionName="DhoniEnterprisesModel.Store.uspGetTransactionContract">
+    <FunctionImportMapping FunctionImportName="uspGetTransactionContract" FunctionName="DoniEnterprisesModel.Store.uspGetTransactionContract">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetTransactionContract_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetTransactionContract_Result">
           <ScalarProperty Name="tr_transactionID" ColumnName="tr_transactionID" />
           <ScalarProperty Name="tr_doniContract" ColumnName="tr_doniContract" />
           <ScalarProperty Name="tr_ownContract" ColumnName="tr_ownContract" />
@@ -781,9 +783,9 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspGetTransactionNotes" FunctionName="DhoniEnterprisesModel.Store.uspGetTransactionNotes">
+    <FunctionImportMapping FunctionImportName="uspGetTransactionNotes" FunctionName="DoniEnterprisesModel.Store.uspGetTransactionNotes">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetTransactionNotes_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetTransactionNotes_Result">
           <ScalarProperty Name="tr_tranNoteID" ColumnName="tr_tranNoteID" />
           <ScalarProperty Name="tr_createdOn" ColumnName="tr_createdOn" />
           <ScalarProperty Name="tr_editedOn" ColumnName="tr_editedOn" />
@@ -793,9 +795,9 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspGetTransactionShipment" FunctionName="DhoniEnterprisesModel.Store.uspGetTransactionShipment">
+    <FunctionImportMapping FunctionImportName="uspGetTransactionShipment" FunctionName="DoniEnterprisesModel.Store.uspGetTransactionShipment">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetTransactionShipment_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetTransactionShipment_Result">
           <ScalarProperty Name="tr_transactionID" ColumnName="tr_transactionID" />
           <ScalarProperty Name="tr_ship_notShipped" ColumnName="tr_ship_notShipped" />
           <ScalarProperty Name="tr_ship_notShipped_reason" ColumnName="tr_ship_notShipped_reason" />
@@ -835,10 +837,10 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspGetTransactionsList" FunctionName="DhoniEnterprisesModel.Store.uspGetTransactionsList" />
-    <FunctionImportMapping FunctionImportName="uspGetTransactionStatus" FunctionName="DhoniEnterprisesModel.Store.uspGetTransactionStatus">
+    <FunctionImportMapping FunctionImportName="uspGetTransactionsList" FunctionName="DoniEnterprisesModel.Store.uspGetTransactionsList" />
+    <FunctionImportMapping FunctionImportName="uspGetTransactionStatus" FunctionName="DoniEnterprisesModel.Store.uspGetTransactionStatus">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspGetTransactionStatus_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetTransactionStatus_Result">
           <ScalarProperty Name="tr_transactionID" ColumnName="tr_transactionID" />
           <ScalarProperty Name="tr_transactionStatus" ColumnName="tr_transactionStatus" />
           <ScalarProperty Name="tr_washoutValueAtPar" ColumnName="tr_washoutValueAtPar" />
@@ -849,23 +851,26 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspOriginCRUD" FunctionName="DhoniEnterprisesModel.Store.uspOriginCRUD" />
-    <FunctionImportMapping FunctionImportName="uspProductListByDateRange" FunctionName="DhoniEnterprisesModel.Store.uspProductListByDateRange">
+    <FunctionImportMapping FunctionImportName="uspOriginCRUD" FunctionName="DoniEnterprisesModel.Store.uspOriginCRUD" />
+    <FunctionImportMapping FunctionImportName="uspProductListByDateRange" FunctionName="DoniEnterprisesModel.Store.uspProductListByDateRange">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspProductListByDateRange_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspProductListByDateRange_Result">
           <ScalarProperty Name="Prod_ID" ColumnName="Prod_ID" />
           <ScalarProperty Name="PriceDate" ColumnName="PriceDate" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="intPrice" ColumnName="intPrice" />
+          <ScalarProperty Name="localPriceDate" ColumnName="localPriceDate" />
+          <ScalarProperty Name="localPrice" ColumnName="localPrice" />
           <ScalarProperty Name="ProductName" ColumnName="ProductName" />
           <ScalarProperty Name="quality" ColumnName="quality" />
           <ScalarProperty Name="origin" ColumnName="origin" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspProductPriceByDateCRUD" FunctionName="DhoniEnterprisesModel.Store.uspProductPriceByDateCRUD" />
-    <FunctionImportMapping FunctionImportName="uspProductSalesAnalyticsByDateRange" FunctionName="DhoniEnterprisesModel.Store.uspProductSalesAnalyticsByDateRange">
+    <FunctionImportMapping FunctionImportName="uspProductPriceByDateCRUD" FunctionName="DoniEnterprisesModel.Store.uspProductPriceByDateCRUD" />
+    <FunctionImportMapping FunctionImportName="uspProductPriceLocalByDateCRUD" FunctionName="DoniEnterprisesModel.Store.uspProductPriceLocalByDateCRUD" />
+    <FunctionImportMapping FunctionImportName="uspProductSalesAnalyticsByDateRange" FunctionName="DoniEnterprisesModel.Store.uspProductSalesAnalyticsByDateRange">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspProductSalesAnalyticsByDateRange_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspProductSalesAnalyticsByDateRange_Result">
           <ScalarProperty Name="tr_productID" ColumnName="tr_productID" />
           <ScalarProperty Name="ProductName" ColumnName="ProductName" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
@@ -874,14 +879,14 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspTransactionBasicCRUD" FunctionName="DhoniEnterprisesModel.Store.uspTransactionBasicCRUD" />
-    <FunctionImportMapping FunctionImportName="uspTransactionCommissionCRUD" FunctionName="DhoniEnterprisesModel.Store.uspTransactionCommissionCRUD" />
-    <FunctionImportMapping FunctionImportName="uspTransactionContractCRUD" FunctionName="DhoniEnterprisesModel.Store.uspTransactionContractCRUD" />
-    <FunctionImportMapping FunctionImportName="uspTransactionFileAdd" FunctionName="DhoniEnterprisesModel.Store.uspTransactionFileAdd" />
-    <FunctionImportMapping FunctionImportName="uspTransactionFileDelete" FunctionName="DhoniEnterprisesModel.Store.uspTransactionFileDelete" />
-    <FunctionImportMapping FunctionImportName="uspTransactionFileGetAll" FunctionName="DhoniEnterprisesModel.Store.uspTransactionFileGetAll">
+    <FunctionImportMapping FunctionImportName="uspTransactionBasicCRUD" FunctionName="DoniEnterprisesModel.Store.uspTransactionBasicCRUD" />
+    <FunctionImportMapping FunctionImportName="uspTransactionCommissionCRUD" FunctionName="DoniEnterprisesModel.Store.uspTransactionCommissionCRUD" />
+    <FunctionImportMapping FunctionImportName="uspTransactionContractCRUD" FunctionName="DoniEnterprisesModel.Store.uspTransactionContractCRUD" />
+    <FunctionImportMapping FunctionImportName="uspTransactionFileAdd" FunctionName="DoniEnterprisesModel.Store.uspTransactionFileAdd" />
+    <FunctionImportMapping FunctionImportName="uspTransactionFileDelete" FunctionName="DoniEnterprisesModel.Store.uspTransactionFileDelete" />
+    <FunctionImportMapping FunctionImportName="uspTransactionFileGetAll" FunctionName="DoniEnterprisesModel.Store.uspTransactionFileGetAll">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspTransactionFileGetAll_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspTransactionFileGetAll_Result">
           <ScalarProperty Name="tf_fileID" ColumnName="tf_fileID" />
           <ScalarProperty Name="tf_fileName" ColumnName="tf_fileName" />
           <ScalarProperty Name="tf_fileType" ColumnName="tf_fileType" />
@@ -891,9 +896,9 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspTransactionFileGetSingle" FunctionName="DhoniEnterprisesModel.Store.uspTransactionFileGetSingle">
+    <FunctionImportMapping FunctionImportName="uspTransactionFileGetSingle" FunctionName="DoniEnterprisesModel.Store.uspTransactionFileGetSingle">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspTransactionFileGetSingle_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspTransactionFileGetSingle_Result">
           <ScalarProperty Name="tf_transactionID" ColumnName="tf_transactionID" />
           <ScalarProperty Name="tf_fileID" ColumnName="tf_fileID" />
           <ScalarProperty Name="tf_file" ColumnName="tf_file" />
@@ -906,9 +911,9 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspTransactionList" FunctionName="DhoniEnterprisesModel.Store.uspTransactionList">
+    <FunctionImportMapping FunctionImportName="uspTransactionList" FunctionName="DoniEnterprisesModel.Store.uspTransactionList">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspTransactionList_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspTransactionList_Result">
           <ScalarProperty Name="tr_transactionID" ColumnName="tr_transactionID" />
           <ScalarProperty Name="transactionDate" ColumnName="transactionDate" />
           <ScalarProperty Name="fileNo" ColumnName="fileNo" />
@@ -928,9 +933,9 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspTransactionListByDateRange" FunctionName="DhoniEnterprisesModel.Store.uspTransactionListByDateRange">
+    <FunctionImportMapping FunctionImportName="uspTransactionListByDateRange" FunctionName="DoniEnterprisesModel.Store.uspTransactionListByDateRange">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspTransactionListByDateRange_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspTransactionListByDateRange_Result">
           <ScalarProperty Name="tr_transactionID" ColumnName="tr_transactionID" />
           <ScalarProperty Name="transactionDate" ColumnName="transactionDate" />
           <ScalarProperty Name="fileNo" ColumnName="fileNo" />
@@ -951,9 +956,9 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspTransactionNotesCRUD" FunctionName="DhoniEnterprisesModel.Store.uspTransactionNotesCRUD">
+    <FunctionImportMapping FunctionImportName="uspTransactionNotesCRUD" FunctionName="DoniEnterprisesModel.Store.uspTransactionNotesCRUD">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DhoniEnterprisesModel.uspTransactionNotesCRUD_Result">
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspTransactionNotesCRUD_Result">
           <ScalarProperty Name="tr_transactionID" ColumnName="tr_transactionID" />
           <ScalarProperty Name="tr_tranNoteID" ColumnName="tr_tranNoteID" />
           <ScalarProperty Name="tr_transactionNotes" ColumnName="tr_transactionNotes" />
@@ -963,15 +968,15 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspTransactionSecondaryCRUD" FunctionName="DhoniEnterprisesModel.Store.uspTransactionSecondaryCRUD" />
-    <FunctionImportMapping FunctionImportName="uspTransactionShipmentCRUD" FunctionName="DhoniEnterprisesModel.Store.uspTransactionShipmentCRUD" />
-    <FunctionImportMapping FunctionImportName="uspTransactionStatusCRUD" FunctionName="DhoniEnterprisesModel.Store.uspTransactionStatusCRUD" />
-    <FunctionImportMapping FunctionImportName="uspUpdateBusinessPartner" FunctionName="DhoniEnterprisesModel.Store.uspUpdateBusinessPartner" />
-    <FunctionImportMapping FunctionImportName="uspUpdateBusinessPartnerBankDetails" FunctionName="DhoniEnterprisesModel.Store.uspUpdateBusinessPartnerBankDetails" />
-    <FunctionImportMapping FunctionImportName="uspUpdateBusinessPartnerContact" FunctionName="DhoniEnterprisesModel.Store.uspUpdateBusinessPartnerContact" />
-    <FunctionImportMapping FunctionImportName="uspUpdateBusinessPartnerContactNumber" FunctionName="DhoniEnterprisesModel.Store.uspUpdateBusinessPartnerContactNumber" />
-    <FunctionImportMapping FunctionImportName="uspUpdateBusinessPartnerEmail" FunctionName="DhoniEnterprisesModel.Store.uspUpdateBusinessPartnerEmail" />
-    <FunctionImportMapping FunctionImportName="uspUpdateBusinessPartnerProduct" FunctionName="DhoniEnterprisesModel.Store.uspUpdateBusinessPartnerProduct" />
-    <FunctionImportMapping FunctionImportName="uspUpdateProduct" FunctionName="DhoniEnterprisesModel.Store.uspUpdateProduct" />
+    <FunctionImportMapping FunctionImportName="uspTransactionSecondaryCRUD" FunctionName="DoniEnterprisesModel.Store.uspTransactionSecondaryCRUD" />
+    <FunctionImportMapping FunctionImportName="uspTransactionShipmentCRUD" FunctionName="DoniEnterprisesModel.Store.uspTransactionShipmentCRUD" />
+    <FunctionImportMapping FunctionImportName="uspTransactionStatusCRUD" FunctionName="DoniEnterprisesModel.Store.uspTransactionStatusCRUD" />
+    <FunctionImportMapping FunctionImportName="uspUpdateBusinessPartner" FunctionName="DoniEnterprisesModel.Store.uspUpdateBusinessPartner" />
+    <FunctionImportMapping FunctionImportName="uspUpdateBusinessPartnerBankDetails" FunctionName="DoniEnterprisesModel.Store.uspUpdateBusinessPartnerBankDetails" />
+    <FunctionImportMapping FunctionImportName="uspUpdateBusinessPartnerContact" FunctionName="DoniEnterprisesModel.Store.uspUpdateBusinessPartnerContact" />
+    <FunctionImportMapping FunctionImportName="uspUpdateBusinessPartnerContactNumber" FunctionName="DoniEnterprisesModel.Store.uspUpdateBusinessPartnerContactNumber" />
+    <FunctionImportMapping FunctionImportName="uspUpdateBusinessPartnerEmail" FunctionName="DoniEnterprisesModel.Store.uspUpdateBusinessPartnerEmail" />
+    <FunctionImportMapping FunctionImportName="uspUpdateBusinessPartnerProduct" FunctionName="DoniEnterprisesModel.Store.uspUpdateBusinessPartnerProduct" />
+    <FunctionImportMapping FunctionImportName="uspUpdateProduct" FunctionName="DoniEnterprisesModel.Store.uspUpdateProduct" />
   </EntityContainerMapping>
 </Mapping>

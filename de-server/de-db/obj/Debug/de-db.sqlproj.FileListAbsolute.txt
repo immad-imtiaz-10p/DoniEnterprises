@@ -1,0 +1,7 @@
+G:\DoniEnterprises\de-server\de-db\bin\Debug\de-db.dacpac
+G:\DoniEnterprises\de-server\de-db\obj\Debug\Model.xml
+G:\DoniEnterprises\de-server\de-db\obj\Debug\refactor.xml
+G:\DoniEnterprises\de-server\de-db\obj\Debug\postdeploy.sql
+G:\DoniEnterprises\de-server\de-db\obj\Debug\predeploy.sql
+G:\DoniEnterprises\de-server\de-db\obj\Debug\de_db.dll
+G:\DoniEnterprises\de-server\de-db\obj\Debug\de_db.pdb

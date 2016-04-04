@@ -23,7 +23,7 @@ namespace de_server
             // Web API routes
             config.MapHttpAttributeRoutes();
             // Enforce HTTPS protocol
-            config.Filters.Add(new de_server.Filters.RequireHttpsAttribute());
+            //config.Filters.Add(new de_server.Filters.RequireHttpsAttribute());
             
 
             // Web API configuration and services

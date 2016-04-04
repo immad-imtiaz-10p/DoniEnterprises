@@ -16,10 +16,10 @@ namespace de_server.Entity_Framework
     {
         public Transaction()
         {
-            this.TransactionsSecondaries = new HashSet<TransactionsSecondary>();
             this.TransactionFiles = new HashSet<TransactionFile>();
             this.TransactionFiles1 = new HashSet<TransactionFile>();
             this.TransactionsNotes = new HashSet<TransactionsNote>();
+            this.TransactionsSecondaries = new HashSet<TransactionsSecondary>();
         }
     
         public long tr_transactionID { get; set; }
@@ -46,13 +46,13 @@ namespace de_server.Entity_Framework
         public virtual BusinessPartner BusinessPartner { get; set; }
         public virtual BusinessPartner BusinessPartner1 { get; set; }
         public virtual Product Product { get; set; }
-        public virtual ICollection<TransactionsSecondary> TransactionsSecondaries { get; set; }
         public virtual ICollection<TransactionFile> TransactionFiles { get; set; }
         public virtual ICollection<TransactionFile> TransactionFiles1 { get; set; }
-        public virtual TransactionsShipment TransactionsShipment { get; set; }
         public virtual TransactionsCommission TransactionsCommission { get; set; }
-        public virtual TransactionsStatu TransactionsStatu { get; set; }
         public virtual TransactionsContract TransactionsContract { get; set; }
         public virtual ICollection<TransactionsNote> TransactionsNotes { get; set; }
+        public virtual ICollection<TransactionsSecondary> TransactionsSecondaries { get; set; }
+        public virtual TransactionsShipment TransactionsShipment { get; set; }
+        public virtual TransactionsStatu TransactionsStatu { get; set; }
     }
 }

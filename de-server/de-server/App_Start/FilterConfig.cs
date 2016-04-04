@@ -9,7 +9,7 @@ namespace de_server
         {
             filters.Add(new HandleErrorAttribute());
             // Enforce HTTPS protocol
-            filters.Add(new RequireHttpsAttribute());
+            //filters.Add(new RequireHttpsAttribute());
         }
     }
 }
