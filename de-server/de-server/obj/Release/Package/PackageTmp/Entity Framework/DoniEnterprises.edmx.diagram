@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="40e7ba9b7c2540f0b596ebdc4d516b6f" Name="Diagram1">
+      <Diagram DiagramId="0732f20ecd9d49a5bb9f3c53eceba44d" Name="Diagram1">
         <EntityTypeShape EntityType="DoniEnterprisesModel.AppUserRight" Width="1.5" PointX="3" PointY="30.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DoniEnterprisesModel.AppUser" Width="1.5" PointX="0.75" PointY="30.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DoniEnterprisesModel.AppUsersImage" Width="1.5" PointX="3" PointY="32.875" IsExpanded="true" />

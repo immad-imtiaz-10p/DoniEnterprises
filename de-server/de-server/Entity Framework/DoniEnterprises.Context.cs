@@ -246,7 +246,7 @@ namespace de_server.Entity_Framework
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<long>>("uspAddBusinessPartnerContact", bpIdParameter, bp_Cont_IsPrimaryParameter, bp_Cont_fullNameParameter, bp_Cont_designationParameter, bp_Cont_EmailParameter, bp_Cont_PrimaryNumberParameter, bp_Cont_SecondryNumberParameter, bp_Cont_CreatedByParameter);
         }
     
-        public virtual int uspAddBusinessPartnerContactNumber(Nullable<long> bpId, string contactType, string ontactNumber, Nullable<int> createdBy)
+        public virtual ObjectResult<Nullable<long>> uspAddBusinessPartnerContactNumber(Nullable<long> bpId, string contactType, string ontactNumber, Nullable<int> createdBy)
         {
             var bpIdParameter = bpId.HasValue ?
                 new ObjectParameter("bpId", bpId) :
@@ -264,7 +264,7 @@ namespace de_server.Entity_Framework
                 new ObjectParameter("createdBy", createdBy) :
                 new ObjectParameter("createdBy", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspAddBusinessPartnerContactNumber", bpIdParameter, contactTypeParameter, ontactNumberParameter, createdByParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<long>>("uspAddBusinessPartnerContactNumber", bpIdParameter, contactTypeParameter, ontactNumberParameter, createdByParameter);
         }
     
         public virtual int uspAddBusinessPartnerEmail(Nullable<long> bp_ID, string email)

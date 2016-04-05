@@ -15,7 +15,7 @@ using Newtonsoft.Json.Linq;
 namespace de_server.Controllers
 {
 
-    
+
     public class BusinessPartnerController : ApiController
     {
         #region BusinessPartner
@@ -26,32 +26,29 @@ namespace de_server.Controllers
         {
 
             var generalDetails = businessPartner["businessPartner"];
-        
-                using (var context = new DhoniEnterprisesEntities())
+
+            using (var context = new DhoniEnterprisesEntities())
+            {
+                int userID = BasicAuthHttpModule.getCurrentUserId();
+                if (userID != -1)
                 {
-                    int userID = BasicAuthHttpModule.getCurrentUserId();
-                    if (userID != -1)
-                    {
-                        DataTable dt = new DataTable();
-                        var bpId = context.uspAddBusinessPartner(Convert.ToBoolean(generalDetails["bp_isSeller"]),
-                            Convert.ToBoolean(generalDetails["bp_isBroker"]),
-                            Convert.ToBoolean(generalDetails["bp_isShipper"]),
-                            Convert.ToBoolean(generalDetails["bp_isBuyer"]),
-                            Convert.ToBoolean(generalDetails["bp_onDoniContract"]), userID,
-                            Convert.ToInt32(generalDetails["bp_credibilityIndex"]),
-                            generalDetails["bp_Name"].ToString(), generalDetails["bp_website"].ToString(),
-                            generalDetails["bp_address"].ToString(), generalDetails["bp_country"].ToString());
+                    DataTable dt = new DataTable();
+                    var bpId = context.uspAddBusinessPartner(Convert.ToBoolean(generalDetails["bp_isSeller"]),
+                        Convert.ToBoolean(generalDetails["bp_isBroker"]),
+                        Convert.ToBoolean(generalDetails["bp_isShipper"]),
+                        Convert.ToBoolean(generalDetails["bp_isBuyer"]),
+                        Convert.ToBoolean(generalDetails["bp_onDoniContract"]), userID,
+                        Convert.ToInt32(generalDetails["bp_credibilityIndex"]),
+                        generalDetails["bp_Name"].ToString(), generalDetails["bp_website"].ToString(),
+                        generalDetails["bp_address"].ToString(), generalDetails["bp_country"].ToString());
 
-                        return Ok(new { success = true, message = "Business Partner Added!", data = bpId.FirstOrDefault() });
-                    }
-                    else
-                    {
-                        return Ok(new { success = false, message = "No User Logged In!" });
-                    }
+                    return Ok(new { success = true, message = "Business Partner Added!", data = bpId.FirstOrDefault() });
                 }
-         
-
-
+                else
+                {
+                    return Ok(new { success = false, message = "No User Logged In!" });
+                }
+            }
         }
 
         [Route("deleteBusinessPartner/{id:long}")]
@@ -60,10 +57,10 @@ namespace de_server.Controllers
         {
             using (var context = new DhoniEnterprisesEntities())
             {
-              
-                    context.uspDeleteBusinessPartner(id);
-                    return Ok(new { success = true, message = "Business Partner Successfully deleted!" });
-               
+
+                context.uspDeleteBusinessPartner(id);
+                return Ok(new { success = true, message = "Business Partner Successfully deleted!" });
+
             }
         }
 
@@ -90,7 +87,7 @@ namespace de_server.Controllers
                         generalDetails["bp_Name"].ToString(), generalDetails["bp_website"].ToString(),
                         generalDetails["bp_address"].ToString(), generalDetails["bp_country"].ToString());
 
-                    return Ok(new { success = true, message = "Business Partner Updated!"});
+                    return Ok(new { success = true, message = "Business Partner Updated!" });
                 }
                 else
                 {
@@ -123,33 +120,33 @@ namespace de_server.Controllers
         [HttpGet]
         public IHttpActionResult GetBusinessPartnerFull(long id)
         {
-            
-                DataTable general = new DataTable();
-                DataTable bankInfo = new DataTable();
-                DataTable contactNumbers = new DataTable();
-                DataTable contactPerson = new DataTable();
-                DataTable emails = new DataTable();
-                DataTable products = new DataTable();
-                using (var context = new DhoniEnterprisesEntities())
+
+            DataTable general = new DataTable();
+            DataTable bankInfo = new DataTable();
+            DataTable contactNumbers = new DataTable();
+            DataTable contactPerson = new DataTable();
+            DataTable emails = new DataTable();
+            DataTable products = new DataTable();
+            using (var context = new DhoniEnterprisesEntities())
+            {
+                general = DataTableSerializer.LINQToDataTable(context.uspGetBPGeneral(id));
+                bankInfo = DataTableSerializer.LINQToDataTable(context.uspGetBPBank(id));
+                contactNumbers = DataTableSerializer.LINQToDataTable(context.uspGetBPContactNumber(id));
+                contactPerson = DataTableSerializer.LINQToDataTable(context.uspGetBPContact(id));
+                emails = DataTableSerializer.LINQToDataTable(context.uspGetBPEmails(id));
+                products = DataTableSerializer.LINQToDataTable(context.uspGetBPProducts(id));
+                return Ok(new
                 {
-                    general = DataTableSerializer.LINQToDataTable(context.uspGetBPGeneral(id));
-                    bankInfo = DataTableSerializer.LINQToDataTable(context.uspGetBPBank(id));
-                    contactNumbers = DataTableSerializer.LINQToDataTable(context.uspGetBPContactNumber(id));
-                    contactPerson = DataTableSerializer.LINQToDataTable(context.uspGetBPContact(id));
-                    emails = DataTableSerializer.LINQToDataTable(context.uspGetBPEmails(id));
-                    products = DataTableSerializer.LINQToDataTable(context.uspGetBPProducts(id));
-                    return Ok(new
-                    {
-                        success = true,
-                        gen = general,
-                        bank = bankInfo,
-                        contNum = contactNumbers,
-                        contPers = contactPerson,
-                        emails = emails,
-                        products = products
-                    });
-                }
-         
+                    success = true,
+                    gen = general,
+                    bank = bankInfo,
+                    contNum = contactNumbers,
+                    contPers = contactPerson,
+                    emails = emails,
+                    products = products
+                });
+            }
+
         }
 
 
@@ -163,10 +160,10 @@ namespace de_server.Controllers
         {
             using (var context = new DhoniEnterprisesEntities())
             {
-                
-                    context.uspDeleteBusinessPartnerBankDetails(id);
-                    return Ok(new { success = true, message = "Business Partner Bank Details Successfully Deleted!" });
-               
+
+                context.uspDeleteBusinessPartnerBankDetails(id);
+                return Ok(new { success = true, message = "Business Partner Bank Details Successfully Deleted!" });
+
             }
         }
 
@@ -176,22 +173,20 @@ namespace de_server.Controllers
         {
             var ba = bankDetails["bankDetails"];
 
-
-           
-                using (var context = new DhoniEnterprisesEntities())
+            using (var context = new DhoniEnterprisesEntities())
+            {
+                int userID = BasicAuthHttpModule.getCurrentUserId();
+                if (userID != -1)
                 {
-                    int userID = BasicAuthHttpModule.getCurrentUserId();
-                    if (userID != -1)
-                    {
-                        context.uspAddBusinessPartnerBankDetails(Convert.ToInt64(ba["bp_ID"]), Convert.ToString(ba["branchAddress"]), Convert.ToString(ba["bankName"]), Convert.ToString(ba["accountTitle"]), Convert.ToString(ba["accountNumber"]), Convert.ToString(ba["accountCountry"]));
-                        return Ok(new { success = true, message = "Business Partner Bank Account added!" });
-                    }
-                    else
-                    {
-                        return Ok(new { success = false, message = "No User Logged In!" });
-                    }
+                    var res = context.uspAddBusinessPartnerBankDetails(Convert.ToInt64(ba["bp_ID"]), Convert.ToString(ba["branchAddress"]), Convert.ToString(ba["bankName"]), Convert.ToString(ba["accountTitle"]), Convert.ToString(ba["accountNumber"]), Convert.ToString(ba["accountCountry"])).FirstOrDefault();
+                    return Ok(new { success = true, message = "Business Partner Bank Account added!", bankId = res });
                 }
-          
+                else
+                {
+                    return Ok(new { success = false, message = "No User Logged In!" });
+                }
+            }
+
         }
 
         #endregion
@@ -204,10 +199,10 @@ namespace de_server.Controllers
         {
             using (var context = new DhoniEnterprisesEntities())
             {
-                
-                    context.uspDeleteBusinessPartnerContactNumber(id);
-                    return Ok(new { success = true, message = "Contact Number Successfully Deleted!" });
-               
+
+                context.uspDeleteBusinessPartnerContactNumber(id);
+                return Ok(new { success = true, message = "Contact Number Successfully Deleted!" });
+
             }
         }
 
@@ -228,24 +223,24 @@ namespace de_server.Controllers
             }
 
 
-            
-                using (var context = new DhoniEnterprisesEntities())
+
+            using (var context = new DhoniEnterprisesEntities())
+            {
+                int userID = BasicAuthHttpModule.getCurrentUserId();
+                if (userID != -1)
                 {
-                    int userID = BasicAuthHttpModule.getCurrentUserId();
-                    if (userID != -1)
-                    {
-                        context.uspAddBusinessPartnerContactNumber(Convert.ToInt64(cn["bp_ID"]), Convert.ToString(cn["contactType"]), Convert.ToString(cn["contactNumber"]), userID);
-                        return Ok(new { success = true, message = "Business Partner Bank Account added!" });
-                    }
-                    else
-                    {
-                        return Ok(new { success = false, message = "No User Logged In!" });
-                    }
+                    var res = context.uspAddBusinessPartnerContactNumber(Convert.ToInt64(cn["bp_ID"]), Convert.ToString(cn["contactType"]), Convert.ToString(cn["contactNumber"]), userID).FirstOrDefault();
+                    return Ok(new { success = true, message = "Business Partner contact number added!", conNumID = res });
                 }
-           
+                else
+                {
+                    return Ok(new { success = false, message = "No User Logged In!" });
+                }
+            }
+
         }
 
-       
+
 
         #endregion
 
@@ -258,16 +253,16 @@ namespace de_server.Controllers
         {
             using (var context = new DhoniEnterprisesEntities())
             {
-               
-                    context.uspDeleteBusinessPartnerContact(id);
-                    return Ok(new { success = true, message = "Contact Person Successfully Deleted!" });
-             
+
+                context.uspDeleteBusinessPartnerContact(id);
+                return Ok(new { success = true, message = "Contact Person Successfully Deleted!" });
+
             }
         }
 
-        
 
-        
+
+
 
         [Route("addBusinessPartnerContactPerson")]
         [HttpPost]
@@ -275,36 +270,33 @@ namespace de_server.Controllers
         {
 
             var cp = contactPerson["contactPerson"];
-           
-                using (var context = new DhoniEnterprisesEntities())
+
+            using (var context = new DhoniEnterprisesEntities())
+            {
+                int userID = BasicAuthHttpModule.getCurrentUserId();
+                if (userID != -1)
                 {
-                    int userID = BasicAuthHttpModule.getCurrentUserId();
-                    if (userID != -1)
+                    int alreadyPrimary = Convert.ToInt32(context.uspCheckBPPrimaryContactExist(Convert.ToInt32(cp["bp_ID"])).FirstOrDefault());
+                    if (alreadyPrimary <= 0 || !(Convert.ToBoolean(cp["bp_Cont_IsPrimary"])))
                     {
-                        int alreadyPrimary = Convert.ToInt32(context.uspCheckBPPrimaryContactExist(Convert.ToInt32(cp["bp_ID"])).FirstOrDefault());
-                        if (alreadyPrimary <= 0)
-                        {
-                            DataTable dt = new DataTable();
-                            context.uspAddBusinessPartnerContact(Convert.ToInt32(cp["bp_ID"]),
-                                Convert.ToBoolean(cp["bp_Cont_IsPrimary"]), cp["bp_Cont_fullName"].ToString(),
-                                cp["bp_Cont_Designation"].ToString(), cp["bp_Cont_Email"].ToString(),
-                                cp["bp_Cont_PrimaryNumber"].ToString(), cp["bp_Cont_SecondaryNumber"].ToString(), userID);
-                            return Ok(new {success = true, message = "Business Partner Contact Added!"});
-                        }
-                        else
-                        {
-                            return Ok(new {success = false, message = "This Business Partner already has one primary contact!"});
-                        }
-                        
+                        DataTable dt = new DataTable();
+                        var res = context.uspAddBusinessPartnerContact(Convert.ToInt32(cp["bp_ID"]),
+                            Convert.ToBoolean(cp["bp_Cont_IsPrimary"]), cp["bp_Cont_fullName"].ToString(),
+                            cp["bp_Cont_Designation"].ToString(), cp["bp_Cont_Email"].ToString(),
+                            cp["bp_Cont_PrimaryNumber"].ToString(), cp["bp_Cont_SecondaryNumber"].ToString(), userID).FirstOrDefault();
+                        return Ok(new { success = true, message = "Business Partner Contact Added!", conPerId = res });
                     }
                     else
                     {
-                        return Ok(new { success = false, message = "No User Logged In!" });
+                        return Ok(new { success = false, message = "This Business Partner already has one primary contact!" });
                     }
+
                 }
-         
-
-
+                else
+                {
+                    return Ok(new { success = false, message = "No User Logged In!" });
+                }
+            }
         }
 
 
@@ -319,13 +311,13 @@ namespace de_server.Controllers
         {
             using (var context = new DhoniEnterprisesEntities())
             {
-                
-                    var bpProd = Product["bpProduct"];
-                    var bpId = Convert.ToInt64(bpProd["bpId"]);
-                    var pId = Convert.ToInt32(bpProd["product"]);
-                    context.uspAddBusinessPartnerProducts(bpId,pId);
-                    return Ok(new { success = true, message = "Business Partner product added successfully !" });
-               
+
+                var bpProd = Product["bpProduct"];
+                var bpId = Convert.ToInt64(bpProd["bpId"]);
+                var pId = Convert.ToInt32(bpProd["product"]);
+                context.uspAddBusinessPartnerProducts(bpId, pId);
+                return Ok(new { success = true, message = "Business Partner product added successfully !" });
+
 
             }
         }
@@ -336,16 +328,16 @@ namespace de_server.Controllers
         {
             using (var context = new DhoniEnterprisesEntities())
             {
-               
-                    var bpProd = Product["bpProduct"];
-                    var bpId = Convert.ToInt64(bpProd["bpId"]);
-                    var pId = Convert.ToInt32(bpProd["product"]);
-                    context.uspDeleteBusinessPartnerProducts(bpId, pId);
-                    return Ok(new { success = true, message = "Business Partner product successfully deleted!" });
 
-              
+                var bpProd = Product["bpProduct"];
+                var bpId = Convert.ToInt64(bpProd["bpId"]);
+                var pId = Convert.ToInt32(bpProd["product"]);
+                context.uspDeleteBusinessPartnerProducts(bpId, pId);
+                return Ok(new { success = true, message = "Business Partner product successfully deleted!" });
+
+
             }
-            
+
         }
 
         #endregion BP_Product

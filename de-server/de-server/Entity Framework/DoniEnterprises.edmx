@@ -3225,7 +3225,7 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
             <Parameter Name="bp_Cont_SecondryNumber" Mode="In" Type="String" />
             <Parameter Name="bp_Cont_CreatedBy" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="uspAddBusinessPartnerContactNumber">
+          <FunctionImport Name="uspAddBusinessPartnerContactNumber" ReturnType="Collection(Int64)">
             <Parameter Name="bpId" Mode="In" Type="Int64" />
             <Parameter Name="contactType" Mode="In" Type="String" />
             <Parameter Name="ontactNumber" Mode="In" Type="String" />

@@ -43,7 +43,7 @@ namespace de_server.Security
             ----------------------------------------------*/
             using (var dbContext = new DhoniEnterprisesEntities())
             {
-                var loggedUser = (from user in dbContext.AppUsers where user.UserEmail.Equals(email) select user).First();                 
+                var loggedUser = (from user in dbContext.AppUsers where user.UserEmail.Equals(email) select user).FirstOrDefault();                 
                 string hashedPassword = Security.HashSHA1(password + loggedUser.UserGuid);
                 if (hashedPassword != loggedUser.UserPass)
                 {
@@ -70,7 +70,7 @@ namespace de_server.Security
             ----------------------------------------------*/
             using (var dbContext = new DhoniEnterprisesEntities())
             {
-                var loggedUser = (from user in dbContext.AppUsers where user.UserEmail.Equals(email) select user).First();
+                var loggedUser = (from user in dbContext.AppUsers where user.UserEmail.Equals(email) select user).FirstOrDefault();
                 string hashedPassword = Security.HashSHA1(password + loggedUser.UserGuid);
                 if (hashedPassword != loggedUser.UserPass)
                 {
