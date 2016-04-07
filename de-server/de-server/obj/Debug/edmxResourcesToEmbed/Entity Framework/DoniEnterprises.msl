@@ -105,19 +105,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="dailyProductLocalPrices">
-      <EntityTypeMapping TypeName="DoniEnterprisesModel.dailyProductLocalPrice">
-        <MappingFragment StoreEntitySet="dailyProductLocalPrices">
-          <ScalarProperty Name="Prod_ID" ColumnName="Prod_ID" />
-          <ScalarProperty Name="PriceDate" ColumnName="PriceDate" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="tr_createdBy" ColumnName="tr_createdBy" />
-          <ScalarProperty Name="tr_editedBy" ColumnName="tr_editedBy" />
-          <ScalarProperty Name="tr_createdOn" ColumnName="tr_createdOn" />
-          <ScalarProperty Name="tr_editedOn" ColumnName="tr_editedOn" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="dailyProductPrices">
       <EntityTypeMapping TypeName="DoniEnterprisesModel.dailyProductPrice">
         <MappingFragment StoreEntitySet="dailyProductPrices">
@@ -128,6 +115,7 @@
           <ScalarProperty Name="tr_editedBy" ColumnName="tr_editedBy" />
           <ScalarProperty Name="tr_createdOn" ColumnName="tr_createdOn" />
           <ScalarProperty Name="tr_editedOn" ColumnName="tr_editedOn" />
+          <ScalarProperty Name="localPrice" ColumnName="localPrice" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -363,6 +351,14 @@
         <ScalarProperty Name="ProductId" ColumnName="prod_ID" />
       </EndProperty>
     </AssociationSetMapping>
+    <AssociationSetMapping Name="userDashboardProducts" TypeName="DoniEnterprisesModel.userDashboardProducts" StoreEntitySet="userDashboardProducts">
+      <EndProperty Name="Products">
+        <ScalarProperty Name="ProductId" ColumnName="productId" />
+      </EndProperty>
+      <EndProperty Name="AppUsers">
+        <ScalarProperty Name="UserID" ColumnName="userid" />
+      </EndProperty>
+    </AssociationSetMapping>
     <FunctionImportMapping FunctionImportName="addNewAppUser" FunctionName="DoniEnterprisesModel.Store.addNewAppUser" />
     <FunctionImportMapping FunctionImportName="AppUserChangePasword" FunctionName="DoniEnterprisesModel.Store.AppUserChangePasword" />
     <FunctionImportMapping FunctionImportName="getAllUsers" FunctionName="DoniEnterprisesModel.Store.getAllUsers">
@@ -384,6 +380,7 @@
     <FunctionImportMapping FunctionImportName="uspAddBusinessPartnerContactNumber" FunctionName="DoniEnterprisesModel.Store.uspAddBusinessPartnerContactNumber" />
     <FunctionImportMapping FunctionImportName="uspAddBusinessPartnerEmail" FunctionName="DoniEnterprisesModel.Store.uspAddBusinessPartnerEmail" />
     <FunctionImportMapping FunctionImportName="uspAddBusinessPartnerProducts" FunctionName="DoniEnterprisesModel.Store.uspAddBusinessPartnerProducts" />
+    <FunctionImportMapping FunctionImportName="uspAddDashboardProduct" FunctionName="DoniEnterprisesModel.Store.uspAddDashboardProduct" />
     <FunctionImportMapping FunctionImportName="uspAddProduct" FunctionName="DoniEnterprisesModel.Store.uspAddProduct" />
     <FunctionImportMapping FunctionImportName="uspAddRecentViewedItem" FunctionName="DoniEnterprisesModel.Store.uspAddRecentViewedItem" />
     <FunctionImportMapping FunctionImportName="uspAddTransaction" FunctionName="DoniEnterprisesModel.Store.uspAddTransaction" />
@@ -397,6 +394,7 @@
     <FunctionImportMapping FunctionImportName="uspDeleteBusinessPartnerContactNumber" FunctionName="DoniEnterprisesModel.Store.uspDeleteBusinessPartnerContactNumber" />
     <FunctionImportMapping FunctionImportName="uspDeleteBusinessPartnerEmail" FunctionName="DoniEnterprisesModel.Store.uspDeleteBusinessPartnerEmail" />
     <FunctionImportMapping FunctionImportName="uspDeleteBusinessPartnerProducts" FunctionName="DoniEnterprisesModel.Store.uspDeleteBusinessPartnerProducts" />
+    <FunctionImportMapping FunctionImportName="uspDeleteDashboardProduct" FunctionName="DoniEnterprisesModel.Store.uspDeleteDashboardProduct" />
     <FunctionImportMapping FunctionImportName="uspDeleteProduct" FunctionName="DoniEnterprisesModel.Store.uspDeleteProduct" />
     <FunctionImportMapping FunctionImportName="uspDeleteTransaction" FunctionName="DoniEnterprisesModel.Store.uspDeleteTransaction" />
     <FunctionImportMapping FunctionImportName="uspDeleteTransactionNotes" FunctionName="DoniEnterprisesModel.Store.uspDeleteTransactionNotes" />
@@ -410,6 +408,22 @@
           <ScalarProperty Name="firstName" ColumnName="firstName" />
           <ScalarProperty Name="lastName" ColumnName="lastName" />
           <ScalarProperty Name="IsSuperUser" ColumnName="IsSuperUser" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspGetArrivedAtPortByDateRange" FunctionName="DoniEnterprisesModel.Store.uspGetArrivedAtPortByDateRange">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetArrivedAtPortByDateRange_Result">
+          <ScalarProperty Name="tr_transactionID" ColumnName="tr_transactionID" />
+          <ScalarProperty Name="tr_dateArrived" ColumnName="tr_dateArrived" />
+          <ScalarProperty Name="days" ColumnName="days" />
+          <ScalarProperty Name="tr_fileID" ColumnName="tr_fileID" />
+          <ScalarProperty Name="tr_bpBuyerID" ColumnName="tr_bpBuyerID" />
+          <ScalarProperty Name="tr_productID" ColumnName="tr_productID" />
+          <ScalarProperty Name="tr_quantity" ColumnName="tr_quantity" />
+          <ScalarProperty Name="tr_price" ColumnName="tr_price" />
+          <ScalarProperty Name="tr_bpSellerID" ColumnName="tr_bpSellerID" />
+          <ScalarProperty Name="tr_transactionStatus" ColumnName="tr_transactionStatus" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -553,6 +567,14 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspGetDashboardProducts" FunctionName="DoniEnterprisesModel.Store.uspGetDashboardProducts">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetDashboardProducts_Result">
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="productId" ColumnName="productId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="uspGetDropDownBroker" FunctionName="DoniEnterprisesModel.Store.uspGetDropDownBroker">
       <ResultMapping>
         <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetDropDownBroker_Result">
@@ -594,6 +616,22 @@
           <ScalarProperty Name="bp_address" ColumnName="bp_address" />
           <ScalarProperty Name="bp_Cont_fullName" ColumnName="bp_Cont_fullName" />
           <ScalarProperty Name="bp_country" ColumnName="bp_country" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspGetExpextedArrivalAtPortByDateRange" FunctionName="DoniEnterprisesModel.Store.uspGetExpextedArrivalAtPortByDateRange">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetExpextedArrivalAtPortByDateRange_Result">
+          <ScalarProperty Name="tr_transactionID" ColumnName="tr_transactionID" />
+          <ScalarProperty Name="tr_expectedArrival" ColumnName="tr_expectedArrival" />
+          <ScalarProperty Name="days" ColumnName="days" />
+          <ScalarProperty Name="tr_fileID" ColumnName="tr_fileID" />
+          <ScalarProperty Name="tr_bpBuyerID" ColumnName="tr_bpBuyerID" />
+          <ScalarProperty Name="tr_productID" ColumnName="tr_productID" />
+          <ScalarProperty Name="tr_quantity" ColumnName="tr_quantity" />
+          <ScalarProperty Name="tr_price" ColumnName="tr_price" />
+          <ScalarProperty Name="tr_bpSellerID" ColumnName="tr_bpSellerID" />
+          <ScalarProperty Name="tr_transactionStatus" ColumnName="tr_transactionStatus" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -640,20 +678,22 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspGetProductLocalPriceByDate" FunctionName="DoniEnterprisesModel.Store.uspGetProductLocalPriceByDate">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetProductLocalPriceByDate_Result">
-          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="tr_editedBy" ColumnName="tr_editedBy" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="uspGetProductPriceByDate" FunctionName="DoniEnterprisesModel.Store.uspGetProductPriceByDate">
       <ResultMapping>
         <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetProductPriceByDate_Result">
           <ScalarProperty Name="ProductId" ColumnName="ProductId" />
           <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="localPrice" ColumnName="localPrice" />
+          <ScalarProperty Name="tr_editedBy" ColumnName="tr_editedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspGetProductPriceByDateForDashBoard" FunctionName="DoniEnterprisesModel.Store.uspGetProductPriceByDateForDashBoard">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetProductPriceByDateForDashBoard_Result">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="localPrice" ColumnName="localPrice" />
           <ScalarProperty Name="tr_editedBy" ColumnName="tr_editedBy" />
         </ComplexTypeMapping>
       </ResultMapping>
@@ -709,6 +749,22 @@
           <ScalarProperty Name="tr_price" ColumnName="tr_price" />
           <ScalarProperty Name="tr_quantity" ColumnName="tr_quantity" />
           <ScalarProperty Name="tr_bpSellerID" ColumnName="tr_bpSellerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspGetShipmentExpirationByDateRange" FunctionName="DoniEnterprisesModel.Store.uspGetShipmentExpirationByDateRange">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetShipmentExpirationByDateRange_Result">
+          <ScalarProperty Name="tr_transactionID" ColumnName="tr_transactionID" />
+          <ScalarProperty Name="tr_shipment_end" ColumnName="tr_shipment_end" />
+          <ScalarProperty Name="days" ColumnName="days" />
+          <ScalarProperty Name="tr_fileID" ColumnName="tr_fileID" />
+          <ScalarProperty Name="tr_bpBuyerID" ColumnName="tr_bpBuyerID" />
+          <ScalarProperty Name="tr_productID" ColumnName="tr_productID" />
+          <ScalarProperty Name="tr_quantity" ColumnName="tr_quantity" />
+          <ScalarProperty Name="tr_price" ColumnName="tr_price" />
+          <ScalarProperty Name="tr_bpSellerID" ColumnName="tr_bpSellerID" />
+          <ScalarProperty Name="tr_transactionStatus" ColumnName="tr_transactionStatus" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -855,19 +911,25 @@
     <FunctionImportMapping FunctionImportName="uspProductListByDateRange" FunctionName="DoniEnterprisesModel.Store.uspProductListByDateRange">
       <ResultMapping>
         <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspProductListByDateRange_Result">
-          <ScalarProperty Name="Prod_ID" ColumnName="Prod_ID" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
           <ScalarProperty Name="PriceDate" ColumnName="PriceDate" />
           <ScalarProperty Name="intPrice" ColumnName="intPrice" />
-          <ScalarProperty Name="localPriceDate" ColumnName="localPriceDate" />
           <ScalarProperty Name="localPrice" ColumnName="localPrice" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspProductListByDateRangeForDashboard" FunctionName="DoniEnterprisesModel.Store.uspProductListByDateRangeForDashboard">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspProductListByDateRangeForDashboard_Result">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
           <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-          <ScalarProperty Name="quality" ColumnName="quality" />
-          <ScalarProperty Name="origin" ColumnName="origin" />
+          <ScalarProperty Name="PriceDate" ColumnName="PriceDate" />
+          <ScalarProperty Name="intPrice" ColumnName="intPrice" />
+          <ScalarProperty Name="localPrice" ColumnName="localPrice" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="uspProductPriceByDateCRUD" FunctionName="DoniEnterprisesModel.Store.uspProductPriceByDateCRUD" />
-    <FunctionImportMapping FunctionImportName="uspProductPriceLocalByDateCRUD" FunctionName="DoniEnterprisesModel.Store.uspProductPriceLocalByDateCRUD" />
     <FunctionImportMapping FunctionImportName="uspProductSalesAnalyticsByDateRange" FunctionName="DoniEnterprisesModel.Store.uspProductSalesAnalyticsByDateRange">
       <ResultMapping>
         <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspProductSalesAnalyticsByDateRange_Result">

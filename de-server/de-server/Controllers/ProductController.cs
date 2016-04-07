@@ -99,7 +99,7 @@ namespace de_server.Controllers
 
         #endregion
 
-        #region internationalProductPrice
+        #region ProductPrice
 
         [Route("getProductsPricesByDate")]
         [HttpPost]
@@ -108,6 +108,19 @@ namespace de_server.Controllers
             using (var context = new DhoniEnterprisesEntities())
             {
                 var productPrices = context.uspGetProductPriceByDate(Convert.ToDateTime(date["date"]));
+                return Ok(new { success = true, productPrices = DataTableSerializer.LINQToDataTable(productPrices) });
+            }
+        }
+
+        [Route("getProductsPricesByDateForDashboard")]
+        [HttpPost]
+        public IHttpActionResult GetProductsPricesByDateForDashboard([FromBody]JObject date)
+        {
+            using (var context = new DhoniEnterprisesEntities())
+            {
+
+                int userId = BasicAuthHttpModule.getCurrentUserId();
+                var productPrices = context.uspGetProductPriceByDateForDashBoard(Convert.ToDateTime(date["date"]), userId);
                 return Ok(new { success = true, productPrices = DataTableSerializer.LINQToDataTable(productPrices) });
             }
         }
@@ -121,46 +134,14 @@ namespace de_server.Controllers
                 var priceDetails = pPrice["data"];
                 var operation = Convert.ToString(priceDetails["operation"]);
                 var price = (int?)priceDetails["price"];
+                var localPrice = (int?) priceDetails["localPrice"];
                 var productId = (int?)priceDetails["productId"];
                 var date = (DateTime?) priceDetails["date"];
                 int userId = BasicAuthHttpModule.getCurrentUserId();
-                context.uspProductPriceByDateCRUD(operation, productId, date, price, userId, userId);
+                context.uspProductPriceByDateCRUD(operation, productId, date, price,localPrice, userId, userId);
                 return Ok(new { success = true, message = "Product International Price has been updated!" });
             }
         }
-
-        #endregion
-
-        #region localProductPrices
-
-        [Route("getProductsPricesLocalByDate")]
-        [HttpPost]
-        public IHttpActionResult GetProductsLocalPricesByDate([FromBody]JObject date)
-        {
-            using (var context = new DhoniEnterprisesEntities())
-            {
-                var productPrices = context.uspGetProductLocalPriceByDate(Convert.ToDateTime(date["date"]));
-                return Ok(new { success = true, productPrices = DataTableSerializer.LINQToDataTable(productPrices) });
-            }
-        }
-
-        [Route("productPriceLocalByDateCrud")]
-        [HttpPost]
-        public IHttpActionResult ProductPriceLocalByDateCrud([FromBody] JObject pPrice)
-        {
-            using (var context = new DhoniEnterprisesEntities())
-            {
-                var priceDetails = pPrice["data"];
-                var operation = Convert.ToString(priceDetails["operation"]);
-                var price = (int?)priceDetails["price"];
-                var productId = (int?)priceDetails["productId"];
-                var date = (DateTime?)priceDetails["date"];
-                int userId = BasicAuthHttpModule.getCurrentUserId();
-                context.uspProductPriceLocalByDateCRUD(operation, productId, date, price, userId, userId);
-                return Ok(new { success = true, message = "Product Local Price has been updated!" });
-            }
-        }
-
 
         #endregion
 
@@ -173,6 +154,24 @@ namespace de_server.Controllers
             using (var context = new DhoniEnterprisesEntities())
             {
                 var productsPrices = DataTableSerializer.LINQToDataTable(context.uspProductListByDateRange(startDate, endDate));
+                return Ok(new
+                {
+                    success = true,
+                    productsPrices = productsPrices
+                });
+
+            }
+        }
+
+        [Route("productPriceByDateRangeForDashboard")]
+        [HttpGet]
+        public IHttpActionResult ProductPriceByDateRangeForDashboard(DateTime startDate, DateTime endDate)
+        {
+            using (var context = new DhoniEnterprisesEntities())
+            {
+
+                int userId = BasicAuthHttpModule.getCurrentUserId();
+                var productsPrices = DataTableSerializer.LINQToDataTable(context.uspProductListByDateRangeForDashboard(startDate, endDate, userId));
                 return Ok(new
                 {
                     success = true,
@@ -299,6 +298,51 @@ namespace de_server.Controllers
 
             }
         }
+
+        #endregion
+
+        #region dashboardProduct
+
+        [Route("getDashboardProducts")]
+        [HttpGet]
+        public IHttpActionResult GetDashboardProducts()
+        {
+            using (var context = new DhoniEnterprisesEntities())
+            {
+                int userId = BasicAuthHttpModule.getCurrentUserId();
+                var dashboardProducts = DataTableSerializer.LINQToDataTable(context.uspGetDashboardProducts(userId));
+                return Ok(new
+                {
+                    success = true,
+                    dashboardProducts = dashboardProducts
+                });
+            }
+        }
+
+        [Route("dashboardProductCRUD")]
+        [HttpPost]
+        public IHttpActionResult DashboardProductCrud([FromBody] JObject dbProduct)
+        {
+            using (var context = new DhoniEnterprisesEntities())
+            {
+                var operation = Convert.ToString(dbProduct["operation"]);
+                var productId = (Int32?)(dbProduct["productId"]);
+                int userId = BasicAuthHttpModule.getCurrentUserId();
+                if (operation == CRUD.CREATE)
+                {
+                    context.uspAddDashboardProduct(userId, productId);
+                    return Ok(new { success = true, message = "Dashboard product created successfully." });
+                }
+                else if (operation == CRUD.DELETE)
+                {
+                    context.uspDeleteDashboardProduct(userId, productId);
+                    return Ok(new { success = true, message = "Dashboard product deleted successfully." });
+                }
+                return Ok(new {success = false, message = "Invalid Operation"});
+            }
+        }
+
+
 
         #endregion
 

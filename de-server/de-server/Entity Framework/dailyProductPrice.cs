@@ -21,6 +21,7 @@ namespace de_server.Entity_Framework
         public Nullable<int> tr_editedBy { get; set; }
         public System.DateTime tr_createdOn { get; set; }
         public Nullable<System.DateTime> tr_editedOn { get; set; }
+        public Nullable<int> localPrice { get; set; }
     
         public virtual AppUser AppUser { get; set; }
         public virtual AppUser AppUser1 { get; set; }

@@ -11,11 +11,9 @@ namespace de_server.Entity_Framework
 {
     using System;
     
-    public partial class uspProductListByDateRange_Result
+    public partial class uspGetDashboardProducts_Result
     {
-        public int ProductId { get; set; }
-        public Nullable<System.DateTime> PriceDate { get; set; }
-        public Nullable<int> intPrice { get; set; }
-        public Nullable<int> localPrice { get; set; }
+        public int userid { get; set; }
+        public int productId { get; set; }
     }
 }

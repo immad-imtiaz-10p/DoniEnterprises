@@ -11,10 +11,11 @@ namespace de_server.Entity_Framework
 {
     using System;
     
-    public partial class uspGetProductLocalPriceByDate_Result
+    public partial class uspGetProductPriceByDateForDashBoard_Result
     {
         public int ProductId { get; set; }
         public Nullable<int> Price { get; set; }
+        public Nullable<int> localPrice { get; set; }
         public Nullable<int> tr_editedBy { get; set; }
     }
 }

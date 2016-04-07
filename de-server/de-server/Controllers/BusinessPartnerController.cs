@@ -78,7 +78,7 @@ namespace de_server.Controllers
                     DataTable dt = new DataTable();
                     context.uspUpdateBusinessPartner(
                         bpId,
-                        Convert.ToBoolean(generalDetails["bp_isSupplier"]),
+                        Convert.ToBoolean(generalDetails["bp_isSeller"]),
                         Convert.ToBoolean(generalDetails["bp_isBroker"]),
                         Convert.ToBoolean(generalDetails["bp_isShipper"]),
                         Convert.ToBoolean(generalDetails["bp_isBuyer"]),

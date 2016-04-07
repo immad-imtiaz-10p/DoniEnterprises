@@ -35,7 +35,6 @@ namespace de_server.Entity_Framework
         public virtual DbSet<BusinessPartner_ContactNumbers> BusinessPartner_ContactNumbers { get; set; }
         public virtual DbSet<BusinessPartner_Contacts> BusinessPartner_Contacts { get; set; }
         public virtual DbSet<BusinessPartner_Emails> BusinessPartner_Emails { get; set; }
-        public virtual DbSet<dailyProductLocalPrice> dailyProductLocalPrices { get; set; }
         public virtual DbSet<dailyProductPrice> dailyProductPrices { get; set; }
         public virtual DbSet<Origin> Origins { get; set; }
         public virtual DbSet<Product> Products { get; set; }
@@ -291,6 +290,19 @@ namespace de_server.Entity_Framework
                 new ObjectParameter("prod_ID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspAddBusinessPartnerProducts", bp_IDParameter, prod_IDParameter);
+        }
+    
+        public virtual int uspAddDashboardProduct(Nullable<int> userId, Nullable<int> productId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            var productIdParameter = productId.HasValue ?
+                new ObjectParameter("productId", productId) :
+                new ObjectParameter("productId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspAddDashboardProduct", userIdParameter, productIdParameter);
         }
     
         public virtual int uspAddProduct(string productName, Nullable<int> createdBy, Nullable<int> moisture, Nullable<int> weaveled, string origin, Nullable<int> purity, Nullable<int> splits, string quality, Nullable<int> damaged, Nullable<int> foreignMatter, Nullable<int> greenDamaged, Nullable<int> otherColor, Nullable<int> wrinkled)
@@ -662,6 +674,19 @@ namespace de_server.Entity_Framework
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspDeleteBusinessPartnerProducts", bp_IDParameter, prod_IDParameter);
         }
     
+        public virtual int uspDeleteDashboardProduct(Nullable<int> userId, Nullable<int> productId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            var productIdParameter = productId.HasValue ?
+                new ObjectParameter("productId", productId) :
+                new ObjectParameter("productId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspDeleteDashboardProduct", userIdParameter, productIdParameter);
+        }
+    
         public virtual int uspDeleteProduct(Nullable<int> productId)
         {
             var productIdParameter = productId.HasValue ?
@@ -700,6 +725,19 @@ namespace de_server.Entity_Framework
                 new ObjectParameter("userEmail", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGetAppUserByEmail_Result>("uspGetAppUserByEmail", userEmailParameter);
+        }
+    
+        public virtual ObjectResult<uspGetArrivedAtPortByDateRange_Result> uspGetArrivedAtPortByDateRange(Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate)
+        {
+            var startDateParameter = startDate.HasValue ?
+                new ObjectParameter("startDate", startDate) :
+                new ObjectParameter("startDate", typeof(System.DateTime));
+    
+            var endDateParameter = endDate.HasValue ?
+                new ObjectParameter("endDate", endDate) :
+                new ObjectParameter("endDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGetArrivedAtPortByDateRange_Result>("uspGetArrivedAtPortByDateRange", startDateParameter, endDateParameter);
         }
     
         public virtual ObjectResult<uspGetBPBank_Result> uspGetBPBank(Nullable<long> bp_ID)
@@ -775,6 +813,15 @@ namespace de_server.Entity_Framework
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGetCommissionTransaction_Result>("uspGetCommissionTransaction", tr_transactionIDParameter);
         }
     
+        public virtual ObjectResult<uspGetDashboardProducts_Result> uspGetDashboardProducts(Nullable<int> userId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGetDashboardProducts_Result>("uspGetDashboardProducts", userIdParameter);
+        }
+    
         public virtual ObjectResult<uspGetDropDownBroker_Result> uspGetDropDownBroker()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGetDropDownBroker_Result>("uspGetDropDownBroker");
@@ -795,6 +842,19 @@ namespace de_server.Entity_Framework
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGetDropDownShipper_Result>("uspGetDropDownShipper");
         }
     
+        public virtual ObjectResult<uspGetExpextedArrivalAtPortByDateRange_Result> uspGetExpextedArrivalAtPortByDateRange(Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate)
+        {
+            var startDateParameter = startDate.HasValue ?
+                new ObjectParameter("startDate", startDate) :
+                new ObjectParameter("startDate", typeof(System.DateTime));
+    
+            var endDateParameter = endDate.HasValue ?
+                new ObjectParameter("endDate", endDate) :
+                new ObjectParameter("endDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGetExpextedArrivalAtPortByDateRange_Result>("uspGetExpextedArrivalAtPortByDateRange", startDateParameter, endDateParameter);
+        }
+    
         public virtual ObjectResult<uspGetOriginList_Result> uspGetOriginList()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGetOriginList_Result>("uspGetOriginList");
@@ -810,15 +870,6 @@ namespace de_server.Entity_Framework
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGetProductListPDF_Result>("uspGetProductListPDF");
         }
     
-        public virtual ObjectResult<uspGetProductLocalPriceByDate_Result> uspGetProductLocalPriceByDate(Nullable<System.DateTime> date)
-        {
-            var dateParameter = date.HasValue ?
-                new ObjectParameter("date", date) :
-                new ObjectParameter("date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGetProductLocalPriceByDate_Result>("uspGetProductLocalPriceByDate", dateParameter);
-        }
-    
         public virtual ObjectResult<uspGetProductPriceByDate_Result> uspGetProductPriceByDate(Nullable<System.DateTime> date)
         {
             var dateParameter = date.HasValue ?
@@ -826,6 +877,19 @@ namespace de_server.Entity_Framework
                 new ObjectParameter("date", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGetProductPriceByDate_Result>("uspGetProductPriceByDate", dateParameter);
+        }
+    
+        public virtual ObjectResult<uspGetProductPriceByDateForDashBoard_Result> uspGetProductPriceByDateForDashBoard(Nullable<System.DateTime> date, Nullable<int> userId)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGetProductPriceByDateForDashBoard_Result>("uspGetProductPriceByDateForDashBoard", dateParameter, userIdParameter);
         }
     
         public virtual ObjectResult<uspGetProductTagInput_Result> uspGetProductTagInput(string input)
@@ -870,6 +934,19 @@ namespace de_server.Entity_Framework
                 new ObjectParameter("reportType", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGetShipmentAnalyticsByDateRange_Result>("uspGetShipmentAnalyticsByDateRange", startDateParameter, endDateParameter, reportTypeParameter);
+        }
+    
+        public virtual ObjectResult<uspGetShipmentExpirationByDateRange_Result> uspGetShipmentExpirationByDateRange(Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate)
+        {
+            var startDateParameter = startDate.HasValue ?
+                new ObjectParameter("startDate", startDate) :
+                new ObjectParameter("startDate", typeof(System.DateTime));
+    
+            var endDateParameter = endDate.HasValue ?
+                new ObjectParameter("endDate", endDate) :
+                new ObjectParameter("endDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGetShipmentExpirationByDateRange_Result>("uspGetShipmentExpirationByDateRange", startDateParameter, endDateParameter);
         }
     
         public virtual ObjectResult<uspGetSingleProduct_Result> uspGetSingleProduct(Nullable<int> productId)
@@ -983,36 +1060,24 @@ namespace de_server.Entity_Framework
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspProductListByDateRange_Result>("uspProductListByDateRange", startDateParameter, endDateParameter);
         }
     
-        public virtual int uspProductPriceByDateCRUD(string crudOperation, Nullable<int> productId, Nullable<System.DateTime> priceDate, Nullable<int> price, Nullable<int> tr_createdBy, Nullable<int> tr_editedBy)
+        public virtual ObjectResult<uspProductListByDateRangeForDashboard_Result> uspProductListByDateRangeForDashboard(Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate, Nullable<int> userId)
         {
-            var crudOperationParameter = crudOperation != null ?
-                new ObjectParameter("crudOperation", crudOperation) :
-                new ObjectParameter("crudOperation", typeof(string));
+            var startDateParameter = startDate.HasValue ?
+                new ObjectParameter("startDate", startDate) :
+                new ObjectParameter("startDate", typeof(System.DateTime));
     
-            var productIdParameter = productId.HasValue ?
-                new ObjectParameter("productId", productId) :
-                new ObjectParameter("productId", typeof(int));
+            var endDateParameter = endDate.HasValue ?
+                new ObjectParameter("endDate", endDate) :
+                new ObjectParameter("endDate", typeof(System.DateTime));
     
-            var priceDateParameter = priceDate.HasValue ?
-                new ObjectParameter("priceDate", priceDate) :
-                new ObjectParameter("priceDate", typeof(System.DateTime));
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
     
-            var priceParameter = price.HasValue ?
-                new ObjectParameter("price", price) :
-                new ObjectParameter("price", typeof(int));
-    
-            var tr_createdByParameter = tr_createdBy.HasValue ?
-                new ObjectParameter("tr_createdBy", tr_createdBy) :
-                new ObjectParameter("tr_createdBy", typeof(int));
-    
-            var tr_editedByParameter = tr_editedBy.HasValue ?
-                new ObjectParameter("tr_editedBy", tr_editedBy) :
-                new ObjectParameter("tr_editedBy", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspProductPriceByDateCRUD", crudOperationParameter, productIdParameter, priceDateParameter, priceParameter, tr_createdByParameter, tr_editedByParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspProductListByDateRangeForDashboard_Result>("uspProductListByDateRangeForDashboard", startDateParameter, endDateParameter, userIdParameter);
         }
     
-        public virtual int uspProductPriceLocalByDateCRUD(string crudOperation, Nullable<int> productId, Nullable<System.DateTime> priceDate, Nullable<int> price, Nullable<int> tr_createdBy, Nullable<int> tr_editedBy)
+        public virtual int uspProductPriceByDateCRUD(string crudOperation, Nullable<int> productId, Nullable<System.DateTime> priceDate, Nullable<int> price, Nullable<int> localPrice, Nullable<int> tr_createdBy, Nullable<int> tr_editedBy)
         {
             var crudOperationParameter = crudOperation != null ?
                 new ObjectParameter("crudOperation", crudOperation) :
@@ -1030,6 +1095,10 @@ namespace de_server.Entity_Framework
                 new ObjectParameter("price", price) :
                 new ObjectParameter("price", typeof(int));
     
+            var localPriceParameter = localPrice.HasValue ?
+                new ObjectParameter("localPrice", localPrice) :
+                new ObjectParameter("localPrice", typeof(int));
+    
             var tr_createdByParameter = tr_createdBy.HasValue ?
                 new ObjectParameter("tr_createdBy", tr_createdBy) :
                 new ObjectParameter("tr_createdBy", typeof(int));
@@ -1038,7 +1107,7 @@ namespace de_server.Entity_Framework
                 new ObjectParameter("tr_editedBy", tr_editedBy) :
                 new ObjectParameter("tr_editedBy", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspProductPriceLocalByDateCRUD", crudOperationParameter, productIdParameter, priceDateParameter, priceParameter, tr_createdByParameter, tr_editedByParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspProductPriceByDateCRUD", crudOperationParameter, productIdParameter, priceDateParameter, priceParameter, localPriceParameter, tr_createdByParameter, tr_editedByParameter);
         }
     
         public virtual ObjectResult<uspProductSalesAnalyticsByDateRange_Result> uspProductSalesAnalyticsByDateRange(Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate)

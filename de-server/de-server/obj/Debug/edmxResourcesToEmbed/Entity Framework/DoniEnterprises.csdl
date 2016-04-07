@@ -32,9 +32,7 @@
     <NavigationProperty Name="BusinessPartner_ContactNumbers" Relationship="Self.FK__BusinessP__creat__47A6A41B" FromRole="AppUsers" ToRole="BusinessPartner_ContactNumbers" />
     <NavigationProperty Name="BusinessPartner_ContactNumbers1" Relationship="Self.FK__BusinessP__edite__489AC854" FromRole="AppUsers" ToRole="BusinessPartner_ContactNumbers" />
     <NavigationProperty Name="dailyProductPrices" Relationship="Self.FK__dailyProd__tr_cr__503BEA1C" FromRole="AppUsers" ToRole="dailyProductPrices" />
-    <NavigationProperty Name="dailyProductLocalPrices" Relationship="Self.FK__dailyProd__tr_cr__7A3223E8" FromRole="AppUsers" ToRole="dailyProductLocalPrices" />
     <NavigationProperty Name="dailyProductPrices1" Relationship="Self.FK__dailyProd__tr_ed__51300E55" FromRole="AppUsers" ToRole="dailyProductPrices" />
-    <NavigationProperty Name="dailyProductLocalPrices1" Relationship="Self.FK__dailyProd__tr_ed__7B264821" FromRole="AppUsers" ToRole="dailyProductLocalPrices" />
     <NavigationProperty Name="Products" Relationship="Self.FK__Products__Create__5224328E" FromRole="AppUsers" ToRole="Products" />
     <NavigationProperty Name="Products1" Relationship="Self.FK__Products__LastUp__531856C7" FromRole="AppUsers" ToRole="Products" />
     <NavigationProperty Name="TransactionFiles" Relationship="Self.FK__Transacti__tf_cr__540C7B00" FromRole="AppUsers" ToRole="TransactionFiles" />
@@ -57,6 +55,7 @@
     <NavigationProperty Name="TransactionsStatus3" Relationship="Self.FK__Transacti__tr_ed__73852659" FromRole="AppUsers" ToRole="TransactionsStatus" />
     <NavigationProperty Name="transactionVieweds" Relationship="Self.FK__transacti__UserI__756D6ECB" FromRole="AppUsers" ToRole="transactionViewed" />
     <NavigationProperty Name="UserEvents" Relationship="Self.FK__UserEvent__UserI__76619304" FromRole="AppUsers" ToRole="UserEvents" />
+    <NavigationProperty Name="Products2" Relationship="Self.userDashboardProducts" FromRole="AppUsers" ToRole="Products" />
   </EntityType>
   <EntityType Name="AppUsersImage">
     <Key>
@@ -157,22 +156,6 @@
     <Property Name="email" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="BusinessPartner" Relationship="Self.FK__BusinessP__bp_ID__4C6B5938" FromRole="BusinessPartner_Emails" ToRole="BusinessPartner" />
   </EntityType>
-  <EntityType Name="dailyProductLocalPrice">
-    <Key>
-      <PropertyRef Name="Prod_ID" />
-      <PropertyRef Name="PriceDate" />
-    </Key>
-    <Property Name="Prod_ID" Type="Int32" Nullable="false" />
-    <Property Name="PriceDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="Price" Type="Int32" />
-    <Property Name="tr_createdBy" Type="Int32" Nullable="false" />
-    <Property Name="tr_editedBy" Type="Int32" />
-    <Property Name="tr_createdOn" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="tr_editedOn" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="AppUser" Relationship="Self.FK__dailyProd__tr_cr__7A3223E8" FromRole="dailyProductLocalPrices" ToRole="AppUsers" />
-    <NavigationProperty Name="AppUser1" Relationship="Self.FK__dailyProd__tr_ed__7B264821" FromRole="dailyProductLocalPrices" ToRole="AppUsers" />
-    <NavigationProperty Name="Product" Relationship="Self.FK__dailyProd__Prod___793DFFAF" FromRole="dailyProductLocalPrices" ToRole="Products" />
-  </EntityType>
   <EntityType Name="dailyProductPrice">
     <Key>
       <PropertyRef Name="Prod_ID" />
@@ -185,6 +168,7 @@
     <Property Name="tr_editedBy" Type="Int32" />
     <Property Name="tr_createdOn" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="tr_editedOn" Type="DateTime" Precision="3" />
+    <Property Name="localPrice" Type="Int32" />
     <NavigationProperty Name="AppUser" Relationship="Self.FK__dailyProd__tr_cr__503BEA1C" FromRole="dailyProductPrices" ToRole="AppUsers" />
     <NavigationProperty Name="AppUser1" Relationship="Self.FK__dailyProd__tr_ed__51300E55" FromRole="dailyProductPrices" ToRole="AppUsers" />
     <NavigationProperty Name="Product" Relationship="Self.FK__dailyProd__Prod___4F47C5E3" FromRole="dailyProductPrices" ToRole="Products" />
@@ -219,10 +203,10 @@
     <Property Name="wrinkled" Type="Int32" />
     <NavigationProperty Name="AppUser" Relationship="Self.FK__Products__Create__5224328E" FromRole="Products" ToRole="AppUsers" />
     <NavigationProperty Name="AppUser1" Relationship="Self.FK__Products__LastUp__531856C7" FromRole="Products" ToRole="AppUsers" />
-    <NavigationProperty Name="dailyProductLocalPrices" Relationship="Self.FK__dailyProd__Prod___793DFFAF" FromRole="Products" ToRole="dailyProductLocalPrices" />
     <NavigationProperty Name="dailyProductPrices" Relationship="Self.FK__dailyProd__Prod___4F47C5E3" FromRole="Products" ToRole="dailyProductPrices" />
     <NavigationProperty Name="Transactions" Relationship="Self.FK__Transacti__tr_pr__5CA1C101" FromRole="Products" ToRole="Transactions" />
     <NavigationProperty Name="BusinessPartners" Relationship="Self.BusinessPartner_Products" FromRole="Products" ToRole="BusinessPartner" />
+    <NavigationProperty Name="AppUsers" Relationship="Self.userDashboardProducts" FromRole="Products" ToRole="AppUsers" />
   </EntityType>
   <EntityType Name="ShipmentStatu">
     <Key>
@@ -542,18 +526,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__dailyProd__tr_cr__7A3223E8">
-    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="1" />
-    <End Role="dailyProductLocalPrices" Type="Self.dailyProductLocalPrice" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="AppUsers">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="dailyProductLocalPrices">
-        <PropertyRef Name="tr_createdBy" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__dailyProd__tr_ed__51300E55">
     <End Role="AppUsers" Type="Self.AppUser" Multiplicity="0..1" />
     <End Role="dailyProductPrices" Type="Self.dailyProductPrice" Multiplicity="*" />
@@ -562,18 +534,6 @@
         <PropertyRef Name="UserID" />
       </Principal>
       <Dependent Role="dailyProductPrices">
-        <PropertyRef Name="tr_editedBy" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__dailyProd__tr_ed__7B264821">
-    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="0..1" />
-    <End Role="dailyProductLocalPrices" Type="Self.dailyProductLocalPrice" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="AppUsers">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="dailyProductLocalPrices">
         <PropertyRef Name="tr_editedBy" />
       </Dependent>
     </ReferentialConstraint>
@@ -986,18 +946,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__dailyProd__Prod___793DFFAF">
-    <End Role="Products" Type="Self.Product" Multiplicity="1" />
-    <End Role="dailyProductLocalPrices" Type="Self.dailyProductLocalPrice" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Products">
-        <PropertyRef Name="ProductId" />
-      </Principal>
-      <Dependent Role="dailyProductLocalPrices">
-        <PropertyRef Name="Prod_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__dailyProd__Prod___4F47C5E3">
     <End Role="Products" Type="Self.Product" Multiplicity="1" />
     <End Role="dailyProductPrices" Type="Self.dailyProductPrice" Multiplicity="*" />
@@ -1122,6 +1070,10 @@
     <End Role="BusinessPartner" Type="Self.BusinessPartner" Multiplicity="*" />
     <End Role="Products" Type="Self.Product" Multiplicity="*" />
   </Association>
+  <Association Name="userDashboardProducts">
+    <End Role="Products" Type="Self.Product" Multiplicity="*" />
+    <End Role="AppUsers" Type="Self.AppUser" Multiplicity="*" />
+  </Association>
   <EntityContainer Name="DhoniEnterprisesEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="AppUserRights" EntityType="Self.AppUserRight" />
     <EntitySet Name="AppUsers" EntityType="Self.AppUser" />
@@ -1131,7 +1083,6 @@
     <EntitySet Name="BusinessPartner_ContactNumbers" EntityType="Self.BusinessPartner_ContactNumbers" />
     <EntitySet Name="BusinessPartner_Contacts" EntityType="Self.BusinessPartner_Contacts" />
     <EntitySet Name="BusinessPartner_Emails" EntityType="Self.BusinessPartner_Emails" />
-    <EntitySet Name="dailyProductLocalPrices" EntityType="Self.dailyProductLocalPrice" />
     <EntitySet Name="dailyProductPrices" EntityType="Self.dailyProductPrice" />
     <EntitySet Name="Origins" EntityType="Self.Origin" />
     <EntitySet Name="Products" EntityType="Self.Product" />
@@ -1174,17 +1125,9 @@
       <End Role="AppUsers" EntitySet="AppUsers" />
       <End Role="dailyProductPrices" EntitySet="dailyProductPrices" />
     </AssociationSet>
-    <AssociationSet Name="FK__dailyProd__tr_cr__7A3223E8" Association="Self.FK__dailyProd__tr_cr__7A3223E8">
-      <End Role="AppUsers" EntitySet="AppUsers" />
-      <End Role="dailyProductLocalPrices" EntitySet="dailyProductLocalPrices" />
-    </AssociationSet>
     <AssociationSet Name="FK__dailyProd__tr_ed__51300E55" Association="Self.FK__dailyProd__tr_ed__51300E55">
       <End Role="AppUsers" EntitySet="AppUsers" />
       <End Role="dailyProductPrices" EntitySet="dailyProductPrices" />
-    </AssociationSet>
-    <AssociationSet Name="FK__dailyProd__tr_ed__7B264821" Association="Self.FK__dailyProd__tr_ed__7B264821">
-      <End Role="AppUsers" EntitySet="AppUsers" />
-      <End Role="dailyProductLocalPrices" EntitySet="dailyProductLocalPrices" />
     </AssociationSet>
     <AssociationSet Name="FK__Products__Create__5224328E" Association="Self.FK__Products__Create__5224328E">
       <End Role="AppUsers" EntitySet="AppUsers" />
@@ -1322,10 +1265,6 @@
       <End Role="BusinessPartner" EntitySet="BusinessPartners" />
       <End Role="TransactionsShipment" EntitySet="TransactionsShipments" />
     </AssociationSet>
-    <AssociationSet Name="FK__dailyProd__Prod___793DFFAF" Association="Self.FK__dailyProd__Prod___793DFFAF">
-      <End Role="Products" EntitySet="Products" />
-      <End Role="dailyProductLocalPrices" EntitySet="dailyProductLocalPrices" />
-    </AssociationSet>
     <AssociationSet Name="FK__dailyProd__Prod___4F47C5E3" Association="Self.FK__dailyProd__Prod___4F47C5E3">
       <End Role="Products" EntitySet="Products" />
       <End Role="dailyProductPrices" EntitySet="dailyProductPrices" />
@@ -1369,6 +1308,10 @@
     <AssociationSet Name="BusinessPartner_Products" Association="Self.BusinessPartner_Products">
       <End Role="BusinessPartner" EntitySet="BusinessPartners" />
       <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="userDashboardProducts" Association="Self.userDashboardProducts">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="AppUsers" EntitySet="AppUsers" />
     </AssociationSet>
     <FunctionImport Name="addNewAppUser">
       <Parameter Name="title" Mode="In" Type="String" />
@@ -1436,6 +1379,10 @@
     <FunctionImport Name="uspAddBusinessPartnerProducts">
       <Parameter Name="bp_ID" Mode="In" Type="Int64" />
       <Parameter Name="prod_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="uspAddDashboardProduct">
+      <Parameter Name="userId" Mode="In" Type="Int32" />
+      <Parameter Name="productId" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="uspAddProduct">
       <Parameter Name="ProductName" Mode="In" Type="String" />
@@ -1538,6 +1485,10 @@
       <Parameter Name="bp_ID" Mode="In" Type="Int64" />
       <Parameter Name="prod_ID" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="uspDeleteDashboardProduct">
+      <Parameter Name="userId" Mode="In" Type="Int32" />
+      <Parameter Name="productId" Mode="In" Type="Int32" />
+    </FunctionImport>
     <FunctionImport Name="uspDeleteProduct">
       <Parameter Name="ProductId" Mode="In" Type="Int32" />
     </FunctionImport>
@@ -1550,6 +1501,10 @@
     </FunctionImport>
     <FunctionImport Name="uspGetAppUserByEmail" ReturnType="Collection(DoniEnterprisesModel.uspGetAppUserByEmail_Result)">
       <Parameter Name="userEmail" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGetArrivedAtPortByDateRange" ReturnType="Collection(DoniEnterprisesModel.uspGetArrivedAtPortByDateRange_Result)">
+      <Parameter Name="startDate" Mode="In" Type="DateTime" />
+      <Parameter Name="endDate" Mode="In" Type="DateTime" />
     </FunctionImport>
     <FunctionImport Name="uspGetBPBank" ReturnType="Collection(DoniEnterprisesModel.uspGetBPBank_Result)">
       <Parameter Name="bp_ID" Mode="In" Type="Int64" />
@@ -1574,18 +1529,26 @@
     <FunctionImport Name="uspGetCommissionTransaction" ReturnType="Collection(DoniEnterprisesModel.uspGetCommissionTransaction_Result)">
       <Parameter Name="tr_transactionID" Mode="In" Type="Int64" />
     </FunctionImport>
+    <FunctionImport Name="uspGetDashboardProducts" ReturnType="Collection(DoniEnterprisesModel.uspGetDashboardProducts_Result)">
+      <Parameter Name="userId" Mode="In" Type="Int32" />
+    </FunctionImport>
     <FunctionImport Name="uspGetDropDownBroker" ReturnType="Collection(DoniEnterprisesModel.uspGetDropDownBroker_Result)" />
     <FunctionImport Name="uspGetDropDownBuyer" ReturnType="Collection(DoniEnterprisesModel.uspGetDropDownBuyer_Result)" />
     <FunctionImport Name="uspGetDropDownSeller" ReturnType="Collection(DoniEnterprisesModel.uspGetDropDownSeller_Result)" />
     <FunctionImport Name="uspGetDropDownShipper" ReturnType="Collection(DoniEnterprisesModel.uspGetDropDownShipper_Result)" />
+    <FunctionImport Name="uspGetExpextedArrivalAtPortByDateRange" ReturnType="Collection(DoniEnterprisesModel.uspGetExpextedArrivalAtPortByDateRange_Result)">
+      <Parameter Name="startDate" Mode="In" Type="DateTime" />
+      <Parameter Name="endDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
     <FunctionImport Name="uspGetOriginList" ReturnType="Collection(DoniEnterprisesModel.uspGetOriginList_Result)" />
     <FunctionImport Name="uspGetProductList" ReturnType="Collection(DoniEnterprisesModel.uspGetProductList_Result)" />
     <FunctionImport Name="uspGetProductListPDF" ReturnType="Collection(DoniEnterprisesModel.uspGetProductListPDF_Result)" />
-    <FunctionImport Name="uspGetProductLocalPriceByDate" ReturnType="Collection(DoniEnterprisesModel.uspGetProductLocalPriceByDate_Result)">
-      <Parameter Name="date" Mode="In" Type="DateTime" />
-    </FunctionImport>
     <FunctionImport Name="uspGetProductPriceByDate" ReturnType="Collection(DoniEnterprisesModel.uspGetProductPriceByDate_Result)">
       <Parameter Name="date" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="uspGetProductPriceByDateForDashBoard" ReturnType="Collection(DoniEnterprisesModel.uspGetProductPriceByDateForDashBoard_Result)">
+      <Parameter Name="date" Mode="In" Type="DateTime" />
+      <Parameter Name="userId" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="uspGetProductTagInput" ReturnType="Collection(DoniEnterprisesModel.uspGetProductTagInput_Result)">
       <Parameter Name="input" Mode="In" Type="String" />
@@ -1600,6 +1563,10 @@
       <Parameter Name="startDate" Mode="In" Type="DateTime" />
       <Parameter Name="endDate" Mode="In" Type="DateTime" />
       <Parameter Name="reportType" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGetShipmentExpirationByDateRange" ReturnType="Collection(DoniEnterprisesModel.uspGetShipmentExpirationByDateRange_Result)">
+      <Parameter Name="startDate" Mode="In" Type="DateTime" />
+      <Parameter Name="endDate" Mode="In" Type="DateTime" />
     </FunctionImport>
     <FunctionImport Name="uspGetSingleProduct" ReturnType="Collection(DoniEnterprisesModel.uspGetSingleProduct_Result)">
       <Parameter Name="productId" Mode="In" Type="Int32" />
@@ -1635,19 +1602,17 @@
       <Parameter Name="startDate" Mode="In" Type="DateTime" />
       <Parameter Name="endDate" Mode="In" Type="DateTime" />
     </FunctionImport>
+    <FunctionImport Name="uspProductListByDateRangeForDashboard" ReturnType="Collection(DoniEnterprisesModel.uspProductListByDateRangeForDashboard_Result)">
+      <Parameter Name="startDate" Mode="In" Type="DateTime" />
+      <Parameter Name="endDate" Mode="In" Type="DateTime" />
+      <Parameter Name="userId" Mode="In" Type="Int32" />
+    </FunctionImport>
     <FunctionImport Name="uspProductPriceByDateCRUD">
       <Parameter Name="crudOperation" Mode="In" Type="String" />
       <Parameter Name="productId" Mode="In" Type="Int32" />
       <Parameter Name="priceDate" Mode="In" Type="DateTime" />
       <Parameter Name="price" Mode="In" Type="Int32" />
-      <Parameter Name="tr_createdBy" Mode="In" Type="Int32" />
-      <Parameter Name="tr_editedBy" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="uspProductPriceLocalByDateCRUD">
-      <Parameter Name="crudOperation" Mode="In" Type="String" />
-      <Parameter Name="productId" Mode="In" Type="Int32" />
-      <Parameter Name="priceDate" Mode="In" Type="DateTime" />
-      <Parameter Name="price" Mode="In" Type="Int32" />
+      <Parameter Name="localPrice" Mode="In" Type="Int32" />
       <Parameter Name="tr_createdBy" Mode="In" Type="Int32" />
       <Parameter Name="tr_editedBy" Mode="In" Type="Int32" />
     </FunctionImport>
@@ -1874,6 +1839,18 @@
     <Property Type="String" Name="lastName" Nullable="true" MaxLength="50" />
     <Property Type="Boolean" Name="IsSuperUser" Nullable="false" />
   </ComplexType>
+  <ComplexType Name="uspGetArrivedAtPortByDateRange_Result">
+    <Property Type="Int64" Name="tr_transactionID" Nullable="false" />
+    <Property Type="DateTime" Name="tr_dateArrived" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="days" Nullable="true" />
+    <Property Type="String" Name="tr_fileID" Nullable="true" MaxLength="200" />
+    <Property Type="Int64" Name="tr_bpBuyerID" Nullable="true" />
+    <Property Type="Int32" Name="tr_productID" Nullable="true" />
+    <Property Type="Int32" Name="tr_quantity" Nullable="true" />
+    <Property Type="Int32" Name="tr_price" Nullable="false" />
+    <Property Type="Int64" Name="tr_bpSellerID" Nullable="true" />
+    <Property Type="String" Name="tr_transactionStatus" Nullable="false" MaxLength="100" />
+  </ComplexType>
   <ComplexType Name="uspGetBPBank_Result">
     <Property Type="Int64" Name="bankDetails_ID" Nullable="false" />
     <Property Type="Int64" Name="bp_ID" Nullable="false" />
@@ -1978,6 +1955,10 @@
     <Property Type="Int32" Name="tr_editedBy" Nullable="true" />
     <Property Type="DateTime" Name="tr_editedOn" Nullable="true" Precision="23" />
   </ComplexType>
+  <ComplexType Name="uspGetDashboardProducts_Result">
+    <Property Type="Int32" Name="userid" Nullable="false" />
+    <Property Type="Int32" Name="productId" Nullable="false" />
+  </ComplexType>
   <ComplexType Name="uspGetDropDownBroker_Result">
     <Property Type="Int64" Name="bp_ID" Nullable="false" />
     <Property Type="String" Name="bp_Name" Nullable="false" MaxLength="500" />
@@ -2005,6 +1986,18 @@
     <Property Type="String" Name="bp_address" Nullable="true" />
     <Property Type="String" Name="bp_Cont_fullName" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="bp_country" Nullable="true" MaxLength="150" />
+  </ComplexType>
+  <ComplexType Name="uspGetExpextedArrivalAtPortByDateRange_Result">
+    <Property Type="Int64" Name="tr_transactionID" Nullable="false" />
+    <Property Type="DateTime" Name="tr_expectedArrival" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="days" Nullable="true" />
+    <Property Type="String" Name="tr_fileID" Nullable="true" MaxLength="200" />
+    <Property Type="Int64" Name="tr_bpBuyerID" Nullable="true" />
+    <Property Type="Int32" Name="tr_productID" Nullable="true" />
+    <Property Type="Int32" Name="tr_quantity" Nullable="true" />
+    <Property Type="Int32" Name="tr_price" Nullable="false" />
+    <Property Type="Int64" Name="tr_bpSellerID" Nullable="true" />
+    <Property Type="String" Name="tr_transactionStatus" Nullable="false" MaxLength="100" />
   </ComplexType>
   <ComplexType Name="uspGetOriginList_Result">
     <Property Type="Int64" Name="origin_id" Nullable="false" />
@@ -2037,14 +2030,16 @@
     <Property Type="Int32" Name="otherColor" Nullable="true" />
     <Property Type="Int32" Name="wrinkled" Nullable="true" />
   </ComplexType>
-  <ComplexType Name="uspGetProductLocalPriceByDate_Result">
-    <Property Type="Int32" Name="ProductId" Nullable="false" />
-    <Property Type="Int32" Name="Price" Nullable="true" />
-    <Property Type="Int32" Name="tr_editedBy" Nullable="true" />
-  </ComplexType>
   <ComplexType Name="uspGetProductPriceByDate_Result">
     <Property Type="Int32" Name="ProductId" Nullable="false" />
     <Property Type="Int32" Name="Price" Nullable="true" />
+    <Property Type="Int32" Name="localPrice" Nullable="true" />
+    <Property Type="Int32" Name="tr_editedBy" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="uspGetProductPriceByDateForDashBoard_Result">
+    <Property Type="Int32" Name="ProductId" Nullable="false" />
+    <Property Type="Int32" Name="Price" Nullable="true" />
+    <Property Type="Int32" Name="localPrice" Nullable="true" />
     <Property Type="Int32" Name="tr_editedBy" Nullable="true" />
   </ComplexType>
   <ComplexType Name="uspGetProductTagInput_Result">
@@ -2084,6 +2079,18 @@
     <Property Type="Int32" Name="tr_price" Nullable="false" />
     <Property Type="Int32" Name="tr_quantity" Nullable="true" />
     <Property Type="Int64" Name="tr_bpSellerID" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="uspGetShipmentExpirationByDateRange_Result">
+    <Property Type="Int64" Name="tr_transactionID" Nullable="false" />
+    <Property Type="DateTime" Name="tr_shipment_end" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="days" Nullable="true" />
+    <Property Type="String" Name="tr_fileID" Nullable="true" MaxLength="200" />
+    <Property Type="Int64" Name="tr_bpBuyerID" Nullable="true" />
+    <Property Type="Int32" Name="tr_productID" Nullable="true" />
+    <Property Type="Int32" Name="tr_quantity" Nullable="true" />
+    <Property Type="Int32" Name="tr_price" Nullable="false" />
+    <Property Type="Int64" Name="tr_bpSellerID" Nullable="true" />
+    <Property Type="String" Name="tr_transactionStatus" Nullable="false" MaxLength="100" />
   </ComplexType>
   <ComplexType Name="uspGetSingleProduct_Result">
     <Property Type="Int32" Name="ProductId" Nullable="false" />
@@ -2195,14 +2202,17 @@
     <Property Type="DateTime" Name="tr_editedOn" Nullable="true" Precision="23" />
   </ComplexType>
   <ComplexType Name="uspProductListByDateRange_Result">
-    <Property Type="Int32" Name="Prod_ID" Nullable="true" />
+    <Property Type="Int32" Name="ProductId" Nullable="false" />
     <Property Type="DateTime" Name="PriceDate" Nullable="true" Precision="23" />
     <Property Type="Int32" Name="intPrice" Nullable="true" />
-    <Property Type="Int32" Name="localPriceDate" Nullable="true" />
     <Property Type="Int32" Name="localPrice" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="uspProductListByDateRangeForDashboard_Result">
+    <Property Type="Int32" Name="ProductId" Nullable="false" />
     <Property Type="String" Name="ProductName" Nullable="true" MaxLength="250" />
-    <Property Type="String" Name="quality" Nullable="true" />
-    <Property Type="String" Name="origin" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="PriceDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="intPrice" Nullable="true" />
+    <Property Type="Int32" Name="localPrice" Nullable="true" />
   </ComplexType>
   <ComplexType Name="uspProductSalesAnalyticsByDateRange_Result">
     <Property Type="Int32" Name="tr_productID" Nullable="false" />

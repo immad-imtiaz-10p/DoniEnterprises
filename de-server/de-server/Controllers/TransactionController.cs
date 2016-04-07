@@ -44,7 +44,7 @@ namespace de_server.Controllers
 
         [Route("getTransactionTableOnDateRange")]
         [HttpGet]
-        public IHttpActionResult getTransactionTableOnDateRange(DateTime startDate, DateTime endDate)
+        public IHttpActionResult GetTransactionTableOnDateRange(DateTime startDate, DateTime endDate)
         {
 
             using(var context = new DhoniEnterprisesEntities())

@@ -115,19 +115,6 @@
           <Property Name="bp_ID" Type="bigint" Nullable="false" />
           <Property Name="prod_ID" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="dailyProductLocalPrices">
-          <Key>
-            <PropertyRef Name="Prod_ID" />
-            <PropertyRef Name="PriceDate" />
-          </Key>
-          <Property Name="Prod_ID" Type="int" Nullable="false" />
-          <Property Name="PriceDate" Type="datetime" Nullable="false" />
-          <Property Name="Price" Type="int" />
-          <Property Name="tr_createdBy" Type="int" Nullable="false" />
-          <Property Name="tr_editedBy" Type="int" />
-          <Property Name="tr_createdOn" Type="datetime" Nullable="false" />
-          <Property Name="tr_editedOn" Type="datetime" />
-        </EntityType>
         <EntityType Name="dailyProductPrices">
           <Key>
             <PropertyRef Name="Prod_ID" />
@@ -140,6 +127,7 @@
           <Property Name="tr_editedBy" Type="int" />
           <Property Name="tr_createdOn" Type="datetime" Nullable="false" />
           <Property Name="tr_editedOn" Type="datetime" />
+          <Property Name="localPrice" Type="int" />
         </EntityType>
         <EntityType Name="Origin">
           <Key>
@@ -350,6 +338,14 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
           <Property Name="tr_pageTitle" Type="nvarchar" MaxLength="100" />
           <Property Name="UserID" Type="int" />
         </EntityType>
+        <EntityType Name="userDashboardProducts">
+          <Key>
+            <PropertyRef Name="userid" />
+            <PropertyRef Name="productId" />
+          </Key>
+          <Property Name="userid" Type="int" Nullable="false" />
+          <Property Name="productId" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="UserEvents">
           <Key>
             <PropertyRef Name="EventID" />
@@ -517,18 +513,6 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__dailyProd__Prod___793DFFAF">
-          <End Role="Products" Type="Self.Products" Multiplicity="1" />
-          <End Role="dailyProductLocalPrices" Type="Self.dailyProductLocalPrices" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Products">
-              <PropertyRef Name="ProductId" />
-            </Principal>
-            <Dependent Role="dailyProductLocalPrices">
-              <PropertyRef Name="Prod_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__dailyProd__tr_cr__503BEA1C">
           <End Role="AppUsers" Type="Self.AppUsers" Multiplicity="1" />
           <End Role="dailyProductPrices" Type="Self.dailyProductPrices" Multiplicity="*" />
@@ -541,18 +525,6 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__dailyProd__tr_cr__7A3223E8">
-          <End Role="AppUsers" Type="Self.AppUsers" Multiplicity="1" />
-          <End Role="dailyProductLocalPrices" Type="Self.dailyProductLocalPrices" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AppUsers">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="dailyProductLocalPrices">
-              <PropertyRef Name="tr_createdBy" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__dailyProd__tr_ed__51300E55">
           <End Role="AppUsers" Type="Self.AppUsers" Multiplicity="0..1" />
           <End Role="dailyProductPrices" Type="Self.dailyProductPrices" Multiplicity="*" />
@@ -561,18 +533,6 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
               <PropertyRef Name="UserID" />
             </Principal>
             <Dependent Role="dailyProductPrices">
-              <PropertyRef Name="tr_editedBy" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__dailyProd__tr_ed__7B264821">
-          <End Role="AppUsers" Type="Self.AppUsers" Multiplicity="0..1" />
-          <End Role="dailyProductLocalPrices" Type="Self.dailyProductLocalPrices" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AppUsers">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="dailyProductLocalPrices">
               <PropertyRef Name="tr_editedBy" />
             </Dependent>
           </ReferentialConstraint>
@@ -1033,6 +993,30 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__userDashb__produ__04AFB25B">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="userDashboardProducts" Type="Self.userDashboardProducts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="userDashboardProducts">
+              <PropertyRef Name="productId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__userDashb__useri__03BB8E22">
+          <End Role="AppUsers" Type="Self.AppUsers" Multiplicity="1" />
+          <End Role="userDashboardProducts" Type="Self.userDashboardProducts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUsers">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="userDashboardProducts">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__UserEvent__UserI__76619304">
           <End Role="AppUsers" Type="Self.AppUsers" Multiplicity="0..1" />
           <End Role="UserEvents" Type="Self.UserEvents" Multiplicity="*" />
@@ -1111,6 +1095,10 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
         <Function Name="uspAddBusinessPartnerProducts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="bp_ID" Type="bigint" Mode="In" />
           <Parameter Name="prod_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="uspAddDashboardProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="int" Mode="In" />
+          <Parameter Name="productId" Type="int" Mode="In" />
         </Function>
         <Function Name="uspAddProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ProductName" Type="nvarchar" Mode="In" />
@@ -1213,6 +1201,10 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
           <Parameter Name="bp_ID" Type="bigint" Mode="In" />
           <Parameter Name="prod_ID" Type="int" Mode="In" />
         </Function>
+        <Function Name="uspDeleteDashboardProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="int" Mode="In" />
+          <Parameter Name="productId" Type="int" Mode="In" />
+        </Function>
         <Function Name="uspDeleteProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ProductId" Type="int" Mode="In" />
         </Function>
@@ -1225,6 +1217,10 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
         </Function>
         <Function Name="uspGetAppUserByEmail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userEmail" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="uspGetArrivedAtPortByDateRange" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="startDate" Type="datetime" Mode="In" />
+          <Parameter Name="endDate" Type="datetime" Mode="In" />
         </Function>
         <Function Name="uspGetBPBank" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="bp_ID" Type="bigint" Mode="In" />
@@ -1249,18 +1245,26 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
         <Function Name="uspGetCommissionTransaction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="tr_transactionID" Type="bigint" Mode="In" />
         </Function>
+        <Function Name="uspGetDashboardProducts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="int" Mode="In" />
+        </Function>
         <Function Name="uspGetDropDownBroker" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="uspGetDropDownBuyer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="uspGetDropDownSeller" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="uspGetDropDownShipper" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="uspGetExpextedArrivalAtPortByDateRange" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="startDate" Type="datetime" Mode="In" />
+          <Parameter Name="endDate" Type="datetime" Mode="In" />
+        </Function>
         <Function Name="uspGetOriginList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="uspGetProductList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="uspGetProductListPDF" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="uspGetProductLocalPriceByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="date" Type="datetime" Mode="In" />
-        </Function>
         <Function Name="uspGetProductPriceByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="date" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="uspGetProductPriceByDateForDashBoard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="datetime" Mode="In" />
+          <Parameter Name="userId" Type="int" Mode="In" />
         </Function>
         <Function Name="uspGetProductTagInput" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="input" Type="varchar(max)" Mode="In" />
@@ -1275,6 +1279,10 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
           <Parameter Name="startDate" Type="datetime" Mode="In" />
           <Parameter Name="endDate" Type="datetime" Mode="In" />
           <Parameter Name="reportType" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="uspGetShipmentExpirationByDateRange" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="startDate" Type="datetime" Mode="In" />
+          <Parameter Name="endDate" Type="datetime" Mode="In" />
         </Function>
         <Function Name="uspGetSingleProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="productId" Type="int" Mode="In" />
@@ -1310,19 +1318,17 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
           <Parameter Name="startDate" Type="datetime" Mode="In" />
           <Parameter Name="endDate" Type="datetime" Mode="In" />
         </Function>
-        <Function Name="uspProductPriceByDateCRUD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="crudOperation" Type="varchar" Mode="In" />
-          <Parameter Name="productId" Type="int" Mode="In" />
-          <Parameter Name="priceDate" Type="datetime" Mode="In" />
-          <Parameter Name="price" Type="int" Mode="In" />
-          <Parameter Name="tr_createdBy" Type="int" Mode="In" />
-          <Parameter Name="tr_editedBy" Type="int" Mode="In" />
+        <Function Name="uspProductListByDateRangeForDashboard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="startDate" Type="datetime" Mode="In" />
+          <Parameter Name="endDate" Type="datetime" Mode="In" />
+          <Parameter Name="userId" Type="int" Mode="In" />
         </Function>
-        <Function Name="uspProductPriceLocalByDateCRUD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="crudOperation" Type="varchar" Mode="In" />
+        <Function Name="uspProductPriceByDateCRUD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="crudOperation" Type="nvarchar" Mode="In" />
           <Parameter Name="productId" Type="int" Mode="In" />
           <Parameter Name="priceDate" Type="datetime" Mode="In" />
           <Parameter Name="price" Type="int" Mode="In" />
+          <Parameter Name="localPrice" Type="int" Mode="In" />
           <Parameter Name="tr_createdBy" Type="int" Mode="In" />
           <Parameter Name="tr_editedBy" Type="int" Mode="In" />
         </Function>
@@ -1541,7 +1547,6 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
           <EntitySet Name="BusinessPartner_Contacts" EntityType="Self.BusinessPartner_Contacts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BusinessPartner_Emails" EntityType="Self.BusinessPartner_Emails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BusinessPartner_Products" EntityType="Self.BusinessPartner_Products" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="dailyProductLocalPrices" EntityType="Self.dailyProductLocalPrices" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="dailyProductPrices" EntityType="Self.dailyProductPrices" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Origin" EntityType="Self.Origin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
@@ -1554,6 +1559,7 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
           <EntitySet Name="TransactionsShipment" EntityType="Self.TransactionsShipment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TransactionsStatus" EntityType="Self.TransactionsStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="transactionViewed" EntityType="Self.transactionViewed" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userDashboardProducts" EntityType="Self.userDashboardProducts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserEvents" EntityType="Self.UserEvents" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TransactionFiles" EntityType="Self.TransactionFiles" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1620,25 +1626,13 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
             <End Role="Products" EntitySet="Products" />
             <End Role="dailyProductPrices" EntitySet="dailyProductPrices" />
           </AssociationSet>
-          <AssociationSet Name="FK__dailyProd__Prod___793DFFAF" Association="Self.FK__dailyProd__Prod___793DFFAF">
-            <End Role="Products" EntitySet="Products" />
-            <End Role="dailyProductLocalPrices" EntitySet="dailyProductLocalPrices" />
-          </AssociationSet>
           <AssociationSet Name="FK__dailyProd__tr_cr__503BEA1C" Association="Self.FK__dailyProd__tr_cr__503BEA1C">
             <End Role="AppUsers" EntitySet="AppUsers" />
             <End Role="dailyProductPrices" EntitySet="dailyProductPrices" />
           </AssociationSet>
-          <AssociationSet Name="FK__dailyProd__tr_cr__7A3223E8" Association="Self.FK__dailyProd__tr_cr__7A3223E8">
-            <End Role="AppUsers" EntitySet="AppUsers" />
-            <End Role="dailyProductLocalPrices" EntitySet="dailyProductLocalPrices" />
-          </AssociationSet>
           <AssociationSet Name="FK__dailyProd__tr_ed__51300E55" Association="Self.FK__dailyProd__tr_ed__51300E55">
             <End Role="AppUsers" EntitySet="AppUsers" />
             <End Role="dailyProductPrices" EntitySet="dailyProductPrices" />
-          </AssociationSet>
-          <AssociationSet Name="FK__dailyProd__tr_ed__7B264821" Association="Self.FK__dailyProd__tr_ed__7B264821">
-            <End Role="AppUsers" EntitySet="AppUsers" />
-            <End Role="dailyProductLocalPrices" EntitySet="dailyProductLocalPrices" />
           </AssociationSet>
           <AssociationSet Name="FK__Products__Create__5224328E" Association="Self.FK__Products__Create__5224328E">
             <End Role="AppUsers" EntitySet="AppUsers" />
@@ -1792,6 +1786,14 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
             <End Role="AppUsers" EntitySet="AppUsers" />
             <End Role="transactionViewed" EntitySet="transactionViewed" />
           </AssociationSet>
+          <AssociationSet Name="FK__userDashb__produ__04AFB25B" Association="Self.FK__userDashb__produ__04AFB25B">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="userDashboardProducts" EntitySet="userDashboardProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__userDashb__useri__03BB8E22" Association="Self.FK__userDashb__useri__03BB8E22">
+            <End Role="AppUsers" EntitySet="AppUsers" />
+            <End Role="userDashboardProducts" EntitySet="userDashboardProducts" />
+          </AssociationSet>
           <AssociationSet Name="FK__UserEvent__UserI__76619304" Association="Self.FK__UserEvent__UserI__76619304">
             <End Role="AppUsers" EntitySet="AppUsers" />
             <End Role="UserEvents" EntitySet="UserEvents" />
@@ -1834,9 +1836,7 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
           <NavigationProperty Name="BusinessPartner_ContactNumbers" Relationship="Self.FK__BusinessP__creat__47A6A41B" FromRole="AppUsers" ToRole="BusinessPartner_ContactNumbers" />
           <NavigationProperty Name="BusinessPartner_ContactNumbers1" Relationship="Self.FK__BusinessP__edite__489AC854" FromRole="AppUsers" ToRole="BusinessPartner_ContactNumbers" />
           <NavigationProperty Name="dailyProductPrices" Relationship="Self.FK__dailyProd__tr_cr__503BEA1C" FromRole="AppUsers" ToRole="dailyProductPrices" />
-          <NavigationProperty Name="dailyProductLocalPrices" Relationship="Self.FK__dailyProd__tr_cr__7A3223E8" FromRole="AppUsers" ToRole="dailyProductLocalPrices" />
           <NavigationProperty Name="dailyProductPrices1" Relationship="Self.FK__dailyProd__tr_ed__51300E55" FromRole="AppUsers" ToRole="dailyProductPrices" />
-          <NavigationProperty Name="dailyProductLocalPrices1" Relationship="Self.FK__dailyProd__tr_ed__7B264821" FromRole="AppUsers" ToRole="dailyProductLocalPrices" />
           <NavigationProperty Name="Products" Relationship="Self.FK__Products__Create__5224328E" FromRole="AppUsers" ToRole="Products" />
           <NavigationProperty Name="Products1" Relationship="Self.FK__Products__LastUp__531856C7" FromRole="AppUsers" ToRole="Products" />
           <NavigationProperty Name="TransactionFiles" Relationship="Self.FK__Transacti__tf_cr__540C7B00" FromRole="AppUsers" ToRole="TransactionFiles" />
@@ -1859,6 +1859,7 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
           <NavigationProperty Name="TransactionsStatus3" Relationship="Self.FK__Transacti__tr_ed__73852659" FromRole="AppUsers" ToRole="TransactionsStatus" />
           <NavigationProperty Name="transactionVieweds" Relationship="Self.FK__transacti__UserI__756D6ECB" FromRole="AppUsers" ToRole="transactionViewed" />
           <NavigationProperty Name="UserEvents" Relationship="Self.FK__UserEvent__UserI__76619304" FromRole="AppUsers" ToRole="UserEvents" />
+          <NavigationProperty Name="Products2" Relationship="Self.userDashboardProducts" FromRole="AppUsers" ToRole="Products" />
         </EntityType>
         <EntityType Name="AppUsersImage">
           <Key>
@@ -1959,22 +1960,6 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
           <Property Name="email" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="BusinessPartner" Relationship="Self.FK__BusinessP__bp_ID__4C6B5938" FromRole="BusinessPartner_Emails" ToRole="BusinessPartner" />
         </EntityType>
-        <EntityType Name="dailyProductLocalPrice">
-          <Key>
-            <PropertyRef Name="Prod_ID" />
-            <PropertyRef Name="PriceDate" />
-          </Key>
-          <Property Name="Prod_ID" Type="Int32" Nullable="false" />
-          <Property Name="PriceDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Price" Type="Int32" />
-          <Property Name="tr_createdBy" Type="Int32" Nullable="false" />
-          <Property Name="tr_editedBy" Type="Int32" />
-          <Property Name="tr_createdOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="tr_editedOn" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="AppUser" Relationship="Self.FK__dailyProd__tr_cr__7A3223E8" FromRole="dailyProductLocalPrices" ToRole="AppUsers" />
-          <NavigationProperty Name="AppUser1" Relationship="Self.FK__dailyProd__tr_ed__7B264821" FromRole="dailyProductLocalPrices" ToRole="AppUsers" />
-          <NavigationProperty Name="Product" Relationship="Self.FK__dailyProd__Prod___793DFFAF" FromRole="dailyProductLocalPrices" ToRole="Products" />
-        </EntityType>
         <EntityType Name="dailyProductPrice">
           <Key>
             <PropertyRef Name="Prod_ID" />
@@ -1987,6 +1972,7 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
           <Property Name="tr_editedBy" Type="Int32" />
           <Property Name="tr_createdOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="tr_editedOn" Type="DateTime" Precision="3" />
+          <Property Name="localPrice" Type="Int32" />
           <NavigationProperty Name="AppUser" Relationship="Self.FK__dailyProd__tr_cr__503BEA1C" FromRole="dailyProductPrices" ToRole="AppUsers" />
           <NavigationProperty Name="AppUser1" Relationship="Self.FK__dailyProd__tr_ed__51300E55" FromRole="dailyProductPrices" ToRole="AppUsers" />
           <NavigationProperty Name="Product" Relationship="Self.FK__dailyProd__Prod___4F47C5E3" FromRole="dailyProductPrices" ToRole="Products" />
@@ -2021,10 +2007,10 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
           <Property Name="wrinkled" Type="Int32" />
           <NavigationProperty Name="AppUser" Relationship="Self.FK__Products__Create__5224328E" FromRole="Products" ToRole="AppUsers" />
           <NavigationProperty Name="AppUser1" Relationship="Self.FK__Products__LastUp__531856C7" FromRole="Products" ToRole="AppUsers" />
-          <NavigationProperty Name="dailyProductLocalPrices" Relationship="Self.FK__dailyProd__Prod___793DFFAF" FromRole="Products" ToRole="dailyProductLocalPrices" />
           <NavigationProperty Name="dailyProductPrices" Relationship="Self.FK__dailyProd__Prod___4F47C5E3" FromRole="Products" ToRole="dailyProductPrices" />
           <NavigationProperty Name="Transactions" Relationship="Self.FK__Transacti__tr_pr__5CA1C101" FromRole="Products" ToRole="Transactions" />
           <NavigationProperty Name="BusinessPartners" Relationship="Self.BusinessPartner_Products" FromRole="Products" ToRole="BusinessPartner" />
+          <NavigationProperty Name="AppUsers" Relationship="Self.userDashboardProducts" FromRole="Products" ToRole="AppUsers" />
         </EntityType>
         <EntityType Name="ShipmentStatu">
           <Key>
@@ -2344,18 +2330,6 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__dailyProd__tr_cr__7A3223E8">
-          <End Role="AppUsers" Type="Self.AppUser" Multiplicity="1" />
-          <End Role="dailyProductLocalPrices" Type="Self.dailyProductLocalPrice" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AppUsers">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="dailyProductLocalPrices">
-              <PropertyRef Name="tr_createdBy" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__dailyProd__tr_ed__51300E55">
           <End Role="AppUsers" Type="Self.AppUser" Multiplicity="0..1" />
           <End Role="dailyProductPrices" Type="Self.dailyProductPrice" Multiplicity="*" />
@@ -2364,18 +2338,6 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
               <PropertyRef Name="UserID" />
             </Principal>
             <Dependent Role="dailyProductPrices">
-              <PropertyRef Name="tr_editedBy" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__dailyProd__tr_ed__7B264821">
-          <End Role="AppUsers" Type="Self.AppUser" Multiplicity="0..1" />
-          <End Role="dailyProductLocalPrices" Type="Self.dailyProductLocalPrice" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AppUsers">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="dailyProductLocalPrices">
               <PropertyRef Name="tr_editedBy" />
             </Dependent>
           </ReferentialConstraint>
@@ -2788,18 +2750,6 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__dailyProd__Prod___793DFFAF">
-          <End Role="Products" Type="Self.Product" Multiplicity="1" />
-          <End Role="dailyProductLocalPrices" Type="Self.dailyProductLocalPrice" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Products">
-              <PropertyRef Name="ProductId" />
-            </Principal>
-            <Dependent Role="dailyProductLocalPrices">
-              <PropertyRef Name="Prod_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__dailyProd__Prod___4F47C5E3">
           <End Role="Products" Type="Self.Product" Multiplicity="1" />
           <End Role="dailyProductPrices" Type="Self.dailyProductPrice" Multiplicity="*" />
@@ -2924,6 +2874,10 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
           <End Role="BusinessPartner" Type="Self.BusinessPartner" Multiplicity="*" />
           <End Role="Products" Type="Self.Product" Multiplicity="*" />
         </Association>
+        <Association Name="userDashboardProducts">
+          <End Role="Products" Type="Self.Product" Multiplicity="*" />
+          <End Role="AppUsers" Type="Self.AppUser" Multiplicity="*" />
+        </Association>
         <EntityContainer Name="DhoniEnterprisesEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AppUserRights" EntityType="Self.AppUserRight" />
           <EntitySet Name="AppUsers" EntityType="Self.AppUser" />
@@ -2933,7 +2887,6 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
           <EntitySet Name="BusinessPartner_ContactNumbers" EntityType="Self.BusinessPartner_ContactNumbers" />
           <EntitySet Name="BusinessPartner_Contacts" EntityType="Self.BusinessPartner_Contacts" />
           <EntitySet Name="BusinessPartner_Emails" EntityType="Self.BusinessPartner_Emails" />
-          <EntitySet Name="dailyProductLocalPrices" EntityType="Self.dailyProductLocalPrice" />
           <EntitySet Name="dailyProductPrices" EntityType="Self.dailyProductPrice" />
           <EntitySet Name="Origins" EntityType="Self.Origin" />
           <EntitySet Name="Products" EntityType="Self.Product" />
@@ -2976,17 +2929,9 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
             <End Role="AppUsers" EntitySet="AppUsers" />
             <End Role="dailyProductPrices" EntitySet="dailyProductPrices" />
           </AssociationSet>
-          <AssociationSet Name="FK__dailyProd__tr_cr__7A3223E8" Association="Self.FK__dailyProd__tr_cr__7A3223E8">
-            <End Role="AppUsers" EntitySet="AppUsers" />
-            <End Role="dailyProductLocalPrices" EntitySet="dailyProductLocalPrices" />
-          </AssociationSet>
           <AssociationSet Name="FK__dailyProd__tr_ed__51300E55" Association="Self.FK__dailyProd__tr_ed__51300E55">
             <End Role="AppUsers" EntitySet="AppUsers" />
             <End Role="dailyProductPrices" EntitySet="dailyProductPrices" />
-          </AssociationSet>
-          <AssociationSet Name="FK__dailyProd__tr_ed__7B264821" Association="Self.FK__dailyProd__tr_ed__7B264821">
-            <End Role="AppUsers" EntitySet="AppUsers" />
-            <End Role="dailyProductLocalPrices" EntitySet="dailyProductLocalPrices" />
           </AssociationSet>
           <AssociationSet Name="FK__Products__Create__5224328E" Association="Self.FK__Products__Create__5224328E">
             <End Role="AppUsers" EntitySet="AppUsers" />
@@ -3124,10 +3069,6 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
             <End Role="BusinessPartner" EntitySet="BusinessPartners" />
             <End Role="TransactionsShipment" EntitySet="TransactionsShipments" />
           </AssociationSet>
-          <AssociationSet Name="FK__dailyProd__Prod___793DFFAF" Association="Self.FK__dailyProd__Prod___793DFFAF">
-            <End Role="Products" EntitySet="Products" />
-            <End Role="dailyProductLocalPrices" EntitySet="dailyProductLocalPrices" />
-          </AssociationSet>
           <AssociationSet Name="FK__dailyProd__Prod___4F47C5E3" Association="Self.FK__dailyProd__Prod___4F47C5E3">
             <End Role="Products" EntitySet="Products" />
             <End Role="dailyProductPrices" EntitySet="dailyProductPrices" />
@@ -3171,6 +3112,10 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
           <AssociationSet Name="BusinessPartner_Products" Association="Self.BusinessPartner_Products">
             <End Role="BusinessPartner" EntitySet="BusinessPartners" />
             <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="userDashboardProducts" Association="Self.userDashboardProducts">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="AppUsers" EntitySet="AppUsers" />
           </AssociationSet>
           <FunctionImport Name="addNewAppUser">
             <Parameter Name="title" Mode="In" Type="String" />
@@ -3238,6 +3183,10 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
           <FunctionImport Name="uspAddBusinessPartnerProducts">
             <Parameter Name="bp_ID" Mode="In" Type="Int64" />
             <Parameter Name="prod_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="uspAddDashboardProduct">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+            <Parameter Name="productId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="uspAddProduct">
             <Parameter Name="ProductName" Mode="In" Type="String" />
@@ -3340,6 +3289,10 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
             <Parameter Name="bp_ID" Mode="In" Type="Int64" />
             <Parameter Name="prod_ID" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="uspDeleteDashboardProduct">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+            <Parameter Name="productId" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="uspDeleteProduct">
             <Parameter Name="ProductId" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -3352,6 +3305,10 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
           </FunctionImport>
           <FunctionImport Name="uspGetAppUserByEmail" ReturnType="Collection(DoniEnterprisesModel.uspGetAppUserByEmail_Result)">
             <Parameter Name="userEmail" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="uspGetArrivedAtPortByDateRange" ReturnType="Collection(DoniEnterprisesModel.uspGetArrivedAtPortByDateRange_Result)">
+            <Parameter Name="startDate" Mode="In" Type="DateTime" />
+            <Parameter Name="endDate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="uspGetBPBank" ReturnType="Collection(DoniEnterprisesModel.uspGetBPBank_Result)">
             <Parameter Name="bp_ID" Mode="In" Type="Int64" />
@@ -3376,18 +3333,26 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
           <FunctionImport Name="uspGetCommissionTransaction" ReturnType="Collection(DoniEnterprisesModel.uspGetCommissionTransaction_Result)">
             <Parameter Name="tr_transactionID" Mode="In" Type="Int64" />
           </FunctionImport>
+          <FunctionImport Name="uspGetDashboardProducts" ReturnType="Collection(DoniEnterprisesModel.uspGetDashboardProducts_Result)">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="uspGetDropDownBroker" ReturnType="Collection(DoniEnterprisesModel.uspGetDropDownBroker_Result)" />
           <FunctionImport Name="uspGetDropDownBuyer" ReturnType="Collection(DoniEnterprisesModel.uspGetDropDownBuyer_Result)" />
           <FunctionImport Name="uspGetDropDownSeller" ReturnType="Collection(DoniEnterprisesModel.uspGetDropDownSeller_Result)" />
           <FunctionImport Name="uspGetDropDownShipper" ReturnType="Collection(DoniEnterprisesModel.uspGetDropDownShipper_Result)" />
+          <FunctionImport Name="uspGetExpextedArrivalAtPortByDateRange" ReturnType="Collection(DoniEnterprisesModel.uspGetExpextedArrivalAtPortByDateRange_Result)">
+            <Parameter Name="startDate" Mode="In" Type="DateTime" />
+            <Parameter Name="endDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
           <FunctionImport Name="uspGetOriginList" ReturnType="Collection(DoniEnterprisesModel.uspGetOriginList_Result)" />
           <FunctionImport Name="uspGetProductList" ReturnType="Collection(DoniEnterprisesModel.uspGetProductList_Result)" />
           <FunctionImport Name="uspGetProductListPDF" ReturnType="Collection(DoniEnterprisesModel.uspGetProductListPDF_Result)" />
-          <FunctionImport Name="uspGetProductLocalPriceByDate" ReturnType="Collection(DoniEnterprisesModel.uspGetProductLocalPriceByDate_Result)">
-            <Parameter Name="date" Mode="In" Type="DateTime" />
-          </FunctionImport>
           <FunctionImport Name="uspGetProductPriceByDate" ReturnType="Collection(DoniEnterprisesModel.uspGetProductPriceByDate_Result)">
             <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="uspGetProductPriceByDateForDashBoard" ReturnType="Collection(DoniEnterprisesModel.uspGetProductPriceByDateForDashBoard_Result)">
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="userId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="uspGetProductTagInput" ReturnType="Collection(DoniEnterprisesModel.uspGetProductTagInput_Result)">
             <Parameter Name="input" Mode="In" Type="String" />
@@ -3402,6 +3367,10 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
             <Parameter Name="startDate" Mode="In" Type="DateTime" />
             <Parameter Name="endDate" Mode="In" Type="DateTime" />
             <Parameter Name="reportType" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="uspGetShipmentExpirationByDateRange" ReturnType="Collection(DoniEnterprisesModel.uspGetShipmentExpirationByDateRange_Result)">
+            <Parameter Name="startDate" Mode="In" Type="DateTime" />
+            <Parameter Name="endDate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="uspGetSingleProduct" ReturnType="Collection(DoniEnterprisesModel.uspGetSingleProduct_Result)">
             <Parameter Name="productId" Mode="In" Type="Int32" />
@@ -3437,19 +3406,17 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
             <Parameter Name="startDate" Mode="In" Type="DateTime" />
             <Parameter Name="endDate" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <FunctionImport Name="uspProductListByDateRangeForDashboard" ReturnType="Collection(DoniEnterprisesModel.uspProductListByDateRangeForDashboard_Result)">
+            <Parameter Name="startDate" Mode="In" Type="DateTime" />
+            <Parameter Name="endDate" Mode="In" Type="DateTime" />
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="uspProductPriceByDateCRUD">
             <Parameter Name="crudOperation" Mode="In" Type="String" />
             <Parameter Name="productId" Mode="In" Type="Int32" />
             <Parameter Name="priceDate" Mode="In" Type="DateTime" />
             <Parameter Name="price" Mode="In" Type="Int32" />
-            <Parameter Name="tr_createdBy" Mode="In" Type="Int32" />
-            <Parameter Name="tr_editedBy" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="uspProductPriceLocalByDateCRUD">
-            <Parameter Name="crudOperation" Mode="In" Type="String" />
-            <Parameter Name="productId" Mode="In" Type="Int32" />
-            <Parameter Name="priceDate" Mode="In" Type="DateTime" />
-            <Parameter Name="price" Mode="In" Type="Int32" />
+            <Parameter Name="localPrice" Mode="In" Type="Int32" />
             <Parameter Name="tr_createdBy" Mode="In" Type="Int32" />
             <Parameter Name="tr_editedBy" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -3676,6 +3643,18 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
           <Property Type="String" Name="lastName" Nullable="true" MaxLength="50" />
           <Property Type="Boolean" Name="IsSuperUser" Nullable="false" />
         </ComplexType>
+        <ComplexType Name="uspGetArrivedAtPortByDateRange_Result">
+          <Property Type="Int64" Name="tr_transactionID" Nullable="false" />
+          <Property Type="DateTime" Name="tr_dateArrived" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="days" Nullable="true" />
+          <Property Type="String" Name="tr_fileID" Nullable="true" MaxLength="200" />
+          <Property Type="Int64" Name="tr_bpBuyerID" Nullable="true" />
+          <Property Type="Int32" Name="tr_productID" Nullable="true" />
+          <Property Type="Int32" Name="tr_quantity" Nullable="true" />
+          <Property Type="Int32" Name="tr_price" Nullable="false" />
+          <Property Type="Int64" Name="tr_bpSellerID" Nullable="true" />
+          <Property Type="String" Name="tr_transactionStatus" Nullable="false" MaxLength="100" />
+        </ComplexType>
         <ComplexType Name="uspGetBPBank_Result">
           <Property Type="Int64" Name="bankDetails_ID" Nullable="false" />
           <Property Type="Int64" Name="bp_ID" Nullable="false" />
@@ -3780,6 +3759,10 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
           <Property Type="Int32" Name="tr_editedBy" Nullable="true" />
           <Property Type="DateTime" Name="tr_editedOn" Nullable="true" Precision="23" />
         </ComplexType>
+        <ComplexType Name="uspGetDashboardProducts_Result">
+          <Property Type="Int32" Name="userid" Nullable="false" />
+          <Property Type="Int32" Name="productId" Nullable="false" />
+        </ComplexType>
         <ComplexType Name="uspGetDropDownBroker_Result">
           <Property Type="Int64" Name="bp_ID" Nullable="false" />
           <Property Type="String" Name="bp_Name" Nullable="false" MaxLength="500" />
@@ -3807,6 +3790,18 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
           <Property Type="String" Name="bp_address" Nullable="true" />
           <Property Type="String" Name="bp_Cont_fullName" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="bp_country" Nullable="true" MaxLength="150" />
+        </ComplexType>
+        <ComplexType Name="uspGetExpextedArrivalAtPortByDateRange_Result">
+          <Property Type="Int64" Name="tr_transactionID" Nullable="false" />
+          <Property Type="DateTime" Name="tr_expectedArrival" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="days" Nullable="true" />
+          <Property Type="String" Name="tr_fileID" Nullable="true" MaxLength="200" />
+          <Property Type="Int64" Name="tr_bpBuyerID" Nullable="true" />
+          <Property Type="Int32" Name="tr_productID" Nullable="true" />
+          <Property Type="Int32" Name="tr_quantity" Nullable="true" />
+          <Property Type="Int32" Name="tr_price" Nullable="false" />
+          <Property Type="Int64" Name="tr_bpSellerID" Nullable="true" />
+          <Property Type="String" Name="tr_transactionStatus" Nullable="false" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="uspGetOriginList_Result">
           <Property Type="Int64" Name="origin_id" Nullable="false" />
@@ -3839,14 +3834,16 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
           <Property Type="Int32" Name="otherColor" Nullable="true" />
           <Property Type="Int32" Name="wrinkled" Nullable="true" />
         </ComplexType>
-        <ComplexType Name="uspGetProductLocalPriceByDate_Result">
-          <Property Type="Int32" Name="ProductId" Nullable="false" />
-          <Property Type="Int32" Name="Price" Nullable="true" />
-          <Property Type="Int32" Name="tr_editedBy" Nullable="true" />
-        </ComplexType>
         <ComplexType Name="uspGetProductPriceByDate_Result">
           <Property Type="Int32" Name="ProductId" Nullable="false" />
           <Property Type="Int32" Name="Price" Nullable="true" />
+          <Property Type="Int32" Name="localPrice" Nullable="true" />
+          <Property Type="Int32" Name="tr_editedBy" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="uspGetProductPriceByDateForDashBoard_Result">
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+          <Property Type="Int32" Name="Price" Nullable="true" />
+          <Property Type="Int32" Name="localPrice" Nullable="true" />
           <Property Type="Int32" Name="tr_editedBy" Nullable="true" />
         </ComplexType>
         <ComplexType Name="uspGetProductTagInput_Result">
@@ -3886,6 +3883,18 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
           <Property Type="Int32" Name="tr_price" Nullable="false" />
           <Property Type="Int32" Name="tr_quantity" Nullable="true" />
           <Property Type="Int64" Name="tr_bpSellerID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="uspGetShipmentExpirationByDateRange_Result">
+          <Property Type="Int64" Name="tr_transactionID" Nullable="false" />
+          <Property Type="DateTime" Name="tr_shipment_end" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="days" Nullable="true" />
+          <Property Type="String" Name="tr_fileID" Nullable="true" MaxLength="200" />
+          <Property Type="Int64" Name="tr_bpBuyerID" Nullable="true" />
+          <Property Type="Int32" Name="tr_productID" Nullable="true" />
+          <Property Type="Int32" Name="tr_quantity" Nullable="true" />
+          <Property Type="Int32" Name="tr_price" Nullable="false" />
+          <Property Type="Int64" Name="tr_bpSellerID" Nullable="true" />
+          <Property Type="String" Name="tr_transactionStatus" Nullable="false" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="uspGetSingleProduct_Result">
           <Property Type="Int32" Name="ProductId" Nullable="false" />
@@ -3997,14 +4006,17 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
           <Property Type="DateTime" Name="tr_editedOn" Nullable="true" Precision="23" />
         </ComplexType>
         <ComplexType Name="uspProductListByDateRange_Result">
-          <Property Type="Int32" Name="Prod_ID" Nullable="true" />
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
           <Property Type="DateTime" Name="PriceDate" Nullable="true" Precision="23" />
           <Property Type="Int32" Name="intPrice" Nullable="true" />
-          <Property Type="Int32" Name="localPriceDate" Nullable="true" />
           <Property Type="Int32" Name="localPrice" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="uspProductListByDateRangeForDashboard_Result">
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
           <Property Type="String" Name="ProductName" Nullable="true" MaxLength="250" />
-          <Property Type="String" Name="quality" Nullable="true" />
-          <Property Type="String" Name="origin" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="PriceDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="intPrice" Nullable="true" />
+          <Property Type="Int32" Name="localPrice" Nullable="true" />
         </ComplexType>
         <ComplexType Name="uspProductSalesAnalyticsByDateRange_Result">
           <Property Type="Int32" Name="tr_productID" Nullable="false" />
@@ -4187,19 +4199,6 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="dailyProductLocalPrices">
-            <EntityTypeMapping TypeName="DoniEnterprisesModel.dailyProductLocalPrice">
-              <MappingFragment StoreEntitySet="dailyProductLocalPrices">
-                <ScalarProperty Name="Prod_ID" ColumnName="Prod_ID" />
-                <ScalarProperty Name="PriceDate" ColumnName="PriceDate" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="tr_createdBy" ColumnName="tr_createdBy" />
-                <ScalarProperty Name="tr_editedBy" ColumnName="tr_editedBy" />
-                <ScalarProperty Name="tr_createdOn" ColumnName="tr_createdOn" />
-                <ScalarProperty Name="tr_editedOn" ColumnName="tr_editedOn" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="dailyProductPrices">
             <EntityTypeMapping TypeName="DoniEnterprisesModel.dailyProductPrice">
               <MappingFragment StoreEntitySet="dailyProductPrices">
@@ -4210,6 +4209,7 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
                 <ScalarProperty Name="tr_editedBy" ColumnName="tr_editedBy" />
                 <ScalarProperty Name="tr_createdOn" ColumnName="tr_createdOn" />
                 <ScalarProperty Name="tr_editedOn" ColumnName="tr_editedOn" />
+                <ScalarProperty Name="localPrice" ColumnName="localPrice" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -4445,6 +4445,14 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
               <ScalarProperty Name="ProductId" ColumnName="prod_ID" />
             </EndProperty>
           </AssociationSetMapping>
+          <AssociationSetMapping Name="userDashboardProducts" TypeName="DoniEnterprisesModel.userDashboardProducts" StoreEntitySet="userDashboardProducts">
+            <EndProperty Name="Products">
+              <ScalarProperty Name="ProductId" ColumnName="productId" />
+            </EndProperty>
+            <EndProperty Name="AppUsers">
+              <ScalarProperty Name="UserID" ColumnName="userid" />
+            </EndProperty>
+          </AssociationSetMapping>
           <FunctionImportMapping FunctionImportName="addNewAppUser" FunctionName="DoniEnterprisesModel.Store.addNewAppUser" />
           <FunctionImportMapping FunctionImportName="AppUserChangePasword" FunctionName="DoniEnterprisesModel.Store.AppUserChangePasword" />
           <FunctionImportMapping FunctionImportName="getAllUsers" FunctionName="DoniEnterprisesModel.Store.getAllUsers">
@@ -4466,6 +4474,7 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
           <FunctionImportMapping FunctionImportName="uspAddBusinessPartnerContactNumber" FunctionName="DoniEnterprisesModel.Store.uspAddBusinessPartnerContactNumber" />
           <FunctionImportMapping FunctionImportName="uspAddBusinessPartnerEmail" FunctionName="DoniEnterprisesModel.Store.uspAddBusinessPartnerEmail" />
           <FunctionImportMapping FunctionImportName="uspAddBusinessPartnerProducts" FunctionName="DoniEnterprisesModel.Store.uspAddBusinessPartnerProducts" />
+          <FunctionImportMapping FunctionImportName="uspAddDashboardProduct" FunctionName="DoniEnterprisesModel.Store.uspAddDashboardProduct" />
           <FunctionImportMapping FunctionImportName="uspAddProduct" FunctionName="DoniEnterprisesModel.Store.uspAddProduct" />
           <FunctionImportMapping FunctionImportName="uspAddRecentViewedItem" FunctionName="DoniEnterprisesModel.Store.uspAddRecentViewedItem" />
           <FunctionImportMapping FunctionImportName="uspAddTransaction" FunctionName="DoniEnterprisesModel.Store.uspAddTransaction" />
@@ -4479,6 +4488,7 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
           <FunctionImportMapping FunctionImportName="uspDeleteBusinessPartnerContactNumber" FunctionName="DoniEnterprisesModel.Store.uspDeleteBusinessPartnerContactNumber" />
           <FunctionImportMapping FunctionImportName="uspDeleteBusinessPartnerEmail" FunctionName="DoniEnterprisesModel.Store.uspDeleteBusinessPartnerEmail" />
           <FunctionImportMapping FunctionImportName="uspDeleteBusinessPartnerProducts" FunctionName="DoniEnterprisesModel.Store.uspDeleteBusinessPartnerProducts" />
+          <FunctionImportMapping FunctionImportName="uspDeleteDashboardProduct" FunctionName="DoniEnterprisesModel.Store.uspDeleteDashboardProduct" />
           <FunctionImportMapping FunctionImportName="uspDeleteProduct" FunctionName="DoniEnterprisesModel.Store.uspDeleteProduct" />
           <FunctionImportMapping FunctionImportName="uspDeleteTransaction" FunctionName="DoniEnterprisesModel.Store.uspDeleteTransaction" />
           <FunctionImportMapping FunctionImportName="uspDeleteTransactionNotes" FunctionName="DoniEnterprisesModel.Store.uspDeleteTransactionNotes" />
@@ -4492,6 +4502,22 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
                 <ScalarProperty Name="firstName" ColumnName="firstName" />
                 <ScalarProperty Name="lastName" ColumnName="lastName" />
                 <ScalarProperty Name="IsSuperUser" ColumnName="IsSuperUser" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspGetArrivedAtPortByDateRange" FunctionName="DoniEnterprisesModel.Store.uspGetArrivedAtPortByDateRange">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetArrivedAtPortByDateRange_Result">
+                <ScalarProperty Name="tr_transactionID" ColumnName="tr_transactionID" />
+                <ScalarProperty Name="tr_dateArrived" ColumnName="tr_dateArrived" />
+                <ScalarProperty Name="days" ColumnName="days" />
+                <ScalarProperty Name="tr_fileID" ColumnName="tr_fileID" />
+                <ScalarProperty Name="tr_bpBuyerID" ColumnName="tr_bpBuyerID" />
+                <ScalarProperty Name="tr_productID" ColumnName="tr_productID" />
+                <ScalarProperty Name="tr_quantity" ColumnName="tr_quantity" />
+                <ScalarProperty Name="tr_price" ColumnName="tr_price" />
+                <ScalarProperty Name="tr_bpSellerID" ColumnName="tr_bpSellerID" />
+                <ScalarProperty Name="tr_transactionStatus" ColumnName="tr_transactionStatus" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -4635,6 +4661,14 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspGetDashboardProducts" FunctionName="DoniEnterprisesModel.Store.uspGetDashboardProducts">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetDashboardProducts_Result">
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="productId" ColumnName="productId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="uspGetDropDownBroker" FunctionName="DoniEnterprisesModel.Store.uspGetDropDownBroker">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetDropDownBroker_Result">
@@ -4676,6 +4710,22 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
                 <ScalarProperty Name="bp_address" ColumnName="bp_address" />
                 <ScalarProperty Name="bp_Cont_fullName" ColumnName="bp_Cont_fullName" />
                 <ScalarProperty Name="bp_country" ColumnName="bp_country" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspGetExpextedArrivalAtPortByDateRange" FunctionName="DoniEnterprisesModel.Store.uspGetExpextedArrivalAtPortByDateRange">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetExpextedArrivalAtPortByDateRange_Result">
+                <ScalarProperty Name="tr_transactionID" ColumnName="tr_transactionID" />
+                <ScalarProperty Name="tr_expectedArrival" ColumnName="tr_expectedArrival" />
+                <ScalarProperty Name="days" ColumnName="days" />
+                <ScalarProperty Name="tr_fileID" ColumnName="tr_fileID" />
+                <ScalarProperty Name="tr_bpBuyerID" ColumnName="tr_bpBuyerID" />
+                <ScalarProperty Name="tr_productID" ColumnName="tr_productID" />
+                <ScalarProperty Name="tr_quantity" ColumnName="tr_quantity" />
+                <ScalarProperty Name="tr_price" ColumnName="tr_price" />
+                <ScalarProperty Name="tr_bpSellerID" ColumnName="tr_bpSellerID" />
+                <ScalarProperty Name="tr_transactionStatus" ColumnName="tr_transactionStatus" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -4722,20 +4772,22 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="uspGetProductLocalPriceByDate" FunctionName="DoniEnterprisesModel.Store.uspGetProductLocalPriceByDate">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetProductLocalPriceByDate_Result">
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="tr_editedBy" ColumnName="tr_editedBy" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="uspGetProductPriceByDate" FunctionName="DoniEnterprisesModel.Store.uspGetProductPriceByDate">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetProductPriceByDate_Result">
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="localPrice" ColumnName="localPrice" />
+                <ScalarProperty Name="tr_editedBy" ColumnName="tr_editedBy" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspGetProductPriceByDateForDashBoard" FunctionName="DoniEnterprisesModel.Store.uspGetProductPriceByDateForDashBoard">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetProductPriceByDateForDashBoard_Result">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="localPrice" ColumnName="localPrice" />
                 <ScalarProperty Name="tr_editedBy" ColumnName="tr_editedBy" />
               </ComplexTypeMapping>
             </ResultMapping>
@@ -4791,6 +4843,22 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
                 <ScalarProperty Name="tr_price" ColumnName="tr_price" />
                 <ScalarProperty Name="tr_quantity" ColumnName="tr_quantity" />
                 <ScalarProperty Name="tr_bpSellerID" ColumnName="tr_bpSellerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspGetShipmentExpirationByDateRange" FunctionName="DoniEnterprisesModel.Store.uspGetShipmentExpirationByDateRange">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetShipmentExpirationByDateRange_Result">
+                <ScalarProperty Name="tr_transactionID" ColumnName="tr_transactionID" />
+                <ScalarProperty Name="tr_shipment_end" ColumnName="tr_shipment_end" />
+                <ScalarProperty Name="days" ColumnName="days" />
+                <ScalarProperty Name="tr_fileID" ColumnName="tr_fileID" />
+                <ScalarProperty Name="tr_bpBuyerID" ColumnName="tr_bpBuyerID" />
+                <ScalarProperty Name="tr_productID" ColumnName="tr_productID" />
+                <ScalarProperty Name="tr_quantity" ColumnName="tr_quantity" />
+                <ScalarProperty Name="tr_price" ColumnName="tr_price" />
+                <ScalarProperty Name="tr_bpSellerID" ColumnName="tr_bpSellerID" />
+                <ScalarProperty Name="tr_transactionStatus" ColumnName="tr_transactionStatus" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -4937,19 +5005,25 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
           <FunctionImportMapping FunctionImportName="uspProductListByDateRange" FunctionName="DoniEnterprisesModel.Store.uspProductListByDateRange">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspProductListByDateRange_Result">
-                <ScalarProperty Name="Prod_ID" ColumnName="Prod_ID" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="PriceDate" ColumnName="PriceDate" />
                 <ScalarProperty Name="intPrice" ColumnName="intPrice" />
-                <ScalarProperty Name="localPriceDate" ColumnName="localPriceDate" />
                 <ScalarProperty Name="localPrice" ColumnName="localPrice" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspProductListByDateRangeForDashboard" FunctionName="DoniEnterprisesModel.Store.uspProductListByDateRangeForDashboard">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspProductListByDateRangeForDashboard_Result">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="quality" ColumnName="quality" />
-                <ScalarProperty Name="origin" ColumnName="origin" />
+                <ScalarProperty Name="PriceDate" ColumnName="PriceDate" />
+                <ScalarProperty Name="intPrice" ColumnName="intPrice" />
+                <ScalarProperty Name="localPrice" ColumnName="localPrice" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="uspProductPriceByDateCRUD" FunctionName="DoniEnterprisesModel.Store.uspProductPriceByDateCRUD" />
-          <FunctionImportMapping FunctionImportName="uspProductPriceLocalByDateCRUD" FunctionName="DoniEnterprisesModel.Store.uspProductPriceLocalByDateCRUD" />
           <FunctionImportMapping FunctionImportName="uspProductSalesAnalyticsByDateRange" FunctionName="DoniEnterprisesModel.Store.uspProductSalesAnalyticsByDateRange">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspProductSalesAnalyticsByDateRange_Result">

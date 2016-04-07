@@ -240,6 +240,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OriginController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\TransactionController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Entity Framework\AppUser.cs">
@@ -264,9 +265,6 @@
       <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\BusinessPartner_Emails.cs">
-      <DependentUpon>DoniEnterprises.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity Framework\dailyProductLocalPrice.cs">
       <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\dailyProductPrice.cs">
@@ -332,6 +330,9 @@
     <Compile Include="Entity Framework\uspGetAppUserByEmail_Result.cs">
       <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity Framework\uspGetArrivedAtPortByDateRange_Result.cs">
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entity Framework\uspGetBPBank_Result.cs">
       <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
@@ -359,6 +360,9 @@
     <Compile Include="Entity Framework\uspGetCommissionTransaction_Result.cs">
       <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity Framework\uspGetDashboardProducts_Result.cs">
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entity Framework\uspGetDropDownBroker_Result.cs">
       <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
@@ -371,6 +375,9 @@
     <Compile Include="Entity Framework\uspGetDropDownShipper_Result.cs">
       <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity Framework\uspGetExpextedArrivalAtPortByDateRange_Result.cs">
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entity Framework\uspGetOriginList_Result.cs">
       <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
@@ -380,7 +387,7 @@
     <Compile Include="Entity Framework\uspGetProductList_Result.cs">
       <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity Framework\uspGetProductLocalPriceByDate_Result.cs">
+    <Compile Include="Entity Framework\uspGetProductPriceByDateForDashBoard_Result.cs">
       <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetProductPriceByDate_Result.cs">
@@ -396,6 +403,9 @@
       <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetShipmentAnalyticsByDateRange_Result.cs">
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity Framework\uspGetShipmentExpirationByDateRange_Result.cs">
       <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetSingleProduct_Result.cs">
@@ -417,6 +427,9 @@
       <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetTransaction_Result.cs">
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity Framework\uspProductListByDateRangeForDashboard_Result.cs">
       <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspProductListByDateRange_Result.cs">
@@ -470,6 +483,16 @@
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Entity Framework\DoniEnterprises.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DoniEnterprises.edmx</DependentUpon>
+      <LastGenOutput>DoniEnterprises.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entity Framework\DoniEnterprises.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DoniEnterprises.edmx</DependentUpon>
+      <LastGenOutput>DoniEnterprises.cs</LastGenOutput>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -499,18 +522,8 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DoniEnterprises.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Entity Framework\DoniEnterprises.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DoniEnterprises.edmx</DependentUpon>
-      <LastGenOutput>DoniEnterprises.Context.cs</LastGenOutput>
-    </Content>
     <Content Include="Entity Framework\DoniEnterprises.edmx.diagram">
       <DependentUpon>DoniEnterprises.edmx</DependentUpon>
-    </Content>
-    <Content Include="Entity Framework\DoniEnterprises.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DoniEnterprises.edmx</DependentUpon>
-      <LastGenOutput>DoniEnterprises.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
