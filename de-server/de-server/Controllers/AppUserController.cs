@@ -143,11 +143,11 @@ namespace de_server.Controllers
                     try
                     {
 
-                        string body = emailManager.populateEmailBody(title + ". " + fname + lname, "Doni Managment Account Created",
-                                        "An account for Doni Managment has been created.</br>"+ 
-                                        "Please Access your acount with your email and password given below </br>"
-                                        +pass);
-                        emailManager.SendHtmlFormattedEmail(email, "Doni Managment Account Created", body);
+                        //string body = emailManager.populateEmailBody(title + ". " + fname + lname, "Doni Managment Account Created",
+                                        //"An account for Doni Managment has been created.</br>"+ 
+                                        //"Please Access your acount with your email and password given below </br>"
+                                        //+pass);
+                        //emailManager.SendHtmlFormattedEmail(email, "Doni Managment Account Created", body);
                         var x = context.addNewAppUser(title, fname, lname, hashedPassword, email, userGuid, des, isAdmin);
                         var resp = new HttpResponseMessage(HttpStatusCode.OK);
                         resp.Content = new StringContent("Saved", System.Text.Encoding.UTF8, "text/plain");
