@@ -11,11 +11,13 @@ using de_server.Entity_Framework;
 using de_server.Models;
 using de_server.Security;
 using Newtonsoft.Json.Linq;
+using de_server.Filters;
 
 namespace de_server.Controllers
 {
 
-
+    [DoniApiExceptionFilter]
+    [Authorize]
     public class BusinessPartnerController : ApiController
     {
         #region BusinessPartner

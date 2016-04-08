@@ -76,6 +76,10 @@ namespace de_server.Security
                 {
                     return -1;
                 }
+                if (!Convert.ToBoolean(loggedUser.isActivated))
+                {
+                    return -2;
+                }
                 userId = loggedUser.UserID;
             }
 

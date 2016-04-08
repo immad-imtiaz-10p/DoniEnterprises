@@ -4,9 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="23b365d97092414eae6d87601cc99c0f" Name="Diagram1">
+      <Diagram DiagramId="4799f053584e4cac8cfe02172624e954" Name="Diagram1">
         <EntityTypeShape EntityType="DoniEnterprisesModel.AppUserRight" Width="1.5" PointX="7.5" PointY="18.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DoniEnterprisesModel.AppUser" Width="1.5" PointX="5.25" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoniEnterprisesModel.AppUser" Width="1.5" PointX="5.25" PointY="19" IsExpanded="true" />
         <EntityTypeShape EntityType="DoniEnterprisesModel.AppUsersImage" Width="1.5" PointX="7.5" PointY="21.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DoniEnterprisesModel.BusinessPartner" Width="1.5" PointX="0.75" PointY="33.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DoniEnterprisesModel.BusinessPartner_BankDetails" Width="1.5" PointX="3" PointY="34" IsExpanded="true" />
@@ -18,12 +18,12 @@
         <EntityTypeShape EntityType="DoniEnterprisesModel.Product" Width="1.5" PointX="3" PointY="27.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DoniEnterprisesModel.ShipmentStatu" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DoniEnterprisesModel.Transaction" Width="1.5" PointX="8.25" PointY="30.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DoniEnterprisesModel.TransactionsCommission" Width="1.5" PointX="10.5" PointY="29.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoniEnterprisesModel.TransactionsCommission" Width="1.5" PointX="10.5" PointY="29.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DoniEnterprisesModel.TransactionsContract" Width="1.5" PointX="13.5" PointY="28.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DoniEnterprisesModel.TransactionsNote" Width="1.5" PointX="13.5" PointY="24.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DoniEnterprisesModel.TransactionsSecondary" Width="1.5" PointX="13.5" PointY="33.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DoniEnterprisesModel.TransactionsShipment" Width="1.5" PointX="16.5" PointY="25.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DoniEnterprisesModel.TransactionsStatu" Width="1.5" PointX="10.5" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoniEnterprisesModel.TransactionsStatu" Width="1.5" PointX="10.5" PointY="20.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DoniEnterprisesModel.transactionViewed" Width="1.5" PointX="7.5" PointY="23.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DoniEnterprisesModel.UserEvent" Width="1.5" PointX="7.5" PointY="26.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DoniEnterprisesModel.TransactionFile" Width="1.5" PointX="13.5" PointY="20.25" IsExpanded="true" />

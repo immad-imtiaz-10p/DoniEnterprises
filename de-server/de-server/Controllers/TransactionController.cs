@@ -872,8 +872,6 @@ namespace de_server.Controllers
                 using (var content = new DhoniEnterprisesEntities())
                 {
                     var result = content.uspTransactionFileGetSingle(fileID).FirstOrDefault();
-
-
                     byte[] bytes = result.tf_file;
                     response = new HttpResponseMessage(HttpStatusCode.OK);
                     response.Content = new ByteArrayContent(bytes);

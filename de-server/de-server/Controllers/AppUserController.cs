@@ -70,13 +70,18 @@ namespace de_server.Controllers
             {
                
                     int userId = BasicAuthHttpModule.AuthenticateUser(viewModel.Username, viewModel.Password);
-                    if (userId != -1)
+                    if (userId == -1)
                     {
-                        return Ok(new { success = true, userId = userId  });
+                        return Ok(new { success = false, message = "Invalid Password/email" });
+                        
+                    }
+                    else if (userId == -2)
+                    {
+                        return Ok(new { success = false, message = "Your account has been deactivated by Administrator" });
                     }
                     else
                     {
-                        return Ok(new { success = false, message = "Invalid Password/email" });
+                        return Ok(new { success = true, userId = userId });
                     }           
 
             }
@@ -92,11 +97,42 @@ namespace de_server.Controllers
                 using (var context = new DhoniEnterprisesEntities())
                 {
                     var curUser = DataTableSerializer.LINQToDataTable(context.uspGetAppUserByEmail(email));
-                    return Ok(new { success = true, user = curUser});
-                    
+                    return Ok(new { success = true, user = curUser});                    
                 }
           
         }
+
+
+        [Authorize]
+        [Route("activateUser")]
+        [HttpPost]
+        public IHttpActionResult ActivateUser([FromBody] JObject userDetails)
+        {
+            using (var context = new DhoniEnterprisesEntities())
+            {
+                var userId = Convert.ToInt32(userDetails["userId"]);               
+                context.activateUser(userId);
+                return Ok(new { success = true, message = "User has been activated." });
+            }
+        }
+
+        [Authorize]
+        [Route("deactivateUser")]
+        [HttpPost]
+        public IHttpActionResult DeActivateUser([FromBody] JObject userDetails)
+        {
+            using (var context = new DhoniEnterprisesEntities())
+            {
+                var userId = Convert.ToInt32(userDetails["userId"]);
+                if (userId == 1)
+                {
+                    return Ok(new { success = false, message = "This user is a master admin and can not be deactivated." });
+                }
+                context.deactivateUser(userId);
+                return Ok(new { success = true, message="User has been deactivated." });
+            }
+        }
+
 
         [Authorize]
         [Route("getAppUsers")]

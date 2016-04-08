@@ -294,7 +294,7 @@ namespace de_server.Controllers
 
                 var result = (context.uspGetSingleProduct(id).AsEnumerable()).FirstOrDefault();
                 de_server.Models.Product prod = new de_server.Models.Product(result.ProductId, result.ProductName, result.origin, result.quality, result.purity, result.moisture, result.splits, result.weaveled, result.damaged, result.foreignMatter, result.greenDamaged, result.otherColor, result.wrinkled);
-                return Ok(new { success = true, message = "found", product = prod });
+                return Ok(new { success = true, product = prod });
 
             }
         }

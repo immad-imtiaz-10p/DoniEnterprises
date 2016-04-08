@@ -1830,6 +1830,7 @@
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="getAllUsers_Result">
+    <Property Type="Int32" Name="UserID" Nullable="false" />
     <Property Type="String" Name="firstName" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="lastName" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="initials" Nullable="true" MaxLength="10" />

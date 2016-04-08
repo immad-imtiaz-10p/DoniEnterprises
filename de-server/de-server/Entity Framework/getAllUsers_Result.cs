@@ -13,11 +13,14 @@ namespace de_server.Entity_Framework
     
     public partial class getAllUsers_Result
     {
+        public int UserID { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
         public string initials { get; set; }
         public string UserEmail { get; set; }
         public string UserDesignation { get; set; }
         public System.DateTime CreatedOn { get; set; }
+        public bool IsSuperUser { get; set; }
+        public Nullable<bool> isActivated { get; set; }
     }
 }

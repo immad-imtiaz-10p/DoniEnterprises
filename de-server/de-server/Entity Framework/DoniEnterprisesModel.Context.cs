@@ -50,6 +50,15 @@ namespace de_server.Entity_Framework
         public virtual DbSet<UserEvent> UserEvents { get; set; }
         public virtual DbSet<TransactionFile> TransactionFiles { get; set; }
     
+        public virtual int activateUser(Nullable<int> userId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("activateUser", userIdParameter);
+        }
+    
         public virtual int addNewAppUser(string title, string firstName, string lastName, string password, string email, Nullable<System.Guid> guID, string designation, Nullable<bool> isAdmin)
         {
             var titleParameter = title != null ?
@@ -102,6 +111,15 @@ namespace de_server.Entity_Framework
                 new ObjectParameter("guID", typeof(System.Guid));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AppUserChangePasword", userIDParameter, passwordParameter, guIDParameter);
+        }
+    
+        public virtual int deactivateUser(Nullable<int> userId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("deactivateUser", userIdParameter);
         }
     
         public virtual ObjectResult<getAllUsers_Result> getAllUsers()

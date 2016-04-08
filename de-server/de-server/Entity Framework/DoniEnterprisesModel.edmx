@@ -29,6 +29,7 @@
           <Property Name="initials" Type="nvarchar" MaxLength="10" />
           <Property Name="firstName" Type="nvarchar" MaxLength="50" />
           <Property Name="lastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="isActivated" Type="bit" />
         </EntityType>
         <EntityType Name="AppUsersImage">
           <Key>
@@ -1029,6 +1030,9 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="activateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="int" Mode="In" />
+        </Function>
         <Function Name="addNewAppUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="title" Type="nvarchar" Mode="In" />
           <Parameter Name="firstName" Type="nvarchar" Mode="In" />
@@ -1043,6 +1047,9 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
           <Parameter Name="UserID" Type="int" Mode="In" />
           <Parameter Name="Password" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="guID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="deactivateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="int" Mode="In" />
         </Function>
         <Function Name="getAllUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="NewUserLoginDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -1829,6 +1836,7 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
           <Property Name="initials" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="isActivated" Type="Boolean" />
           <NavigationProperty Name="AppUserRights" Relationship="Self.FK__AppUserRi__AppUs__43D61337" FromRole="AppUsers" ToRole="AppUserRights" />
           <NavigationProperty Name="AppUsersImage" Relationship="Self.FK__AppUsersI__AppUs__44CA3770" FromRole="AppUsers" ToRole="AppUsersImage" />
           <NavigationProperty Name="BusinessPartner_Contacts" Relationship="Self.FK__BusinessP__bp_Co__498EEC8D" FromRole="AppUsers" ToRole="BusinessPartner_Contacts" />
@@ -3117,6 +3125,9 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
             <End Role="Products" EntitySet="Products" />
             <End Role="AppUsers" EntitySet="AppUsers" />
           </AssociationSet>
+          <FunctionImport Name="activateUser">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="addNewAppUser">
             <Parameter Name="title" Mode="In" Type="String" />
             <Parameter Name="firstName" Mode="In" Type="String" />
@@ -3131,6 +3142,9 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
             <Parameter Name="UserID" Mode="In" Type="Int32" />
             <Parameter Name="Password" Mode="In" Type="String" />
             <Parameter Name="guID" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="deactivateUser">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="getAllUsers" ReturnType="Collection(DoniEnterprisesModel.getAllUsers_Result)" />
           <FunctionImport Name="NewUserLoginDetails">
@@ -3627,12 +3641,15 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="getAllUsers_Result">
+          <Property Type="Int32" Name="UserID" Nullable="false" />
           <Property Type="String" Name="firstName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="lastName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="initials" Nullable="true" MaxLength="10" />
           <Property Type="String" Name="UserEmail" Nullable="false" MaxLength="128" />
           <Property Type="String" Name="UserDesignation" Nullable="false" MaxLength="200" />
           <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="IsSuperUser" Nullable="false" />
+          <Property Type="Boolean" Name="isActivated" Nullable="true" />
         </ComplexType>
         <ComplexType Name="uspGetAppUserByEmail_Result">
           <Property Type="Int32" Name="UserID" Nullable="false" />
@@ -4117,6 +4134,7 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
                 <ScalarProperty Name="initials" ColumnName="initials" />
                 <ScalarProperty Name="firstName" ColumnName="firstName" />
                 <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="isActivated" ColumnName="isActivated" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -4453,17 +4471,22 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
               <ScalarProperty Name="UserID" ColumnName="userid" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="activateUser" FunctionName="DoniEnterprisesModel.Store.activateUser" />
           <FunctionImportMapping FunctionImportName="addNewAppUser" FunctionName="DoniEnterprisesModel.Store.addNewAppUser" />
           <FunctionImportMapping FunctionImportName="AppUserChangePasword" FunctionName="DoniEnterprisesModel.Store.AppUserChangePasword" />
+          <FunctionImportMapping FunctionImportName="deactivateUser" FunctionName="DoniEnterprisesModel.Store.deactivateUser" />
           <FunctionImportMapping FunctionImportName="getAllUsers" FunctionName="DoniEnterprisesModel.Store.getAllUsers">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DoniEnterprisesModel.getAllUsers_Result">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="firstName" ColumnName="firstName" />
                 <ScalarProperty Name="lastName" ColumnName="lastName" />
                 <ScalarProperty Name="initials" ColumnName="initials" />
                 <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
                 <ScalarProperty Name="UserDesignation" ColumnName="UserDesignation" />
                 <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsSuperUser" ColumnName="IsSuperUser" />
+                <ScalarProperty Name="isActivated" ColumnName="isActivated" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
