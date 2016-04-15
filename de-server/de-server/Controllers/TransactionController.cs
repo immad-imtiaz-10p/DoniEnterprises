@@ -161,6 +161,10 @@ namespace de_server.Controllers
                     {
                         return Ok(new { success = false, message = "Please Enter Transaction Date" });
                     }
+                    else if (tr_shipment_end < tr_shipment_start)
+                    {
+                        return Ok(new {success = false, message = "Shipment end date can not be before or on shipment end date"});
+                    }
                     else if (tr_price == null)
                     {
                         return Ok(new { success = false, message = "Please Enter Transaction price" });
@@ -279,14 +283,14 @@ namespace de_server.Controllers
                 var tr_buyerBroker = Convert.ToBoolean(tr_commission["tr_buyerBroker"]);
                 var tr_buyerBrokerID = (long?)(tr_commission["tr_buyerBrokerID"]);
                 var tr_buyerBroker_comm_type =  Convert.ToString(tr_commission["tr_buyerBroker_comm_type"]);
-                var tr_buyerBroker_comm = (int?)tr_commission["tr_buyerBroker_comm"];
+                var tr_buyerBroker_comm = (Decimal?)tr_commission["tr_buyerBroker_comm"];
                 var tr_sellerBroker = Convert.ToBoolean(tr_commission["tr_sellerBroker"]);
                 var tr_sellerBrokerID = (long?)(tr_commission["tr_sellerBrokerID"]);
-                var tr_own_Commission = (int?)(tr_commission["tr_own_Commission"]);
+                var tr_own_Commission = (Decimal?)(tr_commission["tr_own_Commission"]);
                 var tr_ownCommissionType = Convert.ToString(tr_commission["tr_ownCommissionType"]);
-                var tr_difference = (int?)tr_commission["tr_difference"];
-                var tr_discount = (int?)tr_commission["tr_discount"];
-                var tr_netCommission = (int?)tr_commission["tr_netCommission"];
+                var tr_difference = (Decimal?)tr_commission["tr_difference"];
+                var tr_discount = (Decimal?)tr_commission["tr_discount"];
+                var tr_netCommission = (Decimal?)tr_commission["tr_netCommission"];
 
                 var userID = BasicAuthHttpModule.getCurrentUserId();
                 var operation = Convert.ToString(tr_commission["operation"]);
@@ -829,7 +833,7 @@ namespace de_server.Controllers
         #region transaction_Files
         [HttpGet]
         [Route("getTransactionFiles")]
-        public IHttpActionResult getTransactionFiles(long transactionId)
+        public IHttpActionResult GetTransactionFiles(long transactionId)
         {
            
                 using (var context = new DhoniEnterprisesEntities())
@@ -847,7 +851,7 @@ namespace de_server.Controllers
 
         [HttpGet]
         [Route("deleteTransactionFile")]
-        public IHttpActionResult deleteTransactionFile(long fileId)
+        public IHttpActionResult DeleteTransactionFile(long fileId)
         {
            
                 using (var context = new DhoniEnterprisesEntities())
@@ -884,6 +888,32 @@ namespace de_server.Controllers
                 }
          
         }
+
+
+        [HttpGet]
+        [Route("getTransactionFile")]
+        public HttpResponseMessage getTransactionFile(long fileID)
+        {
+            HttpResponseMessage response;
+
+            using (var content = new DhoniEnterprisesEntities())
+            {
+                var result = content.uspTransactionFileGetSingle(fileID).FirstOrDefault();
+                byte[] bytes = result.tf_file;
+                response = new HttpResponseMessage(HttpStatusCode.OK);
+                var stream = new MemoryStream(bytes);
+                response.Content = new StreamContent(stream);
+                response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+                response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment");
+                response.Content.Headers.ContentDisposition.FileName = result.tf_fileName;
+                return response;
+
+            }
+
+        }
+
+
+        
 
 
 
