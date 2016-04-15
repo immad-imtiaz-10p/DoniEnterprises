@@ -164,12 +164,12 @@
     </Key>
     <Property Name="Prod_ID" Type="Int32" Nullable="false" />
     <Property Name="PriceDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="Price" Type="Int32" />
+    <Property Name="Price" Type="Decimal" Precision="24" Scale="2" />
     <Property Name="tr_createdBy" Type="Int32" Nullable="false" />
     <Property Name="tr_editedBy" Type="Int32" />
     <Property Name="tr_createdOn" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="tr_editedOn" Type="DateTime" Precision="3" />
-    <Property Name="localPrice" Type="Int32" />
+    <Property Name="localPrice" Type="Decimal" Precision="24" Scale="2" />
     <NavigationProperty Name="AppUser" Relationship="Self.FK__dailyProd__tr_cr__503BEA1C" FromRole="dailyProductPrices" ToRole="AppUsers" />
     <NavigationProperty Name="AppUser1" Relationship="Self.FK__dailyProd__tr_ed__51300E55" FromRole="dailyProductPrices" ToRole="AppUsers" />
     <NavigationProperty Name="Product" Relationship="Self.FK__dailyProd__Prod___4F47C5E3" FromRole="dailyProductPrices" ToRole="Products" />
@@ -226,8 +226,8 @@
     <Property Name="tr_bpSellerID" Type="Int64" />
     <Property Name="tr_productID" Type="Int32" />
     <Property Name="tr_origin" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="tr_quantity" Type="Int32" />
-    <Property Name="tr_price" Type="Int32" Nullable="false" />
+    <Property Name="tr_quantity" Type="Decimal" Precision="24" Scale="2" />
+    <Property Name="tr_price" Type="Decimal" Precision="24" Scale="2" />
     <Property Name="tr_packing" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="tr_shipment_start" Type="DateTime" Precision="3" />
     <Property Name="tr_shipment_end" Type="DateTime" Precision="3" />
@@ -261,16 +261,16 @@
     <Property Name="tr_sellerBroker" Type="Boolean" />
     <Property Name="tr_sellerBrokerID" Type="Int64" />
     <Property Name="tr_sellerBroker_comm_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="tr_sellerBroker_comm" Type="Int32" />
+    <Property Name="tr_sellerBroker_comm" Type="Decimal" Precision="24" Scale="2" />
     <Property Name="tr_buyerBroker" Type="Boolean" />
     <Property Name="tr_buyerBrokerID" Type="Int64" />
     <Property Name="tr_buyerBroker_comm_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="tr_buyerBroker_comm" Type="Int32" />
-    <Property Name="tr_own_Commission" Type="Int32" />
+    <Property Name="tr_buyerBroker_comm" Type="Decimal" Precision="24" Scale="2" />
+    <Property Name="tr_own_Commission" Type="Decimal" Precision="24" Scale="2" />
     <Property Name="tr_ownCommissionType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="tr_difference" Type="Int32" />
-    <Property Name="tr_discount" Type="Int32" />
-    <Property Name="tr_netCommission" Type="Int32" />
+    <Property Name="tr_difference" Type="Decimal" Precision="24" Scale="2" />
+    <Property Name="tr_discount" Type="Decimal" Precision="24" Scale="2" />
+    <Property Name="tr_netCommission" Type="Decimal" Precision="24" Scale="2" />
     <Property Name="tr_createdBy" Type="Int32" Nullable="false" />
     <Property Name="tr_createdOn" Type="DateTime" Precision="3" />
     <Property Name="tr_editedBy" Type="Int32" />
@@ -321,13 +321,14 @@
     <Property Name="tr_sec_bpBuyerID" Type="Int64" />
     <Property Name="tr_sec_bpSellerID" Type="Int64" />
     <Property Name="tr_sec_date" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="tr_sec_buyerPrice" Type="Int32" />
-    <Property Name="tr_sec_sellerPrice" Type="Int32" />
+    <Property Name="tr_sec_buyerPrice" Type="Decimal" Precision="24" Scale="2" />
+    <Property Name="tr_sec_sellerPrice" Type="Decimal" Precision="24" Scale="2" />
     <Property Name="tr_sec_otherInfo" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
     <Property Name="tr_createdBy" Type="Int32" Nullable="false" />
     <Property Name="tr_createdOn" Type="DateTime" Precision="3" />
     <Property Name="tr_editedBy" Type="Int32" />
     <Property Name="tr_editedOn" Type="DateTime" Precision="3" />
+    <Property Name="tr_sec_quantity" Type="Decimal" Precision="24" Scale="2" />
     <NavigationProperty Name="AppUser" Relationship="Self.FK__Transacti__tr_cr__681373AD" FromRole="TransactionsSecondary" ToRole="AppUsers" />
     <NavigationProperty Name="AppUser1" Relationship="Self.FK__Transacti__tr_ed__690797E6" FromRole="TransactionsSecondary" ToRole="AppUsers" />
     <NavigationProperty Name="BusinessPartner" Relationship="Self.FK__Transacti__tr_se__69FBBC1F" FromRole="TransactionsSecondary" ToRole="BusinessPartner" />
@@ -354,8 +355,8 @@
     <Property Name="tr_actualArrived" Type="DateTime" Precision="3" />
     <Property Name="tr_ship_BlNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="tr_ship_invoiceNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="tr_ship_invoiceAmt" Type="Int32" />
-    <Property Name="tr_ship_quantity" Type="Int32" />
+    <Property Name="tr_ship_invoiceAmt" Type="Decimal" Precision="24" Scale="2" />
+    <Property Name="tr_ship_quantity" Type="Decimal" Precision="24" Scale="2" />
     <Property Name="tr_ship_vesselNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="tr_ship_primaryShipperId" Type="Int64" />
     <Property Name="tr_ship_portLoad" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
@@ -1618,8 +1619,8 @@
       <Parameter Name="crudOperation" Mode="In" Type="String" />
       <Parameter Name="productId" Mode="In" Type="Int32" />
       <Parameter Name="priceDate" Mode="In" Type="DateTime" />
-      <Parameter Name="price" Mode="In" Type="Int32" />
-      <Parameter Name="localPrice" Mode="In" Type="Int32" />
+      <Parameter Name="price" Mode="In" Type="Decimal" />
+      <Parameter Name="localPrice" Mode="In" Type="Decimal" />
       <Parameter Name="tr_createdBy" Mode="In" Type="Int32" />
       <Parameter Name="tr_editedBy" Mode="In" Type="Int32" />
     </FunctionImport>
@@ -1635,8 +1636,8 @@
       <Parameter Name="tr_bpSellerID" Mode="In" Type="Int64" />
       <Parameter Name="tr_productID" Mode="In" Type="Int32" />
       <Parameter Name="tr_origin" Mode="In" Type="String" />
-      <Parameter Name="tr_quantity" Mode="In" Type="Int32" />
-      <Parameter Name="tr_price" Mode="In" Type="Int32" />
+      <Parameter Name="tr_quantity" Mode="In" Type="Decimal" />
+      <Parameter Name="tr_price" Mode="In" Type="Decimal" />
       <Parameter Name="tr_packing" Mode="In" Type="String" />
       <Parameter Name="tr_shipment_start" Mode="In" Type="DateTime" />
       <Parameter Name="tr_shipment_end" Mode="In" Type="DateTime" />
@@ -1653,16 +1654,16 @@
       <Parameter Name="tr_sellerBroker" Mode="In" Type="Boolean" />
       <Parameter Name="tr_sellerBrokerID" Mode="In" Type="Int64" />
       <Parameter Name="tr_sellerBroker_comm_type" Mode="In" Type="String" />
-      <Parameter Name="tr_sellerBroker_comm" Mode="In" Type="Int32" />
+      <Parameter Name="tr_sellerBroker_comm" Mode="In" Type="Decimal" />
       <Parameter Name="tr_buyerBroker" Mode="In" Type="Boolean" />
       <Parameter Name="tr_buyerBrokerID" Mode="In" Type="Int64" />
       <Parameter Name="tr_buyerBroker_comm_type" Mode="In" Type="String" />
-      <Parameter Name="tr_buyerBroker_comm" Mode="In" Type="Int32" />
-      <Parameter Name="tr_own_Commission" Mode="In" Type="Int32" />
+      <Parameter Name="tr_buyerBroker_comm" Mode="In" Type="Decimal" />
+      <Parameter Name="tr_own_Commission" Mode="In" Type="Decimal" />
       <Parameter Name="tr_ownCommissionType" Mode="In" Type="String" />
-      <Parameter Name="tr_difference" Mode="In" Type="Int32" />
-      <Parameter Name="tr_discount" Mode="In" Type="Int32" />
-      <Parameter Name="tr_netCommission" Mode="In" Type="Int32" />
+      <Parameter Name="tr_difference" Mode="In" Type="Decimal" />
+      <Parameter Name="tr_discount" Mode="In" Type="Decimal" />
+      <Parameter Name="tr_netCommission" Mode="In" Type="Decimal" />
       <Parameter Name="tr_createdBy" Mode="In" Type="Int32" />
       <Parameter Name="tr_createdOn" Mode="In" Type="DateTime" />
       <Parameter Name="tr_editedBy" Mode="In" Type="Int32" />
@@ -1711,8 +1712,9 @@
       <Parameter Name="tr_sec_bpBuyerID" Mode="In" Type="Int64" />
       <Parameter Name="tr_sec_bpSellerID" Mode="In" Type="Int64" />
       <Parameter Name="tr_sec_date" Mode="In" Type="DateTime" />
-      <Parameter Name="tr_sec_buyerPrice" Mode="In" Type="Int32" />
-      <Parameter Name="tr_sec_sellerPrice" Mode="In" Type="Int32" />
+      <Parameter Name="tr_sec_buyerPrice" Mode="In" Type="Decimal" />
+      <Parameter Name="tr_sec_sellerPrice" Mode="In" Type="Decimal" />
+      <Parameter Name="tr_sec_quantity" Mode="In" Type="Decimal" />
       <Parameter Name="tr_sec_otherInfo" Mode="In" Type="String" />
       <Parameter Name="tr_createdBy" Mode="In" Type="Int32" />
       <Parameter Name="tr_editedBy" Mode="In" Type="Int32" />
@@ -1830,6 +1832,7 @@
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="getAllUsers_Result">
+    <Property Type="Int32" Name="UserID" Nullable="false" />
     <Property Type="String" Name="firstName" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="lastName" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="initials" Nullable="true" MaxLength="10" />
@@ -1855,8 +1858,8 @@
     <Property Type="String" Name="tr_fileID" Nullable="true" MaxLength="200" />
     <Property Type="Int64" Name="tr_bpBuyerID" Nullable="true" />
     <Property Type="Int32" Name="tr_productID" Nullable="true" />
-    <Property Type="Int32" Name="tr_quantity" Nullable="true" />
-    <Property Type="Int32" Name="tr_price" Nullable="false" />
+    <Property Type="Decimal" Name="tr_quantity" Nullable="true" Precision="24" Scale="2" />
+    <Property Type="Decimal" Name="tr_price" Nullable="true" Precision="24" Scale="2" />
     <Property Type="Int64" Name="tr_bpSellerID" Nullable="true" />
     <Property Type="String" Name="tr_transactionStatus" Nullable="false" MaxLength="100" />
   </ComplexType>
@@ -1949,16 +1952,16 @@
     <Property Type="Boolean" Name="tr_sellerBroker" Nullable="true" />
     <Property Type="Int64" Name="tr_sellerBrokerID" Nullable="true" />
     <Property Type="String" Name="tr_sellerBroker_comm_type" Nullable="true" MaxLength="50" />
-    <Property Type="Int32" Name="tr_sellerBroker_comm" Nullable="true" />
+    <Property Type="Decimal" Name="tr_sellerBroker_comm" Nullable="true" Precision="24" Scale="2" />
     <Property Type="Boolean" Name="tr_buyerBroker" Nullable="true" />
     <Property Type="Int64" Name="tr_buyerBrokerID" Nullable="true" />
     <Property Type="String" Name="tr_buyerBroker_comm_type" Nullable="true" MaxLength="50" />
-    <Property Type="Int32" Name="tr_buyerBroker_comm" Nullable="true" />
-    <Property Type="Int32" Name="tr_own_Commission" Nullable="true" />
+    <Property Type="Decimal" Name="tr_buyerBroker_comm" Nullable="true" Precision="24" Scale="2" />
+    <Property Type="Decimal" Name="tr_own_Commission" Nullable="true" Precision="24" Scale="2" />
     <Property Type="String" Name="tr_ownCommissionType" Nullable="true" MaxLength="50" />
-    <Property Type="Int32" Name="tr_difference" Nullable="true" />
-    <Property Type="Int32" Name="tr_discount" Nullable="true" />
-    <Property Type="Int32" Name="tr_netCommission" Nullable="true" />
+    <Property Type="Decimal" Name="tr_difference" Nullable="true" Precision="24" Scale="2" />
+    <Property Type="Decimal" Name="tr_discount" Nullable="true" Precision="24" Scale="2" />
+    <Property Type="Decimal" Name="tr_netCommission" Nullable="true" Precision="24" Scale="2" />
     <Property Type="Int32" Name="tr_createdBy" Nullable="false" />
     <Property Type="DateTime" Name="tr_createdOn" Nullable="true" Precision="23" />
     <Property Type="Int32" Name="tr_editedBy" Nullable="true" />
@@ -2003,8 +2006,8 @@
     <Property Type="String" Name="tr_fileID" Nullable="true" MaxLength="200" />
     <Property Type="Int64" Name="tr_bpBuyerID" Nullable="true" />
     <Property Type="Int32" Name="tr_productID" Nullable="true" />
-    <Property Type="Int32" Name="tr_quantity" Nullable="true" />
-    <Property Type="Int32" Name="tr_price" Nullable="false" />
+    <Property Type="Decimal" Name="tr_quantity" Nullable="true" Precision="24" Scale="2" />
+    <Property Type="Decimal" Name="tr_price" Nullable="true" Precision="24" Scale="2" />
     <Property Type="Int64" Name="tr_bpSellerID" Nullable="true" />
     <Property Type="String" Name="tr_transactionStatus" Nullable="false" MaxLength="100" />
   </ComplexType>
@@ -2041,14 +2044,14 @@
   </ComplexType>
   <ComplexType Name="uspGetProductPriceByDate_Result">
     <Property Type="Int32" Name="ProductId" Nullable="false" />
-    <Property Type="Int32" Name="Price" Nullable="true" />
-    <Property Type="Int32" Name="localPrice" Nullable="true" />
+    <Property Type="Decimal" Name="Price" Nullable="true" Precision="24" Scale="2" />
+    <Property Type="Decimal" Name="localPrice" Nullable="true" Precision="24" Scale="2" />
     <Property Type="Int32" Name="tr_editedBy" Nullable="true" />
   </ComplexType>
   <ComplexType Name="uspGetProductPriceByDateForDashBoard_Result">
     <Property Type="Int32" Name="ProductId" Nullable="false" />
-    <Property Type="Int32" Name="Price" Nullable="true" />
-    <Property Type="Int32" Name="localPrice" Nullable="true" />
+    <Property Type="Decimal" Name="Price" Nullable="true" Precision="24" Scale="2" />
+    <Property Type="Decimal" Name="localPrice" Nullable="true" Precision="24" Scale="2" />
     <Property Type="Int32" Name="tr_editedBy" Nullable="true" />
   </ComplexType>
   <ComplexType Name="uspGetProductTagInput_Result">
@@ -2071,13 +2074,14 @@
     <Property Type="Int64" Name="tr_sec_bpBuyerID" Nullable="true" />
     <Property Type="Int64" Name="tr_sec_bpSellerID" Nullable="true" />
     <Property Type="DateTime" Name="tr_sec_date" Nullable="false" Precision="23" />
-    <Property Type="Int32" Name="tr_sec_buyerPrice" Nullable="true" />
-    <Property Type="Int32" Name="tr_sec_sellerPrice" Nullable="true" />
+    <Property Type="Decimal" Name="tr_sec_buyerPrice" Nullable="true" Precision="24" Scale="2" />
+    <Property Type="Decimal" Name="tr_sec_sellerPrice" Nullable="true" Precision="24" Scale="2" />
     <Property Type="String" Name="tr_sec_otherInfo" Nullable="true" MaxLength="4000" />
     <Property Type="Int32" Name="tr_createdBy" Nullable="false" />
     <Property Type="DateTime" Name="tr_createdOn" Nullable="true" Precision="23" />
     <Property Type="Int32" Name="tr_editedBy" Nullable="true" />
     <Property Type="DateTime" Name="tr_editedOn" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="tr_sec_quantity" Nullable="true" Precision="24" Scale="2" />
   </ComplexType>
   <ComplexType Name="uspGetShipmentAnalyticsByDateRange_Result">
     <Property Type="DateTime" Name="req_date" Nullable="true" Precision="23" />
@@ -2085,8 +2089,8 @@
     <Property Type="String" Name="tr_fileID" Nullable="true" MaxLength="200" />
     <Property Type="Int64" Name="tr_bpBuyerID" Nullable="true" />
     <Property Type="Int32" Name="tr_productID" Nullable="true" />
-    <Property Type="Int32" Name="tr_price" Nullable="false" />
-    <Property Type="Int32" Name="tr_quantity" Nullable="true" />
+    <Property Type="Decimal" Name="tr_price" Nullable="true" Precision="24" Scale="2" />
+    <Property Type="Decimal" Name="tr_quantity" Nullable="true" Precision="24" Scale="2" />
     <Property Type="Int64" Name="tr_bpSellerID" Nullable="true" />
   </ComplexType>
   <ComplexType Name="uspGetShipmentExpirationByDateRange_Result">
@@ -2096,8 +2100,8 @@
     <Property Type="String" Name="tr_fileID" Nullable="true" MaxLength="200" />
     <Property Type="Int64" Name="tr_bpBuyerID" Nullable="true" />
     <Property Type="Int32" Name="tr_productID" Nullable="true" />
-    <Property Type="Int32" Name="tr_quantity" Nullable="true" />
-    <Property Type="Int32" Name="tr_price" Nullable="false" />
+    <Property Type="Decimal" Name="tr_quantity" Nullable="true" Precision="24" Scale="2" />
+    <Property Type="Decimal" Name="tr_price" Nullable="true" Precision="24" Scale="2" />
     <Property Type="Int64" Name="tr_bpSellerID" Nullable="true" />
     <Property Type="String" Name="tr_transactionStatus" Nullable="false" MaxLength="100" />
   </ComplexType>
@@ -2127,8 +2131,8 @@
     <Property Type="Int64" Name="tr_bpSellerID" Nullable="true" />
     <Property Type="Int32" Name="tr_productID" Nullable="true" />
     <Property Type="String" Name="tr_origin" Nullable="true" MaxLength="150" />
-    <Property Type="Int32" Name="tr_quantity" Nullable="true" />
-    <Property Type="Int32" Name="tr_price" Nullable="false" />
+    <Property Type="Decimal" Name="tr_quantity" Nullable="true" Precision="24" Scale="2" />
+    <Property Type="Decimal" Name="tr_price" Nullable="true" Precision="24" Scale="2" />
     <Property Type="String" Name="tr_packing" Nullable="true" MaxLength="50" />
     <Property Type="DateTime" Name="tr_shipment_start" Nullable="true" Precision="23" />
     <Property Type="DateTime" Name="tr_shipment_end" Nullable="true" Precision="23" />
@@ -2180,8 +2184,8 @@
     <Property Type="DateTime" Name="tr_actualArrived" Nullable="true" Precision="23" />
     <Property Type="String" Name="tr_ship_BlNo" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="tr_ship_invoiceNo" Nullable="true" MaxLength="50" />
-    <Property Type="Int32" Name="tr_ship_invoiceAmt" Nullable="true" />
-    <Property Type="Int32" Name="tr_ship_quantity" Nullable="true" />
+    <Property Type="Decimal" Name="tr_ship_invoiceAmt" Nullable="true" Precision="24" Scale="2" />
+    <Property Type="Decimal" Name="tr_ship_quantity" Nullable="true" Precision="24" Scale="2" />
     <Property Type="String" Name="tr_ship_vesselNo" Nullable="true" MaxLength="50" />
     <Property Type="Int64" Name="tr_ship_primaryShipperId" Nullable="true" />
     <Property Type="String" Name="tr_ship_portLoad" Nullable="true" MaxLength="500" />
@@ -2213,22 +2217,22 @@
   <ComplexType Name="uspProductListByDateRange_Result">
     <Property Type="Int32" Name="ProductId" Nullable="false" />
     <Property Type="DateTime" Name="PriceDate" Nullable="true" Precision="23" />
-    <Property Type="Int32" Name="intPrice" Nullable="true" />
-    <Property Type="Int32" Name="localPrice" Nullable="true" />
+    <Property Type="Decimal" Name="intPrice" Nullable="true" Precision="24" Scale="2" />
+    <Property Type="Decimal" Name="localPrice" Nullable="true" Precision="24" Scale="2" />
   </ComplexType>
   <ComplexType Name="uspProductListByDateRangeForDashboard_Result">
     <Property Type="Int32" Name="ProductId" Nullable="false" />
     <Property Type="String" Name="ProductName" Nullable="true" MaxLength="250" />
     <Property Type="DateTime" Name="PriceDate" Nullable="true" Precision="23" />
-    <Property Type="Int32" Name="intPrice" Nullable="true" />
-    <Property Type="Int32" Name="localPrice" Nullable="true" />
+    <Property Type="Decimal" Name="intPrice" Nullable="true" Precision="24" Scale="2" />
+    <Property Type="Decimal" Name="localPrice" Nullable="true" Precision="24" Scale="2" />
   </ComplexType>
   <ComplexType Name="uspProductSalesAnalyticsByDateRange_Result">
     <Property Type="Int32" Name="tr_productID" Nullable="false" />
     <Property Type="String" Name="ProductName" Nullable="true" MaxLength="305" />
-    <Property Type="Int32" Name="Quantity" Nullable="false" />
-    <Property Type="Int32" Name="NetCommission" Nullable="false" />
-    <Property Type="Int64" Name="Volume" Nullable="true" />
+    <Property Type="Decimal" Name="Quantity" Nullable="false" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="NetCommission" Nullable="false" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="Volume" Nullable="true" Precision="24" Scale="2" />
   </ComplexType>
   <ComplexType Name="uspTransactionFileGetAll_Result">
     <Property Type="Int32" Name="tf_fileID" Nullable="false" />
@@ -2257,8 +2261,8 @@
     <Property Type="String" Name="buyer" Nullable="false" MaxLength="500" />
     <Property Type="Int32" Name="tr_productID" Nullable="true" />
     <Property Type="String" Name="product" Nullable="true" MaxLength="250" />
-    <Property Type="Int32" Name="quantity" Nullable="true" />
-    <Property Type="Int32" Name="rate" Nullable="false" />
+    <Property Type="Decimal" Name="quantity" Nullable="true" Precision="24" Scale="2" />
+    <Property Type="Decimal" Name="rate" Nullable="true" Precision="24" Scale="2" />
     <Property Type="Int64" Name="tr_bpSellerID" Nullable="true" />
     <Property Type="String" Name="seller" Nullable="false" MaxLength="500" />
     <Property Type="String" Name="origin" Nullable="true" MaxLength="150" />
@@ -2275,8 +2279,8 @@
     <Property Type="String" Name="buyer" Nullable="false" MaxLength="500" />
     <Property Type="Int32" Name="tr_productID" Nullable="true" />
     <Property Type="String" Name="product" Nullable="true" MaxLength="250" />
-    <Property Type="Int32" Name="quantity" Nullable="true" />
-    <Property Type="Int32" Name="rate" Nullable="false" />
+    <Property Type="Decimal" Name="quantity" Nullable="true" Precision="24" Scale="2" />
+    <Property Type="Decimal" Name="rate" Nullable="true" Precision="24" Scale="2" />
     <Property Type="Int64" Name="tr_bpSellerID" Nullable="true" />
     <Property Type="String" Name="seller" Nullable="false" MaxLength="500" />
     <Property Type="String" Name="origin" Nullable="true" MaxLength="150" />

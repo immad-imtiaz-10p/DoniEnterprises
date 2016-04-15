@@ -19,16 +19,16 @@ namespace de_server.Entity_Framework
         public Nullable<bool> tr_sellerBroker { get; set; }
         public Nullable<long> tr_sellerBrokerID { get; set; }
         public string tr_sellerBroker_comm_type { get; set; }
-        public Nullable<int> tr_sellerBroker_comm { get; set; }
+        public Nullable<decimal> tr_sellerBroker_comm { get; set; }
         public Nullable<bool> tr_buyerBroker { get; set; }
         public Nullable<long> tr_buyerBrokerID { get; set; }
         public string tr_buyerBroker_comm_type { get; set; }
-        public Nullable<int> tr_buyerBroker_comm { get; set; }
-        public Nullable<int> tr_own_Commission { get; set; }
+        public Nullable<decimal> tr_buyerBroker_comm { get; set; }
+        public Nullable<decimal> tr_own_Commission { get; set; }
         public string tr_ownCommissionType { get; set; }
-        public Nullable<int> tr_difference { get; set; }
-        public Nullable<int> tr_discount { get; set; }
-        public Nullable<int> tr_netCommission { get; set; }
+        public Nullable<decimal> tr_difference { get; set; }
+        public Nullable<decimal> tr_discount { get; set; }
+        public Nullable<decimal> tr_netCommission { get; set; }
         public int tr_createdBy { get; set; }
         public Nullable<System.DateTime> tr_createdOn { get; set; }
         public Nullable<int> tr_editedBy { get; set; }

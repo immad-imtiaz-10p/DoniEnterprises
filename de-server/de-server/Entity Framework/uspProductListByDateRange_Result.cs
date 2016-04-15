@@ -15,7 +15,7 @@ namespace de_server.Entity_Framework
     {
         public int ProductId { get; set; }
         public Nullable<System.DateTime> PriceDate { get; set; }
-        public Nullable<int> intPrice { get; set; }
-        public Nullable<int> localPrice { get; set; }
+        public Nullable<decimal> intPrice { get; set; }
+        public Nullable<decimal> localPrice { get; set; }
     }
 }

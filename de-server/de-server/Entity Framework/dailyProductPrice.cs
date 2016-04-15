@@ -16,12 +16,12 @@ namespace de_server.Entity_Framework
     {
         public int Prod_ID { get; set; }
         public System.DateTime PriceDate { get; set; }
-        public Nullable<int> Price { get; set; }
+        public Nullable<decimal> Price { get; set; }
         public int tr_createdBy { get; set; }
         public Nullable<int> tr_editedBy { get; set; }
         public System.DateTime tr_createdOn { get; set; }
         public Nullable<System.DateTime> tr_editedOn { get; set; }
-        public Nullable<int> localPrice { get; set; }
+        public Nullable<decimal> localPrice { get; set; }
     
         public virtual AppUser AppUser { get; set; }
         public virtual AppUser AppUser1 { get; set; }

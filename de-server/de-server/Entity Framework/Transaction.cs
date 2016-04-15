@@ -28,8 +28,8 @@ namespace de_server.Entity_Framework
         public Nullable<long> tr_bpSellerID { get; set; }
         public Nullable<int> tr_productID { get; set; }
         public string tr_origin { get; set; }
-        public Nullable<int> tr_quantity { get; set; }
-        public int tr_price { get; set; }
+        public Nullable<decimal> tr_quantity { get; set; }
+        public Nullable<decimal> tr_price { get; set; }
         public string tr_packing { get; set; }
         public Nullable<System.DateTime> tr_shipment_start { get; set; }
         public Nullable<System.DateTime> tr_shipment_end { get; set; }

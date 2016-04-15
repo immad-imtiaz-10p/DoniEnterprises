@@ -29,8 +29,8 @@ namespace de_server.Entity_Framework
         public Nullable<System.DateTime> tr_actualArrived { get; set; }
         public string tr_ship_BlNo { get; set; }
         public string tr_ship_invoiceNo { get; set; }
-        public Nullable<int> tr_ship_invoiceAmt { get; set; }
-        public Nullable<int> tr_ship_quantity { get; set; }
+        public Nullable<decimal> tr_ship_invoiceAmt { get; set; }
+        public Nullable<decimal> tr_ship_quantity { get; set; }
         public string tr_ship_vesselNo { get; set; }
         public Nullable<long> tr_ship_primaryShipperId { get; set; }
         public string tr_ship_portLoad { get; set; }

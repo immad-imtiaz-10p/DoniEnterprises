@@ -610,9 +610,10 @@ namespace de_server.Controllers
                 var tr_sec_bpBuyerID = (long?)(tr_sec["tr_sec_bpBuyerID"]);
                 var tr_sec_bpSellerID = (long?)(tr_sec["tr_sec_bpSellerID"]);
                 var tr_sec_date = (DateTime?)(tr_sec["tr_sec_date"]);
-                var tr_sec_buyerPrice = (int?)(tr_sec["tr_sec_buyerPrice"]);
-                var tr_sec_sellerPrice = (int?)(tr_sec["tr_sec_sellerPrice"]);
+                var tr_sec_buyerPrice = (long?)(tr_sec["tr_sec_buyerPrice"]);
+                var tr_sec_sellerPrice = (long?)(tr_sec["tr_sec_sellerPrice"]);
                 var tr_sec_otherInfo = Convert.ToString(tr_sec["tr_sec_otherInfo"]);
+                var tr_sec_quantity = (long?)(tr_sec["tr_sec_quantity"]);
                 var userID = BasicAuthHttpModule.getCurrentUserId();
                 var operation = Convert.ToString(tr_sec["operation"]);
 
@@ -651,6 +652,7 @@ namespace de_server.Controllers
                             tr_sec_date,
                             tr_sec_buyerPrice,
                             tr_sec_sellerPrice,
+                            tr_sec_quantity,
                             tr_sec_otherInfo,
                             userID,
                             userID,

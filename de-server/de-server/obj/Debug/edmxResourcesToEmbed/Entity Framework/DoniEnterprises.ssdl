@@ -118,12 +118,12 @@
     </Key>
     <Property Name="Prod_ID" Type="int" Nullable="false" />
     <Property Name="PriceDate" Type="datetime" Nullable="false" />
-    <Property Name="Price" Type="int" />
+    <Property Name="Price" Type="decimal" Precision="24" Scale="2" />
     <Property Name="tr_createdBy" Type="int" Nullable="false" />
     <Property Name="tr_editedBy" Type="int" />
     <Property Name="tr_createdOn" Type="datetime" Nullable="false" />
     <Property Name="tr_editedOn" Type="datetime" />
-    <Property Name="localPrice" Type="int" />
+    <Property Name="localPrice" Type="decimal" Precision="24" Scale="2" />
   </EntityType>
   <EntityType Name="Origin">
     <Key>
@@ -191,8 +191,8 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
     <Property Name="tr_bpSellerID" Type="bigint" />
     <Property Name="tr_productID" Type="int" />
     <Property Name="tr_origin" Type="nvarchar" MaxLength="150" />
-    <Property Name="tr_quantity" Type="int" />
-    <Property Name="tr_price" Type="int" Nullable="false" />
+    <Property Name="tr_quantity" Type="decimal" Precision="24" Scale="2" />
+    <Property Name="tr_price" Type="decimal" Precision="24" Scale="2" />
     <Property Name="tr_packing" Type="varchar" MaxLength="50" />
     <Property Name="tr_shipment_start" Type="datetime" />
     <Property Name="tr_shipment_end" Type="datetime" />
@@ -213,16 +213,16 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
     <Property Name="tr_sellerBroker" Type="bit" />
     <Property Name="tr_sellerBrokerID" Type="bigint" />
     <Property Name="tr_sellerBroker_comm_type" Type="nvarchar" MaxLength="50" />
-    <Property Name="tr_sellerBroker_comm" Type="int" />
+    <Property Name="tr_sellerBroker_comm" Type="decimal" Precision="24" Scale="2" />
     <Property Name="tr_buyerBroker" Type="bit" />
     <Property Name="tr_buyerBrokerID" Type="bigint" />
     <Property Name="tr_buyerBroker_comm_type" Type="nvarchar" MaxLength="50" />
-    <Property Name="tr_buyerBroker_comm" Type="int" />
-    <Property Name="tr_own_Commission" Type="int" />
+    <Property Name="tr_buyerBroker_comm" Type="decimal" Precision="24" Scale="2" />
+    <Property Name="tr_own_Commission" Type="decimal" Precision="24" Scale="2" />
     <Property Name="tr_ownCommissionType" Type="nvarchar" MaxLength="50" />
-    <Property Name="tr_difference" Type="int" />
-    <Property Name="tr_discount" Type="int" />
-    <Property Name="tr_netCommission" Type="int" />
+    <Property Name="tr_difference" Type="decimal" Precision="24" Scale="2" />
+    <Property Name="tr_discount" Type="decimal" Precision="24" Scale="2" />
+    <Property Name="tr_netCommission" Type="decimal" Precision="24" Scale="2" />
     <Property Name="tr_createdBy" Type="int" Nullable="false" />
     <Property Name="tr_createdOn" Type="datetime" />
     <Property Name="tr_editedBy" Type="int" />
@@ -262,13 +262,14 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
     <Property Name="tr_sec_bpBuyerID" Type="bigint" />
     <Property Name="tr_sec_bpSellerID" Type="bigint" />
     <Property Name="tr_sec_date" Type="datetime" Nullable="false" />
-    <Property Name="tr_sec_buyerPrice" Type="int" />
-    <Property Name="tr_sec_sellerPrice" Type="int" />
+    <Property Name="tr_sec_buyerPrice" Type="decimal" Precision="24" Scale="2" />
+    <Property Name="tr_sec_sellerPrice" Type="decimal" Precision="24" Scale="2" />
     <Property Name="tr_sec_otherInfo" Type="varchar" MaxLength="4000" />
     <Property Name="tr_createdBy" Type="int" Nullable="false" />
     <Property Name="tr_createdOn" Type="datetime" />
     <Property Name="tr_editedBy" Type="int" />
     <Property Name="tr_editedOn" Type="datetime" />
+    <Property Name="tr_sec_quantity" Type="decimal" Precision="24" Scale="2" />
   </EntityType>
   <EntityType Name="TransactionsShipment">
     <Key>
@@ -290,8 +291,8 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
     <Property Name="tr_actualArrived" Type="datetime" />
     <Property Name="tr_ship_BlNo" Type="varchar" MaxLength="50" />
     <Property Name="tr_ship_invoiceNo" Type="varchar" MaxLength="50" />
-    <Property Name="tr_ship_invoiceAmt" Type="int" />
-    <Property Name="tr_ship_quantity" Type="int" />
+    <Property Name="tr_ship_invoiceAmt" Type="decimal" Precision="24" Scale="2" />
+    <Property Name="tr_ship_quantity" Type="decimal" Precision="24" Scale="2" />
     <Property Name="tr_ship_vesselNo" Type="varchar" MaxLength="50" />
     <Property Name="tr_ship_primaryShipperId" Type="bigint" />
     <Property Name="tr_ship_portLoad" Type="varchar" MaxLength="500" />
@@ -1329,8 +1330,8 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
     <Parameter Name="crudOperation" Type="nvarchar" Mode="In" />
     <Parameter Name="productId" Type="int" Mode="In" />
     <Parameter Name="priceDate" Type="datetime" Mode="In" />
-    <Parameter Name="price" Type="int" Mode="In" />
-    <Parameter Name="localPrice" Type="int" Mode="In" />
+    <Parameter Name="price" Type="decimal" Mode="In" />
+    <Parameter Name="localPrice" Type="decimal" Mode="In" />
     <Parameter Name="tr_createdBy" Type="int" Mode="In" />
     <Parameter Name="tr_editedBy" Type="int" Mode="In" />
   </Function>
@@ -1346,8 +1347,8 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
     <Parameter Name="tr_bpSellerID" Type="bigint" Mode="In" />
     <Parameter Name="tr_productID" Type="int" Mode="In" />
     <Parameter Name="tr_origin" Type="nvarchar" Mode="In" />
-    <Parameter Name="tr_quantity" Type="int" Mode="In" />
-    <Parameter Name="tr_price" Type="int" Mode="In" />
+    <Parameter Name="tr_quantity" Type="decimal" Mode="In" />
+    <Parameter Name="tr_price" Type="decimal" Mode="In" />
     <Parameter Name="tr_packing" Type="nvarchar" Mode="In" />
     <Parameter Name="tr_shipment_start" Type="datetime" Mode="In" />
     <Parameter Name="tr_shipment_end" Type="datetime" Mode="In" />
@@ -1364,16 +1365,16 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
     <Parameter Name="tr_sellerBroker" Type="bit" Mode="In" />
     <Parameter Name="tr_sellerBrokerID" Type="bigint" Mode="In" />
     <Parameter Name="tr_sellerBroker_comm_type" Type="nvarchar" Mode="In" />
-    <Parameter Name="tr_sellerBroker_comm" Type="int" Mode="In" />
+    <Parameter Name="tr_sellerBroker_comm" Type="decimal" Mode="In" />
     <Parameter Name="tr_buyerBroker" Type="bit" Mode="In" />
     <Parameter Name="tr_buyerBrokerID" Type="bigint" Mode="In" />
     <Parameter Name="tr_buyerBroker_comm_type" Type="nvarchar" Mode="In" />
-    <Parameter Name="tr_buyerBroker_comm" Type="int" Mode="In" />
-    <Parameter Name="tr_own_Commission" Type="int" Mode="In" />
+    <Parameter Name="tr_buyerBroker_comm" Type="decimal" Mode="In" />
+    <Parameter Name="tr_own_Commission" Type="decimal" Mode="In" />
     <Parameter Name="tr_ownCommissionType" Type="nvarchar" Mode="In" />
-    <Parameter Name="tr_difference" Type="int" Mode="In" />
-    <Parameter Name="tr_discount" Type="int" Mode="In" />
-    <Parameter Name="tr_netCommission" Type="int" Mode="In" />
+    <Parameter Name="tr_difference" Type="decimal" Mode="In" />
+    <Parameter Name="tr_discount" Type="decimal" Mode="In" />
+    <Parameter Name="tr_netCommission" Type="decimal" Mode="In" />
     <Parameter Name="tr_createdBy" Type="int" Mode="In" />
     <Parameter Name="tr_createdOn" Type="datetime" Mode="In" />
     <Parameter Name="tr_editedBy" Type="int" Mode="In" />
@@ -1422,8 +1423,9 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
     <Parameter Name="tr_sec_bpBuyerID" Type="bigint" Mode="In" />
     <Parameter Name="tr_sec_bpSellerID" Type="bigint" Mode="In" />
     <Parameter Name="tr_sec_date" Type="datetime" Mode="In" />
-    <Parameter Name="tr_sec_buyerPrice" Type="int" Mode="In" />
-    <Parameter Name="tr_sec_sellerPrice" Type="int" Mode="In" />
+    <Parameter Name="tr_sec_buyerPrice" Type="decimal" Mode="In" />
+    <Parameter Name="tr_sec_sellerPrice" Type="decimal" Mode="In" />
+    <Parameter Name="tr_sec_quantity" Type="decimal" Mode="In" />
     <Parameter Name="tr_sec_otherInfo" Type="varchar" Mode="In" />
     <Parameter Name="tr_createdBy" Type="int" Mode="In" />
     <Parameter Name="tr_editedBy" Type="int" Mode="In" />

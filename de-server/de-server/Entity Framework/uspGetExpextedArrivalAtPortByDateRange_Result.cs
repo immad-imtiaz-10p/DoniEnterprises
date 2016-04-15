@@ -19,8 +19,8 @@ namespace de_server.Entity_Framework
         public string tr_fileID { get; set; }
         public Nullable<long> tr_bpBuyerID { get; set; }
         public Nullable<int> tr_productID { get; set; }
-        public Nullable<int> tr_quantity { get; set; }
-        public int tr_price { get; set; }
+        public Nullable<decimal> tr_quantity { get; set; }
+        public Nullable<decimal> tr_price { get; set; }
         public Nullable<long> tr_bpSellerID { get; set; }
         public string tr_transactionStatus { get; set; }
     }

@@ -133,8 +133,8 @@ namespace de_server.Controllers
             {
                 var priceDetails = pPrice["data"];
                 var operation = Convert.ToString(priceDetails["operation"]);
-                var price = (int?)priceDetails["price"];
-                var localPrice = (int?) priceDetails["localPrice"];
+                var price = (Decimal?)priceDetails["price"];
+                var localPrice = (Decimal?) priceDetails["localPrice"];
                 var productId = (int?)priceDetails["productId"];
                 var date = (DateTime?) priceDetails["date"];
                 int userId = BasicAuthHttpModule.getCurrentUserId();

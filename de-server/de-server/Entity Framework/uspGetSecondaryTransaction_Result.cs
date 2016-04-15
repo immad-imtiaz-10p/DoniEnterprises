@@ -18,12 +18,13 @@ namespace de_server.Entity_Framework
         public Nullable<long> tr_sec_bpBuyerID { get; set; }
         public Nullable<long> tr_sec_bpSellerID { get; set; }
         public System.DateTime tr_sec_date { get; set; }
-        public Nullable<int> tr_sec_buyerPrice { get; set; }
-        public Nullable<int> tr_sec_sellerPrice { get; set; }
+        public Nullable<decimal> tr_sec_buyerPrice { get; set; }
+        public Nullable<decimal> tr_sec_sellerPrice { get; set; }
         public string tr_sec_otherInfo { get; set; }
         public int tr_createdBy { get; set; }
         public Nullable<System.DateTime> tr_createdOn { get; set; }
         public Nullable<int> tr_editedBy { get; set; }
         public Nullable<System.DateTime> tr_editedOn { get; set; }
+        public Nullable<decimal> tr_sec_quantity { get; set; }
     }
 }

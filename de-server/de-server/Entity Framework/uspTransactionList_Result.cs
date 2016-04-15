@@ -20,8 +20,8 @@ namespace de_server.Entity_Framework
         public string buyer { get; set; }
         public Nullable<int> tr_productID { get; set; }
         public string product { get; set; }
-        public Nullable<int> quantity { get; set; }
-        public int rate { get; set; }
+        public Nullable<decimal> quantity { get; set; }
+        public Nullable<decimal> rate { get; set; }
         public Nullable<long> tr_bpSellerID { get; set; }
         public string seller { get; set; }
         public string origin { get; set; }

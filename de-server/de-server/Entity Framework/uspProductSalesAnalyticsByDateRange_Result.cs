@@ -15,8 +15,8 @@ namespace de_server.Entity_Framework
     {
         public int tr_productID { get; set; }
         public string ProductName { get; set; }
-        public int Quantity { get; set; }
-        public int NetCommission { get; set; }
-        public Nullable<long> Volume { get; set; }
+        public decimal Quantity { get; set; }
+        public decimal NetCommission { get; set; }
+        public Nullable<decimal> Volume { get; set; }
     }
 }

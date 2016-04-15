@@ -244,214 +244,214 @@
     <Compile Include="Controllers\TransactionController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Entity Framework\AppUser.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\AppUserRight.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\AppUsersImage.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\BusinessPartner.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\BusinessPartner_BankDetails.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\BusinessPartner_ContactNumbers.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\BusinessPartner_Contacts.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\BusinessPartner_Emails.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\dailyProductPrice.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity Framework\DoniEnterprisesModel.Context.cs">
+    <Compile Include="Entity Framework\DoniEnterprises.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DoniEnterprisesModel.Context.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity Framework\DoniEnterprisesModel.cs">
+    <Compile Include="Entity Framework\DoniEnterprises.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity Framework\DoniEnterprisesModel.Designer.cs">
+    <Compile Include="Entity Framework\DoniEnterprises.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DoniEnterprisesModel.edmx</DependentUpon>
+      <DependentUpon>DoniEnterprises.edmx</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\getAllUsers_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\Origin.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\Product.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\ShipmentStatu.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\Transaction.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\TransactionFile.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\TransactionsCommission.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\TransactionsContract.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\TransactionsNote.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\TransactionsSecondary.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\TransactionsShipment.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\TransactionsStatu.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\transactionViewed.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\UserEvent.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetAppUserByEmail_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetArrivedAtPortByDateRange_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetBPBank_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetBPContactNumber_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetBPContact_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetBPEmails_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetBPGeneral_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetBPProducts_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetBusinessPartnerForList_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetBusinessPartnerForTable_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetCommissionTransaction_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetDashboardProducts_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetDropDownBroker_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetDropDownBuyer_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetDropDownSeller_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetDropDownShipper_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetExpextedArrivalAtPortByDateRange_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetOriginList_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetProductListPDF_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetProductList_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetProductPriceByDateForDashBoard_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetProductPriceByDate_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetProductTagInput_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetRecentlyViewedItem_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetSecondaryTransaction_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetShipmentAnalyticsByDateRange_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetShipmentExpirationByDateRange_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetSingleProduct_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetTransactionByParameter_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetTransactionContract_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetTransactionNotes_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetTransactionShipment_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetTransactionStatus_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspGetTransaction_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspProductListByDateRangeForDashboard_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspProductListByDateRange_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspProductSalesAnalyticsByDateRange_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspTransactionFileGetAll_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspTransactionFileGetSingle_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspTransactionListByDateRange_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspTransactionList_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity Framework\uspTransactionNotesCRUD_Result.cs">
-      <DependentUpon>DoniEnterprisesModel.tt</DependentUpon>
+      <DependentUpon>DoniEnterprises.tt</DependentUpon>
     </Compile>
     <Compile Include="Filters\DoniApiExceptionFilterAttribute.cs" />
     <Compile Include="Filters\RequireHttpsAttribute.cs" />
@@ -508,22 +508,22 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="App_Config\GRE.pdf" />
-    <EntityDeploy Include="Entity Framework\DoniEnterprisesModel.edmx">
+    <EntityDeploy Include="Entity Framework\DoniEnterprises.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DoniEnterprisesModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>DoniEnterprises.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Entity Framework\DoniEnterprisesModel.Context.tt">
+    <Content Include="Entity Framework\DoniEnterprises.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DoniEnterprisesModel.edmx</DependentUpon>
-      <LastGenOutput>DoniEnterprisesModel.Context.cs</LastGenOutput>
+      <DependentUpon>DoniEnterprises.edmx</DependentUpon>
+      <LastGenOutput>DoniEnterprises.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Entity Framework\DoniEnterprisesModel.edmx.diagram">
-      <DependentUpon>DoniEnterprisesModel.edmx</DependentUpon>
+    <Content Include="Entity Framework\DoniEnterprises.edmx.diagram">
+      <DependentUpon>DoniEnterprises.edmx</DependentUpon>
     </Content>
-    <Content Include="Entity Framework\DoniEnterprisesModel.tt">
+    <Content Include="Entity Framework\DoniEnterprises.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DoniEnterprisesModel.edmx</DependentUpon>
-      <LastGenOutput>DoniEnterprisesModel.cs</LastGenOutput>
+      <DependentUpon>DoniEnterprises.edmx</DependentUpon>
+      <LastGenOutput>DoniEnterprises.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
