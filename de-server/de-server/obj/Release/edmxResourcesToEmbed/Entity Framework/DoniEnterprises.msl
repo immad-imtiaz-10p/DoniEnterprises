@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="DoniEnterprisesModelStoreContainer" CdmEntityContainer="DhoniEnterprisesEntities">
+  <EntityContainerMapping StorageEntityContainer="DoniEnterprisesModelStoreContainer" CdmEntityContainer="DoniEnterprisesEntities">
     <EntitySetMapping Name="AppUserRights">
       <EntityTypeMapping TypeName="DoniEnterprisesModel.AppUserRight">
         <MappingFragment StoreEntitySet="AppUserRights">
@@ -23,6 +23,8 @@
           <ScalarProperty Name="initials" ColumnName="initials" />
           <ScalarProperty Name="firstName" ColumnName="firstName" />
           <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="isActivated" ColumnName="isActivated" />
+          <ScalarProperty Name="invalidPasswordAttempts" ColumnName="invalidPasswordAttempts" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -248,6 +250,7 @@
           <ScalarProperty Name="tr_createdOn" ColumnName="tr_createdOn" />
           <ScalarProperty Name="tr_editedBy" ColumnName="tr_editedBy" />
           <ScalarProperty Name="tr_editedOn" ColumnName="tr_editedOn" />
+          <ScalarProperty Name="tr_sec_quantity" ColumnName="tr_sec_quantity" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -359,17 +362,23 @@
         <ScalarProperty Name="UserID" ColumnName="userid" />
       </EndProperty>
     </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="activateUser" FunctionName="DoniEnterprisesModel.Store.activateUser" />
     <FunctionImportMapping FunctionImportName="addNewAppUser" FunctionName="DoniEnterprisesModel.Store.addNewAppUser" />
     <FunctionImportMapping FunctionImportName="AppUserChangePasword" FunctionName="DoniEnterprisesModel.Store.AppUserChangePasword" />
+    <FunctionImportMapping FunctionImportName="AppUserIncrementInvalidPassword" FunctionName="DoniEnterprisesModel.Store.AppUserIncrementInvalidPassword" />
+    <FunctionImportMapping FunctionImportName="deactivateUser" FunctionName="DoniEnterprisesModel.Store.deactivateUser" />
     <FunctionImportMapping FunctionImportName="getAllUsers" FunctionName="DoniEnterprisesModel.Store.getAllUsers">
       <ResultMapping>
         <ComplexTypeMapping TypeName="DoniEnterprisesModel.getAllUsers_Result">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="firstName" ColumnName="firstName" />
           <ScalarProperty Name="lastName" ColumnName="lastName" />
           <ScalarProperty Name="initials" ColumnName="initials" />
           <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
           <ScalarProperty Name="UserDesignation" ColumnName="UserDesignation" />
           <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsSuperUser" ColumnName="IsSuperUser" />
+          <ScalarProperty Name="isActivated" ColumnName="isActivated" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -735,6 +744,7 @@
           <ScalarProperty Name="tr_createdOn" ColumnName="tr_createdOn" />
           <ScalarProperty Name="tr_editedBy" ColumnName="tr_editedBy" />
           <ScalarProperty Name="tr_editedOn" ColumnName="tr_editedOn" />
+          <ScalarProperty Name="tr_sec_quantity" ColumnName="tr_sec_quantity" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -907,6 +917,19 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspGetUserById" FunctionName="DoniEnterprisesModel.Store.uspGetUserById">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DoniEnterprisesModel.uspGetUserById_Result">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="UserDesignation" ColumnName="UserDesignation" />
+          <ScalarProperty Name="IsSuperUser" ColumnName="IsSuperUser" />
+          <ScalarProperty Name="initials" ColumnName="initials" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="uspOriginCRUD" FunctionName="DoniEnterprisesModel.Store.uspOriginCRUD" />
     <FunctionImportMapping FunctionImportName="uspProductListByDateRange" FunctionName="DoniEnterprisesModel.Store.uspProductListByDateRange">
       <ResultMapping>
@@ -1040,5 +1063,6 @@
     <FunctionImportMapping FunctionImportName="uspUpdateBusinessPartnerEmail" FunctionName="DoniEnterprisesModel.Store.uspUpdateBusinessPartnerEmail" />
     <FunctionImportMapping FunctionImportName="uspUpdateBusinessPartnerProduct" FunctionName="DoniEnterprisesModel.Store.uspUpdateBusinessPartnerProduct" />
     <FunctionImportMapping FunctionImportName="uspUpdateProduct" FunctionName="DoniEnterprisesModel.Store.uspUpdateProduct" />
+    <FunctionImportMapping FunctionImportName="uspUpdateUserById" FunctionName="DoniEnterprisesModel.Store.uspUpdateUserById" />
   </EntityContainerMapping>
 </Mapping>

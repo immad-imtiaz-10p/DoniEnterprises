@@ -83,7 +83,6 @@ namespace de_server.Controllers
                     return Ok(new
                     {
                         success = true,
-                        message = "Transaction read successfully!",
                         basic = DataTableSerializer.LINQToDataTable(basic),
                         comm = DataTableSerializer.LINQToDataTable(comm),
                         contract = DataTableSerializer.LINQToDataTable(contract),
@@ -140,8 +139,8 @@ namespace de_server.Controllers
                 var tr_bpSellerID = (long?)(trade["tr_bpSellerID"]);
                 var tr_productID = (int?)(trade["tr_productID"]);
                 var tr_origin = Convert.ToString(trade["tr_origin"]);
-                var tr_quantity = (int?)(trade["tr_quantity"]);
-                var tr_price = (int?)(trade["tr_price"]);
+                var tr_quantity = (Decimal?)(trade["tr_quantity"]);
+                var tr_price = (Decimal?)(trade["tr_price"]);
                 var tr_packing = Convert.ToString(trade["tr_packing"]);
                 var tr_shipment_start = (DateTime?)(trade["tr_shipment_start"]);
                 var tr_shipment_end = (DateTime?)(trade["tr_shipment_end"]);
@@ -199,8 +198,12 @@ namespace de_server.Controllers
                 using (var context = new DhoniEnterprisesEntities())
                 {
                     int file_count = (from tran in context.Transactions where tran.tr_fileID.ToLower() == tr_fileID.ToLower() select tran).Count();
-                    int contract_count = (from tran in context.Transactions where tran.tr_contractID.ToLower() == tr_contractID.ToLower() select tran).Count();
-
+                    int contract_count = 0;
+                    if (tr_contractID != "")
+                    {
+                        contract_count = (from tran in context.Transactions where tran.tr_contractID.ToLower() == tr_contractID.ToLower() select tran).Count(); 
+                    }
+                    
                     if (file_count > 0 && operation == CRUD.CREATE)
                     {
                         return Ok(new { success = false, message = "A trasaction with the same File Id already exist in the system." });
@@ -279,14 +282,14 @@ namespace de_server.Controllers
                 var tr_buyerBroker = Convert.ToBoolean(tr_commission["tr_buyerBroker"]);
                 var tr_buyerBrokerID = (long?)(tr_commission["tr_buyerBrokerID"]);
                 var tr_buyerBroker_comm_type =  Convert.ToString(tr_commission["tr_buyerBroker_comm_type"]);
-                var tr_buyerBroker_comm = (int?)tr_commission["tr_buyerBroker_comm"];
+                var tr_buyerBroker_comm = (Decimal?)tr_commission["tr_buyerBroker_comm"];
                 var tr_sellerBroker = Convert.ToBoolean(tr_commission["tr_sellerBroker"]);
                 var tr_sellerBrokerID = (long?)(tr_commission["tr_sellerBrokerID"]);
-                var tr_own_Commission = (int?)(tr_commission["tr_own_Commission"]);
+                var tr_own_Commission = (Decimal?)(tr_commission["tr_own_Commission"]);
                 var tr_ownCommissionType = Convert.ToString(tr_commission["tr_ownCommissionType"]);
-                var tr_difference = (int?)tr_commission["tr_difference"];
-                var tr_discount = (int?)tr_commission["tr_discount"];
-                var tr_netCommission = (int?)tr_commission["tr_netCommission"];
+                var tr_difference = (Decimal?)tr_commission["tr_difference"];
+                var tr_discount = (Decimal?)tr_commission["tr_discount"];
+                var tr_netCommission = (Decimal?)tr_commission["tr_netCommission"];
 
                 var userID = BasicAuthHttpModule.getCurrentUserId();
                 var operation = Convert.ToString(tr_commission["operation"]);
@@ -489,8 +492,8 @@ namespace de_server.Controllers
                     var tr_actualArrived = (DateTime?)(tr_ship["tr_actualArrived"]);
                     var tr_ship_BlNo =  Convert.ToString(tr_ship["tr_ship_BlNo"]);
                     var tr_ship_invoiceNo =  Convert.ToString(tr_ship["tr_ship_invoiceNo"]);
-                    var tr_ship_invoiceAmt = (int?)(tr_ship["tr_ship_invoiceAmt"]);
-                    var tr_ship_quantity = (int?)(tr_ship["tr_ship_quantity"]);
+                    var tr_ship_invoiceAmt = (Decimal?)(tr_ship["tr_ship_invoiceAmt"]);
+                    var tr_ship_quantity = (Decimal?)(tr_ship["tr_ship_quantity"]);
                     var tr_ship_vesselNo =  Convert.ToString(tr_ship["tr_ship_vesselNo"]);
                     var tr_ship_primaryShipperId = (long?)(tr_ship["tr_ship_primaryShipperId"]);
                     var tr_ship_portLoad =  Convert.ToString(tr_ship["tr_ship_portLoad"]);
@@ -610,10 +613,10 @@ namespace de_server.Controllers
                 var tr_sec_bpBuyerID = (long?)(tr_sec["tr_sec_bpBuyerID"]);
                 var tr_sec_bpSellerID = (long?)(tr_sec["tr_sec_bpSellerID"]);
                 var tr_sec_date = (DateTime?)(tr_sec["tr_sec_date"]);
-                var tr_sec_buyerPrice = (long?)(tr_sec["tr_sec_buyerPrice"]);
-                var tr_sec_sellerPrice = (long?)(tr_sec["tr_sec_sellerPrice"]);
+                var tr_sec_buyerPrice = (Decimal?)(tr_sec["tr_sec_buyerPrice"]);
+                var tr_sec_sellerPrice = (Decimal?)(tr_sec["tr_sec_sellerPrice"]);
                 var tr_sec_otherInfo = Convert.ToString(tr_sec["tr_sec_otherInfo"]);
-                var tr_sec_quantity = (long?)(tr_sec["tr_sec_quantity"]);
+                var tr_sec_quantity = (Decimal?)(tr_sec["tr_sec_quantity"]);
                 var userID = BasicAuthHttpModule.getCurrentUserId();
                 var operation = Convert.ToString(tr_sec["operation"]);
 
@@ -887,7 +890,27 @@ namespace de_server.Controllers
          
         }
 
+        [HttpGet]
+        [Route("getTransactionFile")]
+        public HttpResponseMessage getTransactionFile(long fileID)
+        {
+            HttpResponseMessage response;
 
+            using (var content = new DhoniEnterprisesEntities())
+            {
+                var result = content.uspTransactionFileGetSingle(fileID).FirstOrDefault();
+                byte[] bytes = result.tf_file;
+                response = new HttpResponseMessage(HttpStatusCode.OK);
+                var stream = new MemoryStream(bytes);
+                response.Content = new StreamContent(stream);
+                response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+                response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment");
+                response.Content.Headers.ContentDisposition.FileName = result.tf_fileName;
+                return response;
+
+            }
+
+        }
 
         [HttpPost]
         [Route("uploadTransactionDocument")]

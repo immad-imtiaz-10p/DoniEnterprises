@@ -349,7 +349,6 @@ G:\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.Cookies.xml
 G:\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.Google.xml
 G:\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.Twitter.xml
 G:\DoniEnterprises\de-server\de-server\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-G:\DoniEnterprises\de-server\de-server\obj\Debug\de-server.csprojResolveAssemblyReference.cache
 G:\DoniEnterprises\de-server\de-server\obj\Debug\de-server.dll
 G:\DoniEnterprises\de-server\de-server\obj\Debug\de-server.pdb
 G:\DoniEnterprises\de-server\de-server\bin\Microsoft.AspNet.SignalR.Core.dll

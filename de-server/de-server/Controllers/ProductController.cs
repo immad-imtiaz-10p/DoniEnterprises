@@ -84,16 +84,14 @@ namespace de_server.Controllers
                     content += temp;
                 }
 
-
-
                 MemoryStream pdf = new MemoryStream((new PdfService()).getPDF(content));
                 result = Request.CreateResponse(HttpStatusCode.OK);
-                result.Content = new ByteArrayContent(pdf.ToArray());
+                result.Content = new StreamContent(pdf);
+                result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
                 result.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment");
                 result.Content.Headers.ContentDisposition.FileName = "AllProductsDetails-DhoniGroup.pdf";
-                result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/pdf");
-                result.StatusCode = HttpStatusCode.OK;
                 return result;
+                
             }
         }
 

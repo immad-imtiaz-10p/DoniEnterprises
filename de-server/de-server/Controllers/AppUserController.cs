@@ -51,15 +51,23 @@ namespace de_server.Controllers
                     context.AppUserChangePasword(userID, newHashedPass, userGuid);
                     return Ok(new { success = true, message = "Your Password has been Changed!" });
                 }
-               
-
-                
-                
-                
-
-                
-                
             }   
+        }
+
+        [Route("changePasswordForUser")]
+        [HttpPost]
+        public IHttpActionResult ChangePasswordForUser([FromBody] JObject passDetails)
+        {
+            var passwordDetails = passDetails["passwordDetails"];
+            var newPass = Convert.ToString(passwordDetails["newPassword"]);
+            var userId = (int?)passwordDetails["userId"];
+            using (var context = new DhoniEnterprisesEntities())
+            {
+                Guid userGuid = System.Guid.NewGuid();
+                string newHashedPass = Security.Security.HashSHA1(Convert.ToString(newPass) + userGuid);
+                context.AppUserChangePasword(userId, newHashedPass, userGuid);
+                return Ok(new { success = true, message = "User Password has been Changed!" });
+            }
         }
 
         [Route("login")]
@@ -70,7 +78,7 @@ namespace de_server.Controllers
             {
                
                     int userId = BasicAuthHttpModule.AuthenticateUser(viewModel.Username, viewModel.Password);
-                    if (userId == -1)
+                    if (userId == -1 || userId == -3)
                     {
                         return Ok(new { success = false, message = "Invalid Password/email" });
                         
@@ -148,6 +156,54 @@ namespace de_server.Controllers
          
             
         }
+
+        [Authorize]
+        [Route("getUserById/{userId:int}")]
+        [HttpGet]
+        public IHttpActionResult GetUserById(int userId)
+        {
+            using (var context = new DhoniEnterprisesEntities())
+            {
+                var user = DataTableSerializer.LINQToDataTable(context.uspGetUserById(userId));
+                if (user == null)
+                {
+                    return BadRequest();
+                }
+                else
+                {
+                    return Ok(new { success = true, user = user });
+                }
+            }
+        }
+
+        [Authorize]
+        [Route("updateUserById")]
+        [HttpPost]
+        public IHttpActionResult UpdateUserById([FromBody] JObject newUser)
+        {
+            using (var context = new DhoniEnterprisesEntities())
+            {
+                var nUser = newUser["newUser"];
+                var id = (int?) nUser["id"];
+                var email = Convert.ToString(nUser["email"]);
+                var fname = Convert.ToString(nUser["firstName"]);
+                var lname = Convert.ToString(nUser["lastName"]);
+                var pass = Convert.ToString(nUser["password"]);
+                var title = Convert.ToString(nUser["initials"]);
+                var des = Convert.ToString(nUser["designation"]);
+                var isAdmin = Convert.ToBoolean(nUser["isAdmin"]);
+                context.uspUpdateUserById(id, title, email, fname, lname, isAdmin,des);
+                return Ok(new { success = true, message="User have been updated." });
+
+            }
+        }
+
+
+
+
+
+
+
 
         [Authorize]
         [Route("addNewUser")]

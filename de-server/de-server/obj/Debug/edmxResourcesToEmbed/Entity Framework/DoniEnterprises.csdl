@@ -1738,8 +1738,8 @@
       <Parameter Name="tr_actualArrived" Mode="In" Type="DateTime" />
       <Parameter Name="tr_ship_BlNo" Mode="In" Type="String" />
       <Parameter Name="tr_ship_invoiceNo" Mode="In" Type="String" />
-      <Parameter Name="tr_ship_invoiceAmt" Mode="In" Type="Int32" />
-      <Parameter Name="tr_ship_quantity" Mode="In" Type="Int32" />
+      <Parameter Name="tr_ship_invoiceAmt" Mode="In" Type="Decimal" />
+      <Parameter Name="tr_ship_quantity" Mode="In" Type="Decimal" />
       <Parameter Name="tr_ship_vesselNo" Mode="In" Type="String" />
       <Parameter Name="tr_ship_primaryShipperId" Mode="In" Type="Int64" />
       <Parameter Name="tr_ship_portLoad" Mode="In" Type="String" />

@@ -59,6 +59,7 @@ namespace de_server.Entity_Framework
         public string firstName { get; set; }
         public string lastName { get; set; }
         public Nullable<bool> isActivated { get; set; }
+        public Nullable<int> invalidPasswordAttempts { get; set; }
     
         public virtual ICollection<AppUserRight> AppUserRights { get; set; }
         public virtual AppUsersImage AppUsersImage { get; set; }

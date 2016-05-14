@@ -8,7 +8,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{703bd9fc-4550-4ab9-9837-11f9b4685097}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -57,5 +57,131 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="Security\" />
+    <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="Database Triggers\" />
+    <Folder Include="dbo\User Defined Types\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\UserEvents_2.sql" />
+    <Build Include="dbo\Tables\userDashboardProducts.sql" />
+    <Build Include="dbo\Tables\transactionViewed_2.sql" />
+    <Build Include="dbo\Tables\TransactionsStatus_2.sql" />
+    <Build Include="dbo\Tables\TransactionsShipment_2.sql" />
+    <Build Include="dbo\Tables\TransactionsSecondary_2.sql" />
+    <Build Include="dbo\Tables\TransactionsNotes_2.sql" />
+    <Build Include="dbo\Tables\TransactionsContract_2.sql" />
+    <Build Include="dbo\Tables\TransactionsCommission_2.sql" />
+    <Build Include="dbo\Tables\Transactions_2.sql" />
+    <Build Include="dbo\Tables\TransactionFiles_2.sql" />
+    <Build Include="dbo\Tables\ShipmentStatus_2.sql" />
+    <Build Include="dbo\Tables\Products_2.sql" />
+    <Build Include="dbo\Tables\Origin_2.sql" />
+    <Build Include="dbo\Tables\dailyProductPrices_1.sql" />
+    <Build Include="dbo\Tables\BusinessPartner_Products_2.sql" />
+    <Build Include="dbo\Tables\BusinessPartner_Emails_2.sql" />
+    <Build Include="dbo\Tables\BusinessPartner_Contacts_2.sql" />
+    <Build Include="dbo\Tables\BusinessPartner_ContactNumbers_2.sql" />
+    <Build Include="dbo\Tables\BusinessPartner_BankDetails_2.sql" />
+    <Build Include="dbo\Tables\BusinessPartner_2.sql" />
+    <Build Include="dbo\Tables\AppUsersImage_2.sql" />
+    <Build Include="dbo\Tables\AppUsers_2.sql" />
+    <Build Include="dbo\Tables\AppUserRights_2.sql" />
+    <Build Include="Security\immadimtiaz.sql" />
+    <Build Include="Security\RoleMemberships.sql" />
+    <Build Include="dbo\Stored Procedures\uspUpdateProduct_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspUpdateBusinessPartnerProduct_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspUpdateBusinessPartnerEmail_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspUpdateBusinessPartnerContactNumber_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspUpdateBusinessPartnerContact_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspUpdateBusinessPartnerBankDetails_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspUpdateBusinessPartner_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspTransactionStatusCRUD_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspTransactionShipmentCRUD_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspTransactionSecondaryCRUD_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspTransactionNotesCRUD_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspTransactionListByDateRange_1.sql" />
+    <Build Include="dbo\Stored Procedures\uspTransactionList_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspTransactionFileGetSingle_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspTransactionFileGetAll_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspTransactionFileDelete_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspTransactionFileAdd_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspTransactionContractCRUD_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspTransactionCommissionCRUD_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspTransactionBasicCRUD_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspProductSalesAnalyticsByDateRange_1.sql" />
+    <Build Include="dbo\Stored Procedures\uspProductPriceByDateCRUD_1.sql" />
+    <Build Include="dbo\Stored Procedures\uspProductListByDateRangeForDashboard.sql" />
+    <Build Include="dbo\Stored Procedures\uspProductListByDateRange_1.sql" />
+    <Build Include="dbo\Stored Procedures\uspOriginCRUD_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetTransactionStatus_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetTransactionShipment_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetTransactionNotes_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetTransactionContract_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetTransactionByParameter_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetTransaction_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetSingleProduct_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetShipmentExpirationByDateRange.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetShipmentAnalyticsByDateRange_1.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetSecondaryTransaction_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetRecentlyViewedItem_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetProductTagInput_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetProductPriceByDateForDashBoard.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetProductPriceByDate_1.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetProductListPDF_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetProductList_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetOriginList_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetExpextedArrivalAtPortByDateRange.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetDropDownShipper_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetDropDownSeller_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetDropDownBuyer_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetDropDownBroker_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetDashboardProducts.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetCommissionTransaction_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetBusinessPartnerForTable_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetBusinessPartnerForList_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetBPProducts_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetBPGeneral_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetBPEmails_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetBPContactNumber_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetBPContact_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetBPBank_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetArrivedAtPortByDateRange.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetAppUserByEmail_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspDeleteTransactionNotes_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspDeleteTransaction_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspDeleteProduct_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspDeleteDashboardProduct.sql" />
+    <Build Include="dbo\Stored Procedures\uspDeleteBusinessPartnerProducts_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspDeleteBusinessPartnerEmail_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspDeleteBusinessPartnerContactNumber_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspDeleteBusinessPartnerContact_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspDeleteBusinessPartnerBankDetails_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspDeleteBusinessPartner_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspDeleteAllTransactions_1.sql" />
+    <Build Include="dbo\Stored Procedures\uspCheckBPPrimaryContactExist_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspAddTransactionNotes_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspAddTransactionBasic_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspAddRecentViewedItem_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspAddProduct_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspAddDashboardProduct.sql" />
+    <Build Include="dbo\Stored Procedures\uspAddBusinessPartnerProducts_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspAddBusinessPartnerEmail_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspAddBusinessPartnerContactNumber_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspAddBusinessPartnerContact_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspAddBusinessPartnerBankDetails_2.sql" />
+    <Build Include="dbo\Stored Procedures\uspAddBusinessPartner_2.sql" />
+    <Build Include="dbo\Stored Procedures\NewUserLoginDetails_2.sql" />
+    <Build Include="dbo\Stored Procedures\getAllUsers_2.sql" />
+    <Build Include="dbo\Stored Procedures\deactivateUser.sql" />
+    <Build Include="dbo\Stored Procedures\AppUserChangePasword_1.sql" />
+    <Build Include="dbo\Stored Procedures\addNewAppUser_2.sql" />
+    <Build Include="dbo\Stored Procedures\activateUser.sql" />
+    <Build Include="Database Triggers\rds_deny_backups_trigger.sql" />
+    <Build Include="dbo\User Defined Types\TextList_2.sql" />
+    <Build Include="dbo\User Defined Types\NumList_2.sql" />
+    <Build Include="dbo\User Defined Types\ContactPerson_2.sql" />
   </ItemGroup>
 </Project>

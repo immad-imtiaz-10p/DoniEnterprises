@@ -1449,8 +1449,8 @@ warning 6002: The table/view 'DoniEnterprises.dbo.TransactionFiles' does not hav
     <Parameter Name="tr_actualArrived" Type="datetime" Mode="In" />
     <Parameter Name="tr_ship_BlNo" Type="varchar" Mode="In" />
     <Parameter Name="tr_ship_invoiceNo" Type="varchar" Mode="In" />
-    <Parameter Name="tr_ship_invoiceAmt" Type="int" Mode="In" />
-    <Parameter Name="tr_ship_quantity" Type="int" Mode="In" />
+    <Parameter Name="tr_ship_invoiceAmt" Type="decimal" Mode="In" />
+    <Parameter Name="tr_ship_quantity" Type="decimal" Mode="In" />
     <Parameter Name="tr_ship_vesselNo" Type="varchar" Mode="In" />
     <Parameter Name="tr_ship_primaryShipperId" Type="bigint" Mode="In" />
     <Parameter Name="tr_ship_portLoad" Type="varchar" Mode="In" />
